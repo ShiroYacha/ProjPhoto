@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="222bc67a-ac84-4f53-b57a-23c1ed2bde8d" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="6024a59a-77d4-40fa-b6bd-e504bba88393" name="Comment1">
+      <body>MStudio.PCL</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="e5207759-6730-491d-bb76-bb6dc18a29fd" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="37055060-659a-42a5-9f5d-927b5bbfa550" name="Comment11">
+      <body>MStudio.WP8.View</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="e4eaee27-b42a-440a-ae3e-5547744c4e97" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="1d23e68f-d558-4834-a446-ffc3b49daa76" name="Comment111">
+      <body>MStudio.NET45.View</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="1ef340c0-ceeb-4a90-8fc3-282b326c9bfd" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="b35e75ac-993a-4095-a028-890080efb5b4" name="Comment12">
+      <body>MStudio.PCL.ViewModel</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="aa340a9f-24a1-43f2-81bb-f92fdb267301" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="d40264c4-c98f-44b7-895e-b23694f1d343" name="Comment121">
+      <body>MStudio.PCL.Extension</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="37caaa33-8e34-4cb2-97a1-2f2361d5b29f" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="793c4b5b-981f-4243-a748-47e20e646587" name="Comment1211">
+      <body>MStudio.PCL.Core</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="7e017a34-dec7-44d1-9aeb-a3420189a7af" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="4907a71f-5375-4c94-bb8a-e4ebafbbdc07" name="Comment2">
+      <body>MStudio.PCL.DataService</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="b617bf35-6124-4cc2-bfd7-22292893ea8f" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="e5207759-6730-491d-bb76-bb6dc18a29fd" name="Portable Library Class">
+      <childLayers>
+        <layer Id="5c06da21-641d-4768-bdec-572e4aa13700" name="Model">
+          <childLayers>
+            <layer Id="7e017a34-dec7-44d1-9aeb-a3420189a7af" name="Core" requiredNamespace="MStudio.PCL.ViewModel;MStudio.PCL.Extension;MStudio.PCL.DataService">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="890e031b-31a3-4b86-a209-b5072425ba5d" direction="Bidirectional">
+                  <layerMoniker Id="37caaa33-8e34-4cb2-97a1-2f2361d5b29f" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="6ee4d08d-24b1-456c-8980-bc870c485461" direction="Bidirectional">
+                  <layerMoniker Id="aa340a9f-24a1-43f2-81bb-f92fdb267301" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+            <layer Id="37caaa33-8e34-4cb2-97a1-2f2361d5b29f" name="Extension" requiredNamespace="MStudio.PCL.ViewModel;MStudio.PCL.Core;MStudio.PCL.DataService">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="881726db-5677-48a3-9aca-859fef952739" direction="Bidirectional">
+                  <layerMoniker Id="aa340a9f-24a1-43f2-81bb-f92fdb267301" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+            <layer Id="b617bf35-6124-4cc2-bfd7-22292893ea8f" name="DataService" requiredNamespace="MStudio.PCL.Core;MStudio.PCL.Extension">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="6e815a24-b707-4ce7-8c28-b734957dd0e0" direction="Bidirectional">
+                  <layerMoniker Id="7e017a34-dec7-44d1-9aeb-a3420189a7af" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="45f00da4-c9e2-4f2f-893e-9ad6728da534" direction="Bidirectional">
+                  <layerMoniker Id="37caaa33-8e34-4cb2-97a1-2f2361d5b29f" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="aa340a9f-24a1-43f2-81bb-f92fdb267301" name="ViewModel" requiredNamespace="MStudio.WP8.View;MStudio.NET45.View;MStudio.PCL.Core;MStudio.PCL.Extension">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="b0b10778-55a4-4d1a-9e8a-d248d7895e94" direction="Bidirectional">
+              <layerMoniker Id="e4eaee27-b42a-440a-ae3e-5547744c4e97" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="4eed8583-91dc-46f5-8dd6-29384206e4a0" direction="Bidirectional">
+              <layerMoniker Id="1ef340c0-ceeb-4a90-8fc3-282b326c9bfd" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="e4eaee27-b42a-440a-ae3e-5547744c4e97" name="Windows Phone 8 View" requiredNamespace="MStudio.PCL.ViewModel" />
+    <layer Id="1ef340c0-ceeb-4a90-8fc3-282b326c9bfd" name="Windows 8 Metro View" requiredNamespace="MStudio.PCL.ViewModel" />
+  </layers>
+</layerModel>
