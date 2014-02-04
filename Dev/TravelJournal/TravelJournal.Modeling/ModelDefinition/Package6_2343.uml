@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="d7a7e66c-88ab-41db-a744-56aeb070e577"
+  name="Scheduler"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="af24cda0-5cce-4d30-92b4-62d3b3051bae"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMicrosoft.Phone.Scheduler"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="c4f9339f-2e2d-4712-b5e3-dae14d987eeb"
+        name="ScheduledTask"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="111fce34-b0a1-427f-8882-8aa87b00445a"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2FMicrosoft.Phone.dll&quot; Namespace%3DMicrosoft.Phone.Scheduler Type%3DScheduledTask"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="590978a6-b823-4cb8-92da-63aaeea9fa6b"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="56192242-664c-4be1-a729-84df4adaf2bb">
+                <propertyInstance
+                  Id="98781698-a8d9-40e2-ac36-5e4cf51f8d59"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="40d95e67-b3fe-45cc-a868-25fe18510814">
+                <propertyInstance
+                  Id="65f97924-20a5-42e7-8936-2748d8b33ad0"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6b7f3916-92ae-4483-998a-ff9731d1148e">
+                <propertyInstance
+                  Id="ba72f1b5-506b-4c38-8d3e-99d382b7bf9f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9010fe6b-6228-49f5-9a15-393d374c3712">
+                <propertyInstance
+                  Id="d5d7c555-1ca5-42f1-8a02-437bb8e44739"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1784cb44-b16c-472e-94c2-b8ef111033ea">
+                <propertyInstance
+                  Id="0fa4cc5d-7d1a-43cd-8be8-6d4b1b9525c5"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="76a26267-f390-4f08-b544-a1892e6b06f0"
+        name="ScheduledTaskAgent"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="2cd6cc4b-9e05-4735-9c55-81bc53e2bdcf"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2FMicrosoft.Phone.dll&quot; Namespace%3DMicrosoft.Phone.Scheduler Type%3DScheduledTaskAgent"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="7f3332ff-1ac7-4cce-9eb6-92ee84ba55a0"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="36bba7ed-ef20-48cb-9f8d-49f89df7a09d">
+                <propertyInstance
+                  Id="d7802430-2f85-4cee-9072-0c730fa5b7ba"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2b1f4f62-0351-48a9-b10c-4e02af517d8b">
+                <propertyInstance
+                  Id="24a2341b-1086-4968-a315-a49aced0af62"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="66e48ea6-bcc9-4894-b420-3b77b6a29467">
+                <propertyInstance
+                  Id="e5150417-d4ea-4790-975f-28375abceb30"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2b778249-e81a-4ac0-b721-924baecd4d43">
+                <propertyInstance
+                  Id="74bf9211-9834-4c50-84ac-b700ddfc7745"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ab286c14-7ac2-442a-8839-becc7b3dbc9d">
+                <propertyInstance
+                  Id="903a2916-49d2-41f8-951a-f524256eae08"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
