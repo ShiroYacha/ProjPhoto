@@ -1,0 +1,1562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="76800636-c5c1-4fc1-98b7-4e58a14ba4c7"
+  name="TravelJournal.Modeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="a09e7638-18b3-490f-993c-d1edc5d78e61">
+      <profileInstance
+        Id="51a2f357-37f9-46e4-8703-c62541a17599"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="750846d7-0eb0-44b9-b6d3-a6359da9366e"
+        name="Backgro"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="cedd591f-1669-4f52-9b69-914029c20c68"
+        LastKnownName="TravelJournal"
+        LastKnownLocation="Package_2343.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="b17002da-755f-458d-9ee5-a963cbe8d29a"
+        LastKnownName="System"
+        LastKnownLocation="Package2_2343.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="59b5b68f-9655-4fb6-936a-ebec62722faf"
+        LastKnownName="Microsoft"
+        LastKnownLocation="Package4_2343.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="fffb7b30-3e7e-472d-871b-5567679604c2"
+        name="Interface1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="b3712232-1454-4dee-81f2-9aeb060bc996"
+        name="TestSequenceModel"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification
+            Id="ae786341-ddff-47fa-a701-12a11256ce0b"
+            name="BehaviorExecutionSpecification1">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="7957c283-3f47-4fed-a090-18d2dee4314e"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="53d20f75-8752-42c5-bbf0-1950552397e4"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="1b748b88-288b-4424-8d4a-c855bfedea11"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="c5db0ea6-9910-4dd9-ab24-4e88effe89ed"
+                LastKnownName="MessageOccurrenceSpecification52"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="104ea74e-322c-497e-a7a3-2c3a8eae36b3"
+                LastKnownName="MessageOccurrenceSpecification55"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="961de7b7-3a5c-4674-8de6-6a2ccd4c756c"
+                LastKnownName="MessageOccurrenceSpecification21"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="3109255b-ca03-4cdc-9638-7db0827d9c45"
+                LastKnownName="OperandOccurrenceSpecification19"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="a7e80e15-0bd8-425c-8bde-e7c7bf3f7544"
+                LastKnownName="ExecutionOccurrenceSpecification25"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="65525eff-e805-4c56-b26f-2b074d221ca8"
+                LastKnownName="ExecutionOccurrenceSpecification26"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="a29940b2-88cc-4835-a95b-f6bf5a13f8ec"
+                LastKnownName="OperandOccurrenceSpecification20"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="c5519654-3545-421d-a2aa-fe84a4967cd3"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="53d20f75-8752-42c5-bbf0-1950552397e4"
+            name="ExecutionOccurrenceSpecification1">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="6e996492-6c65-4b27-8e6c-b7bc34e70182"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="df1d951a-b925-4caa-a0a7-c17de93b4875"
+            name="MessageOccurrenceSpecification1">
+            <covered>
+              <lifelineMoniker
+                Id="9fda2b08-e08e-4ede-b24c-f523d1147ef8"
+                LastKnownName="scheduledAgent : ScheduledAgent"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="1b748b88-288b-4424-8d4a-c855bfedea11"
+            name="MessageOccurrenceSpecification2">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="ee3ff0f5-90e8-47d1-a38e-07f7a32960f2"
+            name="BehaviorExecutionSpecification18">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="089a794e-4e35-48ee-82f3-4d1259be36f4"
+                LastKnownName="ExecutionOccurrenceSpecification36"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="5372646f-dab4-4f37-a8d9-b5048d1e58ee"
+                LastKnownName="ExecutionOccurrenceSpecification35"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="f9287bdf-83ad-4554-8b59-a5a18d7be8b1"
+                LastKnownName="MessageOccurrenceSpecification53"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="10246c5f-da3c-42f3-ae98-75c52122cfe1"
+                LastKnownName="MessageOccurrenceSpecification54"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="5372646f-dab4-4f37-a8d9-b5048d1e58ee"
+            name="ExecutionOccurrenceSpecification35">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="d04e0668-ed12-4528-b842-c623871fe5ea"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="f9287bdf-83ad-4554-8b59-a5a18d7be8b1"
+            name="MessageOccurrenceSpecification53">
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="c5db0ea6-9910-4dd9-ab24-4e88effe89ed"
+            name="MessageOccurrenceSpecification52">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="10246c5f-da3c-42f3-ae98-75c52122cfe1"
+            name="MessageOccurrenceSpecification54">
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="104ea74e-322c-497e-a7a3-2c3a8eae36b3"
+            name="MessageOccurrenceSpecification55">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="089a794e-4e35-48ee-82f3-4d1259be36f4"
+            name="ExecutionOccurrenceSpecification36">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="6cb3d15a-248d-499b-aa73-2e0a20dcafb9"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="d47fef29-ac79-4bc2-947a-a23e3867b136"
+            name="BehaviorExecutionSpecification7">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                LastKnownName="IPhotoManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="ebfb081e-8f69-424c-bf0c-e7546df538c3"
+                LastKnownName="ExecutionOccurrenceSpecification14"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="6ca1f619-b796-4363-b795-eec149540045"
+                LastKnownName="ExecutionOccurrenceSpecification13"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="a0d07492-fcc6-4d57-acbb-2a460daa2aef"
+                LastKnownName="MessageOccurrenceSpecification22"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="918bc1aa-da23-4c6b-abe1-6ab0d242b94c"
+                LastKnownName="OperandOccurrenceSpecification21"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="87c445dc-2dac-42a7-af97-0e440c2f6741"
+                LastKnownName="MessageOccurrenceSpecification36"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="d9cd4afe-c2d5-4bf9-a07b-bb11b43f68ea"
+                LastKnownName="OperandOccurrenceSpecification22"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="6ca1f619-b796-4363-b795-eec149540045"
+            name="ExecutionOccurrenceSpecification13">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="28eb067e-2859-4f55-b11d-caa696db6741"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                LastKnownName="IPhotoManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="a0d07492-fcc6-4d57-acbb-2a460daa2aef"
+            name="MessageOccurrenceSpecification22">
+            <covered>
+              <lifelineMoniker
+                Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                LastKnownName="IPhotoManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="961de7b7-3a5c-4674-8de6-6a2ccd4c756c"
+            name="MessageOccurrenceSpecification21">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <combinedFragment
+            Id="5cfc9434-0228-486d-a2ef-783f22bcff19"
+            name="CombinedFragment1"
+            interactionOperator="Loop">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <lifelineMoniker
+                Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                LastKnownName="IExifExtractor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <lifelineMoniker
+                Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                LastKnownName="IPhotoManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <lifelineMoniker
+                Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+                LastKnownName="IWebService"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </coveredLifelines>
+            <operands>
+              <interactionOperand
+                Id="8fb772ff-9968-4093-8603-9e4b919c63b9"
+                name="InteractionOperand1">
+                <coveredLifelines>
+                  <lifelineMoniker
+                    Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                    LastKnownName="BackgroundProcessor"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <lifelineMoniker
+                    Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                    LastKnownName="IExifExtractor"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <lifelineMoniker
+                    Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                    LastKnownName="IDataManager"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <lifelineMoniker
+                    Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                    LastKnownName="IPhotoManager"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <lifelineMoniker
+                    Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+                    LastKnownName="IWebService"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                </coveredLifelines>
+                <guard>
+                  <interactionConstraint
+                    Id="a3a16e29-3cab-4c15-a31e-f2bda1feb25a">
+                    <maxInt>
+                      <literalString
+                        Id="1d143e0c-997f-4489-9674-6cc43099039d"
+                        name="LiteralString1" />
+                    </maxInt>
+                    <minInt>
+                      <literalString
+                        Id="130e07c3-1ab8-4245-9ab9-d5231b5a42b3"
+                        name="LiteralString2" />
+                    </minInt>
+                  </interactionConstraint>
+                </guard>
+                <operandOccurrenceSpecifications>
+                  <operandOccurrenceSpecificationMoniker
+                    Id="3109255b-ca03-4cdc-9638-7db0827d9c45"
+                    LastKnownName="OperandOccurrenceSpecification19"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="a29940b2-88cc-4835-a95b-f6bf5a13f8ec"
+                    LastKnownName="OperandOccurrenceSpecification20"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="918bc1aa-da23-4c6b-abe1-6ab0d242b94c"
+                    LastKnownName="OperandOccurrenceSpecification21"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="d9cd4afe-c2d5-4bf9-a07b-bb11b43f68ea"
+                    LastKnownName="OperandOccurrenceSpecification22"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="35860ad8-45ff-4c3c-8eb5-043201ace599"
+                    LastKnownName="OperandOccurrenceSpecification23"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="057d8c5d-ec95-4b08-993c-5d9b1f8d8565"
+                    LastKnownName="OperandOccurrenceSpecification24"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="6e28884c-5492-4d91-b745-f93a00f3284a"
+                    LastKnownName="OperandOccurrenceSpecification25"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="dc8eb53d-07ba-424b-a93f-5839994e1e9d"
+                    LastKnownName="OperandOccurrenceSpecification26"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="65bf749a-b8c2-4e14-b22d-a75177784b5c"
+                    LastKnownName="OperandOccurrenceSpecification29"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="def5a741-ddc2-49a5-ac40-09f00f75a87c"
+                    LastKnownName="OperandOccurrenceSpecification30"
+                    LastKnownLocation="TravelJournal.Modeling.uml" />
+                </operandOccurrenceSpecifications>
+              </interactionOperand>
+            </operands>
+          </combinedFragment>
+          <operandOccurrenceSpecification
+            Id="35860ad8-45ff-4c3c-8eb5-043201ace599"
+            name="OperandOccurrenceSpecification23">
+            <covered>
+              <lifelineMoniker
+                Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                LastKnownName="IExifExtractor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="6e28884c-5492-4d91-b745-f93a00f3284a"
+            name="OperandOccurrenceSpecification25">
+            <covered>
+              <lifelineMoniker
+                Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+                LastKnownName="IWebService"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="3109255b-ca03-4cdc-9638-7db0827d9c45"
+            name="OperandOccurrenceSpecification19">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="918bc1aa-da23-4c6b-abe1-6ab0d242b94c"
+            name="OperandOccurrenceSpecification21">
+            <covered>
+              <lifelineMoniker
+                Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                LastKnownName="IPhotoManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="65bf749a-b8c2-4e14-b22d-a75177784b5c"
+            name="OperandOccurrenceSpecification29">
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="338213ba-8648-429c-a56a-4eaa92a12f12"
+            name="BehaviorExecutionSpecification13">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="65525eff-e805-4c56-b26f-2b074d221ca8"
+                LastKnownName="ExecutionOccurrenceSpecification26"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="a7e80e15-0bd8-425c-8bde-e7c7bf3f7544"
+                LastKnownName="ExecutionOccurrenceSpecification25"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="c3a742d1-b306-4b19-9f88-8510c745fbaa"
+                LastKnownName="MessageOccurrenceSpecification37"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="cfed930e-4e44-45ec-85ea-8ec15546cb3b"
+                LastKnownName="MessageOccurrenceSpecification40"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="b6599b51-a72f-482a-bd76-d0758e972d1e"
+                LastKnownName="MessageOccurrenceSpecification43"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="1156ac42-548f-4a5c-a51f-1fd310a65f29"
+                LastKnownName="MessageOccurrenceSpecification26"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="0cec184b-bb96-4aa5-9ca8-a8649266c3b7"
+                LastKnownName="MessageOccurrenceSpecification56"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="c67c48af-cf62-47aa-9458-c19394a84669"
+                LastKnownName="MessageOccurrenceSpecification59"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="a7e80e15-0bd8-425c-8bde-e7c7bf3f7544"
+            name="ExecutionOccurrenceSpecification25">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="54571e55-2025-40a2-b54e-37cf0c4da2d5"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="87c445dc-2dac-42a7-af97-0e440c2f6741"
+            name="MessageOccurrenceSpecification36">
+            <covered>
+              <lifelineMoniker
+                Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                LastKnownName="IPhotoManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="c3a742d1-b306-4b19-9f88-8510c745fbaa"
+            name="MessageOccurrenceSpecification37">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="84345f99-9f4d-41bc-8a22-fcd30ec69a2b"
+            name="BehaviorExecutionSpecification15">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                LastKnownName="IExifExtractor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="39c3415d-453c-4e38-b308-c9e88d75cce6"
+                LastKnownName="ExecutionOccurrenceSpecification30"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="7493b5f4-7df0-4da0-90e5-0cd80464e7bb"
+                LastKnownName="ExecutionOccurrenceSpecification29"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="e679c650-d8b2-438e-a2ea-9e097afbe8fb"
+                LastKnownName="MessageOccurrenceSpecification41"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="65c15b4c-1135-4abb-a49d-31455c68a892"
+                LastKnownName="MessageOccurrenceSpecification42"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="7493b5f4-7df0-4da0-90e5-0cd80464e7bb"
+            name="ExecutionOccurrenceSpecification29">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="5dc515cd-89b6-44d6-9999-636758093feb"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                LastKnownName="IExifExtractor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="e679c650-d8b2-438e-a2ea-9e097afbe8fb"
+            name="MessageOccurrenceSpecification41">
+            <covered>
+              <lifelineMoniker
+                Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                LastKnownName="IExifExtractor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="cfed930e-4e44-45ec-85ea-8ec15546cb3b"
+            name="MessageOccurrenceSpecification40">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="b6599b51-a72f-482a-bd76-d0758e972d1e"
+            name="MessageOccurrenceSpecification43">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="65c15b4c-1135-4abb-a49d-31455c68a892"
+            name="MessageOccurrenceSpecification42">
+            <covered>
+              <lifelineMoniker
+                Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                LastKnownName="IExifExtractor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="39c3415d-453c-4e38-b308-c9e88d75cce6"
+            name="ExecutionOccurrenceSpecification30">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="7476b7a2-965b-46e5-8169-d78fe3623a94"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                LastKnownName="IExifExtractor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="01f1b685-8e5a-4686-bd52-2270b6232358"
+            name="BehaviorExecutionSpecification9">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+                LastKnownName="IWebService"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="a5e2e28f-b895-447f-8eac-68454d1a2d62"
+                LastKnownName="ExecutionOccurrenceSpecification18"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="95ae03be-173a-4e9f-8a8a-b28838822cae"
+                LastKnownName="ExecutionOccurrenceSpecification17"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="20291c80-f4ad-4c77-8795-3bf262012406"
+                LastKnownName="MessageOccurrenceSpecification27"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="95ae03be-173a-4e9f-8a8a-b28838822cae"
+            name="ExecutionOccurrenceSpecification17">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="ebd8cbfb-3b81-460d-b1d1-641dec841ee5"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+                LastKnownName="IWebService"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="20291c80-f4ad-4c77-8795-3bf262012406"
+            name="MessageOccurrenceSpecification27">
+            <covered>
+              <lifelineMoniker
+                Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+                LastKnownName="IWebService"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="1156ac42-548f-4a5c-a51f-1fd310a65f29"
+            name="MessageOccurrenceSpecification26">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="ead41b4f-355c-4647-bdc6-9561ec06ebdb"
+            name="BehaviorExecutionSpecification19">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="acccaedf-3dbd-4792-b094-0d406f0bd629"
+                LastKnownName="ExecutionOccurrenceSpecification38"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="dcbca2ea-9670-496a-a212-8ed7f3940843"
+                LastKnownName="ExecutionOccurrenceSpecification37"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="fa0f64a0-0105-4165-b6b3-3cf6ffa6a4a5"
+                LastKnownName="MessageOccurrenceSpecification57"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="99ff3f64-6847-4a97-b665-d15336968cb5"
+                LastKnownName="MessageOccurrenceSpecification58"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="dcbca2ea-9670-496a-a212-8ed7f3940843"
+            name="ExecutionOccurrenceSpecification37">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="1a4ef5a1-f83c-43a8-9cea-e973e600cada"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="fa0f64a0-0105-4165-b6b3-3cf6ffa6a4a5"
+            name="MessageOccurrenceSpecification57">
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="0cec184b-bb96-4aa5-9ca8-a8649266c3b7"
+            name="MessageOccurrenceSpecification56">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="a5e2e28f-b895-447f-8eac-68454d1a2d62"
+            name="ExecutionOccurrenceSpecification18">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="0354ccab-dab7-4394-aaea-61dfa91a1ef1"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+                LastKnownName="IWebService"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="99ff3f64-6847-4a97-b665-d15336968cb5"
+            name="MessageOccurrenceSpecification58">
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="c67c48af-cf62-47aa-9458-c19394a84669"
+            name="MessageOccurrenceSpecification59">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="acccaedf-3dbd-4792-b094-0d406f0bd629"
+            name="ExecutionOccurrenceSpecification38">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="f85d2a71-2d48-43e1-a349-a69ceb0d7413"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="65525eff-e805-4c56-b26f-2b074d221ca8"
+            name="ExecutionOccurrenceSpecification26">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="410fbcd4-f4ee-40fb-a869-a01908f7dc8a"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="a29940b2-88cc-4835-a95b-f6bf5a13f8ec"
+            name="OperandOccurrenceSpecification20">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="d9cd4afe-c2d5-4bf9-a07b-bb11b43f68ea"
+            name="OperandOccurrenceSpecification22">
+            <covered>
+              <lifelineMoniker
+                Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                LastKnownName="IPhotoManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="dc8eb53d-07ba-424b-a93f-5839994e1e9d"
+            name="OperandOccurrenceSpecification26">
+            <covered>
+              <lifelineMoniker
+                Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+                LastKnownName="IWebService"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="def5a741-ddc2-49a5-ac40-09f00f75a87c"
+            name="OperandOccurrenceSpecification30">
+            <covered>
+              <lifelineMoniker
+                Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+                LastKnownName="IDataManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="057d8c5d-ec95-4b08-993c-5d9b1f8d8565"
+            name="OperandOccurrenceSpecification24">
+            <covered>
+              <lifelineMoniker
+                Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+                LastKnownName="IExifExtractor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="c5519654-3545-421d-a2aa-fe84a4967cd3"
+            name="MessageOccurrenceSpecification3">
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="4a8ffe44-f405-4d72-891d-3deb2de02448"
+            name="MessageOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="9fda2b08-e08e-4ede-b24c-f523d1147ef8"
+                LastKnownName="scheduledAgent : ScheduledAgent"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="ebfb081e-8f69-424c-bf0c-e7546df538c3"
+            name="ExecutionOccurrenceSpecification14">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="d8932eaa-b20e-4e21-b2b5-6955c3a95849"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+                LastKnownName="IPhotoManager"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="7957c283-3f47-4fed-a090-18d2dee4314e"
+            name="ExecutionOccurrenceSpecification2">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="eaff5dd7-752c-4c52-a6a7-c1f54840f42e"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="TravelJournal.Modeling.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="9fda2b08-e08e-4ede-b24c-f523d1147ef8"
+            name="scheduledAgent : ScheduledAgent"
+            isActor="false"
+            lifelineDisplayName="scheduledAgent : ScheduledAgent">
+            <represents>
+              <propertyMoniker
+                Id="16cc95a2-551a-4d83-b70c-8a3b43171ff7"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="df1d951a-b925-4caa-a0a7-c17de93b4875"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="4a8ffe44-f405-4d72-891d-3deb2de02448"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="bf52a53a-c7bb-4961-8796-a51ba1aa8233"
+            name="BackgroundProcessor"
+            isActor="false"
+            lifelineDisplayName="BackgroundProcessor">
+            <represents>
+              <propertyMoniker
+                Id="b1fec3af-c4c9-428e-a681-85edbb55eb07"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="53d20f75-8752-42c5-bbf0-1950552397e4"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="7957c283-3f47-4fed-a090-18d2dee4314e"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="5b9dba11-4808-4aea-8a83-f2206b6623aa"
+            name="IExifExtractor"
+            isActor="false"
+            lifelineDisplayName="IExifExtractor">
+            <topLevelOccurrences>
+              <operandOccurrenceSpecificationMoniker
+                Id="35860ad8-45ff-4c3c-8eb5-043201ace599"
+                LastKnownName="OperandOccurrenceSpecification23"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="7493b5f4-7df0-4da0-90e5-0cd80464e7bb"
+                LastKnownName="ExecutionOccurrenceSpecification29"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="39c3415d-453c-4e38-b308-c9e88d75cce6"
+                LastKnownName="ExecutionOccurrenceSpecification30"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="057d8c5d-ec95-4b08-993c-5d9b1f8d8565"
+                LastKnownName="OperandOccurrenceSpecification24"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="89166bba-f3d2-4496-ad18-531e9f3b4544"
+            name="IDataManager"
+            isActor="false"
+            lifelineDisplayName="IDataManager">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="5372646f-dab4-4f37-a8d9-b5048d1e58ee"
+                LastKnownName="ExecutionOccurrenceSpecification35"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="089a794e-4e35-48ee-82f3-4d1259be36f4"
+                LastKnownName="ExecutionOccurrenceSpecification36"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="65bf749a-b8c2-4e14-b22d-a75177784b5c"
+                LastKnownName="OperandOccurrenceSpecification29"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="dcbca2ea-9670-496a-a212-8ed7f3940843"
+                LastKnownName="ExecutionOccurrenceSpecification37"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="acccaedf-3dbd-4792-b094-0d406f0bd629"
+                LastKnownName="ExecutionOccurrenceSpecification38"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="def5a741-ddc2-49a5-ac40-09f00f75a87c"
+                LastKnownName="OperandOccurrenceSpecification30"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="94f4e727-961b-4b3b-90eb-d324907bd5f5"
+            name="IPhotoManager"
+            isActor="false"
+            lifelineDisplayName="IPhotoManager">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker
+                Id="6ca1f619-b796-4363-b795-eec149540045"
+                LastKnownName="ExecutionOccurrenceSpecification13"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="ebfb081e-8f69-424c-bf0c-e7546df538c3"
+                LastKnownName="ExecutionOccurrenceSpecification14"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="55d8dbe4-d9e6-4115-8e2b-6412ebef42ae"
+            name="IWebService"
+            isActor="false"
+            lifelineDisplayName="IWebService">
+            <represents>
+              <propertyMoniker
+                Id="83e841f6-ab7b-4186-b70e-8a517fb686f6"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </represents>
+            <topLevelOccurrences>
+              <operandOccurrenceSpecificationMoniker
+                Id="6e28884c-5492-4d91-b745-f93a00f3284a"
+                LastKnownName="OperandOccurrenceSpecification25"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="95ae03be-173a-4e9f-8a8a-b28838822cae"
+                LastKnownName="ExecutionOccurrenceSpecification17"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="a5e2e28f-b895-447f-8eac-68454d1a2d62"
+                LastKnownName="ExecutionOccurrenceSpecification18"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="dc8eb53d-07ba-424b-a93f-5839994e1e9d"
+                LastKnownName="OperandOccurrenceSpecification26"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message
+            Id="f18fa3cc-e48b-444c-9cbe-2e792524108b"
+            name="Execute()"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="df1d951a-b925-4caa-a0a7-c17de93b4875"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="1b748b88-288b-4424-8d4a-c855bfedea11"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="9d98ed63-a4e0-4f41-856f-d28fd66c258c"
+            name="Load()"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="c5db0ea6-9910-4dd9-ab24-4e88effe89ed"
+                LastKnownName="MessageOccurrenceSpecification52"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="f9287bdf-83ad-4554-8b59-a5a18d7be8b1"
+                LastKnownName="MessageOccurrenceSpecification53"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="cf10ea8c-45f1-4f79-a665-2b1ddfd05882"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="10246c5f-da3c-42f3-ae98-75c52122cfe1"
+                LastKnownName="MessageOccurrenceSpecification54"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="104ea74e-322c-497e-a7a3-2c3a8eae36b3"
+                LastKnownName="MessageOccurrenceSpecification55"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="e504afad-d789-4c9d-9a12-eeb824ba3816"
+            name="FoundRawPhotoAsync(DateTime tag,Action&lt;Microsoft.Xna.Framework.Media.Picture&gt; onPhotoFoundHandler)"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="961de7b7-3a5c-4674-8de6-6a2ccd4c756c"
+                LastKnownName="MessageOccurrenceSpecification21"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="a0d07492-fcc6-4d57-acbb-2a460daa2aef"
+                LastKnownName="MessageOccurrenceSpecification22"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="44bb3655-6cf6-4d5e-9696-898903e87124"
+            name="&lt;callback: onPhotoFoundHandler&gt;"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="87c445dc-2dac-42a7-af97-0e440c2f6741"
+                LastKnownName="MessageOccurrenceSpecification36"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="c3a742d1-b306-4b19-9f88-8510c745fbaa"
+                LastKnownName="MessageOccurrenceSpecification37"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="91406b30-d451-47e1-9190-70196546ebee"
+            name="ExtractGeoCoordinate():GeoCoordinate"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="cfed930e-4e44-45ec-85ea-8ec15546cb3b"
+                LastKnownName="MessageOccurrenceSpecification40"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="e679c650-d8b2-438e-a2ea-9e097afbe8fb"
+                LastKnownName="MessageOccurrenceSpecification41"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="46c11feb-eeb0-48df-ac01-cdbaeb6fa69b"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="65c15b4c-1135-4abb-a49d-31455c68a892"
+                LastKnownName="MessageOccurrenceSpecification42"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="b6599b51-a72f-482a-bd76-d0758e972d1e"
+                LastKnownName="MessageOccurrenceSpecification43"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="ed675cce-7f7a-4b14-835e-41b0c0a4f01d"
+            name="GetGeopositionAsync(GeoCoordinate coordinate):Task&lt;Geoposition&gt;"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="1156ac42-548f-4a5c-a51f-1fd310a65f29"
+                LastKnownName="MessageOccurrenceSpecification26"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="20291c80-f4ad-4c77-8795-3bf262012406"
+                LastKnownName="MessageOccurrenceSpecification27"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="9ba462f0-ef76-41d2-a2a6-a75900bcace5"
+            name="Message1"
+            messageKind="Complete"
+            messageSort="SynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="0cec184b-bb96-4aa5-9ca8-a8649266c3b7"
+                LastKnownName="MessageOccurrenceSpecification56"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="fa0f64a0-0105-4165-b6b3-3cf6ffa6a4a5"
+                LastKnownName="MessageOccurrenceSpecification57"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="5cbff87d-79dd-440c-8be7-ca8e2f7948ba"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="99ff3f64-6847-4a97-b665-d15336968cb5"
+                LastKnownName="MessageOccurrenceSpecification58"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="c67c48af-cf62-47aa-9458-c19394a84669"
+                LastKnownName="MessageOccurrenceSpecification59"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+          <message
+            Id="d255b83e-0c3c-4580-906c-6841d0413392"
+            name="&lt;&lt;return&gt;&gt;"
+            messageKind="Complete"
+            messageSort="Reply"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="c5519654-3545-421d-a2aa-fe84a4967cd3"
+                LastKnownName="MessageOccurrenceSpecification3"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="4a8ffe44-f405-4d72-891d-3deb2de02448"
+                LastKnownName="MessageOccurrenceSpecification4"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+        <ownedAttributesInternal>
+          <property
+            Id="16cc95a2-551a-4d83-b70c-8a3b43171ff7"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="5968b085-a4d2-4146-a407-f40aee479ca7"
+                LastKnownName="ScheduledAgent"
+                LastKnownLocation="Package_0006.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b1fec3af-c4c9-428e-a681-85edbb55eb07"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="a0983cf6-639c-4fd7-8e9a-356e39df7592"
+                LastKnownName="BackgroundProcessor"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="83e841f6-ab7b-4186-b70e-8a517fb686f6"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="ace58a34-d90b-4d99-8bd0-7c1d80a67493"
+                LastKnownName="IWebService"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="6e996492-6c65-4b27-8e6c-b7bc34e70182"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="eaff5dd7-752c-4c52-a6a7-c1f54840f42e"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d77df863-6a40-4e8c-af2d-e72661951b5b"
+        name="Collection&lt;RawPhoto&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9623aa87-4274-43cb-b71e-39c712b83bac"
+        name="Photo" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="e289f4b5-384d-43f2-bba8-73fb0b6fd8a9"
+        LastKnownName="TravelJournal::DataService"
+        LastKnownLocation="Package_0005.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="18fa782a-574c-48e8-b38e-1cc64b1045f5"
+        LastKnownName="TravelJournal::Core"
+        LastKnownLocation="Package_0006.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="a0983cf6-639c-4fd7-8e9a-356e39df7592"
+        name="BackgroundProcessor" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="82838d61-b5ef-4787-8333-4b892461ed3c"
+        name="IPhotoStorage" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ace58a34-d90b-4d99-8bd0-7c1d80a67493"
+        name="IWebService" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="28eb067e-2859-4f55-b11d-caa696db6741"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d8932eaa-b20e-4e21-b2b5-6955c3a95849"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="54571e55-2025-40a2-b54e-37cf0c4da2d5"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="410fbcd4-f4ee-40fb-a869-a01908f7dc8a"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="ebd8cbfb-3b81-460d-b1d1-641dec841ee5"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="0354ccab-dab7-4394-aaea-61dfa91a1ef1"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="5dc515cd-89b6-44d6-9999-636758093feb"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="7476b7a2-965b-46e5-8169-d78fe3623a94"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="d04e0668-ed12-4528-b842-c623871fe5ea"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="6cb3d15a-248d-499b-aa73-2e0a20dcafb9"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="1a4ef5a1-f83c-43a8-9cea-e973e600cada"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="f85d2a71-2d48-43e1-a349-a69ceb0d7413"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
