@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="18fa782a-574c-48e8-b38e-1cc64b1045f5"
+  name="TravelJournal::Core" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="5968b085-a4d2-4146-a407-f40aee479ca7"
+        name="ScheduledAgent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="b3b4b880-4f74-41a8-9e48-ab9a1b66a4b5"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2FComputerProgramming%2FC%2523%2FProjPhoto%2FDev%2FTravelJournal%2FTravelJournal.Core%2FBin%2FDebug%2FTravelJournal.Core.dll Namespace%3DTravelJournal.Core Type%3DScheduledAgent"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="7791989d-069c-450d-b071-909541053e46"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="68b68c48-f1d6-4463-98b9-69aeb75ee8bf">
+                <propertyInstance
+                  Id="c393e0fd-e8db-45e2-a185-ea8920ead8d5"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d1e6f008-0a67-4ddd-b52b-bf3ee312ed71">
+                <propertyInstance
+                  Id="cb9243b5-646b-433c-b668-252f4e057296"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6dc96606-b56c-449e-908f-a55f15634765">
+                <propertyInstance
+                  Id="e858361c-008d-4abc-be16-32f92d534f3b"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5436ec09-a3ea-4588-9349-406e5180a5b3">
+                <propertyInstance
+                  Id="37471c6f-deee-4947-a3a8-c86e3cb48074"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="af90f296-24bc-4689-b519-50404e29d757">
+                <propertyInstance
+                  Id="73f782ec-0622-430f-a163-520923a22630"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="4d069a94-6138-4e9a-88db-4ae6f59bd191"
+            isSubstitutable="false">
+            <classMoniker
+              Id="76a26267-f390-4f08-b544-a1892e6b06f0"
+              LastKnownName="ScheduledTaskAgent"
+              LastKnownLocation="Package6_2343.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="41a9f931-1e49-40a2-983b-0480db412432"
+            name="static ScheduledAgent"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="24de2cd2-4c25-4d24-afe7-8479fbc6c81c"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FComputerProgramming%2FC%2523%2FProjPhoto%2FDev%2FTravelJournal%2FTravelJournal.Core%2FBin%2FDebug%2FTravelJournal.Core.dll Namespace%3DTravelJournal.Core Type%3DScheduledAgent Member%3D.cctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="021d4c8d-aed6-4b39-be95-597731a5dde0"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="84507a3c-0ae0-49e0-8455-f29ae5284d03">
+                    <propertyInstance
+                      Id="3c393b86-74b6-4bda-a397-9ab5540871d4"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="560dafbd-295a-4e83-ac36-3f7b91ef47a4">
+                    <propertyInstance
+                      Id="6507b361-7b06-4b9a-a083-281dbebb5c20"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4cd59d51-70cb-4793-9936-36e8c795240d">
+                    <propertyInstance
+                      Id="d1bc5846-df38-44e9-85ba-b159adf43265"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="05152da0-9bcb-46ec-873e-2b236da83b80">
+                    <propertyInstance
+                      Id="27a34d1a-84b8-4325-8817-c224cc34d330"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="202d0d77-4d82-4b8b-bec7-f685c933875b">
+                    <propertyInstance
+                      Id="13c1708f-1d87-4435-a996-df695132bfce"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d954d078-18d2-432e-a0f0-3238dc2002bd">
+                    <propertyInstance
+                      Id="9c61bccb-31ec-4b54-bfda-8ae8ffebe08a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="8b80945b-fa60-4d8c-9882-c961f74898d5"
+            name="UnhandledException"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="9c2a0f51-8a31-46a9-b129-b59da4b49cab"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FComputerProgramming%2FC%2523%2FProjPhoto%2FDev%2FTravelJournal%2FTravelJournal.Core%2FBin%2FDebug%2FTravelJournal.Core.dll Namespace%3DTravelJournal.Core Type%3DScheduledAgent Member%3D(Name%3DUnhandledException OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2FSystem.Windows.dll&quot; Namespace%3DSystem.Windows Type%3DApplicationUnhandledExceptionEventArgs)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="89a4c7e1-ea84-42b2-80f8-c880fc29edee"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="97055ab5-7643-4b58-b532-ac02e33707f9">
+                    <propertyInstance
+                      Id="42e787f6-b077-49c2-8eaf-d6e06406ffd6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="10ad1bce-eb8c-48b1-9d5a-67ecba1add41">
+                    <propertyInstance
+                      Id="b8add2ab-01e3-4925-92d7-9b4570c10475"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1a2b37fa-3851-400a-9de9-bcde333f67a7">
+                    <propertyInstance
+                      Id="ef89f4cf-9e6b-4ae2-af5c-cc2b899a92d9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7b9023f3-57d5-4f91-a93b-88b80adeb809">
+                    <propertyInstance
+                      Id="293a4695-6225-446b-9ddd-90faabf33d0a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="73ccf00f-de5c-4186-bbc6-5f98816e9c27">
+                    <propertyInstance
+                      Id="e0266541-9370-4c2e-be4f-3e224a7505b3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="16df9657-74ef-41f5-aa9c-846a34cb999f">
+                    <propertyInstance
+                      Id="f90b1271-f6cf-498c-b809-39dea9cfc690"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fd4f84b4-afa1-441f-bfdb-2b32317e1adc"
+                  name="sender"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="76d657f9-6729-4957-b3e9-78938204cc02"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FComputerProgramming%2FC%2523%2FProjPhoto%2FDev%2FTravelJournal%2FTravelJournal.Core%2FBin%2FDebug%2FTravelJournal.Core.dll Namespace%3DTravelJournal.Core Type%3DScheduledAgent Member%3D(Name%3DUnhandledException OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2FSystem.Windows.dll&quot; Namespace%3DSystem.Windows Type%3DApplicationUnhandledExceptionEventArgs)]) ParameterIdentifier%3Dsender"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="2a8afa46-0345-4c6f-be63-b4efa906dc0a"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_2343.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="439bf55b-1a05-4176-9516-18d5071a37b1"
+                  name="e"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="f68ea660-beca-41e7-b10a-2e7b8d87ab50"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FComputerProgramming%2FC%2523%2FProjPhoto%2FDev%2FTravelJournal%2FTravelJournal.Core%2FBin%2FDebug%2FTravelJournal.Core.dll Namespace%3DTravelJournal.Core Type%3DScheduledAgent Member%3D(Name%3DUnhandledException OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2FSystem.Windows.dll&quot; Namespace%3DSystem.Windows Type%3DApplicationUnhandledExceptionEventArgs)]) ParameterIdentifier%3De"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="5bc41cf6-c8dc-4a01-a1a7-a7b70622620d"
+                      LastKnownName="ApplicationUnhandledExceptionEventArgs"
+                      LastKnownLocation="Package3_2343.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0ef16f88-5d1b-4e92-aee5-a588dc33c8ed"
+            name="OnInvoke"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="b7118930-cfe0-4c2d-a630-bc6e6582dc49"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FComputerProgramming%2FC%2523%2FProjPhoto%2FDev%2FTravelJournal%2FTravelJournal.Core%2FBin%2FDebug%2FTravelJournal.Core.dll Namespace%3DTravelJournal.Core Type%3DScheduledAgent Member%3D(Name%3DOnInvoke OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2FMicrosoft.Phone.dll&quot; Namespace%3DMicrosoft.Phone.Scheduler Type%3DScheduledTask)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="223f27f6-9c10-457c-a359-9312b79842ce"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3057be82-2a90-423d-a85d-adbf467ba631">
+                    <propertyInstance
+                      Id="10ecdccb-174b-4656-8c5c-309ed792db0a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9a059267-98b5-4741-a8ef-e04d5b3f5729">
+                    <propertyInstance
+                      Id="fef880c5-7a89-4d1c-991a-4ca56d43a950"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a41495eb-e0da-4d49-ac31-b83c4134f594">
+                    <propertyInstance
+                      Id="596db77c-14c5-4ec8-bb37-468f9185710c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7c5ff769-2327-4b67-aef3-538bd9a7dc9c">
+                    <propertyInstance
+                      Id="71bb4872-e86e-4ffb-aca0-50b9a4adcbf1"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="79cd8425-2681-48c0-8caa-50e99c83bda4">
+                    <propertyInstance
+                      Id="2f3852d5-d861-4ea3-a617-320db2f2e882"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bed8353d-7918-41dd-ae9a-3a81eefe3bf9">
+                    <propertyInstance
+                      Id="fc1a8c4f-dd15-4d72-8d98-9c377a0cc04b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5dc07c93-b338-4ec9-820c-eefc68b53710"
+                  name="task"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="bfb739da-4408-45ca-b0d0-4e2e7783774c"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2FComputerProgramming%2FC%2523%2FProjPhoto%2FDev%2FTravelJournal%2FTravelJournal.Core%2FBin%2FDebug%2FTravelJournal.Core.dll Namespace%3DTravelJournal.Core Type%3DScheduledAgent Member%3D(Name%3DOnInvoke OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FWindowsPhone%2Fv8.0%2FMicrosoft.Phone.dll&quot; Namespace%3DMicrosoft.Phone.Scheduler Type%3DScheduledTask)]) ParameterIdentifier%3Dtask"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="c4f9339f-2e2d-4712-b5e3-dae14d987eeb"
+                      LastKnownName="ScheduledTask"
+                      LastKnownLocation="Package6_2343.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c9255d30-71bd-476e-a1e7-6da889e386f5"
+            name="ScheduledAgent"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="477a754c-3c9a-43be-9885-493797667176"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2FComputerProgramming%2FC%2523%2FProjPhoto%2FDev%2FTravelJournal%2FTravelJournal.Core%2FBin%2FDebug%2FTravelJournal.Core.dll Namespace%3DTravelJournal.Core Type%3DScheduledAgent Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="38a9d1e2-fe85-4da9-89d7-5b2e850b89b3"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6db0fa53-b097-4b82-8283-9b9bfaab42f0">
+                    <propertyInstance
+                      Id="0a052f26-3913-411b-be90-48bc6b1da245"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="df2fcbc3-e5c3-4fcf-9987-c91d54d5dce9">
+                    <propertyInstance
+                      Id="b88fdc8f-99f0-4128-a169-2f91de5a7cdd"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3c8652f-d676-4277-b0f3-a308179d1d6d">
+                    <propertyInstance
+                      Id="b0986ded-c1aa-46d4-837f-47ff42123960"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8c9f7302-93f3-4d2c-a26f-ca0d1f55e1c0">
+                    <propertyInstance
+                      Id="f7589ba0-0bea-47b9-b44f-5a921018639b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53a404cf-d1c6-4e5b-b502-43da9485823f">
+                    <propertyInstance
+                      Id="7fe0e54f-1e20-4b81-bce0-36fe3c05f75b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cba2ccf4-51cd-492e-9db2-17aaf9e85fb7">
+                    <propertyInstance
+                      Id="4b3931df-e980-4e55-a952-a166b8f9bfbe"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
