@@ -52,10 +52,18 @@
     <Content Include="ModelDefinition\Package_2343.uml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Stage1_TestEnv\TestSequenceModel.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Stage1_TestEnv\TestSequenceModel.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Stage1_TestEnv\TestSequenceModel.sequencediagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\TravelJournal.Modeling.uml">
       <SubType>Content</SubType>
     </Content>
+    <Folder Include="Stage1_TestEnv" />
   </ItemGroup>
   <ItemGroup>
     <Validate Include="OveralLayer.layerdiagram">

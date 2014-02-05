@@ -65,6 +65,22 @@
         isAbstract="false"
         isLeaf="false"
         isReentrant="false">
+        <ownedCommentsInternal>
+          <comment
+            Id="957c68c4-00e1-4af1-9fb4-eb8d3a019c2c">
+            <body>Hao&gt;&gt; Elaborate the processor</body>
+            <annotatedElements>
+              <behaviorExecutionSpecificationMoniker
+                Id="ae786341-ddff-47fa-a701-12a11256ce0b"
+                LastKnownName="BehaviorExecutionSpecification1"
+                LastKnownLocation="TravelJournal.Modeling.uml" />
+            </annotatedElements>
+          </comment>
+          <comment
+            Id="62e59102-fe8c-4095-b732-b7051bebd98c">
+            <body>Min&gt;&gt; Setup test environment</body>
+          </comment>
+        </ownedCommentsInternal>
         <fragments>
           <behaviorExecutionSpecification
             Id="ae786341-ddff-47fa-a701-12a11256ce0b"
