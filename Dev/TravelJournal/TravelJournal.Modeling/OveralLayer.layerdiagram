@@ -57,6 +57,7 @@
             </dependencyFromLayerToLayer>
           </dependencyToLayers>
         </layer>
+        <layer Id="50be859d-be0c-40c9-a2e3-a2c562220743" name=".Startup" />
       </childLayers>
     </layer>
     <layer Id="b4849636-3b65-42aa-8173-d7e4fc5e1099" name="TravelJournal.PCL">
@@ -98,6 +99,7 @@
             </dependencyFromLayerToLayer>
           </dependencyToLayers>
         </layer>
+        <layer Id="791ecb78-c165-403b-b66e-d5a1851dd07c" name=".Startup" />
       </childLayers>
     </layer>
   </layers>
