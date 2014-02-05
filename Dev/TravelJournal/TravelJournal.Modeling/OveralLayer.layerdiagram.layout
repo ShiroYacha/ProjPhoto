@@ -32,7 +32,7 @@
         </layerShape>
       </nestedChildShapes>
     </layerShape>
-    <dependencyConnector edgePoints="[(5.8125 : 1.75); (5.8125 : 3.375)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <dependencyConnector edgePoints="[(5.8125 : 1.75); (5.8125 : 3.375)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <dependencyFromLayerToLayerMoniker Id="8f9a586e-19b5-4391-9d9d-b3e1de1ca20d" />
       <relativeChildShapes />
       <nodes>
@@ -59,7 +59,7 @@
         </layerShape>
       </nestedChildShapes>
     </layerShape>
-    <dependencyConnector edgePoints="[(5.8125 : 6.75); (5.8125 : 5.125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <dependencyConnector edgePoints="[(5.8125 : 6.75); (5.8125 : 5.125)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <dependencyFromLayerToLayerMoniker Id="172f6c4e-b08b-4305-a854-709858b3ca09" />
       <relativeChildShapes />
       <nodes>
@@ -133,7 +133,7 @@
         <layerShapeMoniker Id="beb5e579-654e-403a-912b-923625eae83b" />
       </nodes>
     </commentConnector>
-    <dependencyConnector edgePoints="[(4.25 : 4.3125); (5 : 4.3125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <dependencyConnector edgePoints="[(4.25 : 4.3125); (5 : 4.3125)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <dependencyFromLayerToLayerMoniker Id="91e740bd-1800-4f1a-b1ac-80cda4dff811" />
       <relativeChildShapes />
       <nodes>
@@ -141,7 +141,7 @@
         <layerShapeMoniker Id="bb2484fd-b127-4428-9e90-ae861222f814" />
       </nodes>
     </dependencyConnector>
-    <dependencyConnector edgePoints="[(2.5 : 4.3125); (2.875 : 4.3125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <dependencyConnector edgePoints="[(2.5 : 4.3125); (2.875 : 4.3125)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <dependencyFromLayerToLayerMoniker Id="7a907d99-cfa0-49a2-bce3-811f4e76ea10" />
       <relativeChildShapes />
       <nodes>
