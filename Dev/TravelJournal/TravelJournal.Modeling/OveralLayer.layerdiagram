@@ -50,13 +50,6 @@
             </dependencyFromLayerToLayer>
           </dependencyToLayers>
         </layer>
-        <layer Id="2500fae2-3d30-4dc0-b509-4e914c78dfe8" name=".BusinessLogic" requiredNamespace="TravelJournal.PCL.BusinessLogic">
-          <dependencyToLayers>
-            <dependencyFromLayerToLayer Id="f7244e36-f3d4-409a-b2bc-a4699586befa" direction="Forward">
-              <layerMoniker Id="18b64629-fdcd-46b1-b639-4b8223394335" />
-            </dependencyFromLayerToLayer>
-          </dependencyToLayers>
-        </layer>
         <layer Id="b1ae65a6-c7cb-4aaf-81c3-c5521874029a" name=".DataService" requiredNamespace="TravelJournal.PCL.DataService">
           <dependencyToLayers>
             <dependencyFromLayerToLayer Id="e671f526-252d-4337-89d9-2a14fbad281a" direction="Forward">
@@ -95,13 +88,6 @@
           <dependencyToLayers>
             <dependencyFromLayerToLayer Id="172f6c4e-b08b-4305-a854-709858b3ca09" direction="Bidirectional">
               <layerMoniker Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" />
-            </dependencyFromLayerToLayer>
-          </dependencyToLayers>
-        </layer>
-        <layer Id="54127909-e625-4680-b9dd-23550e2f4aba" name=".BusinessLogic" requiredNamespace="TravelJournal.PCL.BusinessLogic">
-          <dependencyToLayers>
-            <dependencyFromLayerToLayer Id="c09d8b46-03c7-40d3-bbf1-fef0f5690358" direction="Forward">
-              <layerMoniker Id="18b64629-fdcd-46b1-b639-4b8223394335" />
             </dependencyFromLayerToLayer>
           </dependencyToLayers>
         </layer>
