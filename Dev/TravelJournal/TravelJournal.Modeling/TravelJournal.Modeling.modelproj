@@ -66,16 +66,16 @@
     <Folder Include="Stage1_TestEnv" />
   </ItemGroup>
   <ItemGroup>
-    <Validate Include="OveralLayer.layerdiagram">
+    <Validate Include="OveralOrganisation.layerdiagram">
       <SubType>Content</SubType>
     </Validate>
-    <Validate Include="OveralLayer.layerdiagram.layout">
+    <Validate Include="OveralOrganisation.layerdiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>OveralLayer.layerdiagram</DependentUpon>
+      <DependentUpon>OveralOrganisation.layerdiagram</DependentUpon>
     </Validate>
-    <Validate Include="OveralLayer.layerdiagram.suppressions">
+    <Validate Include="OveralOrganisation.layerdiagram.suppressions">
       <SubType>Content</SubType>
-      <DependentUpon>OveralLayer.layerdiagram</DependentUpon>
+      <DependentUpon>OveralOrganisation.layerdiagram</DependentUpon>
     </Validate>
   </ItemGroup>
 </Project>
