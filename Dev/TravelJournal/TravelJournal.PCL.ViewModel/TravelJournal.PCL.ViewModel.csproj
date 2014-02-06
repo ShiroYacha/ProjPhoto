@@ -37,10 +37,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Messenger\NavigationMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestViewModel\TestItemViewModel.cs" />
-    <Compile Include="TestViewModel\TestMainViewModel.cs" />
-    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModelBase\NavigatableViewModel.cs" />
+    <Compile Include="ViewModelTest\JournalGenerationTestViewModel.cs" />
+    <Compile Include="ViewModelTest\TestItemViewModelBase.cs" />
+    <Compile Include="ViewModelTest\TestMainViewModel.cs" />
+    <Compile Include="Locator\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelJournal.PCL\TravelJournal.PCL.csproj">
@@ -72,6 +75,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

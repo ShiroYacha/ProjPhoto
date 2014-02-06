@@ -8,8 +8,15 @@ using GalaSoft.MvvmLight;
 
 namespace TravelJournal.PCL.ViewModel
 {
-    public class TestItemViewModel : ViewModelBase
+
+    public class TestItemViewModelBase : ViewModelBase
     {
+        public TestItemViewModelBase()
+            : base()
+        {
+            _viewXamlName = this.GetType().Name.Replace("ViewModel","Page"); 
+        }
+
         private string _id;
         /// <summary>
         /// Sample ViewModel property; this property is used to identify the object.
@@ -33,7 +40,7 @@ namespace TravelJournal.PCL.ViewModel
 
         private string _lineOne;
         /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
         public string LineOne
@@ -54,7 +61,7 @@ namespace TravelJournal.PCL.ViewModel
 
         private string _lineTwo;
         /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
         public string LineTwo
@@ -75,7 +82,7 @@ namespace TravelJournal.PCL.ViewModel
 
         private string _lineThree;
         /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// ViewModel property; this property is used in the view to display its value using a Binding.
         /// </summary>
         /// <returns></returns>
         public string LineThree
@@ -91,6 +98,19 @@ namespace TravelJournal.PCL.ViewModel
                     _lineThree = value;
                     RaisePropertyChanged("LineThree");
                 }
+            }
+        }
+
+        private string _viewXamlName;
+        /// <summary>
+        /// ViewModel property; this property is used in the view to display its value using a Binding.
+        /// </summary>
+        /// <returns></returns>
+        public string ViewXamlName
+        {
+            get
+            {
+                return _viewXamlName;
             }
         }
     }

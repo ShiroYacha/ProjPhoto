@@ -31,19 +31,19 @@ namespace TravelJournal.PCL.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
+            //if (ViewModelBase.IsInDesignModeStatic)
+            //{
+            //    // Create design time view services and models
+            //    SimpleIoc.Default.Register<IDataService, DesignDataService>();
+            //}
+            //else
+            //{
+            //    // Create run time view services and models
+            //    SimpleIoc.Default.Register<IDataService, DataService>();
+            //}
 
             SimpleIoc.Default.Register<TestMainViewModel>();
-            SimpleIoc.Default.Register<TestItemViewModel>();
+            SimpleIoc.Default.Register<JournalGenerationTestViewModel>();
         }
 
         public TestMainViewModel TestMain
@@ -53,11 +53,11 @@ namespace TravelJournal.PCL.ViewModel
                 return ServiceLocator.Current.GetInstance<TestMainViewModel>();
             }
         }
-        public TestItemViewModel TestItem
+        public JournalGenerationTestViewModel JournalGenerationTestViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<TestItemViewModel>();
+                return ServiceLocator.Current.GetInstance<JournalGenerationTestViewModel>();
             }
         }
 

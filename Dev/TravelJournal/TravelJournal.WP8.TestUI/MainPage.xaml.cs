@@ -12,7 +12,7 @@ using TravelJournal.WP8.TestUI.Resources;
 
 namespace TravelJournal.WP8.TestUI
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage : BasePage
     {
         // Constructor
         public MainPage()
@@ -21,20 +21,6 @@ namespace TravelJournal.WP8.TestUI
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
-        }
-
-        // Handle selection changed on LongListSelector
-        private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // If selected item is null (no selection) do nothing
-            if (MainLongListSelector.SelectedItem == null)
-                return;
-
-            // Navigate to the new page
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as TestItemViewModel).ID, UriKind.Relative));
-
-            // Reset selected item to null (no selection)
-            MainLongListSelector.SelectedItem = null;
         }
 
         // Sample code for building a localized ApplicationBar

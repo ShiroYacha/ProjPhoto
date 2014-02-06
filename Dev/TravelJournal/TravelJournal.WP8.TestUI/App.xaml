@@ -2,7 +2,7 @@
   <!--Application Resources-->
   <Application.Resources>
     <local:LocalizedStrings xmlns:local="clr-namespace:TravelJournal.WP8.TestUI" x:Key="LocalizedStrings" />
-    <vm:ViewModelLocator x:Key="ViewModelLocator" d:IsDataSource="True" />
+    <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
   </Application.Resources>
   <Application.ApplicationLifetimeObjects>
     <!--Required object that handles lifetime events for the application-->

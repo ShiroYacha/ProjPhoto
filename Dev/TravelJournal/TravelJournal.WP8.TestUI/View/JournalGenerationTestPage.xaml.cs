@@ -11,10 +11,10 @@ using TravelJournal.WP8.TestUI.Resources;
 
 namespace TravelJournal.WP8.TestUI
 {
-    public partial class DetailsPage : PhoneApplicationPage
+    public partial class JournalGenerationTestPage : PhoneApplicationPage
     {
         // Constructor
-        public DetailsPage()
+        public JournalGenerationTestPage()
         {
             InitializeComponent();
 
