@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="222bc67a-ac84-4f53-b57a-23c1ed2bde8d" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="f0d230ea-7774-4eff-8ce0-4b882b0c03df" name="Comment1">
+      <body>Platform specific implementations</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="b0dcee49-22fc-43e5-81bd-29a992a8d989" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="26747c31-2c27-4ebc-ae03-46c370b3cfb8" name="Comment11">
+      <body>Platform specific implementations</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="e3196464-0d84-4692-91bf-ea82191b8c22" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="41d7f0a6-fbdd-4dc5-9022-8fa55b1d5348" name="Comment2">
+      <body>Use IoC container to loosely couple the platforms</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="b0dcee49-22fc-43e5-81bd-29a992a8d989" />
+        </linkFromCommentToLayerElement>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="b4849636-3b65-42aa-8173-d7e4fc5e1099" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="50396fc9-c67b-4dcd-8696-f667f66e0e1b" name="Comment21">
+      <body>Use IoC container to loosely couple the platforms</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="b4849636-3b65-42aa-8173-d7e4fc5e1099" />
+        </linkFromCommentToLayerElement>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="e3196464-0d84-4692-91bf-ea82191b8c22" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="5bd37406-a58e-439c-a094-de7ec6096ed5" name="Comment12">
+      <body>Project&gt;&gt; TravelJournal.WP8</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="b1ae65a6-c7cb-4aaf-81c3-c5521874029a" />
+        </linkFromCommentToLayerElement>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="50be859d-be0c-40c9-a2e3-a2c562220743" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="43948ea2-9b3a-4faf-adcc-5cb051fc4adf" name="Comment121">
+      <body>Project&gt;&gt; TravelJournal.WP8.UI</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="bd307873-b60f-460d-89c6-d2be54618f6e" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="49f87d7d-d06e-4610-85b2-ee38116605be" name="Comment1211">
+      <body>Project&gt;&gt; TravelJournal.WP8.TestUI</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="233b6aa7-b5d7-481d-a7bc-96884b1f371e" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="9ee5a542-b957-4a6e-8bdf-f412a9ea993f" name="Comment122">
+      <body>Project&gt;&gt; TravelJournal.WSA</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="854f689a-6e6c-48c1-89c0-db0c03ba83cc" />
+        </linkFromCommentToLayerElement>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="791ecb78-c165-403b-b66e-d5a1851dd07c" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="8711c080-8228-4417-be30-162b4f589424" name="Comment1212">
+      <body>Project&gt;&gt; TravelJournal.WSA.UI</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="76cf7f8e-b24a-42df-b595-676f165d373b" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="dcf5f252-5f11-48a2-9b49-ac66a2e6fb7e" name="Comment12111">
+      <body>Project&gt;&gt; TravelJournal.WSA.TestUI</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="19b9335b-4a72-4a04-b9b7-de567bcbd906" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="e338ce76-d2fe-47f7-9fa0-22343b670fb2" name="Comment123">
+      <body>Project&gt;&gt; TravelJournal.PCL.ViewModel</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="26d090d2-9c6f-475a-a006-34e1a2682d3d" name="Comment1231">
+      <body>Project&gt;&gt; TravelJournal.PCL.ViewModel</body>
+    </comment>
+    <comment Id="5aa5ad2d-23cc-4586-8ad9-a00e0781830c" name="Comment12311">
+      <body>Project&gt;&gt; TravelJournal.PCL</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="def00f91-a2af-459d-990a-218f2d9d5133" />
+        </linkFromCommentToLayerElement>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="18b64629-fdcd-46b1-b639-4b8223394335" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="b0dcee49-22fc-43e5-81bd-29a992a8d989" name="TravelJournal.WP8" requiredNamespace="TravelJournal.PCL.ViewModel">
+      <childLayers>
+        <layer Id="bd307873-b60f-460d-89c6-d2be54618f6e" name=".UI" requiredNamespace="TravelJournal.PCL.ViewModel">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="8f9a586e-19b5-4391-9d9d-b3e1de1ca20d" direction="Bidirectional">
+              <layerMoniker Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="b1ae65a6-c7cb-4aaf-81c3-c5521874029a" name=".DataService" requiredNamespace="TravelJournal.PCL.DataService">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="e671f526-252d-4337-89d9-2a14fbad281a" direction="Forward">
+              <layerMoniker Id="def00f91-a2af-459d-990a-218f2d9d5133" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="50be859d-be0c-40c9-a2e3-a2c562220743" name=".BusinessLogic" requiredNamespace="TravelJournal.PCL.BusinessLogic">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="cb1a58ef-0a89-4084-95a5-d5f288ba5e78" direction="Forward">
+              <layerMoniker Id="18b64629-fdcd-46b1-b639-4b8223394335" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="233b6aa7-b5d7-481d-a7bc-96884b1f371e" name=".TestUI" requiredNamespace="TravelJournal.PCL.ViewModel" />
+      </childLayers>
+    </layer>
+    <layer Id="b4849636-3b65-42aa-8173-d7e4fc5e1099" name="TravelJournal.PCL">
+      <childLayers>
+        <layer Id="33fe8b33-7908-4bc5-a809-80f468ecff11" name="(Model)">
+          <childLayers>
+            <layer Id="18b64629-fdcd-46b1-b639-4b8223394335" name=".BusinessLogic" requiredNamespace="TravelJournal.PCL.ViewModel;TravelJournal.PCL.DataService">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="91e740bd-1800-4f1a-b1ac-80cda4dff811" direction="Bidirectional">
+                  <layerMoniker Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+            <layer Id="def00f91-a2af-459d-990a-218f2d9d5133" name=".DataService" requiredNamespace="TravelJournal.PCL.BusinessLogic">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="7a907d99-cfa0-49a2-bce3-811f4e76ea10" direction="Bidirectional">
+                  <layerMoniker Id="18b64629-fdcd-46b1-b639-4b8223394335" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" name=".ViewModel" requiredNamespace="TravelJournal.WP8.UI;TravelJournal.WSA8.UI;TravelJournal.PCL.BusinessLogic;TravelJournal.WP8.TestUI;TravelJournal.WSA8.TestUI">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="d4d1198b-931c-43dc-8675-cf64486ff212" direction="Bidirectional">
+              <layerMoniker Id="233b6aa7-b5d7-481d-a7bc-96884b1f371e" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="e3196464-0d84-4692-91bf-ea82191b8c22" name="TravelJournal.WSA8" requiredNamespace="TravelJournal.PCL.ViewModel">
+      <childLayers>
+        <layer Id="76cf7f8e-b24a-42df-b595-676f165d373b" name=".UI" requiredNamespace="TravelJournal.PCL.ViewModel">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="172f6c4e-b08b-4305-a854-709858b3ca09" direction="Bidirectional">
+              <layerMoniker Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="854f689a-6e6c-48c1-89c0-db0c03ba83cc" name=".DataService" requiredNamespace="TravelJournal.PCL.DataService">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="f728da59-fb33-42c2-bab5-7d4c5cacc6b5" direction="Forward">
+              <layerMoniker Id="def00f91-a2af-459d-990a-218f2d9d5133" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="791ecb78-c165-403b-b66e-d5a1851dd07c" name=".BusinessLogic" requiredNamespace="TravelJournal.PCL.BusinessLogic">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="4e31734a-6824-40f0-a849-9112046aeebe" direction="Forward">
+              <layerMoniker Id="18b64629-fdcd-46b1-b639-4b8223394335" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+        <layer Id="19b9335b-4a72-4a04-b9b7-de567bcbd906" name=".TestUI" requiredNamespace="TravelJournal.PCL.ViewModel">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="71133b5d-3b22-4ec9-a808-571635857da9" direction="Bidirectional">
+              <layerMoniker Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>
