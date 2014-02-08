@@ -58,14 +58,6 @@
         </linkFromCommentToLayerElement>
       </layerElements>
     </comment>
-    <comment Id="49f87d7d-d06e-4610-85b2-ee38116605be" name="Comment1211">
-      <body>Project&gt;&gt; TravelJournal.WP8.TestUI</body>
-      <layerElements>
-        <linkFromCommentToLayerElement>
-          <layerMoniker Id="233b6aa7-b5d7-481d-a7bc-96884b1f371e" />
-        </linkFromCommentToLayerElement>
-      </layerElements>
-    </comment>
     <comment Id="9ee5a542-b957-4a6e-8bdf-f412a9ea993f" name="Comment122">
       <body>Project&gt;&gt; TravelJournal.WSA</body>
       <layerElements>
@@ -85,14 +77,6 @@
         </linkFromCommentToLayerElement>
       </layerElements>
     </comment>
-    <comment Id="dcf5f252-5f11-48a2-9b49-ac66a2e6fb7e" name="Comment12111">
-      <body>Project&gt;&gt; TravelJournal.WSA.TestUI</body>
-      <layerElements>
-        <linkFromCommentToLayerElement>
-          <layerMoniker Id="19b9335b-4a72-4a04-b9b7-de567bcbd906" />
-        </linkFromCommentToLayerElement>
-      </layerElements>
-    </comment>
     <comment Id="e338ce76-d2fe-47f7-9fa0-22343b670fb2" name="Comment123">
       <body>Project&gt;&gt; TravelJournal.PCL.ViewModel</body>
       <layerElements>
@@ -100,9 +84,6 @@
           <layerMoniker Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" />
         </linkFromCommentToLayerElement>
       </layerElements>
-    </comment>
-    <comment Id="26d090d2-9c6f-475a-a006-34e1a2682d3d" name="Comment1231">
-      <body>Project&gt;&gt; TravelJournal.PCL.ViewModel</body>
     </comment>
     <comment Id="5aa5ad2d-23cc-4586-8ad9-a00e0781830c" name="Comment12311">
       <body>Project&gt;&gt; TravelJournal.PCL</body>
@@ -140,7 +121,6 @@
             </dependencyFromLayerToLayer>
           </dependencyToLayers>
         </layer>
-        <layer Id="233b6aa7-b5d7-481d-a7bc-96884b1f371e" name=".TestUI" requiredNamespace="TravelJournal.PCL.ViewModel" />
       </childLayers>
     </layer>
     <layer Id="b4849636-3b65-42aa-8173-d7e4fc5e1099" name="TravelJournal.PCL">
@@ -163,13 +143,7 @@
             </layer>
           </childLayers>
         </layer>
-        <layer Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" name=".ViewModel" requiredNamespace="TravelJournal.WP8.UI;TravelJournal.WSA8.UI;TravelJournal.PCL.BusinessLogic;TravelJournal.WP8.TestUI;TravelJournal.WSA8.TestUI">
-          <dependencyToLayers>
-            <dependencyFromLayerToLayer Id="d4d1198b-931c-43dc-8675-cf64486ff212" direction="Bidirectional">
-              <layerMoniker Id="233b6aa7-b5d7-481d-a7bc-96884b1f371e" />
-            </dependencyFromLayerToLayer>
-          </dependencyToLayers>
-        </layer>
+        <layer Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" name=".ViewModel" requiredNamespace="TravelJournal.WP8.UI;TravelJournal.WSA8.UI;TravelJournal.PCL.BusinessLogic;" />
       </childLayers>
     </layer>
     <layer Id="e3196464-0d84-4692-91bf-ea82191b8c22" name="TravelJournal.WSA8" requiredNamespace="TravelJournal.PCL.ViewModel">
@@ -192,13 +166,6 @@
           <dependencyToLayers>
             <dependencyFromLayerToLayer Id="4e31734a-6824-40f0-a849-9112046aeebe" direction="Forward">
               <layerMoniker Id="18b64629-fdcd-46b1-b639-4b8223394335" />
-            </dependencyFromLayerToLayer>
-          </dependencyToLayers>
-        </layer>
-        <layer Id="19b9335b-4a72-4a04-b9b7-de567bcbd906" name=".TestUI" requiredNamespace="TravelJournal.PCL.ViewModel">
-          <dependencyToLayers>
-            <dependencyFromLayerToLayer Id="71133b5d-3b22-4ec9-a808-571635857da9" direction="Bidirectional">
-              <layerMoniker Id="83b4c047-b8b5-4602-b2ab-8f3c87e10d52" />
             </dependencyFromLayerToLayer>
           </dependencyToLayers>
         </layer>
