@@ -10,15 +10,6 @@ using System.Windows.Forms;
 
 namespace TravelJournal.WinForm.Test.Controls
 {
-    public class DoubleBufferedListView : ListView
-    {
-        public DoubleBufferedListView()
-            : base()
-        {
-            this.DoubleBuffered = true;
-        }
-
-    }
 
     public partial class InfoInspector : UserControl
     {
@@ -52,9 +43,10 @@ namespace TravelJournal.WinForm.Test.Controls
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
         }
 
-        public void UpdateInfo(SortedDictionary<string, string> infoDict)
+        public void UpdateInfo(Dictionary<string, string> infoDict)
         {
             listView.BeginUpdate();
+            listView.Sorting = SortOrder.Ascending;
             foreach (KeyValuePair<string, string> info in infoDict)
             {
                 if (!infoList.Contains(info.Key))
