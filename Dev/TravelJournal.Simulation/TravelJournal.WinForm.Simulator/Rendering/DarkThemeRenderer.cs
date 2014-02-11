@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TravelJournal.WinForm.Simulator
+namespace TravelJournal.WinForm.Simulator.Rendering
 {
     internal class DarkThemeToolStripRenderer : ToolStripProfessionalRenderer
     {

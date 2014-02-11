@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Tune-Up Utilities.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -42,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,58 +59,98 @@
     <Compile Include="Controls\Bases\DoubleBufferListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\InfoInspector.cs">
+    <Compile Include="Forms\Config\Data\IConfigData.cs" />
+    <Compile Include="Controls\TestComponents\InfoInspector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\InfoInspector.Designer.cs">
+    <Compile Include="Controls\TestComponents\InfoInspector.Designer.cs">
       <DependentUpon>InfoInspector.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Bases\ITestControl.cs" />
-    <Compile Include="Controls\Logger.cs">
+    <Compile Include="Controls\TestComponents\Logger.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Logger.Designer.cs">
+    <Compile Include="Controls\TestComponents\Logger.Designer.cs">
       <DependentUpon>Logger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TravelMapPlayer.cs">
+    <Compile Include="Controls\TestComponents\TravelMapPlayer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\TravelMapPlayer.Designer.cs">
+    <Compile Include="Controls\TestComponents\TravelMapPlayer.Designer.cs">
       <DependentUpon>TravelMapPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataService\XmlSerialization.cs" />
+    <Compile Include="Forms\Config\ConfigDataPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\ConfigDataPreviewForm.Designer.cs">
+      <DependentUpon>ConfigDataPreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Config\Data\SimulatorGeneralSettings.cs" />
+    <Compile Include="Forms\Config\Data\TravelItineraryData.cs" />
+    <Compile Include="Forms\Config\PropertyConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\PropertyConfigForm.Designer.cs">
+      <DependentUpon>PropertyConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Config\TravelItineraryPlanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\TravelItineraryPlanner.Designer.cs">
+      <DependentUpon>TravelItineraryPlanner.cs</DependentUpon>
     </Compile>
     <Compile Include="Rendering\DarkThemeColor.cs" />
     <Compile Include="Rendering\DarkThemeRenderer.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\Config\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\Config\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controls\StateMachineViewer.cs">
+    <Compile Include="Controls\TestComponents\StateMachineViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\StateMachineViewer.Designer.cs">
+    <Compile Include="Controls\TestComponents\StateMachineViewer.Designer.cs">
       <DependentUpon>StateMachineViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Bases\ITestWindow.cs" />
-    <Compile Include="Windows\TravelJournalGenerationSimulation.cs">
+    <Compile Include="Controls\Bases\ITestProjectControl.cs" />
+    <Compile Include="Controls\TravelJournalGenerationSimulation.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Windows\TravelJournalGenerationSimulation.Designer.cs">
+    <Compile Include="Controls\TravelJournalGenerationSimulation.Designer.cs">
       <DependentUpon>TravelJournalGenerationSimulation.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\InfoInspector.resx">
+    <EmbeddedResource Include="Controls\TestComponents\InfoInspector.resx">
       <DependentUpon>InfoInspector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Logger.resx">
+    <EmbeddedResource Include="Controls\TestComponents\Logger.resx">
       <DependentUpon>Logger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TravelMapPlayer.resx">
+    <EmbeddedResource Include="Controls\TestComponents\TravelMapPlayer.resx">
       <DependentUpon>TravelMapPlayer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\Config\ConfigDataPreviewForm.resx">
+      <DependentUpon>ConfigDataPreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\PropertyConfigForm.resx">
+      <DependentUpon>PropertyConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\TravelItineraryPlanner.resx">
+      <DependentUpon>TravelItineraryPlanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -119,10 +163,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Controls\StateMachineViewer.resx">
+    <EmbeddedResource Include="Controls\TestComponents\StateMachineViewer.resx">
       <DependentUpon>StateMachineViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Windows\TravelJournalGenerationSimulation.resx">
+    <EmbeddedResource Include="Controls\TravelJournalGenerationSimulation.resx">
       <DependentUpon>TravelJournalGenerationSimulation.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -139,8 +183,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Content Include="Tune-Up Utilities.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TravelJournal.WinForm.Simulator
+namespace TravelJournal.WinForm.Simulator.Controls
 {
     public class DoubleBufferedListView : ListView
     {

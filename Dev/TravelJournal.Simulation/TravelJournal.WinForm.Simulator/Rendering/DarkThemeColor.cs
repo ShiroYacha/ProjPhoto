@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelJournal.WinForm.Simulator
+namespace TravelJournal.WinForm.Simulator.Rendering
 {
     internal class DarkThemeColor
     {
