@@ -17,7 +17,6 @@ namespace TravelJournal.WinForm.Simulator
 {
     public partial class TravelJournalGenerationSimulation : UserControl , ITestProjectControl
     {
-        List<System.Threading.Timer> timers = new List<System.Threading.Timer>();
         ConfigForm configPopupWindow;
 
         public TravelJournalGenerationSimulation()
@@ -56,9 +55,11 @@ namespace TravelJournal.WinForm.Simulator
         }
 
         #region Test
+
+        private List<System.Threading.Timer> testTimers = new List<System.Threading.Timer>();
         private void TestWithTimer(Action action,int timeInterval)
         {
-            timers.Add(new System.Threading.Timer((o) => { action(); }, null, 1000, timeInterval));
+            testTimers.Add(new System.Threading.Timer((o) => { action(); }, null, 1000, timeInterval));
         }
         private void StartTest()
         {
@@ -121,6 +122,7 @@ namespace TravelJournal.WinForm.Simulator
         #endregion
 
         #region Private methods
+
         private void RenderToolStrip()
         {
             // Use the vs2013-like dark theme
@@ -148,12 +150,12 @@ namespace TravelJournal.WinForm.Simulator
         }
         private void StopAllTimers()
         {
-            foreach (System.Threading.Timer timer in timers)
+            foreach (System.Threading.Timer timer in testTimers)
             {
                 timer.Change(Timeout.Infinite, Timeout.Infinite);
                 timer.Dispose();
             }
-            timers.Clear();
+            testTimers.Clear();
         }
         private void InitializeAllControls()
         {
@@ -162,6 +164,7 @@ namespace TravelJournal.WinForm.Simulator
             foreach (ITestControl control in rightTableLayoutPanel.Controls)
                 control.Initialize();
         } 
+
         #endregion
 
         private void TravelJournalGenerationSimulation_Load(object sender, EventArgs e)
@@ -195,8 +198,8 @@ namespace TravelJournal.WinForm.Simulator
 
         private void designButton_Click(object sender, EventArgs e)
         {
-            configPopupWindow = new ConfigForm();
-            configPopupWindow.Data = new SimulatorGeneralSettings();
+            configPopupWindow = new TravelItineraryPlanner();
+            configPopupWindow.Data = new TravelItineraryData();
             configPopupWindow.ShowDialog();
         }
 

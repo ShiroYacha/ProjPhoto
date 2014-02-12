@@ -25,9 +25,9 @@ namespace TravelJournal.WinForm.Simulator.Rendering
         }
         protected override void OnRenderSeparator(ToolStripSeparatorRenderEventArgs e)
         {
-            if (!e.Vertical || (e.Item as ToolStripSeparator) == null)
+            if ((e.Item as ToolStripSeparator) == null)
                 base.OnRenderSeparator(e);
-            else
+            else if (e.Vertical)
             {
                 Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
                 bounds.Y += 3;
@@ -37,7 +37,18 @@ namespace TravelJournal.WinForm.Simulator.Rendering
                 int x = bounds.Width / 2;
                 e.Graphics.DrawLine(pen, x, bounds.Top, x, bounds.Bottom - 1);
                 pen.Dispose();
- 
+
+            }
+            else
+            {
+                Rectangle bounds = new Rectangle(Point.Empty, e.Item.Size);
+                bounds.X += 3;
+                bounds.Width = Math.Max(0, bounds.Width - 6);
+                if (bounds.Width >= 4) bounds.Inflate(-8, 0);
+                Pen pen = new Pen(Color.DimGray);
+                int y = bounds.Height / 2;
+                e.Graphics.DrawLine(pen, bounds.Left, y, bounds.Right - 1, y);
+                pen.Dispose();
             }
         } 
 
