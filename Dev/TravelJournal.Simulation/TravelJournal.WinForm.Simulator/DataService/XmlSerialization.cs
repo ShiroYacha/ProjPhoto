@@ -11,8 +11,6 @@ namespace TravelJournal.WinForm.Simulator
 {
     public static class XmlSerialization
     {
-
-
         public static void Serialize<T>(string path,T objectToSerialize)
         {
             DataContractSerializer dcs = new DataContractSerializer(typeof(T));
@@ -37,6 +35,27 @@ namespace TravelJournal.WinForm.Simulator
                 {
                     return (T) dcs.ReadObject(reader);
                 }
+            }
+        }
+
+        public static string SerializeString<T>(T objectToSerialize)
+        { 
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                DataContractSerializer dcs = new DataContractSerializer(typeof(T));
+                dcs.WriteObject(memoryStream, objectToSerialize);
+                return Encoding.UTF8.GetString(memoryStream.ToArray());
+            }
+        }
+
+        public static T DeserializeString<T>(string xmlString)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(xmlString)))
+            {
+                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(memoryStream,Encoding.UTF8, new XmlDictionaryReaderQuotas(),null);
+                DataContractSerializer dcs = new DataContractSerializer(typeof(T));
+                T obj = (T)dcs.ReadObject(reader, true);
+                return obj;
             }
         }
     }

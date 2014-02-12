@@ -9,7 +9,9 @@ namespace TravelJournal.WinForm.Simulator
 {
     public interface IConfigData
     {
-         string ConfigName { get;}
-         string Extension { get; }
+        event Action<IConfigData> OnDataChanged;
+        event Action<IConfigData> OnDataChanging;
+        string ConfigName { get;}
+        string Extension { get; }
     }
 }

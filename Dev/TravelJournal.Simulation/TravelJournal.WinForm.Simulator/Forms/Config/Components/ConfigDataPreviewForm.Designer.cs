@@ -49,6 +49,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "ConfigDataPreviewForm";
             this.Text = "ConfigDataPreviewForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConfigDataPreviewForm_FormClosed);
             this.Load += new System.EventHandler(this.ConfigDataPreviewForm_Load);
             this.ResumeLayout(false);
 

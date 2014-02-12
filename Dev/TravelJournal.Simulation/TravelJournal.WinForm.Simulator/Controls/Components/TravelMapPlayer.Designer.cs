@@ -36,7 +36,9 @@
             this.gMapControl.Bearing = 0F;
             this.gMapControl.CanDragMap = true;
             this.gMapControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gMapControl.EmptyTileColor = System.Drawing.Color.Navy;
             this.gMapControl.GrayScaleMode = false;
+            this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapControl.LevelsKeepInMemmory = 5;
             this.gMapControl.Location = new System.Drawing.Point(0, 0);
             this.gMapControl.MarkersEnabled = true;
@@ -48,8 +50,10 @@
             this.gMapControl.PolygonsEnabled = true;
             this.gMapControl.RetryLoadTile = 0;
             this.gMapControl.RoutesEnabled = true;
+            this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(1347, 716);
+            this.gMapControl.Size = new System.Drawing.Size(786, 466);
             this.gMapControl.TabIndex = 0;
             this.gMapControl.Zoom = 0D;
             // 
@@ -61,7 +65,7 @@
             this.Controls.Add(this.gMapControl);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TravelMapPlayer";
-            this.Size = new System.Drawing.Size(1347, 716);
+            this.Size = new System.Drawing.Size(786, 466);
             this.Load += new System.EventHandler(this.TravelMapPlayer_Load);
             this.ResumeLayout(false);
 

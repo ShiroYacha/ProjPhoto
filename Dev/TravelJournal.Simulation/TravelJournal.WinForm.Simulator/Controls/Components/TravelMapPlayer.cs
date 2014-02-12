@@ -16,6 +16,9 @@ namespace TravelJournal.WinForm.Simulator.Controls
 {
     public partial class TravelMapPlayer : UserControl,ITestControl
     {
+        private const int DEFAULT_ZOOM = 2;
+        private Dictionary<string, GMapOverlay> mapOverlays = new Dictionary<string, GMapOverlay>();
+
         public TravelMapPlayer()
         {
             InitializeComponent();
@@ -33,26 +36,27 @@ namespace TravelJournal.WinForm.Simulator.Controls
             GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
             gMapControl.MaxZoom = 15;
             gMapControl.MinZoom = 1;
-            gMapControl.Zoom = 2;
+            gMapControl.Zoom = DEFAULT_ZOOM;
         }
 
-        public void FocusOn(string keywords,int zoom)
+        public void FocusOn(string keywords, int zoom = DEFAULT_ZOOM)
         {
             gMapControl.SetPositionByKeywords(keywords);
             gMapControl.Zoom = zoom;
         }
 
-        private void test()
+        public void AddSetPoint()
         {
 
-
+        }
+        
+        private void test()
+        {
             GMapOverlay markersOverlay = new GMapOverlay("markers");
             GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(49 + 6 / 60.0 + 11.35 / 3600.0, 6 + 13 / 60.0 + 12.558 / 3600.0),
               GMarkerGoogleType.red_big_stop);
-
             markersOverlay.Markers.Add(marker);
             gMapControl.Overlays.Add(markersOverlay);
-
 
             List<Placemark> plc = null;
             var st = GMapProviders.GoogleMap.GetPlacemarks(new PointLatLng(49 + 6 / 60.0 + 11.35 / 3600.0, 6 + 13 / 60.0 + 12.558 / 3600.0), out plc);
@@ -66,7 +70,6 @@ namespace TravelJournal.WinForm.Simulator.Controls
                     }
                 }
             }
-
         }
 
         public void Initialize()

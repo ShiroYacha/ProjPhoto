@@ -32,6 +32,10 @@ namespace TravelJournal.WinForm.Simulator.Forms
         private void ConfigDataPreviewForm_Load(object sender, EventArgs e)
         {
             webBrowser.Navigate(browserPath);
+        }
+
+        private void ConfigDataPreviewForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
             File.Delete(tempPath);
         }
     }

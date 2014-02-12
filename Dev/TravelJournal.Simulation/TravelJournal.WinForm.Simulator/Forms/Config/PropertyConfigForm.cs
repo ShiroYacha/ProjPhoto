@@ -17,17 +17,20 @@ namespace TravelJournal.WinForm.Simulator.Forms
             InitializeComponent();
         }
 
-        public override IConfigData Data
+        protected override void OnDataSet(IConfigData data)
         {
-            get
-            {
-                return base.Data;
-            }
-            set
-            {
-                base.Data = value;
-                propertyGrid.SelectedObject = data;
-            }
+            base.OnDataSet(data);
+            propertyGrid.SelectedObject = data;
+        }
+
+        protected override void OnDataChanging(IConfigData data)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void OnDataChanged(IConfigData data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

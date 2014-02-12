@@ -12,6 +12,8 @@ namespace TravelJournal.WinForm.Simulator
     [KnownType(typeof(SimulatorGeneralSettings))]
     public class SimulatorGeneralSettings:IConfigData
     {
+        public event Action<IConfigData> OnDataChanged;
+
         [Browsable(false)]
         public string ConfigName
         {
@@ -25,5 +27,6 @@ namespace TravelJournal.WinForm.Simulator
         }
 
 
+        public event Action<IConfigData> OnDataChanging;
     }
 }
