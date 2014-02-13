@@ -20,9 +20,12 @@ namespace TravelJournal.WinForm.Simulator.Forms
         public TravelItineraryPlanner()
         {
             InitializeComponent();
-            // Intializing
+            // Rendering
             RenderToolStrip();
+            // Memento initializing
             history = new UndoRedoHistory<ITravelItineraryDataOwner>(this, 100);
+            // Map control initializing
+            travelMapPlayer.RegisterMouseClickHandler(OnClickEventHandler);
         }
 
         public TravelItineraryData TravelItineraryData
@@ -61,7 +64,13 @@ namespace TravelJournal.WinForm.Simulator.Forms
             undoButton.Enabled = history.CanUndo;
             redoButton.Enabled = history.CanRedo;
             setTimeIntervalTextBox.Text = dt.TimeIntervalPerAnchor.ToString();
-            setCameraProbTextBox.Text = dt.CameraProbPerSpot.ToString();
+            setCameraNumTextBox.Text = dt.CameraProbPerSpot.ToString();
+            // Map
+            if (dt.Anchors != null)
+                travelMapPlayer.SetAnchors(dt.Anchors);
+            if (dt.CameraSpots != null)
+                travelMapPlayer.SetCameraSpots(dt.CameraSpots);
+
         }
         private void RenderToolStrip()
         {
@@ -80,9 +89,27 @@ namespace TravelJournal.WinForm.Simulator.Forms
                     }
             }
         }
+        
 
         private void TravelItineraryPlanner_Load(object sender, EventArgs e)
         {
+        }
+
+        private void undoButton_Click(object sender, EventArgs e)
+        {
+            if (history.CanUndo)
+            {
+                history.Undo();
+                UpdateView(data);
+            }
+        }
+        private void redoButton_Click(object sender, EventArgs e)
+        {
+            if (history.CanRedo)
+            {
+                history.Redo();
+                UpdateView(data);
+            }
         }
         private void setTimeIntervalTextBox_Validating(object sender, CancelEventArgs e)
         {
@@ -96,16 +123,16 @@ namespace TravelJournal.WinForm.Simulator.Forms
                 setTimeIntervalTextBox.Text = dt.TimeIntervalPerAnchor.ToString();
             }
         }
-        private void setCameraProbTextBox_Validating(object sender, CancelEventArgs e)
+        private void setCameraNumTextBox_Validating(object sender, CancelEventArgs e)
         {
             float value;
             TravelItineraryData dt = data as TravelItineraryData;
-            if (float.TryParse(setCameraProbTextBox.Text, out value))
+            if (float.TryParse(setCameraNumTextBox.Text, out value))
                 dt.CameraProbPerSpot = value;
             else
             {
                 e.Cancel = true;
-                setCameraProbTextBox.Text = dt.CameraProbPerSpot.ToString();
+                setCameraNumTextBox.Text = dt.CameraProbPerSpot.ToString();
             }
         }
         private void placeStartButton_Click(object sender, EventArgs e)
@@ -123,40 +150,36 @@ namespace TravelJournal.WinForm.Simulator.Forms
             placeStartButton.Checked = false;
             placeAnchorButton.Checked = false;
         }
-        private void travelMapPlayer_Click(object sender, EventArgs e)
+        private void clearMarkersButton_Click(object sender, EventArgs e)
+        {
+            TravelItineraryData.ClearAnchorsAndCameraSpots();
+        }
+
+
+        private void OnClickEventHandler(object sender, EventArgs e)
         {
             MouseEventArgs me = e as MouseEventArgs;
-            if(me.Button==MouseButtons.Right)
+            if (me.Button == MouseButtons.Right)
             {
-                if(placeStartButton.Checked)
+                if (placeStartButton.Checked)
                 {
-                    // Place start button
-                }
-                else if(placeAnchorButton.Checked)
-                {
-                    // Place anchor button
-                }
-                else
-                {
-                    // Place camera spot button
-                }
-            }
+                    // Place start point
 
-        }
-        private void undoButton_Click(object sender, EventArgs e)
-        {
-            if(history.CanUndo)
-            {
-                history.Undo();
-                UpdateView(data);
-            }
-        }
-        private void redoButton_Click(object sender, EventArgs e)
-        {
-            if (history.CanRedo)
-            {
-                history.Redo();
-                UpdateView(data);
+                }
+                else if (placeAnchorButton.Checked)
+                {
+                    // Place anchor 
+                    GpsPoint point = travelMapPlayer.ConvertToGpsPoint(me.Location);
+                    TravelItineraryData.AddAnchor(point);
+                    UpdateView(data);
+                }
+                else if (placeCameraSpotButton.Checked)
+                {
+                    // Place camera spot 
+                    GpsPoint point = travelMapPlayer.ConvertToGpsPoint(me.Location);
+                    TravelItineraryData.AddCameraSpot(point);
+                    UpdateView(data);
+                }
             }
         }
 

@@ -11,17 +11,26 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using TravelJournal.WinForm.Simulator.Forms;
 
 namespace TravelJournal.WinForm.Simulator.Controls
 {
     public partial class TravelMapPlayer : UserControl,ITestControl
     {
-        private const int DEFAULT_ZOOM = 2;
-        private Dictionary<string, GMapOverlay> mapOverlays = new Dictionary<string, GMapOverlay>();
+        private const int RATIO_DEFAULT_ZOOM = 2;
+
+        private const string ID_ANCHORS_LAYER = "Anchors layer";
+        private const string ID_CAMERASPOT_LAYER = "Camera spots layer";
+
+        private GMapOverlay anchorsLayer = new GMapOverlay(ID_ANCHORS_LAYER);
+        private GMapOverlay cameraSpotsLayer = new GMapOverlay(ID_CAMERASPOT_LAYER);
 
         public TravelMapPlayer()
         {
             InitializeComponent();
+            // Load layers
+            gMapControl.Overlays.Add(cameraSpotsLayer);
+            gMapControl.Overlays.Add(anchorsLayer);
         }
 
         private void TravelMapPlayer_Load(object sender, EventArgs e)
@@ -36,20 +45,44 @@ namespace TravelJournal.WinForm.Simulator.Controls
             GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
             gMapControl.MaxZoom = 15;
             gMapControl.MinZoom = 1;
-            gMapControl.Zoom = DEFAULT_ZOOM;
+            gMapControl.Zoom = RATIO_DEFAULT_ZOOM;
         }
 
-        public void FocusOn(string keywords, int zoom = DEFAULT_ZOOM)
+        public void FocusOn(string keywords, int zoom = RATIO_DEFAULT_ZOOM)
         {
             gMapControl.SetPositionByKeywords(keywords);
             gMapControl.Zoom = zoom;
         }
 
-        public void AddSetPoint()
+        public void RegisterMouseClickHandler(MouseEventHandler handler)
         {
-
+            gMapControl.MouseClick += handler;
         }
-        
+
+        public GpsPoint ConvertToGpsPoint(Point localPoint)
+        {
+            PointLatLng gps=gMapControl.FromLocalToLatLng(localPoint.X,localPoint.Y);
+            return new GpsPoint() { Lat = gps.Lat, Lng = gps.Lng };
+        }
+
+        public void SetAnchors(List<GpsPoint> anchors)
+        {
+            anchorsLayer.Markers.Clear();
+            foreach (GpsPoint anchor in anchors)
+            {
+                anchorsLayer.Markers.Add(new GMarkerGoogle(new PointLatLng(anchor.Lat,anchor.Lng), GMarkerGoogleType.blue_small));
+            }
+        }
+
+        public void SetCameraSpots(List<GpsPoint> cameraSpots)
+        {
+            cameraSpotsLayer.Markers.Clear();
+            foreach (GpsPoint cameraSpot in cameraSpots)
+            {
+                cameraSpotsLayer.Markers.Add(new GMarkerGoogle(new PointLatLng(cameraSpot.Lat, cameraSpot.Lng), GMarkerGoogleType.red_small));
+            }
+        }
+
         private void test()
         {
             GMapOverlay markersOverlay = new GMapOverlay("markers");

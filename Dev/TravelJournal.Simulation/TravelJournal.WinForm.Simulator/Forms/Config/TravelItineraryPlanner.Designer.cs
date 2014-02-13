@@ -40,9 +40,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.setTimeIntervalImage = new System.Windows.Forms.ToolStripLabel();
             this.setTimeIntervalTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.setCameraProbImage = new System.Windows.Forms.ToolStripLabel();
-            this.setCameraProbTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.setCameraNumImage = new System.Windows.Forms.ToolStripLabel();
+            this.setCameraNumTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.travelMapPlayer = new TravelJournal.WinForm.Simulator.Controls.TravelMapPlayer();
+            this.clearMarkersButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,14 +60,15 @@
             this.placeAnchorButton,
             this.placeCameraSpotButton,
             this.connectAnchorsButton,
+            this.clearMarkersButton,
             this.toolStripSeparator1,
             this.setTimeIntervalImage,
             this.setTimeIntervalTextBox,
-            this.setCameraProbImage,
-            this.setCameraProbTextBox});
-            this.toolStrip.Location = new System.Drawing.Point(0, 28);
+            this.setCameraNumImage,
+            this.setCameraNumTextBox});
+            this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(907, 37);
+            this.toolStrip.Size = new System.Drawing.Size(680, 30);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -77,7 +79,7 @@
             this.undoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.undoButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.undoButton.Name = "undoButton";
-            this.undoButton.Size = new System.Drawing.Size(23, 34);
+            this.undoButton.Size = new System.Drawing.Size(23, 27);
             this.undoButton.Text = "toolStripButton1";
             this.undoButton.ToolTipText = "Undo action.";
             this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
@@ -89,7 +91,7 @@
             this.redoButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.redoButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(23, 34);
+            this.redoButton.Size = new System.Drawing.Size(23, 27);
             this.redoButton.Text = "toolStripButton1";
             this.redoButton.ToolTipText = "Undo action.";
             this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
@@ -98,7 +100,7 @@
             // 
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 34);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // placeStartButton
             // 
@@ -110,7 +112,7 @@
             this.placeStartButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.placeStartButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.placeStartButton.Name = "placeStartButton";
-            this.placeStartButton.Size = new System.Drawing.Size(23, 34);
+            this.placeStartButton.Size = new System.Drawing.Size(23, 27);
             this.placeStartButton.Text = "toolStripButton1";
             this.placeStartButton.Click += new System.EventHandler(this.placeStartButton_Click);
             // 
@@ -122,7 +124,7 @@
             this.placeAnchorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.placeAnchorButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.placeAnchorButton.Name = "placeAnchorButton";
-            this.placeAnchorButton.Size = new System.Drawing.Size(23, 34);
+            this.placeAnchorButton.Size = new System.Drawing.Size(23, 27);
             this.placeAnchorButton.Text = "toolStripButton1";
             this.placeAnchorButton.Click += new System.EventHandler(this.placeAnchorButton_Click);
             // 
@@ -134,7 +136,7 @@
             this.placeCameraSpotButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.placeCameraSpotButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.placeCameraSpotButton.Name = "placeCameraSpotButton";
-            this.placeCameraSpotButton.Size = new System.Drawing.Size(23, 34);
+            this.placeCameraSpotButton.Size = new System.Drawing.Size(23, 27);
             this.placeCameraSpotButton.Text = "toolStripButton1";
             this.placeCameraSpotButton.ToolTipText = "Place a camera spot.";
             this.placeCameraSpotButton.Click += new System.EventHandler(this.placeCameraSpotButton_Click);
@@ -146,7 +148,7 @@
             this.connectAnchorsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.connectAnchorsButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.connectAnchorsButton.Name = "connectAnchorsButton";
-            this.connectAnchorsButton.Size = new System.Drawing.Size(23, 34);
+            this.connectAnchorsButton.Size = new System.Drawing.Size(23, 27);
             this.connectAnchorsButton.Text = "toolStripButton1";
             this.connectAnchorsButton.ToolTipText = "Close the itinerary loop.";
             // 
@@ -154,7 +156,7 @@
             // 
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 34);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // setTimeIntervalImage
             // 
@@ -163,7 +165,7 @@
             this.setTimeIntervalImage.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.setTimeIntervalImage.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.setTimeIntervalImage.Name = "setTimeIntervalImage";
-            this.setTimeIntervalImage.Size = new System.Drawing.Size(16, 34);
+            this.setTimeIntervalImage.Size = new System.Drawing.Size(16, 27);
             this.setTimeIntervalImage.Text = "toolStripButton1";
             this.setTimeIntervalImage.ToolTipText = "Set time interval for anchors.";
             // 
@@ -176,55 +178,64 @@
             this.setTimeIntervalTextBox.Margin = new System.Windows.Forms.Padding(5, 0, 1, 0);
             this.setTimeIntervalTextBox.Name = "setTimeIntervalTextBox";
             this.setTimeIntervalTextBox.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.setTimeIntervalTextBox.Size = new System.Drawing.Size(50, 27);
+            this.setTimeIntervalTextBox.Size = new System.Drawing.Size(38, 23);
             this.setTimeIntervalTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.setTimeIntervalTextBox.ToolTipText = "Set time interval for anchors.";
             this.setTimeIntervalTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.setTimeIntervalTextBox_Validating);
             // 
-            // setCameraProbImage
+            // setCameraNumImage
             // 
-            this.setCameraProbImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.setCameraProbImage.Image = ((System.Drawing.Image)(resources.GetObject("setCameraProbImage.Image")));
-            this.setCameraProbImage.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.setCameraProbImage.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
-            this.setCameraProbImage.Name = "setCameraProbImage";
-            this.setCameraProbImage.Size = new System.Drawing.Size(16, 34);
-            this.setCameraProbImage.Text = "toolStripButton1";
-            this.setCameraProbImage.ToolTipText = "Set the probablity of camera spot.";
+            this.setCameraNumImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.setCameraNumImage.Image = ((System.Drawing.Image)(resources.GetObject("setCameraNumImage.Image")));
+            this.setCameraNumImage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.setCameraNumImage.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
+            this.setCameraNumImage.Name = "setCameraNumImage";
+            this.setCameraNumImage.Size = new System.Drawing.Size(16, 27);
+            this.setCameraNumImage.Text = "toolStripButton1";
+            this.setCameraNumImage.ToolTipText = "Set the number of photo to be taken at camera spot.";
             // 
-            // setCameraProbTextBox
+            // setCameraNumTextBox
             // 
-            this.setCameraProbTextBox.AutoSize = false;
-            this.setCameraProbTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.setCameraProbTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.setCameraProbTextBox.ForeColor = System.Drawing.Color.White;
-            this.setCameraProbTextBox.Margin = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.setCameraProbTextBox.Name = "setCameraProbTextBox";
-            this.setCameraProbTextBox.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.setCameraProbTextBox.Size = new System.Drawing.Size(50, 27);
-            this.setCameraProbTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.setCameraProbTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.setCameraProbTextBox_Validating);
+            this.setCameraNumTextBox.AutoSize = false;
+            this.setCameraNumTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.setCameraNumTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.setCameraNumTextBox.ForeColor = System.Drawing.Color.White;
+            this.setCameraNumTextBox.Margin = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.setCameraNumTextBox.Name = "setCameraNumTextBox";
+            this.setCameraNumTextBox.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.setCameraNumTextBox.Size = new System.Drawing.Size(38, 23);
+            this.setCameraNumTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.setCameraNumTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.setCameraNumTextBox_Validating);
             // 
             // travelMapPlayer
             // 
             this.travelMapPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.travelMapPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.travelMapPlayer.Location = new System.Drawing.Point(0, 65);
-            this.travelMapPlayer.Margin = new System.Windows.Forms.Padding(4);
+            this.travelMapPlayer.Location = new System.Drawing.Point(0, 54);
             this.travelMapPlayer.Name = "travelMapPlayer";
-            this.travelMapPlayer.Size = new System.Drawing.Size(907, 445);
+            this.travelMapPlayer.Size = new System.Drawing.Size(680, 360);
             this.travelMapPlayer.TabIndex = 3;
-            this.travelMapPlayer.Click += new System.EventHandler(this.travelMapPlayer_Click);
+            // 
+            // clearMarkersButton
+            // 
+            this.clearMarkersButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.clearMarkersButton.Image = ((System.Drawing.Image)(resources.GetObject("clearMarkersButton.Image")));
+            this.clearMarkersButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.clearMarkersButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
+            this.clearMarkersButton.Name = "clearMarkersButton";
+            this.clearMarkersButton.Size = new System.Drawing.Size(23, 27);
+            this.clearMarkersButton.Text = "toolStripButton1";
+            this.clearMarkersButton.ToolTipText = "Clear the anchors and camera spots.";
+            this.clearMarkersButton.Click += new System.EventHandler(this.clearMarkersButton_Click);
             // 
             // TravelItineraryPlanner
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 510);
+            this.ClientSize = new System.Drawing.Size(680, 414);
             this.Controls.Add(this.travelMapPlayer);
             this.Controls.Add(this.toolStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "TravelItineraryPlanner";
             this.Text = "TravelItineraryPlanner";
             this.Load += new System.EventHandler(this.TravelItineraryPlanner_Load);
@@ -251,8 +262,9 @@
         private Controls.TravelMapPlayer travelMapPlayer;
         private System.Windows.Forms.ToolStripTextBox setTimeIntervalTextBox;
         private System.Windows.Forms.ToolStripLabel setTimeIntervalImage;
-        private System.Windows.Forms.ToolStripLabel setCameraProbImage;
-        private System.Windows.Forms.ToolStripTextBox setCameraProbTextBox;
+        private System.Windows.Forms.ToolStripLabel setCameraNumImage;
+        private System.Windows.Forms.ToolStripTextBox setCameraNumTextBox;
+        private System.Windows.Forms.ToolStripButton clearMarkersButton;
 
 
     }

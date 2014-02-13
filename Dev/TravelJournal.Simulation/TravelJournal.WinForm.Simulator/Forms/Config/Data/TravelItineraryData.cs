@@ -58,6 +58,71 @@ namespace TravelJournal.WinForm.Simulator.Forms
                 }
             }
         }
+
+        private List<GpsPoint> anchors=new List<GpsPoint>();
+        [DataMember()]
+        public List<GpsPoint> Anchors
+        {
+            get { return anchors; }
+            set
+            {
+                if (anchors != value)
+                {
+                    if (OnDataChanging != null) OnDataChanging(this);
+                    anchors = value;
+                    if (OnDataChanged != null) OnDataChanged(this);
+                }
+            }
+        }
+        public void AddAnchor(GpsPoint anchor)
+        {
+            if (OnDataChanging != null) OnDataChanging(this);
+            anchors.Add(anchor);
+            if (OnDataChanged != null) OnDataChanged(this);
+        }
+
+        private List<GpsPoint> cameraSpots = new List<GpsPoint>();
+        [DataMember()]
+        public List<GpsPoint> CameraSpots
+        {
+            get { return cameraSpots; }
+            set
+            {
+                if (cameraSpots != value)
+                {
+                    if (OnDataChanging != null) OnDataChanging(this);
+                    cameraSpots = value;
+                    if (OnDataChanged != null) OnDataChanged(this);
+                }
+            }
+        }
+        public void AddCameraSpot(GpsPoint cameraSpot)
+        {
+            if (OnDataChanging != null) OnDataChanging(this);
+            cameraSpots.Add(cameraSpot);
+            if (OnDataChanged != null) OnDataChanged(this);
+        }
+
+        public void ClearAnchorsAndCameraSpots()
+        {
+            if (anchors.Count > 0 || cameraSpots.Count > 0)
+            {
+                if (OnDataChanging != null) OnDataChanging(this);
+                anchors.Clear();
+                cameraSpots.Clear();
+                if (OnDataChanged != null) OnDataChanged(this);
+            }
+        }
+    }
+
+    [DataContract]
+    [KnownType(typeof(GpsPoint))]
+    public class GpsPoint
+    {
+        [DataMember()]
+        public double Lat { get; set; }
+        [DataMember()]
+        public double Lng { get; set; }
     }
 
 }
