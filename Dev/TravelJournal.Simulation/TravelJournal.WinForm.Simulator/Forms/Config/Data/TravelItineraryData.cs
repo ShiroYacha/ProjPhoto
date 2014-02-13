@@ -125,4 +125,5 @@ namespace TravelJournal.WinForm.Simulator.Forms
         public double Lng { get; set; }
     }
 
+    
 }
