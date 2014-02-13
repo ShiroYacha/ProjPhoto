@@ -10,25 +10,25 @@ using System.Windows.Forms;
 
 namespace TravelJournal.WinForm.Simulator.Forms
 {
-    public partial class PropertyConfigForm : ConfigForm
+    public partial class PropertyConfigForm<T> : ConfigForm<T> where T : IConfigData
     {
         public PropertyConfigForm()
         {
             InitializeComponent();
         }
 
-        protected override void OnDataSet(IConfigData data)
+        protected override void OnDataSet(T data)
         {
             base.OnDataSet(data);
             propertyGrid.SelectedObject = data;
         }
 
-        protected override void OnDataChanging(IConfigData data)
+        protected override void OnDataChanging(T data)
         {
             throw new NotImplementedException();
         }
 
-        protected override void OnDataChanged(IConfigData data)
+        protected override void OnDataChanged(T data)
         {
             throw new NotImplementedException();
         }

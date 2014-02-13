@@ -62,6 +62,12 @@
     <Compile Include="Controls\Bases\DoubleBufferListView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Forms\Config\Components\TrackBarConfigDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\Components\TrackBarConfigDialog.Designer.cs">
+      <DependentUpon>TrackBarConfigDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Config\Data\IConfigData.cs" />
     <Compile Include="Controls\Components\InfoInspector.cs">
       <SubType>UserControl</SubType>
@@ -82,7 +88,9 @@
     <Compile Include="Controls\Components\TravelMapPlayer.Designer.cs">
       <DependentUpon>TravelMapPlayer.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataService\XmlSerialization.cs" />
+    <Compile Include="Utilities\GaussianRandom.cs" />
+    <Compile Include="Utilities\SimulationDataCompiler.cs" />
+    <Compile Include="Utilities\XmlSerialization.cs" />
     <Compile Include="Forms\Config\Components\ConfigDataPreviewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Components\TravelMapPlayer.resx">
       <DependentUpon>TravelMapPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\Components\TrackBarConfigDialog.resx">
+      <DependentUpon>TrackBarConfigDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Config\Components\ConfigDataPreviewForm.resx">
       <DependentUpon>ConfigDataPreviewForm.cs</DependentUpon>

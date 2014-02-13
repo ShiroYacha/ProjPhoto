@@ -85,7 +85,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
 
         private void settingsSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConfigForm basicConfiguration = new PropertyConfigForm();
+            PropertyConfigForm<SimulatorGeneralSettings> basicConfiguration = new PropertyConfigForm<SimulatorGeneralSettings>();
             basicConfiguration.Data = new SimulatorGeneralSettings();
             basicConfiguration.ShowDialog();
         }

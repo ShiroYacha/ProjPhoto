@@ -1,4 +1,5 @@
 ﻿using GenericUndoRedo;
+using GMap.NET;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,25 +44,38 @@ namespace TravelJournal.WinForm.Simulator.Forms
             }
         }
 
-        private float cameraProbPerSpot;
+        private double cameraRadius=1;
         [DataMember()]
-        public float CameraProbPerSpot
+        public double CameraRadius
         {
-            get { return cameraProbPerSpot; }
+            get { return cameraRadius; }
             set
             {
-                if (cameraProbPerSpot != value)
+                if (cameraRadius != value)
                 {
                     if (OnDataChanging != null) OnDataChanging(this);
-                    cameraProbPerSpot = value;
+                    cameraRadius = value;
                     if (OnDataChanged != null) OnDataChanged(this);
                 }
             }
         }
 
-        private List<GpsPoint> anchors=new List<GpsPoint>();
+        private Placemark homePlacemark;
         [DataMember()]
-        public List<GpsPoint> Anchors
+        public Placemark HomePlacemark
+        {
+            get { return homePlacemark; }
+            set
+            {
+                if (OnDataChanging != null) OnDataChanging(this);
+                homePlacemark = value;
+                if (OnDataChanged != null) OnDataChanged(this);
+            }
+        }
+
+        private List<SimulationModelPoint> anchors = new List<SimulationModelPoint>();
+        [DataMember()]
+        public List<SimulationModelPoint> Anchors
         {
             get { return anchors; }
             set
@@ -74,56 +88,33 @@ namespace TravelJournal.WinForm.Simulator.Forms
                 }
             }
         }
-        public void AddAnchor(GpsPoint anchor)
+        public void AddAnchor(SimulationModelPoint anchor)
         {
             if (OnDataChanging != null) OnDataChanging(this);
             anchors.Add(anchor);
             if (OnDataChanged != null) OnDataChanged(this);
         }
-
-        private List<GpsPoint> cameraSpots = new List<GpsPoint>();
-        [DataMember()]
-        public List<GpsPoint> CameraSpots
+        public void ClearAnchors()
         {
-            get { return cameraSpots; }
-            set
-            {
-                if (cameraSpots != value)
-                {
-                    if (OnDataChanging != null) OnDataChanging(this);
-                    cameraSpots = value;
-                    if (OnDataChanged != null) OnDataChanged(this);
-                }
-            }
-        }
-        public void AddCameraSpot(GpsPoint cameraSpot)
-        {
-            if (OnDataChanging != null) OnDataChanging(this);
-            cameraSpots.Add(cameraSpot);
-            if (OnDataChanged != null) OnDataChanged(this);
-        }
-
-        public void ClearAnchorsAndCameraSpots()
-        {
-            if (anchors.Count > 0 || cameraSpots.Count > 0)
+            if (anchors.Count > 0)
             {
                 if (OnDataChanging != null) OnDataChanging(this);
                 anchors.Clear();
-                cameraSpots.Clear();
+                if (OnDataChanged != null) OnDataChanged(this);
+            }
+        }
+        public void SetAnchorPhotoGenNumber(int index, int photoGenNumber)
+        {
+            if (anchors.Count > index)
+            {
+                if (OnDataChanging != null) OnDataChanging(this);
+                anchors[index].PhotoGenNumber = photoGenNumber;
                 if (OnDataChanged != null) OnDataChanged(this);
             }
         }
     }
 
-    [DataContract]
-    [KnownType(typeof(GpsPoint))]
-    public class GpsPoint
-    {
-        [DataMember()]
-        public double Lat { get; set; }
-        [DataMember()]
-        public double Lng { get; set; }
-    }
+
 
     
 }

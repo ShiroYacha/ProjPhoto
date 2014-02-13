@@ -1,6 +1,6 @@
 ﻿namespace TravelJournal.WinForm.Simulator.Forms
 {
-    partial class TravelItineraryPlanner
+    partial class TravelItineraryPlanner : ConfigFormTravelItineraryData
     {
         /// <summary>
         /// Required designer variable.
@@ -35,15 +35,16 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.placeStartButton = new System.Windows.Forms.ToolStripButton();
             this.placeAnchorButton = new System.Windows.Forms.ToolStripButton();
-            this.placeCameraSpotButton = new System.Windows.Forms.ToolStripButton();
-            this.connectAnchorsButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearMarkersButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.setTimeIntervalImage = new System.Windows.Forms.ToolStripLabel();
             this.setTimeIntervalTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.setCameraNumImage = new System.Windows.Forms.ToolStripLabel();
             this.setCameraNumTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.connectAnchorsButton = new System.Windows.Forms.ToolStripButton();
             this.travelMapPlayer = new TravelJournal.WinForm.Simulator.Controls.TravelMapPlayer();
-            this.clearMarkersButton = new System.Windows.Forms.ToolStripButton();
+            this.refreshButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,14 +59,15 @@
             this.toolStripSeparator2,
             this.placeStartButton,
             this.placeAnchorButton,
-            this.placeCameraSpotButton,
-            this.connectAnchorsButton,
             this.clearMarkersButton,
-            this.toolStripSeparator1,
+            this.toolStripSeparator3,
             this.setTimeIntervalImage,
             this.setTimeIntervalTextBox,
             this.setCameraNumImage,
-            this.setCameraNumTextBox});
+            this.setCameraNumTextBox,
+            this.toolStripSeparator1,
+            this.connectAnchorsButton,
+            this.refreshButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(680, 30);
@@ -128,35 +130,23 @@
             this.placeAnchorButton.Text = "toolStripButton1";
             this.placeAnchorButton.Click += new System.EventHandler(this.placeAnchorButton_Click);
             // 
-            // placeCameraSpotButton
+            // clearMarkersButton
             // 
-            this.placeCameraSpotButton.CheckOnClick = true;
-            this.placeCameraSpotButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.placeCameraSpotButton.Image = ((System.Drawing.Image)(resources.GetObject("placeCameraSpotButton.Image")));
-            this.placeCameraSpotButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.placeCameraSpotButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
-            this.placeCameraSpotButton.Name = "placeCameraSpotButton";
-            this.placeCameraSpotButton.Size = new System.Drawing.Size(23, 27);
-            this.placeCameraSpotButton.Text = "toolStripButton1";
-            this.placeCameraSpotButton.ToolTipText = "Place a camera spot.";
-            this.placeCameraSpotButton.Click += new System.EventHandler(this.placeCameraSpotButton_Click);
+            this.clearMarkersButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.clearMarkersButton.Image = ((System.Drawing.Image)(resources.GetObject("clearMarkersButton.Image")));
+            this.clearMarkersButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.clearMarkersButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
+            this.clearMarkersButton.Name = "clearMarkersButton";
+            this.clearMarkersButton.Size = new System.Drawing.Size(23, 27);
+            this.clearMarkersButton.Text = "toolStripButton1";
+            this.clearMarkersButton.ToolTipText = "Clear the anchors and camera spots.";
+            this.clearMarkersButton.Click += new System.EventHandler(this.clearMarkersButton_Click);
             // 
-            // connectAnchorsButton
+            // toolStripSeparator3
             // 
-            this.connectAnchorsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.connectAnchorsButton.Image = ((System.Drawing.Image)(resources.GetObject("connectAnchorsButton.Image")));
-            this.connectAnchorsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.connectAnchorsButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
-            this.connectAnchorsButton.Name = "connectAnchorsButton";
-            this.connectAnchorsButton.Size = new System.Drawing.Size(23, 27);
-            this.connectAnchorsButton.Text = "toolStripButton1";
-            this.connectAnchorsButton.ToolTipText = "Close the itinerary loop.";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
             // setTimeIntervalImage
             // 
@@ -206,6 +196,24 @@
             this.setCameraNumTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.setCameraNumTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.setCameraNumTextBox_Validating);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // connectAnchorsButton
+            // 
+            this.connectAnchorsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.connectAnchorsButton.Image = ((System.Drawing.Image)(resources.GetObject("connectAnchorsButton.Image")));
+            this.connectAnchorsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.connectAnchorsButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
+            this.connectAnchorsButton.Name = "connectAnchorsButton";
+            this.connectAnchorsButton.Size = new System.Drawing.Size(23, 27);
+            this.connectAnchorsButton.Text = "toolStripButton1";
+            this.connectAnchorsButton.ToolTipText = "Close the itinerary loop.";
+            this.connectAnchorsButton.Click += new System.EventHandler(this.connectAnchorsButton_Click);
+            // 
             // travelMapPlayer
             // 
             this.travelMapPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
@@ -215,17 +223,17 @@
             this.travelMapPlayer.Size = new System.Drawing.Size(680, 360);
             this.travelMapPlayer.TabIndex = 3;
             // 
-            // clearMarkersButton
+            // refreshButton
             // 
-            this.clearMarkersButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.clearMarkersButton.Image = ((System.Drawing.Image)(resources.GetObject("clearMarkersButton.Image")));
-            this.clearMarkersButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.clearMarkersButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
-            this.clearMarkersButton.Name = "clearMarkersButton";
-            this.clearMarkersButton.Size = new System.Drawing.Size(23, 27);
-            this.clearMarkersButton.Text = "toolStripButton1";
-            this.clearMarkersButton.ToolTipText = "Clear the anchors and camera spots.";
-            this.clearMarkersButton.Click += new System.EventHandler(this.clearMarkersButton_Click);
+            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
+            this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.refreshButton.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(23, 27);
+            this.refreshButton.Text = "toolStripButton1";
+            this.refreshButton.ToolTipText = "Close the itinerary loop.";
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // TravelItineraryPlanner
             // 
@@ -253,7 +261,6 @@
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton placeStartButton;
         private System.Windows.Forms.ToolStripButton placeAnchorButton;
-        private System.Windows.Forms.ToolStripButton placeCameraSpotButton;
         private System.Windows.Forms.ToolStripButton undoButton;
         private System.Windows.Forms.ToolStripButton connectAnchorsButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -265,6 +272,8 @@
         private System.Windows.Forms.ToolStripLabel setCameraNumImage;
         private System.Windows.Forms.ToolStripTextBox setCameraNumTextBox;
         private System.Windows.Forms.ToolStripButton clearMarkersButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton refreshButton;
 
 
     }

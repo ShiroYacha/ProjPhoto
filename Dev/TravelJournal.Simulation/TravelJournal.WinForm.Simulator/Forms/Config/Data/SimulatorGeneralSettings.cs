@@ -14,6 +14,8 @@ namespace TravelJournal.WinForm.Simulator
     {
         public event Action<IConfigData> OnDataChanged;
 
+        public event Action<IConfigData> OnDataChanging;
+
         [Browsable(false)]
         public string ConfigName
         {
@@ -26,7 +28,5 @@ namespace TravelJournal.WinForm.Simulator
             get { return ".gs"; }
         }
 
-
-        public event Action<IConfigData> OnDataChanging;
     }
 }

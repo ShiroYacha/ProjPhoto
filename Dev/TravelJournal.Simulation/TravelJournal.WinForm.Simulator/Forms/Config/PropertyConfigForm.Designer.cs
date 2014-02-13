@@ -1,6 +1,6 @@
 ﻿namespace TravelJournal.WinForm.Simulator.Forms
 {
-    partial class PropertyConfigForm
+    partial class PropertyConfigForm<T> where T:IConfigData
     {
         /// <summary>
         /// Required designer variable.

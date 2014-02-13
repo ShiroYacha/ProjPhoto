@@ -1,4 +1,6 @@
 ﻿using GenericUndoRedo;
+using GMap.NET;
+using GMap.NET.WindowsForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,23 +11,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TravelJournal.WinForm.Simulator.Controls;
 using TravelJournal.WinForm.Simulator.Rendering;
 
 namespace TravelJournal.WinForm.Simulator.Forms
 {
-    public partial class TravelItineraryPlanner : ConfigForm,ITravelItineraryDataOwner
+    public partial class TravelItineraryPlanner : ConfigFormTravelItineraryData
     {
-        private UndoRedoHistory<ITravelItineraryDataOwner> history;
+        private UndoRedoHistory<TravelItineraryPlanner> history;
 
         public TravelItineraryPlanner()
         {
             InitializeComponent();
+            // Memento initializing
+            history = new UndoRedoHistory<TravelItineraryPlanner>(this, 100);
+            // Map control initializing
+            travelMapPlayer.GMapControl.MouseClick += OnClickEventHandler;
+            travelMapPlayer.GMapControl.OnMarkerClick += OnMarkerClickEventHandler;
             // Rendering
             RenderToolStrip();
-            // Memento initializing
-            history = new UndoRedoHistory<ITravelItineraryDataOwner>(this, 100);
-            // Map control initializing
-            travelMapPlayer.RegisterMouseClickHandler(OnClickEventHandler);
         }
 
         public TravelItineraryData TravelItineraryData
@@ -40,37 +44,35 @@ namespace TravelJournal.WinForm.Simulator.Forms
             }
         }
 
-        protected override void OnDataSet(IConfigData data)
+        protected override void OnDataSet(TravelItineraryData data)
         {
-            TravelItineraryData dt = data as TravelItineraryData;
-            base.OnDataSet(dt);
+            base.OnDataSet(data);
             // Update view
             UpdateView(data);
         }
-        protected override void OnDataChanging(IConfigData data)
+        protected override void OnDataChanging(TravelItineraryData data)
         {
             if(!history.InUndoRedo)
-                history.Do(new TravelItineraryDataMemento(data as TravelItineraryData));
+                history.Do(new TravelItineraryDataMemento(data));
         }
-        protected override void OnDataChanged(IConfigData data)
+        protected override void OnDataChanged(TravelItineraryData data)
         {
             // Update view
             UpdateView(data);
         }
 
-        private void UpdateView(IConfigData data)
+        private void UpdateView(TravelItineraryData data)
         {
-            TravelItineraryData dt = data as TravelItineraryData;
             undoButton.Enabled = history.CanUndo;
             redoButton.Enabled = history.CanRedo;
-            setTimeIntervalTextBox.Text = dt.TimeIntervalPerAnchor.ToString();
-            setCameraNumTextBox.Text = dt.CameraProbPerSpot.ToString();
+            setTimeIntervalTextBox.Text = data.TimeIntervalPerAnchor.ToString();
+            setCameraNumTextBox.Text = data.CameraRadius.ToString();
             // Map
-            if (dt.Anchors != null)
-                travelMapPlayer.SetAnchors(dt.Anchors);
-            if (dt.CameraSpots != null)
-                travelMapPlayer.SetCameraSpots(dt.CameraSpots);
-
+            if (data.Anchors != null)
+                travelMapPlayer.SetAnchors(data.Anchors);
+            if (data.HomePlacemark.CountryName != null)
+                travelMapPlayer.SetHomePlace(data.HomePlacemark);
+            travelMapPlayer.DisconnectAnchors();
         }
         private void RenderToolStrip()
         {
@@ -90,7 +92,6 @@ namespace TravelJournal.WinForm.Simulator.Forms
             }
         }
         
-
         private void TravelItineraryPlanner_Load(object sender, EventArgs e)
         {
         }
@@ -128,22 +129,20 @@ namespace TravelJournal.WinForm.Simulator.Forms
             float value;
             TravelItineraryData dt = data as TravelItineraryData;
             if (float.TryParse(setCameraNumTextBox.Text, out value))
-                dt.CameraProbPerSpot = value;
+                dt.CameraRadius = value;
             else
             {
                 e.Cancel = true;
-                setCameraNumTextBox.Text = dt.CameraProbPerSpot.ToString();
+                setCameraNumTextBox.Text = dt.CameraRadius.ToString();
             }
         }
         private void placeStartButton_Click(object sender, EventArgs e)
         {
             placeAnchorButton.Checked = false;
-            placeCameraSpotButton.Checked = false;
         }
         private void placeAnchorButton_Click(object sender, EventArgs e)
         {
             placeStartButton.Checked = false;
-            placeCameraSpotButton.Checked = false;
         }
         private void placeCameraSpotButton_Click(object sender, EventArgs e)
         {
@@ -152,9 +151,8 @@ namespace TravelJournal.WinForm.Simulator.Forms
         }
         private void clearMarkersButton_Click(object sender, EventArgs e)
         {
-            TravelItineraryData.ClearAnchorsAndCameraSpots();
+            TravelItineraryData.ClearAnchors();
         }
-
 
         private void OnClickEventHandler(object sender, EventArgs e)
         {
@@ -164,33 +162,53 @@ namespace TravelJournal.WinForm.Simulator.Forms
                 if (placeStartButton.Checked)
                 {
                     // Place start point
-
+                    Placemark placemark = travelMapPlayer.ConvertToPlacemark(me.Location);
+                    TravelItineraryData.HomePlacemark = placemark;
+                    UpdateView(data);
                 }
                 else if (placeAnchorButton.Checked)
                 {
                     // Place anchor 
-                    GpsPoint point = travelMapPlayer.ConvertToGpsPoint(me.Location);
+                    SimulationModelPoint point = travelMapPlayer.ConvertToSimulationModelPoint(me.Location);
                     TravelItineraryData.AddAnchor(point);
-                    UpdateView(data);
-                }
-                else if (placeCameraSpotButton.Checked)
-                {
-                    // Place camera spot 
-                    GpsPoint point = travelMapPlayer.ConvertToGpsPoint(me.Location);
-                    TravelItineraryData.AddCameraSpot(point);
                     UpdateView(data);
                 }
             }
         }
+        private void OnMarkerClickEventHandler(GMapMarker item, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && item.Overlay.Id == TravelMapPlayer.ID_ANCHORS_LAYER)
+            {
+                int index = travelMapPlayer.GetAnchorIndex(item);
+                // Create config dialog
+                TrackBarConfigDialog dialog = new TrackBarConfigDialog();
+                dialog.Text = "Set the number of photos of the spot.";
+                dialog.InitializeData(0, 20, data.Anchors[index].PhotoGenNumber);
+                dialog.ShowDialog();
+                // Set photo number
+                data.SetAnchorPhotoGenNumber(index, dialog.Data);
+                // Update view
+                UpdateView(data);
+            }
+        }
 
+        private void connectAnchorsButton_Click(object sender, EventArgs e)
+        {
+            toolStrip.Enabled = false;
+            SimulationDataCompiler compiler = new SimulationDataCompiler(data.CameraRadius);
+            TravelItineraryData compiledData = compiler.Compile(data);
+            UpdateView(compiledData);
+            travelMapPlayer.ConnectAnchors();
+            toolStrip.Enabled = true;
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            UpdateView(data);
+        }
     }
 
-    public interface ITravelItineraryDataOwner
-    {
-        TravelItineraryData TravelItineraryData { get; set; }
-    }
-
-    public class TravelItineraryDataMemento : IMemento<ITravelItineraryDataOwner>
+    public class TravelItineraryDataMemento : IMemento<TravelItineraryPlanner>
     {
         string xmlStream;
 
@@ -199,11 +217,15 @@ namespace TravelJournal.WinForm.Simulator.Forms
             xmlStream = XmlSerialization.SerializeString<TravelItineraryData>(data);
         }
 
-        public IMemento<ITravelItineraryDataOwner> Restore(ITravelItineraryDataOwner target)
+        public IMemento<TravelItineraryPlanner> Restore(TravelItineraryPlanner target)
         {
-            IMemento<ITravelItineraryDataOwner> inverse = new TravelItineraryDataMemento(target.TravelItineraryData);
+            IMemento<TravelItineraryPlanner> inverse = new TravelItineraryDataMemento(target.TravelItineraryData);
             target.TravelItineraryData = XmlSerialization.DeserializeString<TravelItineraryData>(xmlStream);
             return inverse;
         }
     }
+
+    #region Workaround for UI
+    public class ConfigFormTravelItineraryData : ConfigForm<TravelItineraryData> { } 
+    #endregion
 }

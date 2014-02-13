@@ -17,8 +17,7 @@ namespace TravelJournal.WinForm.Simulator
 {
     public partial class TravelJournalGenerationSimulation : UserControl , ITestProjectControl
     {
-        ConfigForm configPopupWindow;
-
+ 
         public TravelJournalGenerationSimulation()
         {
             InitializeComponent();
@@ -198,7 +197,7 @@ namespace TravelJournal.WinForm.Simulator
 
         private void designButton_Click(object sender, EventArgs e)
         {
-            configPopupWindow = new TravelItineraryPlanner();
+            TravelItineraryPlanner configPopupWindow = new TravelItineraryPlanner();
             configPopupWindow.Data = new TravelItineraryData();
             configPopupWindow.ShowDialog();
         }

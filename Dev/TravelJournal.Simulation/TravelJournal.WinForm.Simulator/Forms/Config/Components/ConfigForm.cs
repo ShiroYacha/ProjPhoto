@@ -11,10 +11,10 @@ using TravelJournal.WinForm.Simulator.Rendering;
 
 namespace TravelJournal.WinForm.Simulator.Forms
 {
-    public partial class ConfigForm : Form 
+    public partial class ConfigForm<T> : Form where T : IConfigData 
     {
         private ConfigDataPreviewForm dataPreviewer;
-        protected IConfigData data;
+        protected T data;
         private string extension;
 
         public ConfigForm()
@@ -24,7 +24,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
             RenderMenu();
         }
 
-        public IConfigData Data
+        public T Data
         {
             get
             {
@@ -64,14 +64,16 @@ namespace TravelJournal.WinForm.Simulator.Forms
         } 
         #endregion
 
-        protected virtual void OnDataSet(IConfigData data)
+        protected virtual void OnDataSet(T data)
         {
             this.data = data;
             this.data.OnDataChanging += this.OnDataChanging;
             this.data.OnDataChanged += this.OnDataChanged;
         }
-        protected virtual void OnDataChanging(IConfigData data) { }
-        protected virtual void OnDataChanged(IConfigData data) { }
+        private void OnDataChanging(IConfigData data) { OnDataChanging((T)data); }
+        private void OnDataChanged(IConfigData data) { OnDataChanged((T)data); }
+        protected virtual void OnDataChanging(T data){ }
+        protected virtual void OnDataChanged(T data) { }
         
         private void previewToolStripMenuItem_Click(object sender, EventArgs e)
         {

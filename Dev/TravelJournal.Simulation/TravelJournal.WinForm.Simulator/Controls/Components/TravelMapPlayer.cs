@@ -17,20 +17,31 @@ namespace TravelJournal.WinForm.Simulator.Controls
 {
     public partial class TravelMapPlayer : UserControl,ITestControl
     {
-        private const int RATIO_DEFAULT_ZOOM = 2;
+        public static string ID_ANCHORS_LAYER = "ID_ANCHORS_LAYER";
+        public static string ID_HOMEPLACEMARKS_LAYER = "ID_HOMEPLACEMARKS_LAYER";
+        public static string ID_ANCHORS_ROUTE_LAYER = "ID_ANCHORS_ROUTE_LAYER";
+        public static string ID_ANCHORS_ROUTE = "ID_ANCHORS_ROUTE";
 
-        private const string ID_ANCHORS_LAYER = "Anchors layer";
-        private const string ID_CAMERASPOT_LAYER = "Camera spots layer";
+        private const int RATIO_MAX_ZOOM = 18;
+        private const int RATIO_MIN_ZOOM = 1;
+        private const int RATIO_DEFAULT_ZOOM = 2;
+        private const int RATIO_DEFAULT_ZOOM_COUNTRY = 10;
+        private const int AMOUNT_PHOTO_YELLOW_MARKER = 5;
+        private const int AMOUNT_PHOTO_ORANGE_MARKER = 10;
 
         private GMapOverlay anchorsLayer = new GMapOverlay(ID_ANCHORS_LAYER);
-        private GMapOverlay cameraSpotsLayer = new GMapOverlay(ID_CAMERASPOT_LAYER);
+        private GMapOverlay homePlacemarkLayer = new GMapOverlay(ID_HOMEPLACEMARKS_LAYER);
+        private GMapOverlay anchorsRouteLayer = new GMapOverlay(ID_ANCHORS_ROUTE_LAYER);
+
+        public GMapControl GMapControl { get { return gMapControl; } }
 
         public TravelMapPlayer()
         {
             InitializeComponent();
             // Load layers
-            gMapControl.Overlays.Add(cameraSpotsLayer);
             gMapControl.Overlays.Add(anchorsLayer);
+            gMapControl.Overlays.Add(homePlacemarkLayer);
+            gMapControl.Overlays.Add(anchorsRouteLayer);
         }
 
         private void TravelMapPlayer_Load(object sender, EventArgs e)
@@ -40,12 +51,18 @@ namespace TravelJournal.WinForm.Simulator.Controls
 
         private void InitializeGMap()
         {
-            gMapControl.MapProvider = GMap.NET.MapProviders.GMapProviders.BingMap;
+            Provider = GMap.NET.MapProviders.GMapProviders.BingMap;
             gMapControl.DragButton = MouseButtons.Left;
             GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
-            gMapControl.MaxZoom = 15;
-            gMapControl.MinZoom = 1;
+            gMapControl.MaxZoom = RATIO_MAX_ZOOM;
+            gMapControl.MinZoom = RATIO_MIN_ZOOM;
             gMapControl.Zoom = RATIO_DEFAULT_ZOOM;
+        }
+
+        public GMapProvider Provider
+        {
+            get { return gMapControl.MapProvider; }
+            set { gMapControl.MapProvider = value; }
         }
 
         public void FocusOn(string keywords, int zoom = RATIO_DEFAULT_ZOOM)
@@ -54,33 +71,85 @@ namespace TravelJournal.WinForm.Simulator.Controls
             gMapControl.Zoom = zoom;
         }
 
-        public void RegisterMouseClickHandler(MouseEventHandler handler)
+        public int GetAnchorIndex(GMapMarker item)
         {
-            gMapControl.MouseClick += handler;
+            return anchorsLayer.Markers.IndexOf(item);
         }
-
-        public GpsPoint ConvertToGpsPoint(Point localPoint)
-        {
-            PointLatLng gps=gMapControl.FromLocalToLatLng(localPoint.X,localPoint.Y);
-            return new GpsPoint() { Lat = gps.Lat, Lng = gps.Lng };
-        }
-
-        public void SetAnchors(List<GpsPoint> anchors)
+        public void SetAnchors(List<SimulationModelPoint> anchors)
         {
             anchorsLayer.Markers.Clear();
-            foreach (GpsPoint anchor in anchors)
+            foreach (SimulationModelPoint anchor in anchors)
             {
-                anchorsLayer.Markers.Add(new GMarkerGoogle(new PointLatLng(anchor.Lat,anchor.Lng), GMarkerGoogleType.blue_small));
+                GMarkerGoogleType markerType;
+                if (anchor.PhotoGenNumber == 0)
+                    markerType = GMarkerGoogleType.blue_small;
+                else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_YELLOW_MARKER)
+                    markerType = GMarkerGoogleType.yellow_small;
+                else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_ORANGE_MARKER)
+                    markerType = GMarkerGoogleType.orange_small;
+                else
+                    markerType = GMarkerGoogleType.red_small;
+                anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, markerType));
             }
         }
-
-        public void SetCameraSpots(List<GpsPoint> cameraSpots)
+        public void SetHomePlace(Placemark placeMark)
         {
-            cameraSpotsLayer.Markers.Clear();
-            foreach (GpsPoint cameraSpot in cameraSpots)
+            if (placeMark.CountryName != string.Empty)
             {
-                cameraSpotsLayer.Markers.Add(new GMarkerGoogle(new PointLatLng(cameraSpot.Lat, cameraSpot.Lng), GMarkerGoogleType.red_small));
+                // Get keyword
+                GeoCoderStatusCode code;
+                string keyword = placeMark.LocalityName ?? (placeMark.DistrictName ?? placeMark.AdministrativeAreaName);
+                if (keyword != string.Empty)
+                    keyword += ",";
+                keyword += placeMark.CountryName;
+                // Get gps out of keyword
+                PointLatLng point = GMapProviders.GoogleMap.GetPoint(keyword, out code).Value;
+                // Initialize position if no anchors are added
+                if (anchorsLayer.Markers.Count == 0)
+                {
+                    gMapControl.Position = point;
+                    gMapControl.Zoom = RATIO_DEFAULT_ZOOM_COUNTRY;
+                }
+                // Place marker
+                GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
+                homePlacemarkLayer.Markers.Clear();
+                homePlacemarkLayer.Markers.Add(marker);
             }
+        }
+        public void ConnectAnchors()
+        {
+            GMapRoute routes = new GMapRoute(ID_ANCHORS_ROUTE);
+            routes.Stroke.Width = 2;
+            routes.Stroke.Color = Color.DodgerBlue;
+            for(int i=0;i<anchorsLayer.Markers.Count;i++)
+            {
+                routes.Points.Add(anchorsLayer.Markers[i].Position);
+                //PointLatLng start = anchorsLayer.Markers[i].Position;
+                //PointLatLng end = i == anchorsLayer.Markers.Count ? anchorsLayer.Markers[0].Position : anchorsLayer.Markers[i + 1].Position;
+                //MapRoute route = GMap.NET.MapProviders.GoogleMapProvider.Instance.GetRoute(
+                //  start, end, false, false, (int)gMapControl.Zoom);
+            }
+            routes.Points.Add(anchorsLayer.Markers[0].Position);
+            anchorsRouteLayer.Clear();
+            anchorsRouteLayer.Routes.Add(routes);
+        }
+        public void DisconnectAnchors()
+        {
+            anchorsRouteLayer.Clear();
+        }
+
+        public SimulationModelPoint ConvertToSimulationModelPoint(Point localPoint)
+        {
+            PointLatLng gps = gMapControl.FromLocalToLatLng(localPoint.X, localPoint.Y);
+            return new SimulationModelPoint() { Gps = gps };
+        }
+        public Placemark ConvertToPlacemark(Point localPoint)
+        {
+            PointLatLng gps = gMapControl.FromLocalToLatLng(localPoint.X, localPoint.Y);
+            // Get geo coordinate
+            List<Placemark> plc = null;
+            var st = GMapProviders.GoogleMap.GetPlacemarks(gps, out plc);
+            return plc[0];
         }
 
         private void test()
@@ -99,7 +168,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
                 {
                     if (!string.IsNullOrEmpty(pl.PostalCodeNumber))
                     {
-
+                        
                     }
                 }
             }
@@ -109,5 +178,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
         {
             InitializeGMap();
         }
+
+
     }
 }
