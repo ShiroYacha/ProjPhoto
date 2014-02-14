@@ -25,7 +25,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
         private const int RATIO_MAX_ZOOM = 18;
         private const int RATIO_MIN_ZOOM = 1;
         private const int RATIO_DEFAULT_ZOOM = 2;
-        private const int RATIO_DEFAULT_ZOOM_COUNTRY = 10;
+        private const int RATIO_BIG_ZOOM = 12;
         private const int AMOUNT_PHOTO_YELLOW_MARKER = 5;
         private const int AMOUNT_PHOTO_ORANGE_MARKER = 10;
 
@@ -65,10 +65,15 @@ namespace TravelJournal.WinForm.Simulator.Controls
             set { gMapControl.MapProvider = value; }
         }
 
-        public void FocusOn(string keywords, int zoom = RATIO_DEFAULT_ZOOM)
+        public void FocusOn(int index, int zoom = RATIO_BIG_ZOOM)
         {
-            gMapControl.SetPositionByKeywords(keywords);
-            gMapControl.Zoom = zoom;
+            if (IsHandleCreated)
+                this.Invoke(
+                   new MethodInvoker(() =>
+                   {
+                       gMapControl.Position = anchorsLayer.Markers[index].Position;
+                       gMapControl.Zoom = zoom;
+                   }));
         }
 
         public int GetAnchorIndex(GMapMarker item)
@@ -77,20 +82,25 @@ namespace TravelJournal.WinForm.Simulator.Controls
         }
         public void SetAnchors(IEnumerable<SimulationModelPoint> anchors)
         {
-            anchorsLayer.Markers.Clear();
-            foreach (SimulationModelPoint anchor in anchors)
-            {
-                GMarkerGoogleType markerType;
-                if (anchor.PhotoGenNumber == 0)
-                    markerType = GMarkerGoogleType.blue_small;
-                else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_YELLOW_MARKER)
-                    markerType = GMarkerGoogleType.yellow_small;
-                else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_ORANGE_MARKER)
-                    markerType = GMarkerGoogleType.orange_small;
-                else
-                    markerType = GMarkerGoogleType.red_small;
-                anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, markerType));
-            }
+            if (IsHandleCreated)
+                this.Invoke(
+                   new MethodInvoker(() =>
+                   {
+                       anchorsLayer.Markers.Clear();
+                       foreach (SimulationModelPoint anchor in anchors)
+                       {
+                           GMarkerGoogleType markerType;
+                           if (anchor.PhotoGenNumber == 0)
+                               markerType = GMarkerGoogleType.blue_small;
+                           else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_YELLOW_MARKER)
+                               markerType = GMarkerGoogleType.yellow_small;
+                           else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_ORANGE_MARKER)
+                               markerType = GMarkerGoogleType.orange_small;
+                           else
+                               markerType = GMarkerGoogleType.red_small;
+                           anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, markerType));
+                       }
+                   }));
         }
         public void SetHomePlace(Placemark placeMark)
         {
@@ -108,7 +118,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
                 if (anchorsLayer.Markers.Count == 0)
                 {
                     gMapControl.Position = point;
-                    gMapControl.Zoom = RATIO_DEFAULT_ZOOM_COUNTRY;
+                    gMapControl.Zoom = RATIO_BIG_ZOOM;
                 }
                 // Place marker
                 GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);

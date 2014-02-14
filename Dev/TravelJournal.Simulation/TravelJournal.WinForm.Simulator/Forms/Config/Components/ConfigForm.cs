@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +17,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
     {
         private ConfigDataPreviewForm dataPreviewer;
         protected T data;
-        private string extension;
+        private string extensionFilter;
 
         public ConfigForm()
         {
@@ -70,6 +72,15 @@ namespace TravelJournal.WinForm.Simulator.Forms
             this.data.DataChanging += this.OnDataChanging;
             this.data.DataChanged += this.OnDataChanged;
         }
+        private void SetupFileDialogs()
+        {
+            string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            openFileDialog.InitialDirectory = directory;
+            openFileDialog.Filter = extensionFilter;
+            saveFileDialog.InitialDirectory = directory;
+            saveFileDialog.Filter = extensionFilter;
+            saveFileDialog.AddExtension = true;
+        }
         private void OnDataChanging(ConfigDataBase data) { OnDataChanging((T)data); }
         private void OnDataChanged(ConfigDataBase data) { OnDataChanged((T)data); }
         protected virtual void OnDataChanging(T data){ }
@@ -90,13 +101,31 @@ namespace TravelJournal.WinForm.Simulator.Forms
                     return;
                 }
                 this.Text = data.ConfigName;
-                this.extension = data.Extension;
+                this.extensionFilter = data.ExtensionFilter;
+                SetupFileDialogs();
             }
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             data.Initialize();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog.ShowDialog()==DialogResult.OK)
+            {
+                T data = XmlSerialization.Deserialize<T>(openFileDialog.FileName);
+                this.Data = data;
+            }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(saveFileDialog.ShowDialog()==DialogResult.OK)
+            {
+                XmlSerialization.Serialize<T>(saveFileDialog.FileName, this.data);
+            }
         }
 
     }

@@ -33,8 +33,9 @@
             this.connectButton = new System.Windows.Forms.ToolStripButton();
             this.settingButton = new System.Windows.Forms.ToolStripButton();
             this.testButton = new System.Windows.Forms.ToolStripButton();
-            this.separator = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.designButton = new System.Windows.Forms.ToolStripButton();
+            this.separator = new System.Windows.Forms.ToolStripSeparator();
             this.playButton = new System.Windows.Forms.ToolStripButton();
             this.pauseButton = new System.Windows.Forms.ToolStripButton();
             this.resetButton = new System.Windows.Forms.ToolStripButton();
@@ -45,7 +46,6 @@
             this.rightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logger = new TravelJournal.WinForm.Simulator.Controls.Logger();
             this.travelMapPlayer = new TravelJournal.WinForm.Simulator.Controls.TravelMapPlayer();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip.SuspendLayout();
             this.mainTableLayoutPanel.SuspendLayout();
             this.leftTableLayoutPanel.SuspendLayout();
@@ -106,13 +106,13 @@
             this.testButton.Text = "toolStripButton1";
             this.testButton.Click += new System.EventHandler(this.testButton_Click);
             // 
-            // separator
+            // toolStripSeparator1
             // 
-            this.separator.BackColor = System.Drawing.Color.RoyalBlue;
-            this.separator.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.separator.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
-            this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(6, 33);
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 33);
             // 
             // designButton
             // 
@@ -125,6 +125,14 @@
             this.designButton.Text = "toolStripButton1";
             this.designButton.Click += new System.EventHandler(this.designButton_Click);
             // 
+            // separator
+            // 
+            this.separator.BackColor = System.Drawing.Color.RoyalBlue;
+            this.separator.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.separator.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
+            this.separator.Name = "separator";
+            this.separator.Size = new System.Drawing.Size(6, 33);
+            // 
             // playButton
             // 
             this.playButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -134,6 +142,7 @@
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(23, 36);
             this.playButton.Text = "toolStripButton1";
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // pauseButton
             // 
@@ -164,7 +173,7 @@
             this.mainTableLayoutPanel.Controls.Add(this.rightTableLayoutPanel, 1, 0);
             this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 43);
-            this.mainTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 1;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -244,14 +253,6 @@
             this.travelMapPlayer.TabIndex = 1;
             this.travelMapPlayer.Load += new System.EventHandler(this.travelMapPlayer_Load);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 33);
-            // 
             // TravelJournalGenerationSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -260,7 +261,7 @@
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TravelJournalGenerationSimulation";
             this.Size = new System.Drawing.Size(1267, 745);
             this.Load += new System.EventHandler(this.TravelJournalGenerationSimulation_Load);

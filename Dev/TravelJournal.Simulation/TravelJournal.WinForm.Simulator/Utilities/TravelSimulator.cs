@@ -21,21 +21,22 @@ namespace TravelJournal.WinForm.Simulator
         private double currentSegmentLngStep;
         private int currentSegmentIndex;
 
-        public TravelSimulator(TravelMapPlayer player, TravelItineraryData data)
+        public TravelSimulator(TravelMapPlayer player)
         {
             this.player = player;
-            this.data = data;
         }
 
-        public bool ValidateData()
+        public bool ValidateData(TravelItineraryData data)
         {
             if (data.IsComplete)
             {
                 if (!data.IsCompiled)
                 {
                     TravelSimulationDataCompiler compiler = new TravelSimulationDataCompiler(data.CameraRadius);
-                    data = compiler.Compile(data);
+                    this.data = compiler.Compile(data);
                 }
+                else
+                    this.data = data;
                 return true;
             }
             else
@@ -53,31 +54,48 @@ namespace TravelJournal.WinForm.Simulator
 
         private void CalculateSegmentLength()
         {
+            if (currentIndex == data.Anchors.Count)
+            {
+                ResetSimulation();
+            }
+            else
             // Get start and end point
-            SimulationModelPoint startPoint = data.Anchors[currentIndex];
-            SimulationModelPoint endPoint = data.Anchors[currentIndex == data.Anchors.Count - 1 ? 0 : currentIndex + 1];
-            // Calculate segment count
-            long interval = startPoint.CustomTimeInterval == 0 ? data.TimeIntervalPerAnchor : startPoint.CustomTimeInterval;
-            currentSegmentCount = (int)( interval / TravelJournalGenerationSimulation.generalSettings.SimualtionStep);
-            // Initialize segment index
-            currentSegmentIndex = 0;
-            // Calculate segment step
-            currentSegmentLatStep = endPoint.Gps.Lat - startPoint.Gps.Lat;
-            currentSegmentLngStep = endPoint.Gps.Lng - startPoint.Gps.Lng;
+            {
+                SimulationModelPoint startPoint = data.Anchors[currentIndex];
+                SimulationModelPoint endPoint = data.Anchors[currentIndex == data.Anchors.Count - 1 ? 0 : currentIndex + 1];
+                // Calculate segment count
+                long interval = startPoint.CustomTimeInterval == 0 ? data.TimeIntervalPerAnchor : startPoint.CustomTimeInterval;
+                currentSegmentCount = (int)(interval / TravelJournalGenerationSimulation.generalSettings.SimualtionStep);
+                // Initialize segment index
+                currentSegmentIndex = 0;
+                // Calculate segment step
+                currentSegmentLatStep = endPoint.Gps.Lat - startPoint.Gps.Lat;
+                currentSegmentLngStep = endPoint.Gps.Lng - startPoint.Gps.Lng;
+            }
         }
 
         private void OnStep()
         {
-            if (currentSegmentIndex == currentSegmentCount - 1)
+            if (currentSegmentIndex >= currentSegmentCount - 1)
             {
-                // Recalculate new segment
-
+                // Calculate new segment
+                currentIndex++;
+                CalculateSegmentLength();
+                SimulationModelPoint point = data.Anchors.First();
+                player.SetAnchors(new List<SimulationModelPoint>() { point });
+                currentSegmentIndex++;
+            }
+            else if (currentSegmentIndex == 0) // Draw first point
+            {
+                SimulationModelPoint point = data.Anchors.First();
+                player.SetAnchors(new List<SimulationModelPoint>() { point });
+                currentSegmentIndex++;
             }
             else // Draw next segment using the linear model
             {
                 // Take pasted anchors
-                List<SimulationModelPoint> points = new List<SimulationModelPoint>(data.Anchors.Take(currentIndex));
-                SimulationModelPoint lastPoint=points.Last();
+                List<SimulationModelPoint> points = new List<SimulationModelPoint>(data.Anchors.Take(currentIndex+1));
+                SimulationModelPoint lastPoint = points.Last();
                 // Calculate current anchor (linear interpolation)
                 SimulationModelPoint interPoint;
                 if (currentSegmentIndex == currentSegmentCount - 2)
@@ -92,10 +110,8 @@ namespace TravelJournal.WinForm.Simulator
                 }
                 points.Add(interPoint);
                 player.SetAnchors(points);
+                currentSegmentIndex++;
             }
-            SimulationModelPoint startPoint=data.Anchors[currentIndex];
-            SimulationModelPoint endPoint=data.Anchors[currentIndex==data.Anchors.Count-1?0:currentIndex+1];
-            
         }
 
         public void PauseSimulation()

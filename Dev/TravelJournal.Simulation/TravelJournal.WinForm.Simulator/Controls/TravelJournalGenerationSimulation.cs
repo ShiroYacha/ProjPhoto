@@ -27,7 +27,7 @@ namespace TravelJournal.WinForm.Simulator
             InitializeComponent();
             // Setup
             itineraryData = new TravelItineraryData();
-            simulator = new TravelSimulator(travelMapPlayer,itineraryData);
+            simulator = new TravelSimulator(travelMapPlayer);
             // Rendering
             RenderToolStrip();
         }
@@ -176,7 +176,7 @@ namespace TravelJournal.WinForm.Simulator
         private void UpdateViews()
         {
             // Load simulator
-            if (simulator.ValidateData())
+            if (simulator.ValidateData(itineraryData))
                 UpdateSimulatorConsole(true);
             else
                 UpdateSimulatorConsole(false);
@@ -244,6 +244,11 @@ namespace TravelJournal.WinForm.Simulator
             configWindow.Data = generalSettings;
             configWindow.ShowDialog();
             UpdateViews();
+        }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            simulator.StartSimulation();
         }
 
 

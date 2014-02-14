@@ -22,10 +22,9 @@ namespace TravelJournal.WinForm.Simulator
         {
             get { return "Travel itinerary data"; }
         }
-
-        public override string Extension
+        public override string ExtensionFilter
         {
-            get { return ".tid"; }
+            get { return "Travel itinerary data files|*.tid"; }
         }
 
         private long timeIntervalPerAnchor;

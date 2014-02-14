@@ -28,7 +28,7 @@ namespace TravelJournal.WinForm.Simulator
         public static T Deserialize<T>(string path)
         {
             DataContractSerializer dcs = new DataContractSerializer(typeof(T));
-            using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Read))
+            using (Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 using (XmlDictionaryReader reader =
                     XmlDictionaryReader.CreateTextReader(stream,Encoding.UTF8,new XmlDictionaryReaderQuotas(), null))

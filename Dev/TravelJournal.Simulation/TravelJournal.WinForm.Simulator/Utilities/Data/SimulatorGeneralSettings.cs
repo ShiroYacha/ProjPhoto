@@ -21,9 +21,9 @@ namespace TravelJournal.WinForm.Simulator
         }
 
         [Browsable(false)]
-        public override string Extension
+        public override string ExtensionFilter
         {
-            get { return ".gs"; }
+            get { return "Simulator general settings files|*.sgs"; }
         }
 
         private long simualtionStep = DEFAULT_SIMULATION_STEP;
