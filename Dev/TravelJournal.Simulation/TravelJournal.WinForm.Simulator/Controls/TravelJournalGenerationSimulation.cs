@@ -17,14 +17,17 @@ namespace TravelJournal.WinForm.Simulator
 {
     public partial class TravelJournalGenerationSimulation : UserControl , ITestProjectControl
     {
-        private TravelSimulator simulator = new TravelSimulator();
+        private TravelSimulator simulator;
 
         public static SimulatorGeneralSettings generalSettings = new SimulatorGeneralSettings();
-        private TravelItineraryData itineraryData =new TravelItineraryData();
+        private TravelItineraryData itineraryData;
  
         public TravelJournalGenerationSimulation()
         {
             InitializeComponent();
+            // Setup
+            itineraryData = new TravelItineraryData();
+            simulator = new TravelSimulator(travelMapPlayer,itineraryData);
             // Rendering
             RenderToolStrip();
         }
@@ -173,7 +176,7 @@ namespace TravelJournal.WinForm.Simulator
         private void UpdateViews()
         {
             // Load simulator
-            if (simulator.ValidateData(itineraryData))
+            if (simulator.ValidateData())
                 UpdateSimulatorConsole(true);
             else
                 UpdateSimulatorConsole(false);

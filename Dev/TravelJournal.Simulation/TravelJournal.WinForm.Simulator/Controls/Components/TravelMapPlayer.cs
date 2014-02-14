@@ -75,7 +75,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
         {
             return anchorsLayer.Markers.IndexOf(item);
         }
-        public void SetAnchors(List<SimulationModelPoint> anchors)
+        public void SetAnchors(IEnumerable<SimulationModelPoint> anchors)
         {
             anchorsLayer.Markers.Clear();
             foreach (SimulationModelPoint anchor in anchors)
