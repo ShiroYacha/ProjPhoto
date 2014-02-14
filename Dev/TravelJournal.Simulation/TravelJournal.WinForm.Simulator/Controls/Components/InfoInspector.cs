@@ -45,24 +45,27 @@ namespace TravelJournal.WinForm.Simulator.Controls
 
         public void UpdateInfo(Dictionary<string, string> infoDict)
         {
-            listView.BeginUpdate();
-            listView.Sorting = SortOrder.Ascending;
-            foreach (KeyValuePair<string, string> info in infoDict)
+            if (infoDict != null)
             {
-                if (!infoList.Contains(info.Key))
+                listView.BeginUpdate();
+                listView.Sorting = SortOrder.Ascending;
+                foreach (KeyValuePair<string, string> info in infoDict)
                 {
-                    ListViewItem item = new ListViewItem(info.Key);
-                    item.Name = info.Key;
-                    item.SubItems.Add(info.Value);
-                    listView.Items.Add(item);
-                    infoList.Add(info.Key);
+                    if (!infoList.Contains(info.Key))
+                    {
+                        ListViewItem item = new ListViewItem(info.Key);
+                        item.Name = info.Key;
+                        item.SubItems.Add(info.Value);
+                        listView.Items.Add(item);
+                        infoList.Add(info.Key);
+                    }
+                    else
+                    {
+                        listView.Items[info.Key].SubItems[1].Text = info.Value;
+                    }
                 }
-                else
-                {
-                    listView.Items[info.Key].SubItems[1].Text = info.Value;
-                }
+                listView.EndUpdate();
             }
-            listView.EndUpdate();
         }
 
         public void Initialize()

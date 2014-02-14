@@ -17,6 +17,10 @@ namespace TravelJournal.WinForm.Simulator
 {
     public partial class TravelJournalGenerationSimulation : UserControl , ITestProjectControl
     {
+        private TravelSimulator simulator = new TravelSimulator();
+
+        public static SimulatorGeneralSettings generalSettings = new SimulatorGeneralSettings();
+        private TravelItineraryData itineraryData =new TravelItineraryData();
  
         public TravelJournalGenerationSimulation()
         {
@@ -158,17 +162,42 @@ namespace TravelJournal.WinForm.Simulator
         }
         private void InitializeAllControls()
         {
+            // Initialize
             foreach (ITestControl control in leftTableLayoutPanel.Controls)
                 control.Initialize();
             foreach (ITestControl control in rightTableLayoutPanel.Controls)
                 control.Initialize();
+            // Display the general settings
+            UpdateViews();
+        }
+        private void UpdateViews()
+        {
+            // Load simulator
+            if (simulator.ValidateData(itineraryData))
+                UpdateSimulatorConsole(true);
+            else
+                UpdateSimulatorConsole(false);
+            // Update other inspector data
+            UpdateRestInspectors();
+        }
+        private void UpdateSimulatorConsole(bool enable)
+        {
+            playButton.Enabled = enable;
+            pauseButton.Enabled = enable;
+            resetButton.Enabled = enable;
+            UpdateInfoInspector(new Dictionary<string, string>() {{"Simulator status", enable?"Active":"Inactive"}});
         } 
+        private void UpdateRestInspectors()
+        {
+            UpdateInfoInspector(generalSettings.Display());
+            UpdateInfoInspector(itineraryData.Display());
+        }
 
         #endregion
 
         private void TravelJournalGenerationSimulation_Load(object sender, EventArgs e)
         {
-
+            InitializeAllControls();
         }
         private void testButton_Click(object sender, EventArgs e)
         {
@@ -194,22 +223,24 @@ namespace TravelJournal.WinForm.Simulator
                     item.Enabled = true;
             }
         }
-
         private void designButton_Click(object sender, EventArgs e)
         {
             TravelItineraryPlanner configPopupWindow = new TravelItineraryPlanner();
-            configPopupWindow.Data = new TravelItineraryData();
+            configPopupWindow.Data = itineraryData;
             configPopupWindow.ShowDialog();
+            itineraryData = configPopupWindow.Data;
+            UpdateViews();
         }
-
         private void travelMapPlayer_Load(object sender, EventArgs e)
         {
 
         }
-
         private void settingButton_Click(object sender, EventArgs e)
         {
-
+            PropertyConfigForm<SimulatorGeneralSettings> configWindow = new PropertyConfigForm<SimulatorGeneralSettings>();
+            configWindow.Data = generalSettings;
+            configWindow.ShowDialog();
+            UpdateViews();
         }
 
 

@@ -21,14 +21,14 @@ namespace TravelJournal.WinForm.Simulator
         public long CustomTimeInterval { get; set; }
     }
 
-    public class SimulationDataCompiler
+    public class TravelSimulationDataCompiler
     {
         private const double RATIO_KM_TO_GEO_DISTANCE = 100.0*60.0;
         private GaussianRandom gaussianRandom = new GaussianRandom();
         private Random uniformRandom = new Random();
         private double radius;
 
-        public SimulationDataCompiler(double radiusInKm)
+        public TravelSimulationDataCompiler(double radiusInKm)
         {
             this.radius = radiusInKm / RATIO_KM_TO_GEO_DISTANCE;
         }

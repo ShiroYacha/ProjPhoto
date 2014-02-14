@@ -122,16 +122,12 @@ namespace TravelJournal.WinForm.Simulator.Controls
             routes.Stroke.Width = 2;
             routes.Stroke.Color = Color.DodgerBlue;
             for(int i=0;i<anchorsLayer.Markers.Count;i++)
-            {
                 routes.Points.Add(anchorsLayer.Markers[i].Position);
-                //PointLatLng start = anchorsLayer.Markers[i].Position;
-                //PointLatLng end = i == anchorsLayer.Markers.Count ? anchorsLayer.Markers[0].Position : anchorsLayer.Markers[i + 1].Position;
-                //MapRoute route = GMap.NET.MapProviders.GoogleMapProvider.Instance.GetRoute(
-                //  start, end, false, false, (int)gMapControl.Zoom);
-            }
             routes.Points.Add(anchorsLayer.Markers[0].Position);
             anchorsRouteLayer.Clear();
             anchorsRouteLayer.Routes.Add(routes);
+            // Clear the anchors
+            anchorsLayer.Markers.Clear();
         }
         public void DisconnectAnchors()
         {

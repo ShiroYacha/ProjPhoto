@@ -11,7 +11,7 @@ using TravelJournal.WinForm.Simulator.Rendering;
 
 namespace TravelJournal.WinForm.Simulator.Forms
 {
-    public partial class ConfigForm<T> : Form where T : IConfigData 
+    public partial class ConfigForm<T> : Form where T : ConfigDataBase
     {
         private ConfigDataPreviewForm dataPreviewer;
         protected T data;
@@ -59,7 +59,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
         private void LaunchDataPreviewer()
         {
             dataPreviewer = new ConfigDataPreviewForm();
-            dataPreviewer.InjectData(data);
+            dataPreviewer.InjectData(data as ConfigDataBase);
             dataPreviewer.ShowDialog();
         } 
         #endregion
@@ -67,11 +67,11 @@ namespace TravelJournal.WinForm.Simulator.Forms
         protected virtual void OnDataSet(T data)
         {
             this.data = data;
-            this.data.OnDataChanging += this.OnDataChanging;
-            this.data.OnDataChanged += this.OnDataChanged;
+            this.data.DataChanging += this.OnDataChanging;
+            this.data.DataChanged += this.OnDataChanged;
         }
-        private void OnDataChanging(IConfigData data) { OnDataChanging((T)data); }
-        private void OnDataChanged(IConfigData data) { OnDataChanged((T)data); }
+        private void OnDataChanging(ConfigDataBase data) { OnDataChanging((T)data); }
+        private void OnDataChanged(ConfigDataBase data) { OnDataChanged((T)data); }
         protected virtual void OnDataChanging(T data){ }
         protected virtual void OnDataChanged(T data) { }
         
@@ -92,6 +92,11 @@ namespace TravelJournal.WinForm.Simulator.Forms
                 this.Text = data.ConfigName;
                 this.extension = data.Extension;
             }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            data.Initialize();
         }
 
     }

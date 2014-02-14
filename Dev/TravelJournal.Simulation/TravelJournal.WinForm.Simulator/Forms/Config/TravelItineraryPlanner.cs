@@ -195,7 +195,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
         private void connectAnchorsButton_Click(object sender, EventArgs e)
         {
             toolStrip.Enabled = false;
-            SimulationDataCompiler compiler = new SimulationDataCompiler(data.CameraRadius);
+            TravelSimulationDataCompiler compiler = new TravelSimulationDataCompiler(data.CameraRadius);
             TravelItineraryData compiledData = compiler.Compile(data);
             UpdateView(compiledData);
             travelMapPlayer.ConnectAnchors();

@@ -62,13 +62,14 @@
     <Compile Include="Controls\Bases\DoubleBufferListView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utilities\TravelSimulator.cs" />
     <Compile Include="Forms\Config\Components\TrackBarConfigDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Config\Components\TrackBarConfigDialog.Designer.cs">
       <DependentUpon>TrackBarConfigDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Config\Data\IConfigData.cs" />
+    <Compile Include="Utilities\Data\ConfigDataBase.cs" />
     <Compile Include="Controls\Components\InfoInspector.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,7 +90,7 @@
       <DependentUpon>TravelMapPlayer.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\GaussianRandom.cs" />
-    <Compile Include="Utilities\SimulationDataCompiler.cs" />
+    <Compile Include="Utilities\TravelSimulationDataCompiler.cs" />
     <Compile Include="Utilities\XmlSerialization.cs" />
     <Compile Include="Forms\Config\Components\ConfigDataPreviewForm.cs">
       <SubType>Form</SubType>
@@ -97,8 +98,8 @@
     <Compile Include="Forms\Config\Components\ConfigDataPreviewForm.Designer.cs">
       <DependentUpon>ConfigDataPreviewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Config\Data\SimulatorGeneralSettings.cs" />
-    <Compile Include="Forms\Config\Data\TravelItineraryData.cs" />
+    <Compile Include="Utilities\Data\SimulatorGeneralSettings.cs" />
+    <Compile Include="Utilities\Data\TravelItineraryData.cs" />
     <Compile Include="Forms\Config\PropertyConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -23,9 +23,9 @@ namespace TravelJournal.WinForm.Simulator.Forms
             InitializeComponent();
         }
 
-        public void InjectData(IConfigData data)
+        public void InjectData(ConfigDataBase data)
         {
-            XmlSerialization.Serialize<IConfigData>(tempPath, data);
+            XmlSerialization.Serialize<ConfigDataBase>(tempPath, data);
             browserPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), tempPath);
         }
 

@@ -9,42 +9,42 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelJournal.WinForm.Simulator.Forms
+namespace TravelJournal.WinForm.Simulator
 {
     [DataContract]
     [KnownType(typeof(TravelItineraryData))]
-    public class TravelItineraryData:IConfigData
+    public class TravelItineraryData : ConfigDataBase
     {
-        public event Action<IConfigData> OnDataChanged;
-        public event Action<IConfigData> OnDataChanging;
+        private const long DEFAULT_TIME_INTERVAL_PER_ANCHOR = 5000;
+        private const long DEFAULT_CAMERA_RADIUS = 1;
 
-        public string ConfigName
+        public override string ConfigName
         {
-            get {return "Travel itinerary data"; }
+            get { return "Travel itinerary data"; }
         }
 
-        public string Extension
+        public override string Extension
         {
             get { return ".tid"; }
         }
 
         private long timeIntervalPerAnchor;
         [DataMember()]
-        public long TimeIntervalPerAnchor 
+        public long TimeIntervalPerAnchor
         {
             get { return timeIntervalPerAnchor; }
-            set 
+            set
             {
                 if (timeIntervalPerAnchor != value)
                 {
-                    if (OnDataChanging != null) OnDataChanging(this);
-                        timeIntervalPerAnchor = value;
-                    if(OnDataChanged!=null) OnDataChanged(this);
+                    OnDataChanging();
+                    timeIntervalPerAnchor = value;
+                    OnDataChanged();
                 }
             }
         }
 
-        private double cameraRadius=1;
+        private double cameraRadius;
         [DataMember()]
         public double CameraRadius
         {
@@ -53,9 +53,9 @@ namespace TravelJournal.WinForm.Simulator.Forms
             {
                 if (cameraRadius != value)
                 {
-                    if (OnDataChanging != null) OnDataChanging(this);
+                    OnDataChanging();
                     cameraRadius = value;
-                    if (OnDataChanged != null) OnDataChanged(this);
+                    OnDataChanged();
                 }
             }
         }
@@ -67,13 +67,13 @@ namespace TravelJournal.WinForm.Simulator.Forms
             get { return homePlacemark; }
             set
             {
-                if (OnDataChanging != null) OnDataChanging(this);
+                OnDataChanging();
                 homePlacemark = value;
-                if (OnDataChanged != null) OnDataChanged(this);
+                OnDataChanged();
             }
         }
 
-        private List<SimulationModelPoint> anchors = new List<SimulationModelPoint>();
+        private List<SimulationModelPoint> anchors;
         [DataMember()]
         public List<SimulationModelPoint> Anchors
         {
@@ -82,39 +82,63 @@ namespace TravelJournal.WinForm.Simulator.Forms
             {
                 if (anchors != value)
                 {
-                    if (OnDataChanging != null) OnDataChanging(this);
+                    OnDataChanging();
                     anchors = value;
-                    if (OnDataChanged != null) OnDataChanged(this);
+                    OnDataChanged();
                 }
             }
         }
         public void AddAnchor(SimulationModelPoint anchor)
         {
-            if (OnDataChanging != null) OnDataChanging(this);
+            OnDataChanging();
             anchors.Add(anchor);
-            if (OnDataChanged != null) OnDataChanged(this);
+            OnDataChanged();
         }
         public void ClearAnchors()
         {
             if (anchors.Count > 0)
             {
-                if (OnDataChanging != null) OnDataChanging(this);
+                OnDataChanging();
                 anchors.Clear();
-                if (OnDataChanged != null) OnDataChanged(this);
+                OnDataChanged();
             }
         }
         public void SetAnchorPhotoGenNumber(int index, int photoGenNumber)
         {
             if (anchors.Count > index)
             {
-                if (OnDataChanging != null) OnDataChanging(this);
+                OnDataChanging();
                 anchors[index].PhotoGenNumber = photoGenNumber;
-                if (OnDataChanged != null) OnDataChanged(this);
+                OnDataChanged();
+            }
+        }
+
+        public override Dictionary<string, string> Display()
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("Default time interval ", timeIntervalPerAnchor.ToString() + "ms");
+            data.Add("Camera gen radius", cameraRadius.ToString() + "km");
+            return data;
+        }
+        public override void Initialize()
+        {
+            timeIntervalPerAnchor = DEFAULT_TIME_INTERVAL_PER_ANCHOR;
+            cameraRadius = DEFAULT_CAMERA_RADIUS;
+            anchors = new List<SimulationModelPoint>();
+        }
+        public bool IsComplete
+        {
+            get
+            {
+                return anchors.Count > 2;
+            }
+        }
+        public bool IsCompiled
+        {
+            get
+            {
+                return anchors.TrueForAll((anchor) => { return anchor.PhotoGenNumber <= 1; });
             }
         }
     }
-
-
-
-    
 }

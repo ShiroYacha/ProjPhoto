@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TravelJournal.WinForm.Simulator.Forms
 {
-    public partial class PropertyConfigForm<T> : ConfigForm<T> where T : IConfigData
+    public partial class PropertyConfigForm<T> : ConfigForm<T> where T : ConfigDataBase
     {
         public PropertyConfigForm()
         {
@@ -25,12 +25,10 @@ namespace TravelJournal.WinForm.Simulator.Forms
 
         protected override void OnDataChanging(T data)
         {
-            throw new NotImplementedException();
         }
 
         protected override void OnDataChanged(T data)
         {
-            throw new NotImplementedException();
         }
     }
 }
