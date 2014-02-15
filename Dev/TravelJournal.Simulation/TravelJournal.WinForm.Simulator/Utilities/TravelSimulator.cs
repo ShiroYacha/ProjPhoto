@@ -10,7 +10,7 @@ namespace TravelJournal.WinForm.Simulator
 {
     public class TravelSimulator
     {
-        private TravelMapPlayer player;
+        private TravelJournalGenerationSimulation main;
         private Timer timer;
 
         private TravelItineraryData data;
@@ -21,9 +21,9 @@ namespace TravelJournal.WinForm.Simulator
         private double currentSegmentLngStep;
         private int currentSegmentIndex;
 
-        public TravelSimulator(TravelMapPlayer player)
+        public TravelSimulator(TravelJournalGenerationSimulation main)
         {
-            this.player = player;
+            this.main = main;
         }
 
         public bool ValidateData(TravelItineraryData data)
@@ -82,13 +82,13 @@ namespace TravelJournal.WinForm.Simulator
                 currentIndex++;
                 CalculateSegmentLength();
                 SimulationModelPoint point = data.Anchors.First();
-                player.SetAnchors(new List<SimulationModelPoint>() { point });
+                main.Player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
             }
             else if (currentSegmentIndex == 0) // Draw first point
             {
                 SimulationModelPoint point = data.Anchors.First();
-                player.SetAnchors(new List<SimulationModelPoint>() { point });
+                main.Player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
             }
             else // Draw next segment using the linear model
@@ -109,7 +109,7 @@ namespace TravelJournal.WinForm.Simulator
                     interPoint.Gps = new PointLatLng(lastPoint.Gps.Lat + currentSegmentLatStep, lastPoint.Gps.Lng + currentSegmentLngStep);
                 }
                 points.Add(interPoint);
-                player.SetAnchors(points);
+                main.Player.SetAnchors(points);
                 currentSegmentIndex++;
             }
         }

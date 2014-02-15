@@ -21,13 +21,15 @@ namespace TravelJournal.WinForm.Simulator
 
         public static SimulatorGeneralSettings generalSettings = new SimulatorGeneralSettings();
         private TravelItineraryData itineraryData;
- 
+
+        internal TravelMapPlayer Player { get { return travelMapPlayer; } }
+
         public TravelJournalGenerationSimulation()
         {
             InitializeComponent();
             // Setup
             itineraryData = new TravelItineraryData();
-            simulator = new TravelSimulator(travelMapPlayer);
+            simulator = new TravelSimulator(this);
             // Rendering
             RenderToolStrip();
         }

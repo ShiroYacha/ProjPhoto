@@ -74,7 +74,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
         }
         private void SetupFileDialogs()
         {
-            string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             openFileDialog.InitialDirectory = directory;
             openFileDialog.Filter = extensionFilter;
             saveFileDialog.InitialDirectory = directory;
