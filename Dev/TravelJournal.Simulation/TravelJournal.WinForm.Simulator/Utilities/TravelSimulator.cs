@@ -45,6 +45,8 @@ namespace TravelJournal.WinForm.Simulator
 
         public void StartSimulation()
         {
+            // Log
+            TravelJournalGenerationSimulation.Log(LogType.Info,"Simulator started.");
             // Preparation
             currentIndex = 0;
             CalculateSegmentLength();
@@ -54,7 +56,10 @@ namespace TravelJournal.WinForm.Simulator
 
         private void CalculateSegmentLength()
         {
-            if (currentIndex == data.Anchors.Count)
+#if DEBUG
+            TravelJournalGenerationSimulation.Log(LogType.Info, string.Format("Calculating segment <{0},{1}>.",currentSegmentIndex,currentSegmentIndex+1));
+#endif
+            if (currentIndex >= data.Anchors.Count)
             {
                 ResetSimulation();
             }
@@ -69,13 +74,20 @@ namespace TravelJournal.WinForm.Simulator
                 // Initialize segment index
                 currentSegmentIndex = 0;
                 // Calculate segment step
-                currentSegmentLatStep = endPoint.Gps.Lat - startPoint.Gps.Lat;
-                currentSegmentLngStep = endPoint.Gps.Lng - startPoint.Gps.Lng;
+                currentSegmentLatStep = (endPoint.Gps.Lat - startPoint.Gps.Lat) / currentSegmentCount;
+                currentSegmentLngStep = (endPoint.Gps.Lng - startPoint.Gps.Lng) / currentSegmentCount;
             }
         }
 
         private void OnStep()
         {
+#if DEBUG
+            TravelJournalGenerationSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
+            {"Current index", currentIndex}, 
+            {"Current segment index",currentSegmentIndex},
+            {"Current segment count", currentSegmentCount}
+            });
+#endif
             if (currentSegmentIndex >= currentSegmentCount - 1)
             {
                 // Calculate new segment
@@ -106,10 +118,11 @@ namespace TravelJournal.WinForm.Simulator
                 {
                     // linear interpolation
                     interPoint = new SimulationModelPoint() { CustomTimeInterval = lastPoint.CustomTimeInterval };
-                    interPoint.Gps = new PointLatLng(lastPoint.Gps.Lat + currentSegmentLatStep, lastPoint.Gps.Lng + currentSegmentLngStep);
+                    interPoint.Gps = new PointLatLng(lastPoint.Gps.Lat + currentSegmentLatStep * currentSegmentIndex, lastPoint.Gps.Lng + currentSegmentLngStep * currentSegmentIndex);
                 }
                 points.Add(interPoint);
                 main.Player.SetAnchors(points);
+                main.Player.ConnectAnchors();
                 currentSegmentIndex++;
             }
         }
@@ -117,12 +130,18 @@ namespace TravelJournal.WinForm.Simulator
         public void PauseSimulation()
         {
             timer.Change(Timeout.Infinite, Timeout.Infinite);
+#if DEBUG
+            TravelJournalGenerationSimulation.Log(LogType.Info, "Simulation paused.");
+#endif
         }
 
         public void ResetSimulation()
         {
             PauseSimulation();
             timer.Dispose();
+#if DEBUG
+            TravelJournalGenerationSimulation.Log(LogType.Info, "Simulation reset.");
+#endif
         }
     }
 }

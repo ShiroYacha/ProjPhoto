@@ -82,25 +82,26 @@ namespace TravelJournal.WinForm.Simulator.Controls
         }
         public void SetAnchors(IEnumerable<SimulationModelPoint> anchors)
         {
-            if (IsHandleCreated)
-                this.Invoke(
-                   new MethodInvoker(() =>
+            if (anchors.ToList().Count == 0) return;
+            while (!IsHandleCreated) ;
+            this.Invoke(
+               new MethodInvoker(() =>
+               {
+                   anchorsLayer.Markers.Clear();
+                   foreach (SimulationModelPoint anchor in anchors)
                    {
-                       anchorsLayer.Markers.Clear();
-                       foreach (SimulationModelPoint anchor in anchors)
-                       {
-                           GMarkerGoogleType markerType;
-                           if (anchor.PhotoGenNumber == 0)
-                               markerType = GMarkerGoogleType.blue_small;
-                           else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_YELLOW_MARKER)
-                               markerType = GMarkerGoogleType.yellow_small;
-                           else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_ORANGE_MARKER)
-                               markerType = GMarkerGoogleType.orange_small;
-                           else
-                               markerType = GMarkerGoogleType.red_small;
-                           anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, markerType));
-                       }
-                   }));
+                       GMarkerGoogleType markerType;
+                       if (anchor.PhotoGenNumber == 0)
+                           markerType = GMarkerGoogleType.blue_small;
+                       else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_YELLOW_MARKER)
+                           markerType = GMarkerGoogleType.yellow_small;
+                       else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_ORANGE_MARKER)
+                           markerType = GMarkerGoogleType.orange_small;
+                       else
+                           markerType = GMarkerGoogleType.red_small;
+                       anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, markerType));
+                   }
+               }));
         }
         public void SetHomePlace(Placemark placeMark)
         {
@@ -126,18 +127,23 @@ namespace TravelJournal.WinForm.Simulator.Controls
                 homePlacemarkLayer.Markers.Add(marker);
             }
         }
-        public void ConnectAnchors()
+        public void ConnectAnchors(bool closeLoop=false)
         {
+                      this.Invoke(
+               new MethodInvoker(() =>
+               {
             GMapRoute routes = new GMapRoute(ID_ANCHORS_ROUTE);
             routes.Stroke.Width = 2;
             routes.Stroke.Color = Color.DodgerBlue;
-            for(int i=0;i<anchorsLayer.Markers.Count;i++)
+            for (int i = 0; i < anchorsLayer.Markers.Count; i++)
                 routes.Points.Add(anchorsLayer.Markers[i].Position);
-            routes.Points.Add(anchorsLayer.Markers[0].Position);
+            if (closeLoop)
+                routes.Points.Add(anchorsLayer.Markers[0].Position);
             anchorsRouteLayer.Clear();
             anchorsRouteLayer.Routes.Add(routes);
             // Clear the anchors
             anchorsLayer.Markers.Clear();
+               }));
         }
         public void DisconnectAnchors()
         {

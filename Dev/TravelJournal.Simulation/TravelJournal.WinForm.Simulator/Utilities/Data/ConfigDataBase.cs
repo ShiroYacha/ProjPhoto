@@ -32,7 +32,7 @@ namespace TravelJournal.WinForm.Simulator
         public abstract string ConfigName { get;}
         public abstract string ExtensionFilter { get; }
 
-        public abstract Dictionary<string, string> Display();
+        public abstract Dictionary<string, object> Display();
         public abstract void Initialize();
     }
 }

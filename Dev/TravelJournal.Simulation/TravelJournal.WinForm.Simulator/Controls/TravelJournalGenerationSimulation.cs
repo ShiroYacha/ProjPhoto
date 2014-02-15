@@ -17,6 +17,7 @@ namespace TravelJournal.WinForm.Simulator
 {
     public partial class TravelJournalGenerationSimulation : UserControl , ITestProjectControl
     {
+        private static TravelJournalGenerationSimulation thisForm;
         private TravelSimulator simulator;
 
         public static SimulatorGeneralSettings generalSettings = new SimulatorGeneralSettings();
@@ -27,6 +28,8 @@ namespace TravelJournal.WinForm.Simulator
         public TravelJournalGenerationSimulation()
         {
             InitializeComponent();
+            // Assign static
+            thisForm = this;
             // Setup
             itineraryData = new TravelItineraryData();
             simulator = new TravelSimulator(this);
@@ -43,18 +46,18 @@ namespace TravelJournal.WinForm.Simulator
             get { return "Simulate a travel behavior and assemble the travel journals."; }
         }
 
-        public void UpdateInfoInspector(Dictionary<string, string> infoDict)
+        public static void UpdateInfoInspector(Dictionary<string, object> infoDict)
         {
-            InvokeMethod(() =>
+            thisForm.InvokeMethod(() =>
             {
-                infoInspector.UpdateInfo(infoDict);
+                thisForm.infoInspector.UpdateInfo(infoDict);
             });
         }
-        public void Log(LogType type, string log,[CallerMemberName] string callerName = null, [CallerFilePath] string callerFilePath = null, [CallerLineNumber] int callerLine=-1)
+        public static void Log(LogType type, string log, [CallerMemberName] string callerName = null, [CallerFilePath] string callerFilePath = null, [CallerLineNumber] int callerLine = -1)
         {
-            InvokeMethod(() =>
+            thisForm.InvokeMethod(() =>
            {
-               logger.Log(type, log, callerName, callerFilePath, callerLine);
+               thisForm.logger.Log(type, log, callerName, callerFilePath, callerLine);
            });
         }
         public void CloseDown()
@@ -83,10 +86,10 @@ namespace TravelJournal.WinForm.Simulator
         {
             TestWithTimer(() =>
             {
-                UpdateInfoInspector(new Dictionary<string, string>() { {"Current time",DateTime.Now.ToLongTimeString()}});
+                UpdateInfoInspector(new Dictionary<string, object>() { {"Current time",DateTime.Now.ToLongTimeString()}});
             },1000);
             // Inspect info
-            UpdateInfoInspector(new Dictionary<string, string>() { { "InfoInspector interval", "1 sec" } });
+            UpdateInfoInspector(new Dictionary<string, object>() { { "InfoInspector interval", "1 sec" } });
         }
         private void TestLogger()
         {
@@ -97,7 +100,7 @@ namespace TravelJournal.WinForm.Simulator
                 Log(log, string.Format("This is a test [{0}] log.", log));
             },3000);
             // Inspect info
-            UpdateInfoInspector(new Dictionary<string, string>() { { "Logger interval", "3 sec" } });
+            UpdateInfoInspector(new Dictionary<string, object>() { { "Logger interval", "3 sec" } });
         }
         private void TestStateMachineViewer()
         {
@@ -121,10 +124,10 @@ namespace TravelJournal.WinForm.Simulator
                 Random rnd = new Random();
                 int state=rnd.Next(6);
                 stateMachineViewer.NavigateToState(state);
-                UpdateInfoInspector(new Dictionary<string, string>() { { "Current state", state.ToString()} });
+                UpdateInfoInspector(new Dictionary<string, object>() { { "Current state", state} });
             },1000);
             // Inspect info
-            UpdateInfoInspector(new Dictionary<string, string>() { { "StateMachineViewer interval", "1 sec" } });
+            UpdateInfoInspector(new Dictionary<string, object>() { { "StateMachineViewer interval", "1 sec" } });
         }
 
         #endregion
@@ -190,7 +193,7 @@ namespace TravelJournal.WinForm.Simulator
             playButton.Enabled = enable;
             pauseButton.Enabled = enable;
             resetButton.Enabled = enable;
-            UpdateInfoInspector(new Dictionary<string, string>() {{"Simulator status", enable?"Active":"Inactive"}});
+            UpdateInfoInspector(new Dictionary<string, object>() {{"Simulator status", enable?"Active":"Inactive"}});
         } 
         private void UpdateRestInspectors()
         {

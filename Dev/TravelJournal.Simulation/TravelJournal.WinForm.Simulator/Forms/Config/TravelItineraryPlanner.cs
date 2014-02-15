@@ -198,7 +198,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
             TravelSimulationDataCompiler compiler = new TravelSimulationDataCompiler(data.CameraRadius);
             TravelItineraryData compiledData = compiler.Compile(data);
             UpdateView(compiledData);
-            travelMapPlayer.ConnectAnchors();
+            travelMapPlayer.ConnectAnchors(true);
             toolStrip.Enabled = true;
         }
 

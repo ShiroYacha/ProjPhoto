@@ -12,7 +12,7 @@ namespace TravelJournal.WinForm.Simulator
     [KnownType(typeof(SimulatorGeneralSettings))]
     public class SimulatorGeneralSettings:ConfigDataBase
     {
-        private const long DEFAULT_SIMULATION_STEP = 500;
+        private const long DEFAULT_SIMULATION_STEP = 50;
 
         [Browsable(false)]
         public override string ConfigName
@@ -45,9 +45,9 @@ namespace TravelJournal.WinForm.Simulator
             }
         }
 
-        public override Dictionary<string, string> Display()
+        public override Dictionary<string, object> Display()
         {
-            Dictionary<string, string> data = new Dictionary<string, string>();
+            Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add("SimualtionStep",simualtionStep.ToString()+"ms");
             return data;
         }

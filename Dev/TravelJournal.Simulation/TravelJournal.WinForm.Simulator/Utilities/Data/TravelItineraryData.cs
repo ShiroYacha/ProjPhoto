@@ -112,9 +112,9 @@ namespace TravelJournal.WinForm.Simulator
             }
         }
 
-        public override Dictionary<string, string> Display()
+        public override Dictionary<string, object> Display()
         {
-            Dictionary<string, string> data = new Dictionary<string, string>();
+            Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add("Default time interval ", timeIntervalPerAnchor.ToString() + "ms");
             data.Add("Camera gen radius", cameraRadius.ToString() + "km");
             return data;

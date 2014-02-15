@@ -37,31 +37,31 @@ namespace TravelJournal.WinForm.Simulator.Controls
                 shrinkBound.Inflate(-0.5F,-0.5F);
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(48, 48, 48)), e.Bounds);
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(18, 18, 18)), shrinkBound);
-                e.Graphics.DrawString(e.SubItem.Text, new Font("Segoe UI Light", 10), new SolidBrush(Color.FromArgb(245, 245, 245)), textBound);
+                e.Graphics.DrawString(e.SubItem.Text, new Font("Segoe UI Light", 9), new SolidBrush(Color.FromArgb(245, 245, 245)), textBound);
             };
             // Enable double buffer
             SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
         }
 
-        public void UpdateInfo(Dictionary<string, string> infoDict)
+        public void UpdateInfo(Dictionary<string, object> infoDict)
         {
             if (infoDict != null)
             {
                 listView.BeginUpdate();
                 listView.Sorting = SortOrder.Ascending;
-                foreach (KeyValuePair<string, string> info in infoDict)
+                foreach (KeyValuePair<string, object> info in infoDict)
                 {
                     if (!infoList.Contains(info.Key))
                     {
                         ListViewItem item = new ListViewItem(info.Key);
                         item.Name = info.Key;
-                        item.SubItems.Add(info.Value);
+                        item.SubItems.Add(info.Value.ToString());
                         listView.Items.Add(item);
                         infoList.Add(info.Key);
                     }
                     else
                     {
-                        listView.Items[info.Key].SubItems[1].Text = info.Value;
+                        listView.Items[info.Key].SubItems[1].Text = info.Value.ToString();
                     }
                 }
                 listView.EndUpdate();
