@@ -48,7 +48,8 @@ namespace TravelJournal.WinForm.Simulator.Forms
         {
             base.OnDataSet(data);
             // Update view
-            UpdateView(data);
+            if(travelMapPlayer.IsHandleCreated)
+                UpdateView(data);
         }
         protected override void OnDataChanging(TravelItineraryData data)
         {
@@ -94,6 +95,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
         
         private void TravelItineraryPlanner_Load(object sender, EventArgs e)
         {
+            UpdateView(data);
         }
 
         private void undoButton_Click(object sender, EventArgs e)

@@ -83,8 +83,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
         public void SetAnchors(IEnumerable<SimulationModelPoint> anchors, bool center = false, AnchorMode anchorMode = AnchorMode.ShowNoAnchors)
         {
             if (anchors.ToList().Count == 0) return;
-            //while (!IsHandleCreated) ;
-            if(IsHandleCreated)
+            while (!IsHandleCreated) ;
             this.Invoke(
                new MethodInvoker(() =>
                {
@@ -110,7 +109,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
                            else
                                markerType = GMarkerGoogleType.yellow_small;
                        }
-                       if(markerType == GMarkerGoogleType.none)
+                       if (markerType == GMarkerGoogleType.none)
                            anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, new Bitmap("Empty.bmp")));
                        else
                            anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, markerType));
@@ -118,56 +117,74 @@ namespace TravelJournal.WinForm.Simulator.Controls
                    }
                    anchorsLayer.IsVisibile = anchorMode != AnchorMode.ShowNoAnchors;
                    if (center)
-                   {
-                       gMapControl.ZoomAndCenterMarkers(ID_ANCHORS_LAYER);
-                   }
+                       if (anchorsLayer.Markers.Count > 1)
+                           gMapControl.ZoomAndCenterMarkers(ID_ANCHORS_LAYER);
+                       else if (anchorsLayer.Markers.Count == 1)
+                           gMapControl.Position = anchorsLayer.Markers[0].Position;
+                   gMapControl.Refresh();
+               }));
+        }
+        public void ClearAnchors()
+        {
+            this.Invoke(
+               new MethodInvoker(() =>
+               {
+                   anchorsLayer.Markers.Clear();
                }));
         }
         public void SetHomePlace(Placemark placeMark)
         {
             if (placeMark.CountryName != string.Empty)
             {
-                // Get keyword
-                GeoCoderStatusCode code;
-                string keyword = placeMark.LocalityName ?? (placeMark.DistrictName ?? placeMark.AdministrativeAreaName);
-                if (keyword != string.Empty)
-                    keyword += ",";
-                keyword += placeMark.CountryName;
-                // Get gps out of keyword
-                PointLatLng point = GMapProviders.GoogleMap.GetPoint(keyword, out code).Value;
-                // Initialize position if no anchors are added
-                if (anchorsLayer.Markers.Count == 0)
-                {
-                    gMapControl.Position = point;
-                    gMapControl.Zoom = RATIO_BIG_ZOOM;
-                }
-                // Place marker
-                GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
-                homePlacemarkLayer.Markers.Clear();
-                homePlacemarkLayer.Markers.Add(marker);
+                this.Invoke(
+                   new MethodInvoker(() =>
+                   {
+                       // Get keyword
+                       GeoCoderStatusCode code;
+                       string keyword = placeMark.LocalityName ?? (placeMark.DistrictName ?? placeMark.AdministrativeAreaName);
+                       if (keyword != string.Empty)
+                           keyword += ",";
+                       keyword += placeMark.CountryName;
+                       // Get gps out of keyword
+                       PointLatLng point = GMapProviders.GoogleMap.GetPoint(keyword, out code).Value;
+                       // Initialize position if no anchors are added
+                       if (anchorsLayer.Markers.Count == 0)
+                       {
+                           gMapControl.Position = point;
+                           gMapControl.Zoom = RATIO_BIG_ZOOM;
+                       }
+                       // Place marker
+                       GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red_pushpin);
+                       homePlacemarkLayer.Markers.Clear();
+                       homePlacemarkLayer.Markers.Add(marker);
+                   }));
             }
         }
-        public void ConnectAnchors(bool closeLoop=false)
+        public void ConnectAnchors(bool closeLoop = false, bool clearAnchors = false)
         {
-                      this.Invoke(
-               new MethodInvoker(() =>
-               {
-            GMapRoute routes = new GMapRoute(ID_ANCHORS_ROUTE);
-            routes.Stroke.Width = 2;
-            routes.Stroke.Color = Color.DodgerBlue;
-            for (int i = 0; i < anchorsLayer.Markers.Count; i++)
-                routes.Points.Add(anchorsLayer.Markers[i].Position);
-            if (closeLoop)
-                routes.Points.Add(anchorsLayer.Markers[0].Position);
-            anchorsRouteLayer.Clear();
-            anchorsRouteLayer.Routes.Add(routes);
-            // Clear the anchors
-            anchorsLayer.Markers.Clear();
-               }));
+            this.Invoke(
+             new MethodInvoker(() =>
+             {
+                 GMapRoute routes = new GMapRoute(ID_ANCHORS_ROUTE);
+                 routes.Stroke.Width = 2;
+                 routes.Stroke.Color = Color.DodgerBlue;
+                 for (int i = 0; i < anchorsLayer.Markers.Count; i++)
+                     routes.Points.Add(anchorsLayer.Markers[i].Position);
+                 if (closeLoop)
+                     routes.Points.Add(anchorsLayer.Markers[0].Position);
+                 anchorsRouteLayer.Clear();
+                 anchorsRouteLayer.Routes.Add(routes);
+                 // Clear the anchors
+                 if (clearAnchors) anchorsLayer.Markers.Clear();
+             }));
         }
         public void DisconnectAnchors()
         {
-            anchorsRouteLayer.Clear();
+            this.Invoke(
+                new MethodInvoker(() =>
+                {
+                    anchorsRouteLayer.Routes.Clear();
+                }));
         }
 
         public SimulationModelPoint ConvertToSimulationModelPoint(Point localPoint)
@@ -183,8 +200,6 @@ namespace TravelJournal.WinForm.Simulator.Controls
             var st = GMapProviders.GoogleMap.GetPlacemarks(gps, out plc);
             return plc[0];
         }
-
-
 
         private void TravelMapPlayer_Load(object sender, EventArgs e)
         {

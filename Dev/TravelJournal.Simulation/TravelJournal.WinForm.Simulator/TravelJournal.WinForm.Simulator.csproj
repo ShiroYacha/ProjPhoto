@@ -69,7 +69,7 @@
     <Compile Include="Forms\Config\Components\TrackBarConfigDialog.Designer.cs">
       <DependentUpon>TrackBarConfigDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\Data\ConfigDataBase.cs" />
+    <Compile Include="Data\ConfigDataBase.cs" />
     <Compile Include="Controls\Components\InfoInspector.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,8 +98,8 @@
     <Compile Include="Forms\Config\Components\ConfigDataPreviewForm.Designer.cs">
       <DependentUpon>ConfigDataPreviewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\Data\SimulatorGeneralSettings.cs" />
-    <Compile Include="Utilities\Data\TravelItineraryData.cs" />
+    <Compile Include="Data\SimulatorGeneralSettings.cs" />
+    <Compile Include="Data\TravelItineraryData.cs" />
     <Compile Include="Forms\Config\PropertyConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>

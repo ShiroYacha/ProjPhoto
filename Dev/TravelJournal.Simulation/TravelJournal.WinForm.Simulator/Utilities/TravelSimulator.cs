@@ -14,6 +14,8 @@ namespace TravelJournal.WinForm.Simulator
         private Timer timer;
 
         private TravelItineraryData data;
+        private SimulationModelPoint currentPosition;
+        private List<SimulationModelPoint> photos=new List<SimulationModelPoint>();
 
         private int currentIndex;
         private int currentSegmentCount;
@@ -88,13 +90,6 @@ namespace TravelJournal.WinForm.Simulator
 
         private void OnStep()
         {
-#if DEBUG
-            TravelJournalGenerationSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
-            {"Current index", currentIndex}, 
-            {"Current segment index",currentSegmentIndex},
-            {"Current segment count", currentSegmentCount}
-            });
-#endif
             if (currentSegmentIndex >= currentSegmentCount - 1)
             {
                 // Calculate new segment
@@ -103,12 +98,16 @@ namespace TravelJournal.WinForm.Simulator
                 SimulationModelPoint point = data.Anchors.First();
                 main.Player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
+                // Update current position
+                currentPosition = point;
             }
             else if (currentSegmentIndex == 0) // Draw first point
             {
                 SimulationModelPoint point = data.Anchors.First();
                 main.Player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
+                // Update current position
+                currentPosition = point;
             }
             else // Draw next segment using the linear model
             {
@@ -128,27 +127,44 @@ namespace TravelJournal.WinForm.Simulator
                     interPoint.Gps = new PointLatLng(lastPoint.Gps.Lat + currentSegmentLatStep * currentSegmentIndex, lastPoint.Gps.Lng + currentSegmentLngStep * currentSegmentIndex);
                 }
                 points.Add(interPoint);
+                // Draw anchors
                 main.Player.SetAnchors(points, main.InAutoZoomMode, AnchorMode.ShowOnlyPhotoAnchors);
+                // Draw routes
                 main.Player.ConnectAnchors();
                 currentSegmentIndex++;
+                // Update current position
+                currentPosition = interPoint;
+                // Update photos
+                photos.Clear();
+                photos.AddRange(points.Where((point) => { return point.PhotoGenNumber > 0; }));
+                // Inspect information
+#if DEBUG
+                TravelJournalGenerationSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
+            {"Current index", currentIndex}, 
+            {"Current segment index",currentSegmentIndex},
+            {"Current segment count", currentSegmentCount}
+            });
+#endif
+                TravelJournalGenerationSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
+            {"Photo count", photos.Count}, 
+            }); 
             }
         }
 
         public void PauseSimulation()
         {
             timer.Change(Timeout.Infinite, Timeout.Infinite);
-#if DEBUG
             TravelJournalGenerationSimulation.Log(LogType.Info, "Simulation paused.");
-#endif
         }
 
         public void ResetSimulation()
         {
-            PauseSimulation();
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
             timer.Dispose();
-#if DEBUG
+            timer = null;
+            main.Player.SetAnchors(new List<SimulationModelPoint>(){data.Anchors.First()},true,AnchorMode.ShowAllAnchors);
+            main.Player.DisconnectAnchors();
             TravelJournalGenerationSimulation.Log(LogType.Info, "Simulation reset.");
-#endif
         }
 
         internal void CloseDown()

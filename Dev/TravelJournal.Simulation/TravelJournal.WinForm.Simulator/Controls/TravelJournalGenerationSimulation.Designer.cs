@@ -39,14 +39,14 @@
             this.playButton = new System.Windows.Forms.ToolStripButton();
             this.pauseButton = new System.Windows.Forms.ToolStripButton();
             this.resetButton = new System.Windows.Forms.ToolStripButton();
+            this.autoZoomButton = new System.Windows.Forms.ToolStripButton();
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.leftTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.rightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.stateMachineViewer = new TravelJournal.WinForm.Simulator.Controls.StateMachineViewer();
             this.infoInspector = new TravelJournal.WinForm.Simulator.Controls.InfoInspector();
+            this.rightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logger = new TravelJournal.WinForm.Simulator.Controls.Logger();
             this.travelMapPlayer = new TravelJournal.WinForm.Simulator.Controls.TravelMapPlayer();
-            this.autoZoomButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.mainTableLayoutPanel.SuspendLayout();
             this.leftTableLayoutPanel.SuspendLayout();
@@ -149,6 +149,7 @@
             // pauseButton
             // 
             this.pauseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.pauseButton.Enabled = false;
             this.pauseButton.Image = ((System.Drawing.Image)(resources.GetObject("pauseButton.Image")));
             this.pauseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pauseButton.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
@@ -160,6 +161,7 @@
             // resetButton
             // 
             this.resetButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.resetButton.Enabled = false;
             this.resetButton.Image = ((System.Drawing.Image)(resources.GetObject("resetButton.Image")));
             this.resetButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.resetButton.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
@@ -167,6 +169,19 @@
             this.resetButton.Size = new System.Drawing.Size(23, 25);
             this.resetButton.Text = "toolStripButton1";
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // autoZoomButton
+            // 
+            this.autoZoomButton.Checked = true;
+            this.autoZoomButton.CheckOnClick = true;
+            this.autoZoomButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autoZoomButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.autoZoomButton.Image = ((System.Drawing.Image)(resources.GetObject("autoZoomButton.Image")));
+            this.autoZoomButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.autoZoomButton.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
+            this.autoZoomButton.Name = "autoZoomButton";
+            this.autoZoomButton.Size = new System.Drawing.Size(23, 25);
+            this.autoZoomButton.Text = "toolStripButton1";
             // 
             // mainTableLayoutPanel
             // 
@@ -199,22 +214,6 @@
             this.leftTableLayoutPanel.Size = new System.Drawing.Size(258, 570);
             this.leftTableLayoutPanel.TabIndex = 0;
             // 
-            // rightTableLayoutPanel
-            // 
-            this.rightTableLayoutPanel.ColumnCount = 1;
-            this.rightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.rightTableLayoutPanel.Controls.Add(this.logger, 0, 1);
-            this.rightTableLayoutPanel.Controls.Add(this.travelMapPlayer, 0, 0);
-            this.rightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rightTableLayoutPanel.Location = new System.Drawing.Point(261, 0);
-            this.rightTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.rightTableLayoutPanel.Name = "rightTableLayoutPanel";
-            this.rightTableLayoutPanel.RowCount = 2;
-            this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 201F));
-            this.rightTableLayoutPanel.Size = new System.Drawing.Size(689, 570);
-            this.rightTableLayoutPanel.TabIndex = 1;
-            // 
             // stateMachineViewer
             // 
             this.stateMachineViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
@@ -236,6 +235,22 @@
             this.infoInspector.Size = new System.Drawing.Size(258, 299);
             this.infoInspector.TabIndex = 2;
             // 
+            // rightTableLayoutPanel
+            // 
+            this.rightTableLayoutPanel.ColumnCount = 1;
+            this.rightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rightTableLayoutPanel.Controls.Add(this.logger, 0, 1);
+            this.rightTableLayoutPanel.Controls.Add(this.travelMapPlayer, 0, 0);
+            this.rightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rightTableLayoutPanel.Location = new System.Drawing.Point(261, 0);
+            this.rightTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.rightTableLayoutPanel.Name = "rightTableLayoutPanel";
+            this.rightTableLayoutPanel.RowCount = 2;
+            this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 201F));
+            this.rightTableLayoutPanel.Size = new System.Drawing.Size(689, 570);
+            this.rightTableLayoutPanel.TabIndex = 1;
+            // 
             // logger
             // 
             this.logger.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -255,19 +270,6 @@
             this.travelMapPlayer.Size = new System.Drawing.Size(689, 369);
             this.travelMapPlayer.TabIndex = 1;
             this.travelMapPlayer.Load += new System.EventHandler(this.travelMapPlayer_Load);
-            // 
-            // autoZoomButton
-            // 
-            this.autoZoomButton.Checked = true;
-            this.autoZoomButton.CheckOnClick = true;
-            this.autoZoomButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoZoomButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.autoZoomButton.Image = ((System.Drawing.Image)(resources.GetObject("autoZoomButton.Image")));
-            this.autoZoomButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.autoZoomButton.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
-            this.autoZoomButton.Name = "autoZoomButton";
-            this.autoZoomButton.Size = new System.Drawing.Size(23, 25);
-            this.autoZoomButton.Text = "toolStripButton1";
             // 
             // TravelJournalGenerationSimulation
             // 

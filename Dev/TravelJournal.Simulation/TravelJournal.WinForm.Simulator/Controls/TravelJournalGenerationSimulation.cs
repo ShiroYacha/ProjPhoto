@@ -259,14 +259,23 @@ namespace TravelJournal.WinForm.Simulator
         private void playButton_Click(object sender, EventArgs e)
         {
             simulator.StartSimulation();
+            playButton.Enabled = false;
+            pauseButton.Enabled = true;
+            resetButton.Enabled = true;
         }
         private void pauseButton_Click(object sender, EventArgs e)
         {
             simulator.PauseSimulation();
+            playButton.Enabled = true;
+            pauseButton.Enabled = false;
+            resetButton.Enabled = true;
         }
         private void resetButton_Click(object sender, EventArgs e)
         {
             simulator.ResetSimulation();
+            playButton.Enabled = true;
+            pauseButton.Enabled = false;
+            resetButton.Enabled = false;
         }
 
 
