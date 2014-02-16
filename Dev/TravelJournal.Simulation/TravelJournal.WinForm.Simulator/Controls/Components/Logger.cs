@@ -26,7 +26,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
             // Render column
             int columnWidth = listView.Width;
             listView.Columns[0].Width = (int)(columnWidth * 0.1);
-            listView.Columns[1].Width = (int)(columnWidth *0.5);
+            listView.Columns[1].Width = (int)(columnWidth *0.3);
             listView.Columns[2].Width = (int)(columnWidth *0.3);
             listView.Columns[3].Width = (int)(columnWidth);
             // Render header

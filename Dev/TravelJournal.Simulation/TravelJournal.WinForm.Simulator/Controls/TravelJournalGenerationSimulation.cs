@@ -46,6 +46,10 @@ namespace TravelJournal.WinForm.Simulator
             get { return "Simulate a travel behavior and assemble the travel journals."; }
         }
 
+        public bool InAutoZoomMode
+        {
+            get { return autoZoomButton.Checked; }
+        }
         public static void UpdateInfoInspector(Dictionary<string, object> infoDict)
         {
             thisForm.InvokeMethod(() =>
@@ -63,6 +67,7 @@ namespace TravelJournal.WinForm.Simulator
         public void CloseDown()
         {
             StopAllTimers();
+            simulator.CloseDown();
         }
 
         #region Test
@@ -254,6 +259,14 @@ namespace TravelJournal.WinForm.Simulator
         private void playButton_Click(object sender, EventArgs e)
         {
             simulator.StartSimulation();
+        }
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+            simulator.PauseSimulation();
+        }
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            simulator.ResetSimulation();
         }
 
 

@@ -45,20 +45,27 @@ namespace TravelJournal.WinForm.Simulator
 
         public void StartSimulation()
         {
-            // Log
-            TravelJournalGenerationSimulation.Log(LogType.Info,"Simulator started.");
-            // Preparation
-            currentIndex = 0;
-            CalculateSegmentLength();
-            // Launch 
-            timer = new Timer((o) => { OnStep(); }, null, 1000, TravelJournalGenerationSimulation.generalSettings.SimualtionStep);
+            if (timer == null)
+            {
+                // Log
+                TravelJournalGenerationSimulation.Log(LogType.Info, "Simulator started.");
+                // Preparation
+                currentIndex = 0;
+                CalculateSegmentLength();
+                // Launch 
+                timer = new Timer((o) => { OnStep(); }, null, 0, TravelJournalGenerationSimulation.generalSettings.SimualtionStep);
+            }
+            else
+            {
+                // Log
+                TravelJournalGenerationSimulation.Log(LogType.Info, "Simulator resumed.");
+                // Resume 
+                timer.Change(1000, TravelJournalGenerationSimulation.generalSettings.SimualtionStep);
+            }
         }
 
         private void CalculateSegmentLength()
         {
-#if DEBUG
-            TravelJournalGenerationSimulation.Log(LogType.Info, string.Format("Calculating segment <{0},{1}>.",currentSegmentIndex,currentSegmentIndex+1));
-#endif
             if (currentIndex >= data.Anchors.Count)
             {
                 ResetSimulation();
@@ -121,7 +128,7 @@ namespace TravelJournal.WinForm.Simulator
                     interPoint.Gps = new PointLatLng(lastPoint.Gps.Lat + currentSegmentLatStep * currentSegmentIndex, lastPoint.Gps.Lng + currentSegmentLngStep * currentSegmentIndex);
                 }
                 points.Add(interPoint);
-                main.Player.SetAnchors(points);
+                main.Player.SetAnchors(points, main.InAutoZoomMode, AnchorMode.ShowOnlyPhotoAnchors);
                 main.Player.ConnectAnchors();
                 currentSegmentIndex++;
             }
@@ -142,6 +149,12 @@ namespace TravelJournal.WinForm.Simulator
 #if DEBUG
             TravelJournalGenerationSimulation.Log(LogType.Info, "Simulation reset.");
 #endif
+        }
+
+        internal void CloseDown()
+        {
+            ResetSimulation();
+            timer = null;
         }
     }
 }

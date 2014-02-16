@@ -41,7 +41,7 @@ namespace TravelJournal.WinForm.Simulator
                 int photoGenNumber=anchor.PhotoGenNumber;
                 if (photoGenNumber > 1)
                 {
-                    //long customTimeInterval = compiledData.TimeIntervalPerAnchor / photoGenNumber;
+                    long customTimeInterval = compiledData.TimeIntervalPerAnchor / photoGenNumber *2;
                     for (int i = 0; i < photoGenNumber; i++)
                     {
                         // Generate a random (centered) radius with sigma equals to the camera radius
@@ -50,7 +50,8 @@ namespace TravelJournal.WinForm.Simulator
                         double randomAngle = uniformRandom.NextDouble() * Math.PI;
                         // Create an offset point from the center point and the polar biais
                         SimulationModelPoint offsetPoint = CreateOffsetPoint(anchor, randomRadius, randomAngle);
-                        //offsetPoint.CustomTimeInterval = customTimeInterval;
+                        offsetPoint.PhotoGenNumber = 1;
+                        offsetPoint.CustomTimeInterval = customTimeInterval;
                         // Add to compiled data
                         compiledData.Anchors.Add(offsetPoint);
                     }

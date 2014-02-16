@@ -69,7 +69,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
             setCameraNumTextBox.Text = data.CameraRadius.ToString();
             // Map
             if (data.Anchors != null)
-                travelMapPlayer.SetAnchors(data.Anchors);
+                travelMapPlayer.SetAnchors(data.Anchors,true,AnchorMode.ShowAllAnchors);
             if (data.HomePlacemark.CountryName != null)
                 travelMapPlayer.SetHomePlace(data.HomePlacemark);
             travelMapPlayer.DisconnectAnchors();

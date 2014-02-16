@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Rendering\Empty.bmp" />
     <Content Include="Tune-Up Utilities.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

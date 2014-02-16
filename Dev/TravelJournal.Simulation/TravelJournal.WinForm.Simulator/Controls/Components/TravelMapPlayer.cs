@@ -15,6 +15,7 @@ using TravelJournal.WinForm.Simulator.Forms;
 
 namespace TravelJournal.WinForm.Simulator.Controls
 {
+    public enum AnchorMode { ShowAllAnchors,ShowOnlyPhotoAnchors,ShowNoAnchors};
     public partial class TravelMapPlayer : UserControl,ITestControl
     {
         public static string ID_ANCHORS_LAYER = "ID_ANCHORS_LAYER";
@@ -44,11 +45,16 @@ namespace TravelJournal.WinForm.Simulator.Controls
             gMapControl.Overlays.Add(anchorsRouteLayer);
         }
 
-        private void TravelMapPlayer_Load(object sender, EventArgs e)
+        public GMapProvider Provider
+        {
+            get { return gMapControl.MapProvider; }
+            set { gMapControl.MapProvider = value; }
+        }
+
+        public void Initialize()
         {
             InitializeGMap();
         }
-
         private void InitializeGMap()
         {
             Provider = GMap.NET.MapProviders.GMapProviders.BingMap;
@@ -57,12 +63,6 @@ namespace TravelJournal.WinForm.Simulator.Controls
             gMapControl.MaxZoom = RATIO_MAX_ZOOM;
             gMapControl.MinZoom = RATIO_MIN_ZOOM;
             gMapControl.Zoom = RATIO_DEFAULT_ZOOM;
-        }
-
-        public GMapProvider Provider
-        {
-            get { return gMapControl.MapProvider; }
-            set { gMapControl.MapProvider = value; }
         }
 
         public void FocusOn(int index, int zoom = RATIO_BIG_ZOOM)
@@ -80,10 +80,11 @@ namespace TravelJournal.WinForm.Simulator.Controls
         {
             return anchorsLayer.Markers.IndexOf(item);
         }
-        public void SetAnchors(IEnumerable<SimulationModelPoint> anchors)
+        public void SetAnchors(IEnumerable<SimulationModelPoint> anchors, bool center = false, AnchorMode anchorMode = AnchorMode.ShowNoAnchors)
         {
             if (anchors.ToList().Count == 0) return;
-            while (!IsHandleCreated) ;
+            //while (!IsHandleCreated) ;
+            if(IsHandleCreated)
             this.Invoke(
                new MethodInvoker(() =>
                {
@@ -91,15 +92,34 @@ namespace TravelJournal.WinForm.Simulator.Controls
                    foreach (SimulationModelPoint anchor in anchors)
                    {
                        GMarkerGoogleType markerType;
-                       if (anchor.PhotoGenNumber == 0)
-                           markerType = GMarkerGoogleType.blue_small;
-                       else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_YELLOW_MARKER)
-                           markerType = GMarkerGoogleType.yellow_small;
-                       else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_ORANGE_MARKER)
-                           markerType = GMarkerGoogleType.orange_small;
+                       if (anchorMode == AnchorMode.ShowAllAnchors)
+                       {
+                           if (anchor.PhotoGenNumber == 0)
+                               markerType = GMarkerGoogleType.blue_small;
+                           else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_YELLOW_MARKER)
+                               markerType = GMarkerGoogleType.yellow_small;
+                           else if (anchor.PhotoGenNumber < AMOUNT_PHOTO_ORANGE_MARKER)
+                               markerType = GMarkerGoogleType.orange_small;
+                           else
+                               markerType = GMarkerGoogleType.red_small;
+                       }
                        else
-                           markerType = GMarkerGoogleType.red_small;
-                       anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, markerType));
+                       {
+                           if (anchor.PhotoGenNumber == 0)
+                               markerType = GMarkerGoogleType.none;
+                           else
+                               markerType = GMarkerGoogleType.yellow_small;
+                       }
+                       if(markerType == GMarkerGoogleType.none)
+                           anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, new Bitmap("Empty.bmp")));
+                       else
+                           anchorsLayer.Markers.Add(new GMarkerGoogle(anchor.Gps, markerType));
+                       // Check markers' visibility
+                   }
+                   anchorsLayer.IsVisibile = anchorMode != AnchorMode.ShowNoAnchors;
+                   if (center)
+                   {
+                       gMapControl.ZoomAndCenterMarkers(ID_ANCHORS_LAYER);
                    }
                }));
         }
@@ -164,33 +184,12 @@ namespace TravelJournal.WinForm.Simulator.Controls
             return plc[0];
         }
 
-        private void test()
-        {
-            GMapOverlay markersOverlay = new GMapOverlay("markers");
-            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(49 + 6 / 60.0 + 11.35 / 3600.0, 6 + 13 / 60.0 + 12.558 / 3600.0),
-              GMarkerGoogleType.red_big_stop);
-            markersOverlay.Markers.Add(marker);
-            gMapControl.Overlays.Add(markersOverlay);
 
-            List<Placemark> plc = null;
-            var st = GMapProviders.GoogleMap.GetPlacemarks(new PointLatLng(49 + 6 / 60.0 + 11.35 / 3600.0, 6 + 13 / 60.0 + 12.558 / 3600.0), out plc);
-            if (st == GeoCoderStatusCode.G_GEO_SUCCESS && plc != null)
-            {
-                foreach (var pl in plc)
-                {
-                    if (!string.IsNullOrEmpty(pl.PostalCodeNumber))
-                    {
-                        
-                    }
-                }
-            }
-        }
 
-        public void Initialize()
+        private void TravelMapPlayer_Load(object sender, EventArgs e)
         {
             InitializeGMap();
         }
-
 
     }
 }
