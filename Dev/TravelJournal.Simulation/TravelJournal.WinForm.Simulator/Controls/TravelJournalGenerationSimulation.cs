@@ -20,6 +20,7 @@ namespace TravelJournal.WinForm.Simulator
     {
         private static TravelJournalGenerationSimulation thisForm;
         private TravelSimulator simulator;
+        private ServiceHost host; 
 
         public static SimulatorGeneralSettings generalSettings = new SimulatorGeneralSettings();
         private TravelItineraryData itineraryData;
@@ -32,9 +33,6 @@ namespace TravelJournal.WinForm.Simulator
             // Assign static
             thisForm = this;
             // Setup
-            ServiceHost host = new ServiceHost("http://192.168.1.4:8733/");
-            host.Open();
-
             itineraryData = new TravelItineraryData();
             simulator = new TravelSimulator(this);
             // Rendering
@@ -284,8 +282,16 @@ namespace TravelJournal.WinForm.Simulator
 
         private void connectButton_Click(object sender, EventArgs e)
         {
-
-
+            if (connectButton.Checked)
+            {
+                host = new ServiceHost("http://192.168.1.4:8733/");
+                host.Open();
+            }
+            else
+            {
+                host.Close();
+                host = null;
+            }
         }
 
 

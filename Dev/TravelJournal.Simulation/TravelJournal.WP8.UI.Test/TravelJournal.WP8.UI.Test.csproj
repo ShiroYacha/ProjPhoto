@@ -199,10 +199,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\TravelJournal\TravelJournal.PCL.ViewModel\bin\Debug\TravelJournal.PCL.ViewModel.dll</HintPath>
     </Reference>
-    <Reference Include="TravelJournal.PCL.ViewModel.Test, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TravelJournal.PCL.ViewModel.Test\bin\Debug\TravelJournal.PCL.ViewModel.Test.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml">
@@ -219,6 +215,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TravelJournal.PCL.ViewModel.Test\TravelJournal.PCL.ViewModel.Test.csproj">
+      <Project>{58F6CCF7-AD32-419F-B795-839800400586}</Project>
+      <Name>TravelJournal.PCL.ViewModel.Test</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

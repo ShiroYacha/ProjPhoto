@@ -18,18 +18,8 @@ namespace TravelJournal.WP8.UI.Test
         public MainPage()
         {
             InitializeComponent();
-            TestWebService();
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
-        }
-
-        private void TestWebService()
-        {
-            int testValue = 7;
-
-            ServiceReference.Service1Client clientForTesting = new ServiceReference.Service1Client();
-            clientForTesting.GetDataCompleted += new EventHandler<ServiceReference.GetDataCompletedEventArgs>(TestCallback);
-            clientForTesting.GetDataAsync(testValue);
         }
 
         private void TestCallback(object sender, ServiceReference.GetDataCompletedEventArgs e)

@@ -12,12 +12,5 @@ namespace TravelJournal.PCL.ViewModel.Test
 {
     public class JournalGenerationTestViewModel : TestItemViewModelBase
     {
-        public MainViewModel RowBackMain
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
     }
 }

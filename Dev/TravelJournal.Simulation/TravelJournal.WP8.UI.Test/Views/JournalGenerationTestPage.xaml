@@ -27,13 +27,7 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="back" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Tap">
-                        <cmd:EventToCommand Command="{Binding OnNavigateTo, Mode=TwoWay}" CommandParameter="{Binding RowBackMain}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBlock>                
+            <TextBlock Text="Journal generation" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel contains details text. Place additional content here-->
