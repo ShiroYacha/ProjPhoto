@@ -26,6 +26,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
             RenderMenu();
         }
 
+        #region Public members
         public T Data
         {
             get
@@ -36,9 +37,10 @@ namespace TravelJournal.WinForm.Simulator.Forms
             {
                 OnDataSet(value);
             }
-        }
+        } 
+        #endregion
 
-        #region Private methods
+        #region Private members
         private void RenderMenu()
         {
             // Use the vs2013-like dark theme
@@ -63,14 +65,6 @@ namespace TravelJournal.WinForm.Simulator.Forms
             dataPreviewer = new ConfigDataPreviewForm();
             dataPreviewer.InjectData(data as ConfigDataBase);
             dataPreviewer.ShowDialog();
-        } 
-        #endregion
-
-        protected virtual void OnDataSet(T data)
-        {
-            this.data = data;
-            this.data.DataChanging += this.OnDataChanging;
-            this.data.DataChanged += this.OnDataChanged;
         }
         private void SetupFileDialogs()
         {
@@ -83,9 +77,20 @@ namespace TravelJournal.WinForm.Simulator.Forms
         }
         private void OnDataChanging(ConfigDataBase data) { OnDataChanging((T)data); }
         private void OnDataChanged(ConfigDataBase data) { OnDataChanged((T)data); }
-        protected virtual void OnDataChanging(T data){ }
-        protected virtual void OnDataChanged(T data) { }
-        
+        #endregion
+
+        #region Protected members
+        protected virtual void OnDataSet(T data)
+        {
+            this.data = data;
+            this.data.DataChanging += this.OnDataChanging;
+            this.data.DataChanged += this.OnDataChanged;
+        }
+        protected virtual void OnDataChanging(T data) { }
+        protected virtual void OnDataChanged(T data) { } 
+        #endregion
+
+        #region Event handlers
         private void previewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LaunchDataPreviewer();
@@ -113,7 +118,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(openFileDialog.ShowDialog()==DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 T data = XmlSerialization.Deserialize<T>(openFileDialog.FileName);
                 this.Data = data;
@@ -122,11 +127,12 @@ namespace TravelJournal.WinForm.Simulator.Forms
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(saveFileDialog.ShowDialog()==DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 XmlSerialization.Serialize<T>(saveFileDialog.FileName, this.data);
             }
         }
-
+        
+        #endregion
     }
 }

@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using TravelJournal.WinForm.Simulator;
+using TravelJournal.WinForm.Simulator.Controls;
+using TravelJournal.WinForm.Simulator.Forms;
+
+
+namespace TravelJournal.WCF
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ConnectivityTestService" in both code and config file together.
+    public class ConnectivityTestService : IConnectivityTestService
+    {
+        private ServerConnectivityViewer connectivityViewer;
+        
+        public bool StartTest()
+        {
+
+            //connectivityViewer = ((Application.OpenForms[0] as MainForm).ProjectControl as TravelJournalSimulation).ConnectivityViewer;
+            //return connectivityViewer.IsReady;
+            return Application.OpenForms.Count>0;
+        }
+    }
+}

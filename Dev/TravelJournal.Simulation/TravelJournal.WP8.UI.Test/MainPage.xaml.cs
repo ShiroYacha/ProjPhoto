@@ -22,10 +22,6 @@ namespace TravelJournal.WP8.UI.Test
             //BuildLocalizedApplicationBar();
         }
 
-        private void TestCallback(object sender, ServiceReference.GetDataCompletedEventArgs e)
-        {
-            MessageBox.Show(e.Result);
-        }
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

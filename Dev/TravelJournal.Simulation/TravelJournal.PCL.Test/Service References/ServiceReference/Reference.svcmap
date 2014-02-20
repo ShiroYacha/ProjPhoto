@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2a9c8434-8af1-4fd3-b97b-7771c7c2330d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="16775dce-7c68-4eae-b8da-7fa3e12b26cd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -23,9 +23,9 @@
     <MetadataSource Address="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="02889785-51c4-4b7b-8e75-4f0a59f08224" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="add6b8ea-ae74-444c-a222-1d91b91fe5ad" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="517cbc01-e5d3-4056-86f3-6979496da21b" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="5508d96f-3bd2-462b-9a26-435f52e0955e" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="be46651c-c911-46b0-afab-4855b5c28181" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="2a4b9f00-18bb-467a-81df-4f78efb09d7d" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

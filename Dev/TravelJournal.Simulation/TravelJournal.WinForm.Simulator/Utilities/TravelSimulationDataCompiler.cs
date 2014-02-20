@@ -9,17 +9,7 @@ using TravelJournal.WinForm.Simulator.Forms;
 
 namespace TravelJournal.WinForm.Simulator
 {
-    [DataContract]
-    [KnownType(typeof(SimulationModelPoint))]
-    public class SimulationModelPoint
-    {
-        [DataMember()]
-        public PointLatLng Gps { get; set; }
-        [DataMember()]
-        public int PhotoGenNumber { get; set; }
-        [DataMember()]
-        public long CustomTimeInterval { get; set; }
-    }
+
 
     public class TravelSimulationDataCompiler
     {

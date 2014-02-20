@@ -17,6 +17,8 @@ namespace TravelJournal.WP8.UI.Test
         {
             InitializeComponent();
 
+
+
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }

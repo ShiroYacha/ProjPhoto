@@ -18,6 +18,7 @@ namespace TravelJournal.WinForm.Simulator
             Initialize();
         }
 
+        #region Protected members
         protected void OnDataChanged()
         {
             if (DataChanged != null)
@@ -27,12 +28,14 @@ namespace TravelJournal.WinForm.Simulator
         {
             if (DataChanging != null)
                 DataChanging(this);
-        }
+        } 
+        #endregion
 
-        public abstract string ConfigName { get;}
+        #region Public abstract members
+        public abstract string ConfigName { get; }
         public abstract string ExtensionFilter { get; }
-
         public abstract Dictionary<string, object> Display();
-        public abstract void Initialize();
+        public abstract void Initialize(); 
+        #endregion
     }
 }

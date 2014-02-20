@@ -32,36 +32,27 @@ namespace TravelJournal.WinForm.Simulator.Forms
             RenderToolStrip();
         }
 
-        public TravelItineraryData TravelItineraryData
-        {
-            get
-            {
-                return Data as TravelItineraryData;
-            }
-            set
-            {
-                Data = value;
-            }
-        }
-
+        #region ConfigForm<T> implementation
         protected override void OnDataSet(TravelItineraryData data)
         {
             base.OnDataSet(data);
             // Update view
-            if(travelMapPlayer.IsHandleCreated)
+            if (travelMapPlayer.IsHandleCreated)
                 UpdateView(data);
         }
         protected override void OnDataChanging(TravelItineraryData data)
         {
-            if(!history.InUndoRedo)
+            if (!history.InUndoRedo)
                 history.Do(new TravelItineraryDataMemento(data));
         }
         protected override void OnDataChanged(TravelItineraryData data)
         {
             // Update view
             UpdateView(data);
-        }
+        } 
+        #endregion
 
+        #region Private members
         private void UpdateView(TravelItineraryData data)
         {
             undoButton.Enabled = history.CanUndo;
@@ -70,7 +61,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
             setCameraNumTextBox.Text = data.CameraRadius.ToString();
             // Map
             if (data.Anchors != null)
-                travelMapPlayer.SetAnchors(data.Anchors,true,AnchorMode.ShowAllAnchors);
+                travelMapPlayer.SetAnchors(data.Anchors, true, AnchorMode.ShowAllAnchors);
             if (data.HomePlacemark.CountryName != null)
                 travelMapPlayer.SetHomePlace(data.HomePlacemark);
             travelMapPlayer.DisconnectAnchors();
@@ -91,13 +82,28 @@ namespace TravelJournal.WinForm.Simulator.Forms
                         subItem.ForeColor = Color.White;
                     }
             }
-        }
-        
+        } 
+        #endregion
+
+        #region Public members
+        public TravelItineraryData TravelItineraryData
+        {
+            get
+            {
+                return Data as TravelItineraryData;
+            }
+            set
+            {
+                Data = value;
+            }
+        } 
+        #endregion
+
+        #region Event handlers 
         private void TravelItineraryPlanner_Load(object sender, EventArgs e)
         {
             UpdateView(data);
         }
-
         private void undoButton_Click(object sender, EventArgs e)
         {
             if (history.CanUndo)
@@ -203,11 +209,11 @@ namespace TravelJournal.WinForm.Simulator.Forms
             travelMapPlayer.ConnectAnchors(true);
             toolStrip.Enabled = true;
         }
-
         private void refreshButton_Click(object sender, EventArgs e)
         {
             UpdateView(data);
-        }
+        } 
+        #endregion
     }
 
     public class TravelItineraryDataMemento : IMemento<TravelItineraryPlanner>

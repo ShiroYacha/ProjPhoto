@@ -23,7 +23,12 @@ namespace TravelJournal.WinForm.Simulator.Forms
             // Rendering
             RenderMenu();
             // Load default
-            LoadProject("TravelJournalGenerationSimulation");
+            LoadProject("TravelJournalSimulation");
+        }
+
+        public ITestProjectControl ProjectControl
+        {
+            get { return mainTableLayoutPanel.Controls[0] as ITestProjectControl; }
         }
 
         private void RenderMenu()

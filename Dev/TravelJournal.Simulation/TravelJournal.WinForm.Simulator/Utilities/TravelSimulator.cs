@@ -10,8 +10,8 @@ namespace TravelJournal.WinForm.Simulator
 {
     public class TravelSimulator
     {
-        private TravelJournalGenerationSimulation main;
         private Timer timer;
+        private TravelMapPlayer player;
 
         private TravelItineraryData data;
         private SimulationModelPoint currentPosition;
@@ -23,49 +23,12 @@ namespace TravelJournal.WinForm.Simulator
         private double currentSegmentLngStep;
         private int currentSegmentIndex;
 
-        public TravelSimulator(TravelJournalGenerationSimulation main)
+        public TravelSimulator(TravelMapPlayer player)
         {
-            this.main = main;
+            this.player = player;
         }
 
-        public bool ValidateData(TravelItineraryData data)
-        {
-            if (data.IsComplete)
-            {
-                if (!data.IsCompiled)
-                {
-                    TravelSimulationDataCompiler compiler = new TravelSimulationDataCompiler(data.CameraRadius);
-                    this.data = compiler.Compile(data);
-                }
-                else
-                    this.data = data;
-                return true;
-            }
-            else
-                return false;  
-        }
-
-        public void StartSimulation()
-        {
-            if (timer == null)
-            {
-                // Log
-                TravelJournalGenerationSimulation.Log(LogType.Info, "Simulator started.");
-                // Preparation
-                currentIndex = 0;
-                CalculateSegmentLength();
-                // Launch 
-                timer = new Timer((o) => { OnStep(); }, null, 0, TravelJournalGenerationSimulation.generalSettings.SimualtionStep);
-            }
-            else
-            {
-                // Log
-                TravelJournalGenerationSimulation.Log(LogType.Info, "Simulator resumed.");
-                // Resume 
-                timer.Change(1000, TravelJournalGenerationSimulation.generalSettings.SimualtionStep);
-            }
-        }
-
+        #region Private members
         private void CalculateSegmentLength()
         {
             if (currentIndex >= data.Anchors.Count)
@@ -79,7 +42,7 @@ namespace TravelJournal.WinForm.Simulator
                 SimulationModelPoint endPoint = data.Anchors[currentIndex == data.Anchors.Count - 1 ? 0 : currentIndex + 1];
                 // Calculate segment count
                 long interval = startPoint.CustomTimeInterval == 0 ? data.TimeIntervalPerAnchor : startPoint.CustomTimeInterval;
-                currentSegmentCount = (int)(interval / TravelJournalGenerationSimulation.generalSettings.SimualtionStep);
+                currentSegmentCount = (int)(interval / TravelJournalSimulation.generalSettings.SimualtionStep);
                 // Initialize segment index
                 currentSegmentIndex = 0;
                 // Calculate segment step
@@ -87,7 +50,6 @@ namespace TravelJournal.WinForm.Simulator
                 currentSegmentLngStep = (endPoint.Gps.Lng - startPoint.Gps.Lng) / currentSegmentCount;
             }
         }
-
         private void OnStep()
         {
             if (currentSegmentIndex >= currentSegmentCount - 1)
@@ -96,7 +58,7 @@ namespace TravelJournal.WinForm.Simulator
                 currentIndex++;
                 CalculateSegmentLength();
                 SimulationModelPoint point = data.Anchors.First();
-                main.Player.SetAnchors(new List<SimulationModelPoint>() { point });
+                player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
                 // Update current position
                 currentPosition = point;
@@ -104,7 +66,7 @@ namespace TravelJournal.WinForm.Simulator
             else if (currentSegmentIndex == 0) // Draw first point
             {
                 SimulationModelPoint point = data.Anchors.First();
-                main.Player.SetAnchors(new List<SimulationModelPoint>() { point });
+                player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
                 // Update current position
                 currentPosition = point;
@@ -112,7 +74,7 @@ namespace TravelJournal.WinForm.Simulator
             else // Draw next segment using the linear model
             {
                 // Take pasted anchors
-                List<SimulationModelPoint> points = new List<SimulationModelPoint>(data.Anchors.Take(currentIndex+1));
+                List<SimulationModelPoint> points = new List<SimulationModelPoint>(data.Anchors.Take(currentIndex + 1));
                 SimulationModelPoint lastPoint = points.Last();
                 // Calculate current anchor (linear interpolation)
                 SimulationModelPoint interPoint;
@@ -128,9 +90,9 @@ namespace TravelJournal.WinForm.Simulator
                 }
                 points.Add(interPoint);
                 // Draw anchors
-                main.Player.SetAnchors(points, main.InAutoZoomMode, AnchorMode.ShowOnlyPhotoAnchors);
+                player.SetAnchors(points, TravelJournalSimulation.InAutoZoomMode, AnchorMode.ShowOnlyPhotoAnchors);
                 // Draw routes
-                main.Player.ConnectAnchors();
+                player.ConnectAnchors();
                 currentSegmentIndex++;
                 // Update current position
                 currentPosition = interPoint;
@@ -139,38 +101,85 @@ namespace TravelJournal.WinForm.Simulator
                 photos.AddRange(points.Where((point) => { return point.PhotoGenNumber > 0; }));
                 // Inspect information
 #if DEBUG
-                TravelJournalGenerationSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
+                TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
             {"Current index", currentIndex}, 
             {"Current segment index",currentSegmentIndex},
             {"Current segment count", currentSegmentCount}
             });
 #endif
-                TravelJournalGenerationSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
+                TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
             {"Photo count", photos.Count}, 
-            }); 
+            });
+            }
+        } 
+        #endregion
+
+        #region Public members
+        public bool IsReady
+        {
+            get { return data!=null && data.IsComplete && data.IsCompiled; }
+        }
+        public bool ValidateData(TravelItineraryData data)
+        {
+            if (data.IsComplete)
+            {
+                if (!data.IsCompiled)
+                {
+                    TravelSimulationDataCompiler compiler = new TravelSimulationDataCompiler(data.CameraRadius);
+                    this.data = compiler.Compile(data);
+                }
+                else
+                    this.data = data;
+                return true;
+            }
+            else
+                return false;
+        }
+        public void StartSimulation()
+        {
+            if (timer == null)
+            {
+                // Log
+                TravelJournalSimulation.Log(LogType.Info, "Simulator started.");
+                // Preparation
+                currentIndex = 0;
+                CalculateSegmentLength();
+                // Launch 
+                timer = new Timer((o) => { OnStep(); }, null, 0, TravelJournalSimulation.generalSettings.SimualtionStep);
+            }
+            else
+            {
+                // Log
+                TravelJournalSimulation.Log(LogType.Info, "Simulator resumed.");
+                // Resume 
+                timer.Change(1000, TravelJournalSimulation.generalSettings.SimualtionStep);
             }
         }
-
         public void PauseSimulation()
         {
-            timer.Change(Timeout.Infinite, Timeout.Infinite);
-            TravelJournalGenerationSimulation.Log(LogType.Info, "Simulation paused.");
+            if (timer != null)
+            {
+                timer.Change(Timeout.Infinite, Timeout.Infinite);
+                TravelJournalSimulation.Log(LogType.Info, "Simulation paused.");
+            }
         }
-
         public void ResetSimulation()
         {
-            timer.Change(Timeout.Infinite, Timeout.Infinite);
-            timer.Dispose();
-            timer = null;
-            main.Player.SetAnchors(new List<SimulationModelPoint>(){data.Anchors.First()},true,AnchorMode.ShowAllAnchors);
-            main.Player.DisconnectAnchors();
-            TravelJournalGenerationSimulation.Log(LogType.Info, "Simulation reset.");
+            if (timer != null)
+            {
+                timer.Change(Timeout.Infinite, Timeout.Infinite);
+                timer.Dispose();
+                timer = null;
+                player.SetAnchors(new List<SimulationModelPoint>() { data.Anchors.First() }, true, AnchorMode.ShowAllAnchors);
+                player.DisconnectAnchors();
+                TravelJournalSimulation.Log(LogType.Info, "Simulation reset.");
+            }
         }
-
-        internal void CloseDown()
+        public void CloseDown()
         {
             ResetSimulation();
             timer = null;
         }
+        #endregion
     }
 }
