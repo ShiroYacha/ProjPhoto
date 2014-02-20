@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fdc12139-5dfe-4f81-8784-458ce768682a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4dbf7543-403d-40ea-895f-7f3c5dc67d2d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -20,13 +20,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="50c3b73c-9ee6-41a0-bef8-19e04ac0a30a" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="cfc74597-debc-4b9f-a769-e5ed9c22f10d" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="70c6276f-ec55-491b-b4ff-6cff27723e05" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" />
-    <MetadataFile FileName="TravelJournal.WCF.xsd" MetadataType="Schema" ID="d0b387e9-aa34-467e-87c1-cec1609d74be" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="7458c893-edbc-445f-b29f-6237ab1e3d65" SourceId="1" SourceUrl="http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="30084b6f-5611-4e42-bb22-75160e3b2fd9" SourceId="1" SourceUrl="http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="f27dbbaf-5ff3-4192-9d6e-178cb6a59065" SourceId="1" SourceUrl="http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" />
+    <MetadataFile FileName="TravelJournal.WCF.xsd" MetadataType="Schema" ID="64d5851e-6f1c-48e2-a88a-820e31641c14" SourceId="1" SourceUrl="http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WCF/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

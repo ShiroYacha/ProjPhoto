@@ -32,6 +32,9 @@ namespace TravelJournal.WinForm.Simulator
             // Assign static
             thisForm = this;
             // Setup
+            ServiceHost host = new ServiceHost("http://192.168.1.4:8733/");
+            host.Open();
+
             itineraryData = new TravelItineraryData();
             simulator = new TravelSimulator(this);
             // Rendering
@@ -281,9 +284,7 @@ namespace TravelJournal.WinForm.Simulator
 
         private void connectButton_Click(object sender, EventArgs e)
         {
-            ServiceHost host = new ServiceHost("http://192.168.1.23:8733/");
 
-            host.Open();
 
         }
 

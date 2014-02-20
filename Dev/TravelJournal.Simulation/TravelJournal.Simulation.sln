@@ -4,8 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelJournal.WinForm.Simulator", "TravelJournal.WinForm.Simulator\TravelJournal.WinForm.Simulator.csproj", "{C4316236-078A-4817-AF83-2E9BF3E91C75}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F1865EF1-7C20-4B37-B271-7236B8539E82} = {F1865EF1-7C20-4B37-B271-7236B8539E82}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelJournal.WP8.UI.Test", "TravelJournal.WP8.UI.Test\TravelJournal.WP8.UI.Test.csproj", "{61374D5A-2C3B-46A3-979D-494F0E7BF609}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4316236-078A-4817-AF83-2E9BF3E91C75} = {C4316236-078A-4817-AF83-2E9BF3E91C75}
+		{F1865EF1-7C20-4B37-B271-7236B8539E82} = {F1865EF1-7C20-4B37-B271-7236B8539E82}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelJournal.WCF", "TravelJournal.WCF\TravelJournal.WCF.csproj", "{F1865EF1-7C20-4B37-B271-7236B8539E82}"
 EndProject
