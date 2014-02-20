@@ -12,6 +12,7 @@ using TravelJournal.WinForm.Simulator.Controls;
 using System.Runtime.CompilerServices;
 using TravelJournal.WinForm.Simulator.Rendering;
 using TravelJournal.WinForm.Simulator.Forms;
+using System.ServiceModel;
 
 namespace TravelJournal.WinForm.Simulator
 {
@@ -276,6 +277,14 @@ namespace TravelJournal.WinForm.Simulator
             playButton.Enabled = true;
             pauseButton.Enabled = false;
             resetButton.Enabled = false;
+        }
+
+        private void connectButton_Click(object sender, EventArgs e)
+        {
+            ServiceHost host = new ServiceHost("http://192.168.1.23:8733/");
+
+            host.Open();
+
         }
 
 

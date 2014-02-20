@@ -27,12 +27,12 @@ namespace TravelJournal.WP8.UI.Test
         {
             int testValue = 7;
 
-            ServiceReference1.Service1Client clientForTesting = new ServiceReference1.Service1Client();
-            clientForTesting.GetDataCompleted += new EventHandler<ServiceReference1.GetDataCompletedEventArgs>(TestCallback);
+            ServiceReference.Service1Client clientForTesting = new ServiceReference.Service1Client();
+            clientForTesting.GetDataCompleted += new EventHandler<ServiceReference.GetDataCompletedEventArgs>(TestCallback);
             clientForTesting.GetDataAsync(testValue);
         }
 
-        private void TestCallback(object sender, ServiceReference1.GetDataCompletedEventArgs e)
+        private void TestCallback(object sender, ServiceReference.GetDataCompletedEventArgs e)
         {
             MessageBox.Show(e.Result);
         }

@@ -84,6 +84,7 @@
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(23, 25);
             this.connectButton.Text = "toolStripButton1";
+            this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
             // 
             // settingButton
             // 

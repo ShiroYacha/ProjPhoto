@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TravelJournal.WinForm.Simulator.ServiceReference2 {
+namespace TravelJournal.WinForm.Simulator.ServiceReference {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WCF.ServiceHost")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WCF")]
     [System.SerializableAttribute()]
     public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -75,7 +75,7 @@ namespace TravelJournal.WinForm.Simulator.ServiceReference2 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
@@ -85,19 +85,19 @@ namespace TravelJournal.WinForm.Simulator.ServiceReference2 {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        TravelJournal.WinForm.Simulator.ServiceReference2.CompositeType GetDataUsingDataContract(TravelJournal.WinForm.Simulator.ServiceReference2.CompositeType composite);
+        TravelJournal.WinForm.Simulator.ServiceReference.CompositeType GetDataUsingDataContract(TravelJournal.WinForm.Simulator.ServiceReference.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<TravelJournal.WinForm.Simulator.ServiceReference2.CompositeType> GetDataUsingDataContractAsync(TravelJournal.WinForm.Simulator.ServiceReference2.CompositeType composite);
+        System.Threading.Tasks.Task<TravelJournal.WinForm.Simulator.ServiceReference.CompositeType> GetDataUsingDataContractAsync(TravelJournal.WinForm.Simulator.ServiceReference.CompositeType composite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : TravelJournal.WinForm.Simulator.ServiceReference2.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : TravelJournal.WinForm.Simulator.ServiceReference.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<TravelJournal.WinForm.Simulator.ServiceReference2.IService1>, TravelJournal.WinForm.Simulator.ServiceReference2.IService1 {
+    public partial class Service1Client : System.ServiceModel.ClientBase<TravelJournal.WinForm.Simulator.ServiceReference.IService1>, TravelJournal.WinForm.Simulator.ServiceReference.IService1 {
         
         public Service1Client() {
         }
@@ -126,11 +126,11 @@ namespace TravelJournal.WinForm.Simulator.ServiceReference2 {
             return base.Channel.GetDataAsync(value);
         }
         
-        public TravelJournal.WinForm.Simulator.ServiceReference2.CompositeType GetDataUsingDataContract(TravelJournal.WinForm.Simulator.ServiceReference2.CompositeType composite) {
+        public TravelJournal.WinForm.Simulator.ServiceReference.CompositeType GetDataUsingDataContract(TravelJournal.WinForm.Simulator.ServiceReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<TravelJournal.WinForm.Simulator.ServiceReference2.CompositeType> GetDataUsingDataContractAsync(TravelJournal.WinForm.Simulator.ServiceReference2.CompositeType composite) {
+        public System.Threading.Tasks.Task<TravelJournal.WinForm.Simulator.ServiceReference.CompositeType> GetDataUsingDataContractAsync(TravelJournal.WinForm.Simulator.ServiceReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }
