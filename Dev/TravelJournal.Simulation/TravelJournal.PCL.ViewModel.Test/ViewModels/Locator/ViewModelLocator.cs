@@ -28,6 +28,7 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<JournalGenerationTestViewModel>();
+            SimpleIoc.Default.Register<SimulatorConnectivityTestViewModel>();
         }
 
         public MainViewModel TestMain
@@ -42,6 +43,14 @@ namespace TravelJournal.PCL.ViewModel.Test
             get
             {
                 return ServiceLocator.Current.GetInstance<JournalGenerationTestViewModel>();
+            }
+        }
+         
+        public SimulatorConnectivityTestViewModel SimulatorConnectivityTestViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SimulatorConnectivityTestViewModel>();
             }
         }
     }
