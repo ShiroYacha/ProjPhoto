@@ -275,8 +275,6 @@ namespace TravelJournal.WinForm.Simulator
                 CloseServerHost();
             UpdateButtonInConsole();
         }
-
-
         private void settingButton_Click(object sender, EventArgs e)
         {
             PropertyConfigForm<SimulatorGeneralSettings> configWindow = new PropertyConfigForm<SimulatorGeneralSettings>();
@@ -304,6 +302,10 @@ namespace TravelJournal.WinForm.Simulator
                 // Resume all buttons
                 UpdateButtonInConsole();
             }
+        }
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            logger.Initialize();
         }
 
         private void designButton_Click(object sender, EventArgs e)
@@ -339,6 +341,8 @@ namespace TravelJournal.WinForm.Simulator
         } 
 
         #endregion
+
+
 
     }
 }

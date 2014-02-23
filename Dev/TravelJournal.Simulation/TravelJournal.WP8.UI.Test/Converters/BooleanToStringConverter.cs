@@ -7,15 +7,15 @@ using System.Windows.Data;
 
 namespace TravelJournal.WP8.UI.Test
 {
-    public class SliderToTextConverter : IValueConverter
+    public class BooleanToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return System.Convert.ToInt64(value).ToString();
+            return value.ToString();
         }
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return null;
+            return bool.Parse(value.ToString());
         }
     }
 }

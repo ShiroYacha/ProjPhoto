@@ -30,6 +30,16 @@ namespace TravelJournal.WP8.Test
             serviceClient.LogAsync(LogType.Info, "Connectivity scheduled task started...", "Start", @"D:\ComputerProgramming\C#\ProjPhoto\Dev\TravelJournal\TravelJournal.PCL\.Test\ServerConnectivityTester", 30);
         }
 
+        public void Stop()
+        {
+            PeriodicTask task = null;
+            task = ScheduledActionService.Find(ScheduledAgent.NAME_CONNECTIVITY_TEST_AGENT) as PeriodicTask;
+            if (task != null)
+                ScheduledActionService.Remove(task.Name);
+            // Log
+            ConnectionServiceClient serviceClient = new ConnectionServiceClient();
+            serviceClient.LogAsync(LogType.Info, "Connectivity scheduled task stopped...", "Start", @"D:\ComputerProgramming\C#\ProjPhoto\Dev\TravelJournal\TravelJournal.PCL\.Test\ServerConnectivityTester", 30);
 
+        }
     }
 }

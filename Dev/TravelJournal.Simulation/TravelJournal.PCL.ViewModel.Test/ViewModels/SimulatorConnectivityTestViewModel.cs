@@ -27,6 +27,20 @@ namespace TravelJournal.PCL.ViewModel.Test
             }
         }
 
+        private bool scheduledTaskNotStarted=true;
+        public bool ScheduledTaskNotStarted
+        {
+            get { return scheduledTaskNotStarted; }
+            set
+            {
+                if (scheduledTaskNotStarted != value)
+                {
+                    scheduledTaskNotStarted = value;
+                    RaisePropertyChanged("ScheduledTaskNotStarted");
+                }
+            }
+        }
+
         private int testPackageSize=0;
         public int TestPackageSize
         {
@@ -61,7 +75,21 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             get
             {
-                return new RelayCommand(() => { tester.StartTestPeriodicAgent(); });
+                return new RelayCommand(() => { StartOrStopScheduledAgent(); });
+            }
+        }
+
+        private void StartOrStopScheduledAgent()
+        {
+            if (ScheduledTaskNotStarted)
+            { 
+                ScheduledTaskNotStarted = false; 
+                tester.StartTestPeriodicAgent(); 
+            }
+            else
+            {
+                ScheduledTaskNotStarted = true; 
+                tester.StopTestPeriodicAgent();
             }
         }
     }

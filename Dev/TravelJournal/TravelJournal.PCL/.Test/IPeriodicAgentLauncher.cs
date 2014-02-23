@@ -8,5 +8,6 @@ namespace TravelJournal.PCL.Test
     public interface IPeriodicAgentLauncher
     {
         void Start();
+        void Stop();
     }
 }

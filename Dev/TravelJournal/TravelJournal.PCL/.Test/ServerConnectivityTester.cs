@@ -83,5 +83,11 @@ namespace TravelJournal.PCL.Test
             IPeriodicAgentLauncher agent = SimpleIoc.Default.GetInstance<IPeriodicAgentLauncher>();
             agent.Start();
         }
+
+        public void StopTestPeriodicAgent()
+        {
+            IPeriodicAgentLauncher agent = SimpleIoc.Default.GetInstance<IPeriodicAgentLauncher>();
+            agent.Stop();
+        }
     }
 }

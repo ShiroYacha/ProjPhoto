@@ -42,6 +42,7 @@
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.leftTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.clearButton = new System.Windows.Forms.ToolStripButton();
             this.stateMachineViewer = new TravelJournal.WinForm.Simulator.Controls.StateMachineViewer();
             this.infoInspector = new TravelJournal.WinForm.Simulator.Controls.InfoInspector();
             this.connectionViewer = new TravelJournal.WinForm.Simulator.Controls.Components.ConnectionViewer();
@@ -62,6 +63,7 @@
             this.serverButton,
             this.settingButton,
             this.uiTestButton,
+            this.clearButton,
             this.toolStripSeparator1,
             this.designButton,
             this.playButton,
@@ -225,6 +227,17 @@
             this.rightTableLayoutPanel.Size = new System.Drawing.Size(689, 570);
             this.rightTableLayoutPanel.TabIndex = 1;
             // 
+            // clearButton
+            // 
+            this.clearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.clearButton.Image = ((System.Drawing.Image)(resources.GetObject("clearButton.Image")));
+            this.clearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.clearButton.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(23, 25);
+            this.clearButton.Text = "toolStripButton1";
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
             // stateMachineViewer
             // 
             this.stateMachineViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
@@ -232,7 +245,7 @@
             this.stateMachineViewer.Location = new System.Drawing.Point(0, 0);
             this.stateMachineViewer.Margin = new System.Windows.Forms.Padding(0);
             this.stateMachineViewer.Name = "stateMachineViewer";
-            this.stateMachineViewer.Size = new System.Drawing.Size(258, 268);
+            this.stateMachineViewer.Size = new System.Drawing.Size(258, 228);
             this.stateMachineViewer.TabIndex = 1;
             this.stateMachineViewer.ViewerSize = new System.Drawing.Size(10, 10);
             // 
@@ -241,20 +254,20 @@
             this.infoInspector.AutoSize = true;
             this.infoInspector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.infoInspector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.infoInspector.Location = new System.Drawing.Point(0, 370);
+            this.infoInspector.Location = new System.Drawing.Point(0, 345);
             this.infoInspector.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.infoInspector.Name = "infoInspector";
-            this.infoInspector.Size = new System.Drawing.Size(258, 200);
+            this.infoInspector.Size = new System.Drawing.Size(258, 225);
             this.infoInspector.TabIndex = 2;
             // 
             // connectionViewer
             // 
             this.connectionViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.connectionViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.connectionViewer.Location = new System.Drawing.Point(0, 268);
+            this.connectionViewer.Location = new System.Drawing.Point(0, 228);
             this.connectionViewer.Margin = new System.Windows.Forms.Padding(0);
             this.connectionViewer.Name = "connectionViewer";
-            this.connectionViewer.Size = new System.Drawing.Size(258, 99);
+            this.connectionViewer.Size = new System.Drawing.Size(258, 114);
             this.connectionViewer.TabIndex = 3;
             // 
             // logger
@@ -317,6 +330,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton autoZoomButton;
         private Controls.Components.ConnectionViewer connectionViewer;
+        private System.Windows.Forms.ToolStripButton clearButton;
 
     }
 }

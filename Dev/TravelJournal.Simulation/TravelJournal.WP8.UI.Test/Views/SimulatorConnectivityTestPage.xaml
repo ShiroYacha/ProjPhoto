@@ -20,7 +20,8 @@
     <base:PageBase.Resources>
         <base:ConnectionStatusEnumToStringConverter x:Name="ConnectionStatusEnumToStringConverter" />
         <base:ConnectionStatusEnumToBoolConverter x:Name="ConnectionStatusEnumToBoolConverter" />
-        <base:SliderToTextConverter x:Name="SliderToTextConverter" />
+        <base:BooleanToStringConverter x:Name="BooleanToStringConverter" />
+        <base:LongToTextConverter x:Name="LongToTextConverter" />
     </base:PageBase.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
@@ -89,7 +90,7 @@
                 <StackPanel Orientation="Horizontal" Height="43" Margin="0,20,0,0">
                     <TextBlock TextWrapping="Wrap" Text="Download" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="12,0,30,0"/>
                     <TextBlock TextWrapping="Wrap" Text="Package size: " HorizontalAlignment="Center"   VerticalAlignment="Bottom"/>
-                    <TextBlock TextWrapping="Wrap" Text="{Binding Value, Converter={StaticResource SliderToTextConverter}, ElementName=testPackageSilder, Mode=OneWay}" TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Value, Converter={StaticResource LongToTextConverter}, ElementName=testPackageSilder, Mode=OneWay}" TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Height="103" Orientation="Horizontal">
                     <Slider x:Name="testPackageSilder" Maximum="1000000" SmallChange="100" LargeChange="10000" 
@@ -106,14 +107,14 @@
                         <TextBlock Name="ScheduleAgentButtonText" Text="Start"  />
                     </Button.Content>
                     <i:Interaction.Triggers>
-                        <ei:DataTrigger Value="True"
-                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                        <ei:DataTrigger Value="False"
+                                      Binding="{Binding ScheduledTaskNotStarted, Converter={StaticResource BooleanToStringConverter}}">
                             <ei:ChangePropertyAction PropertyName="Text"
                                                    Value="Stop"
                                                  TargetName="ScheduleAgentButtonText"/>
                         </ei:DataTrigger>
-                        <ei:DataTrigger Value="False"
-                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                        <ei:DataTrigger Value="True"
+                                      Binding="{Binding ScheduledTaskNotStarted, Converter={StaticResource BooleanToStringConverter}}">
                             <ei:ChangePropertyAction PropertyName="Text"
                                                    Value="Start" 
                                                   TargetName="ScheduleAgentButtonText"/>
