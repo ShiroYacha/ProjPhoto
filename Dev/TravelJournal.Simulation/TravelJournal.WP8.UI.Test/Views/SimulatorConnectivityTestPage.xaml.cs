@@ -15,26 +15,7 @@ namespace TravelJournal.WP8.UI.Test.Views
         public SimulatorConnectivityTestPage()
         {
             InitializeComponent();
-            ServerConnectivityTester tester = new ServerConnectivityTester();
-            tester.ConnectServer((e) => { Test.Text = e.ToString(); });
         }
     }
 
-    public class ServerConnectivityTester
-    {
-        private Action<bool> resultHandler;
-
-        public void ConnectServer(Action<bool> resultHandler)
-        {
-            this.resultHandler = resultHandler;
-            ServiceReference.ConnectivityTestServiceClient serviceClient = new ServiceReference.ConnectivityTestServiceClient();
-            serviceClient.StartTestCompleted += serviceClient_StartTestCompleted;
-            serviceClient.StartTestAsync();
-        }
-
-        void serviceClient_StartTestCompleted(object sender, ServiceReference.StartTestCompletedEventArgs e)
-        {
-            resultHandler(e.Result);
-        }
-    }
 }

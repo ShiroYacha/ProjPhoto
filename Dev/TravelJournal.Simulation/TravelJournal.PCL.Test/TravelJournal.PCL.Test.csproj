@@ -47,16 +47,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\ServiceReference\service.wsdl" />
-    <None Include="Service References\ServiceReference\service.xsd">
+    <None Include="Service References\ServiceReference\ConnectionService.wsdl" />
+    <None Include="Service References\ServiceReference\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service1.xsd">
+    <None Include="Service References\ServiceReference\item1.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\TravelJournal.PCL.Test.ServiceReference.ConnectionTestData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReference\configuration91.svcinfo" />

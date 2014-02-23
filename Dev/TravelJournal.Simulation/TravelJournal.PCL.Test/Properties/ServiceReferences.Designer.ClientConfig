@@ -1,17 +1,4 @@
 <configuration>
-  <system.serviceModel>
-    <bindings>
-      <basicHttpBinding>
-        <binding name="BasicHttpBinding_IConnectivityTestService" maxBufferSize="2147483647"
-            maxReceivedMessageSize="2147483647">
-          <security mode="None" />
-        </binding>
-      </basicHttpBinding>
-    </bindings>
-    <client>
-      <endpoint address="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/"
-          binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IConnectivityTestService"
-          contract="ServiceReference.IConnectivityTestService" name="BasicHttpBinding_IConnectivityTestService" />
-    </client>
-  </system.serviceModel>
+  <configSections>
+  </configSections>
 </configuration>

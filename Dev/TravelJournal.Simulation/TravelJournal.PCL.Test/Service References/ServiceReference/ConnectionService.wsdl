@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ConnectionService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator" />
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IConnectionService_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_PrepareTestData_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrepareTestData" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_PrepareTestData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrepareTestDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_GetTestData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTestData" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_GetTestData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTestDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_ReportLatency_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportLatency" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_ReportLatency_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportLatencyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IConnectionService">
+    <wsdl:operation name="Connect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectionService/Connect" message="tns:IConnectionService_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectionService/ConnectResponse" message="tns:IConnectionService_Connect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrepareTestData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectionService/PrepareTestData" message="tns:IConnectionService_PrepareTestData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectionService/PrepareTestDataResponse" message="tns:IConnectionService_PrepareTestData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectionService/GetTestData" message="tns:IConnectionService_GetTestData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectionService/GetTestDataResponse" message="tns:IConnectionService_GetTestData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportLatency">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectionService/ReportLatency" message="tns:IConnectionService_ReportLatency_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectionService/ReportLatencyResponse" message="tns:IConnectionService_ReportLatency_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IConnectionService" type="tns:IConnectionService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Connect">
+      <soap:operation soapAction="http://tempuri.org/IConnectionService/Connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepareTestData">
+      <soap:operation soapAction="http://tempuri.org/IConnectionService/PrepareTestData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestData">
+      <soap:operation soapAction="http://tempuri.org/IConnectionService/GetTestData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportLatency">
+      <soap:operation soapAction="http://tempuri.org/IConnectionService/ReportLatency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConnectionService">
+    <wsdl:port name="BasicHttpBinding_IConnectionService" binding="tns:BasicHttpBinding_IConnectionService">
+      <soap:address location="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

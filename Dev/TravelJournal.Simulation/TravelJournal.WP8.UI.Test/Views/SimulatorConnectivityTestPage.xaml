@@ -8,6 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
     xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"    
     DataContext="{Binding Source={StaticResource Locator},Path=SimulatorConnectivityTestViewModel}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -16,6 +17,11 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
+    <base:PageBase.Resources>
+        <base:ConnectionStatusEnumToStringConverter x:Name="ConnectionStatusEnumToStringConverter" />
+        <base:ConnectionStatusEnumToBoolConverter x:Name="ConnectionStatusEnumToBoolConverter" />
+        <base:SliderToTextConverter x:Name="SliderToTextConverter" />
+    </base:PageBase.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -29,18 +35,63 @@
             <TextBlock Text="{Binding LineOne}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
             <TextBlock Text="{Binding LineThree}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
-
+        <StackPanel Grid.Row="1">
+            <StackPanel Height="43" Orientation="Horizontal">
+                <TextBlock TextWrapping="Wrap" Text="Status : " Width="98" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,8" Padding="10,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <i:Interaction.Triggers>
+                      <ei:DataTrigger Value="Connected"
+                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                          <ei:ChangePropertyAction PropertyName="Foreground"
+                                                   Value="DodgerBlue" />
+                      </ei:DataTrigger>
+                      <ei:DataTrigger Value="Disconnected"
+                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                          <ei:ChangePropertyAction PropertyName="Foreground"
+                                                   Value="Gray" />
+                       </ei:DataTrigger>
+                      <ei:DataTrigger Value="ServerOffline"
+                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                          <ei:ChangePropertyAction PropertyName="Foreground"
+                                                   Value="Red" />
+                       </ei:DataTrigger>                        
+                    </i:Interaction.Triggers>
+                </TextBlock>
+            </StackPanel>
+            <Button Command="{Binding Path=ConnectServer,Mode=OneWay}">
+                <Button.Content>
+                    <TextBlock x:Name="btnText" Text="Connect"  />
+                </Button.Content>
+                <i:Interaction.Triggers>
+                    <ei:DataTrigger Value="Connected"
+                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                        <ei:ChangePropertyAction PropertyName="Text"
+                                                   Value="Disconnect"
+                                                 TargetName="btnText"/>
+                    </ei:DataTrigger>
+                    <ei:DataTrigger Value="Disconnected"
+                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                        <ei:ChangePropertyAction PropertyName="Text"
+                                                   Value="Connect" 
+                                                  TargetName="btnText"/>
+                    </ei:DataTrigger>
+                    <ei:DataTrigger Value="ServerOffline"
+                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                        <ei:ChangePropertyAction PropertyName="Text"
+                                                   Value="Connect" 
+                                                  TargetName="btnText"/>
+                    </ei:DataTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <StackPanel Orientation="Horizontal" Height="43" Margin="0,20,0,0">
+                <TextBlock TextWrapping="Wrap" Text="Package size: " VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,-18,0,8" Padding="10,0,0,0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding ElementName=testPackageSilder, Path=Value, Converter={StaticResource SliderToTextConverter}, Mode=OneWay}" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <Slider Name="testPackageSilder" Height="90" Maximum="1000000" VerticalAlignment="Bottom" SmallChange="100" LargeChange="10000" HorizontalAlignment="Right" Width="480" Value="{Binding TestPackageSize, Mode=TwoWay}" IsEnabled="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToBoolConverter}}"/>
+            <Button Content="Send" Command="{Binding Path=SendTestPackageRequest,Mode=OneWay}" IsEnabled="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToBoolConverter}}"/>
+        </StackPanel>
+        <!--  Value="{Binding TestPackageSize, Converter={StaticResource TestPackageSizeToDoubleConverter}}"-->
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock Name="Test" Text="{Binding IsConnected}"  HorizontalAlignment="Left" Margin="207,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-        </Grid>
-
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="Loaded">
-                <cmd:EventToCommand Command="{Binding OnLoad,Mode=OneWay}" MustToggleIsEnabledValue="True" />
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
-    </Grid>
+    </Grid> 
 
 </base:PageBase>

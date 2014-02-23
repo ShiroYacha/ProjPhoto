@@ -34,8 +34,6 @@
             this.settingButton = new System.Windows.Forms.ToolStripButton();
             this.uiTestButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.connectivityTestButton = new System.Windows.Forms.ToolStripButton();
-            this.separator = new System.Windows.Forms.ToolStripSeparator();
             this.designButton = new System.Windows.Forms.ToolStripButton();
             this.playButton = new System.Windows.Forms.ToolStripButton();
             this.pauseButton = new System.Windows.Forms.ToolStripButton();
@@ -46,6 +44,7 @@
             this.rightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.stateMachineViewer = new TravelJournal.WinForm.Simulator.Controls.StateMachineViewer();
             this.infoInspector = new TravelJournal.WinForm.Simulator.Controls.InfoInspector();
+            this.connectionViewer = new TravelJournal.WinForm.Simulator.Controls.Components.ConnectionViewer();
             this.logger = new TravelJournal.WinForm.Simulator.Controls.Logger();
             this.travelMapPlayer = new TravelJournal.WinForm.Simulator.Controls.TravelMapPlayer();
             this.toolStrip.SuspendLayout();
@@ -64,8 +63,6 @@
             this.settingButton,
             this.uiTestButton,
             this.toolStripSeparator1,
-            this.connectivityTestButton,
-            this.separator,
             this.designButton,
             this.playButton,
             this.pauseButton,
@@ -119,26 +116,6 @@
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // connectivityTestButton
-            // 
-            this.connectivityTestButton.CheckOnClick = true;
-            this.connectivityTestButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.connectivityTestButton.Image = ((System.Drawing.Image)(resources.GetObject("connectivityTestButton.Image")));
-            this.connectivityTestButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.connectivityTestButton.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
-            this.connectivityTestButton.Name = "connectivityTestButton";
-            this.connectivityTestButton.Size = new System.Drawing.Size(23, 25);
-            this.connectivityTestButton.Text = "toolStripButton1";
-            this.connectivityTestButton.Click += new System.EventHandler(this.connectivityTestButton_Click);
-            // 
-            // separator
-            // 
-            this.separator.BackColor = System.Drawing.Color.RoyalBlue;
-            this.separator.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.separator.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
-            this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(6, 25);
             // 
             // designButton
             // 
@@ -219,14 +196,16 @@
             this.leftTableLayoutPanel.ColumnCount = 1;
             this.leftTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.leftTableLayoutPanel.Controls.Add(this.stateMachineViewer, 0, 0);
-            this.leftTableLayoutPanel.Controls.Add(this.infoInspector, 0, 1);
+            this.leftTableLayoutPanel.Controls.Add(this.infoInspector, 0, 2);
+            this.leftTableLayoutPanel.Controls.Add(this.connectionViewer, 0, 1);
             this.leftTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leftTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.leftTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.leftTableLayoutPanel.Name = "leftTableLayoutPanel";
-            this.leftTableLayoutPanel.RowCount = 2;
-            this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.leftTableLayoutPanel.RowCount = 3;
+            this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.leftTableLayoutPanel.Size = new System.Drawing.Size(258, 570);
             this.leftTableLayoutPanel.TabIndex = 0;
             // 
@@ -260,12 +239,23 @@
             // infoInspector
             // 
             this.infoInspector.AutoSize = true;
+            this.infoInspector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.infoInspector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.infoInspector.Location = new System.Drawing.Point(0, 271);
+            this.infoInspector.Location = new System.Drawing.Point(0, 370);
             this.infoInspector.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.infoInspector.Name = "infoInspector";
-            this.infoInspector.Size = new System.Drawing.Size(258, 299);
+            this.infoInspector.Size = new System.Drawing.Size(258, 200);
             this.infoInspector.TabIndex = 2;
+            // 
+            // connectionViewer
+            // 
+            this.connectionViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.connectionViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.connectionViewer.Location = new System.Drawing.Point(0, 268);
+            this.connectionViewer.Margin = new System.Windows.Forms.Padding(0);
+            this.connectionViewer.Name = "connectionViewer";
+            this.connectionViewer.Size = new System.Drawing.Size(258, 99);
+            this.connectionViewer.TabIndex = 3;
             // 
             // logger
             // 
@@ -286,7 +276,7 @@
             this.travelMapPlayer.Size = new System.Drawing.Size(689, 369);
             this.travelMapPlayer.TabIndex = 1;
             // 
-            // TravelJournalGenerationSimulation
+            // TravelJournalSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -294,7 +284,7 @@
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
-            this.Name = "TravelJournalGenerationSimulation";
+            this.Name = "TravelJournalSimulation";
             this.Size = new System.Drawing.Size(950, 605);
             this.Load += new System.EventHandler(this.TravelJournalGenerationSimulation_Load);
             this.toolStrip.ResumeLayout(false);
@@ -320,14 +310,13 @@
         private System.Windows.Forms.ToolStripButton serverButton;
         private System.Windows.Forms.ToolStripButton uiTestButton;
         private System.Windows.Forms.ToolStripButton designButton;
-        private System.Windows.Forms.ToolStripSeparator separator;
         private System.Windows.Forms.ToolStripButton playButton;
         private System.Windows.Forms.ToolStripButton pauseButton;
         private System.Windows.Forms.ToolStripButton resetButton;
         private System.Windows.Forms.ToolStripButton settingButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton autoZoomButton;
-        private System.Windows.Forms.ToolStripButton connectivityTestButton;
+        private Controls.Components.ConnectionViewer connectionViewer;
 
     }
 }

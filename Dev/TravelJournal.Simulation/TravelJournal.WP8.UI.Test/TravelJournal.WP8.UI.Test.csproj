@@ -93,14 +93,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ConnectionStatusEnumConverters.cs" />
+    <Compile Include="Converters\SliderToTextConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Views\JournalGenerationTestPage.xaml.cs">
       <DependentUpon>JournalGenerationTestPage.xaml</DependentUpon>
@@ -128,14 +125,6 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service.wsdl" />
-    <None Include="Service References\ServiceReference\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
@@ -157,12 +146,6 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Service References\ServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ServiceReference\configuration.svcinfo" />
-    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -215,13 +198,14 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TravelJournal.PCL.Test\TravelJournal.PCL.Test.csproj">
+      <Project>{C2F01352-3CD9-498F-9F18-164670C089B9}</Project>
+      <Name>TravelJournal.PCL.Test</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelJournal.PCL.ViewModel.Test\TravelJournal.PCL.ViewModel.Test.csproj">
       <Project>{58F6CCF7-AD32-419F-B795-839800400586}</Project>
       <Name>TravelJournal.PCL.ViewModel.Test</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReference\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

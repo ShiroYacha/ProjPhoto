@@ -8,6 +8,7 @@ using TravelJournal.WinForm.Simulator.Forms;
 namespace TravelJournal.WinForm.Simulator
 {
     static class Program
+
     {
         /// <summary>
         /// The main entry point for the application.

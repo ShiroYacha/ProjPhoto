@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="16775dce-7c68-4eae-b8da-7fa3e12b26cd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b5467b61-0ecc-41fb-b9b3-6da5b799d015" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -20,12 +20,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="5508d96f-3bd2-462b-9a26-435f52e0955e" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="be46651c-c911-46b0-afab-4855b5c28181" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="2a4b9f00-18bb-467a-81df-4f78efb09d7d" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTestService/mex" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="1269386e-64c7-4b7f-817a-55043903eb24" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd2" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="2ee18da8-8d31-4fbd-b331-d734fd4042d9" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd3" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="0441365c-834f-4158-bf31-5f025129d25b" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="570cf05b-2a4c-4bf7-aeb4-a42d1fb05238" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd1" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="35afec62-b0d3-4efd-8007-e321bd67d86f" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd0" />
+    <MetadataFile FileName="ConnectionService.wsdl" MetadataType="Wsdl" ID="fa7c836c-db66-4053-a39e-0b7e00e7b854" SourceId="1" SourceUrl="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -351,11 +351,13 @@ namespace TravelJournal.WinForm.Simulator.Controls
                 previousPoint = currentPoint;
             }
 
-            // Draw current relative maximum value stirng
-            if (scaleMode == ScaleMode.Relative) {
+            // Draw values
+            if (drawValues.Count>0)
+            {
                 SolidBrush sb = new SolidBrush(perfChartStyle.ChartLinePen.Color);
-                g.DrawString(currentMaxValue.ToString(), this.Font, sb, 4.0f, 2.0f);
+                g.DrawString(currentMaxValue.ToString("#.##") + " / " + averageValue.ToString("#.##"), this.Font, sb, 4.0f, 2.0f);
             }
+
 
             // Draw Border on top
             ControlPaint.DrawBorder3D(g, 0, 0, Width, Height, b3dstyle);

@@ -14,6 +14,8 @@ using TravelJournal.WinForm.Simulator.Rendering;
 using TravelJournal.WinForm.Simulator.Forms;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using TravelJournal.WinForm.Simulator;
+using System.ServiceModel.Description;
 
 namespace TravelJournal.WinForm.Simulator
 {
@@ -23,8 +25,8 @@ namespace TravelJournal.WinForm.Simulator
         private static TravelJournalSimulation currentInstance;
 
         // System fields
+        private ConnectionService connectionService;
         private TravelSimulator simulator;
-        private ServerConnectivityViewer connectivityViewer;
         private ServiceHost host;
 
         // Data fields
@@ -41,8 +43,8 @@ namespace TravelJournal.WinForm.Simulator
             generalSettings = new SimulatorGeneralSettings();
             // Setup systems
             simulator = new TravelSimulator(travelMapPlayer);
-            connectivityViewer = new ServerConnectivityViewer();
-            connectivityViewer.Dock = DockStyle.Fill;
+            simulator.OnSimulatorStatusChanged += UpdateViews;
+            connectionService = new ConnectionService(simulator);
             // Rendering
             RenderToolStrip();
         }
@@ -61,8 +63,14 @@ namespace TravelJournal.WinForm.Simulator
             TestInfoInspector();
             TestLogger();
             TestStateMachineViewer();
+            TestConnectionViewer();
             // Log 
             Log(LogType.Info, "Test started.");
+        }
+
+        private void TestConnectionViewer()
+        {
+            connectionViewer.RunTest();
         }
         private void TestInfoInspector()
         {
@@ -125,13 +133,14 @@ namespace TravelJournal.WinForm.Simulator
         } 
         #endregion
 
+        #region Public members
         public TravelSimulator Simulator { get { return simulator; } }
-        public ServerConnectivityViewer ConnectivityViewer { get { return connectivityViewer; } }
         public void CloseDown()
         {
             StopAllTimers();
             simulator.CloseDown();
-        } 
+        }  
+        #endregion
 
         #region Public static members
         public static bool InAutoZoomMode
@@ -150,7 +159,12 @@ namespace TravelJournal.WinForm.Simulator
             currentInstance.InvokeMethod(() =>
            {
                currentInstance.logger.Log(type, log, callerName, callerFilePath, callerLine);
+               Application.DoEvents();
            });
+        }
+        public static void UpdateConnectionViewer(decimal value)
+        {
+            currentInstance.connectionViewer.AddValue(value);
         }
         #endregion
 
@@ -202,10 +216,7 @@ namespace TravelJournal.WinForm.Simulator
         }
         private void UpdateViews()
         {
-            // Load simulator
-            simulator.ValidateData(itineraryData);
             UpdateButtonInConsole();
-            // Update other inspector data
             UpdateRestInspectors();
         }
         private void DisableOtherButtonInConsole(ToolStripButton buttonNotToDisable=null)
@@ -218,16 +229,12 @@ namespace TravelJournal.WinForm.Simulator
         {
             foreach (ToolStripItem item in toolStrip.Items)
                 item.Enabled = true;
-            if (!serverButton.Checked)
+            if (!simulator.IsReady)
             {
-                connectivityTestButton.Enabled = false;
-                if (!simulator.IsReady)
-                {
-                    playButton.Enabled = false;
-                    pauseButton.Enabled = false;
-                    resetButton.Enabled = false;
-                }
-            }
+                playButton.Enabled = false;
+                pauseButton.Enabled = false;
+                resetButton.Enabled = false;
+            }  
             //connectivityTestButton.Enabled = false;
             UpdateInfoInspector(new Dictionary<string, object>() { { "Simulator status", simulator.IsReady ? "Ready" : "Not ready" } });
         } 
@@ -238,7 +245,7 @@ namespace TravelJournal.WinForm.Simulator
         }
         private void SetupServerHost()
         {
-            host = new ServiceHost("http://192.168.1.4:8733/");
+            host = new ServiceHost(connectionService,new Uri("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/"));
             host.Open();
             // Log
             Log(LogType.Info, "Server host opened...");
@@ -299,28 +306,14 @@ namespace TravelJournal.WinForm.Simulator
             }
         }
 
-        private void connectivityTestButton_Click(object sender, EventArgs e)
-        {
-            if (connectivityTestButton.Checked)
-            {
-                rightTableLayoutPanel.Controls.RemoveAt(1);
-                rightTableLayoutPanel.Controls.Add(connectivityViewer);
-                DisableOtherButtonInConsole(connectivityTestButton);
-            }
-            else
-            {
-                rightTableLayoutPanel.Controls.RemoveAt(1);
-                rightTableLayoutPanel.Controls.Add(travelMapPlayer);
-                UpdateButtonInConsole();
-            }
-        }
-
         private void designButton_Click(object sender, EventArgs e)
         {
             TravelItineraryPlanner configPopupWindow = new TravelItineraryPlanner();
             configPopupWindow.Data = itineraryData;
             configPopupWindow.ShowDialog();
             itineraryData = configPopupWindow.Data;
+            // Update simulator
+            simulator.ValidateData(itineraryData);
             UpdateViews();
         }
         private void playButton_Click(object sender, EventArgs e)

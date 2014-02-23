@@ -10,6 +10,8 @@ namespace TravelJournal.WinForm.Simulator
 {
     public class TravelSimulator
     {
+        public event Action OnSimulatorStatusChanged;
+
         private Timer timer;
         private TravelMapPlayer player;
 
@@ -22,10 +24,12 @@ namespace TravelJournal.WinForm.Simulator
         private double currentSegmentLatStep;
         private double currentSegmentLngStep;
         private int currentSegmentIndex;
+        private bool isConnected;
 
         public TravelSimulator(TravelMapPlayer player)
         {
             this.player = player;
+            this.isConnected = false;
         }
 
         #region Private members
@@ -117,7 +121,7 @@ namespace TravelJournal.WinForm.Simulator
         #region Public members
         public bool IsReady
         {
-            get { return data!=null && data.IsComplete && data.IsCompiled; }
+            get { return IsConnected&&data != null && data.IsComplete && data.IsCompiled; }
         }
         public bool ValidateData(TravelItineraryData data)
         {
@@ -130,10 +134,26 @@ namespace TravelJournal.WinForm.Simulator
                 }
                 else
                     this.data = data;
+                if (OnSimulatorStatusChanged!=null) OnSimulatorStatusChanged();
                 return true;
             }
             else
                 return false;
+        }
+        public bool IsConnected 
+        {
+            get
+            {
+                return isConnected;
+            }
+            set
+            {
+                if (isConnected != value)
+                {
+                    isConnected = value;
+                    if (OnSimulatorStatusChanged != null) OnSimulatorStatusChanged();
+                }
+            }
         }
         public void StartSimulation()
         {

@@ -9,29 +9,75 @@
 //------------------------------------------------------------------------------
 
 namespace TravelJournal.PCL.Test.ServiceReference {
+    using System.Runtime.Serialization;
     
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IConnectivityTestService")]
-    public interface IConnectivityTestService {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ConnectionTestData", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator")]
+    public partial class ConnectionTestData : object, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectivityTestService/StartTest", ReplyAction="http://tempuri.org/IConnectivityTestService/StartTestResponse")]
-        System.IAsyncResult BeginStartTest(System.AsyncCallback callback, object asyncState);
+        private int[] DataField;
         
-        bool EndStartTest(System.IAsyncResult result);
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IConnectivityTestServiceChannel : TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService, System.ServiceModel.IClientChannel {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IConnectionService")]
+    public interface IConnectionService {
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/Connect", ReplyAction="http://tempuri.org/IConnectionService/ConnectResponse")]
+        System.IAsyncResult BeginConnect(string deviceName, System.AsyncCallback callback, object asyncState);
+        
+        bool EndConnect(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/PrepareTestData", ReplyAction="http://tempuri.org/IConnectionService/PrepareTestDataResponse")]
+        System.IAsyncResult BeginPrepareTestData(long size, System.AsyncCallback callback, object asyncState);
+        
+        void EndPrepareTestData(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/GetTestData", ReplyAction="http://tempuri.org/IConnectionService/GetTestDataResponse")]
+        System.IAsyncResult BeginGetTestData(System.AsyncCallback callback, object asyncState);
+        
+        TravelJournal.PCL.Test.ServiceReference.ConnectionTestData EndGetTestData(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/ReportLatency", ReplyAction="http://tempuri.org/IConnectionService/ReportLatencyResponse")]
+        System.IAsyncResult BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState);
+        
+        void EndReportLatency(System.IAsyncResult result);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IConnectionServiceChannel : TravelJournal.PCL.Test.ServiceReference.IConnectionService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class StartTestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class ConnectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public StartTestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public ConnectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -46,13 +92,50 @@ namespace TravelJournal.PCL.Test.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ConnectivityTestServiceClient : System.ServiceModel.ClientBase<TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService>, TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService {
+    public partial class GetTestDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
-        private BeginOperationDelegate onBeginStartTestDelegate;
+        private object[] results;
         
-        private EndOperationDelegate onEndStartTestDelegate;
+        public GetTestDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
         
-        private System.Threading.SendOrPostCallback onStartTestCompletedDelegate;
+        public TravelJournal.PCL.Test.ServiceReference.ConnectionTestData Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((TravelJournal.PCL.Test.ServiceReference.ConnectionTestData)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConnectionServiceClient : System.ServiceModel.ClientBase<TravelJournal.PCL.Test.ServiceReference.IConnectionService>, TravelJournal.PCL.Test.ServiceReference.IConnectionService {
+        
+        private BeginOperationDelegate onBeginConnectDelegate;
+        
+        private EndOperationDelegate onEndConnectDelegate;
+        
+        private System.Threading.SendOrPostCallback onConnectCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginPrepareTestDataDelegate;
+        
+        private EndOperationDelegate onEndPrepareTestDataDelegate;
+        
+        private System.Threading.SendOrPostCallback onPrepareTestDataCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetTestDataDelegate;
+        
+        private EndOperationDelegate onEndGetTestDataDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetTestDataCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginReportLatencyDelegate;
+        
+        private EndOperationDelegate onEndReportLatencyDelegate;
+        
+        private System.Threading.SendOrPostCallback onReportLatencyCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -66,23 +149,23 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         
         private System.Threading.SendOrPostCallback onCloseCompletedDelegate;
         
-        public ConnectivityTestServiceClient() : 
-                base(ConnectivityTestServiceClient.GetDefaultBinding(), ConnectivityTestServiceClient.GetDefaultEndpointAddress()) {
+        public ConnectionServiceClient() : 
+                base(ConnectionServiceClient.GetDefaultBinding(), ConnectionServiceClient.GetDefaultEndpointAddress()) {
         }
         
-        public ConnectivityTestServiceClient(EndpointConfiguration endpointConfiguration) : 
-                base(ConnectivityTestServiceClient.GetBindingForEndpoint(endpointConfiguration), ConnectivityTestServiceClient.GetEndpointAddress(endpointConfiguration)) {
+        public ConnectionServiceClient(EndpointConfiguration endpointConfiguration) : 
+                base(ConnectionServiceClient.GetBindingForEndpoint(endpointConfiguration), ConnectionServiceClient.GetEndpointAddress(endpointConfiguration)) {
         }
         
-        public ConnectivityTestServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(ConnectivityTestServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress)) {
+        public ConnectionServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(ConnectionServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress)) {
         }
         
-        public ConnectivityTestServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(ConnectivityTestServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress) {
+        public ConnectionServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(ConnectionServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress) {
         }
         
-        public ConnectivityTestServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ConnectionServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -108,54 +191,196 @@ namespace TravelJournal.PCL.Test.ServiceReference {
             }
         }
         
-        public event System.EventHandler<StartTestCompletedEventArgs> StartTestCompleted;
+        public event System.EventHandler<ConnectCompletedEventArgs> ConnectCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> PrepareTestDataCompleted;
+        
+        public event System.EventHandler<GetTestDataCompletedEventArgs> GetTestDataCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ReportLatencyCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService.BeginStartTest(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginStartTest(callback, asyncState);
+        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectionService.BeginConnect(string deviceName, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginConnect(deviceName, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        bool TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService.EndStartTest(System.IAsyncResult result) {
-            return base.Channel.EndStartTest(result);
+        bool TravelJournal.PCL.Test.ServiceReference.IConnectionService.EndConnect(System.IAsyncResult result) {
+            return base.Channel.EndConnect(result);
         }
         
-        private System.IAsyncResult OnBeginStartTest(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return ((TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService)(this)).BeginStartTest(callback, asyncState);
+        private System.IAsyncResult OnBeginConnect(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string deviceName = ((string)(inValues[0]));
+            return ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).BeginConnect(deviceName, callback, asyncState);
         }
         
-        private object[] OnEndStartTest(System.IAsyncResult result) {
-            bool retVal = ((TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService)(this)).EndStartTest(result);
+        private object[] OnEndConnect(System.IAsyncResult result) {
+            bool retVal = ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).EndConnect(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnStartTestCompleted(object state) {
-            if ((this.StartTestCompleted != null)) {
+        private void OnConnectCompleted(object state) {
+            if ((this.ConnectCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.StartTestCompleted(this, new StartTestCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.ConnectCompleted(this, new ConnectCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void StartTestAsync() {
-            this.StartTestAsync(null);
+        public void ConnectAsync(string deviceName) {
+            this.ConnectAsync(deviceName, null);
         }
         
-        public void StartTestAsync(object userState) {
-            if ((this.onBeginStartTestDelegate == null)) {
-                this.onBeginStartTestDelegate = new BeginOperationDelegate(this.OnBeginStartTest);
+        public void ConnectAsync(string deviceName, object userState) {
+            if ((this.onBeginConnectDelegate == null)) {
+                this.onBeginConnectDelegate = new BeginOperationDelegate(this.OnBeginConnect);
             }
-            if ((this.onEndStartTestDelegate == null)) {
-                this.onEndStartTestDelegate = new EndOperationDelegate(this.OnEndStartTest);
+            if ((this.onEndConnectDelegate == null)) {
+                this.onEndConnectDelegate = new EndOperationDelegate(this.OnEndConnect);
             }
-            if ((this.onStartTestCompletedDelegate == null)) {
-                this.onStartTestCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnStartTestCompleted);
+            if ((this.onConnectCompletedDelegate == null)) {
+                this.onConnectCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnConnectCompleted);
             }
-            base.InvokeAsync(this.onBeginStartTestDelegate, null, this.onEndStartTestDelegate, this.onStartTestCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginConnectDelegate, new object[] {
+                        deviceName}, this.onEndConnectDelegate, this.onConnectCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectionService.BeginPrepareTestData(long size, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginPrepareTestData(size, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TravelJournal.PCL.Test.ServiceReference.IConnectionService.EndPrepareTestData(System.IAsyncResult result) {
+            base.Channel.EndPrepareTestData(result);
+        }
+        
+        private System.IAsyncResult OnBeginPrepareTestData(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            long size = ((long)(inValues[0]));
+            return ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).BeginPrepareTestData(size, callback, asyncState);
+        }
+        
+        private object[] OnEndPrepareTestData(System.IAsyncResult result) {
+            ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).EndPrepareTestData(result);
+            return null;
+        }
+        
+        private void OnPrepareTestDataCompleted(object state) {
+            if ((this.PrepareTestDataCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.PrepareTestDataCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void PrepareTestDataAsync(long size) {
+            this.PrepareTestDataAsync(size, null);
+        }
+        
+        public void PrepareTestDataAsync(long size, object userState) {
+            if ((this.onBeginPrepareTestDataDelegate == null)) {
+                this.onBeginPrepareTestDataDelegate = new BeginOperationDelegate(this.OnBeginPrepareTestData);
+            }
+            if ((this.onEndPrepareTestDataDelegate == null)) {
+                this.onEndPrepareTestDataDelegate = new EndOperationDelegate(this.OnEndPrepareTestData);
+            }
+            if ((this.onPrepareTestDataCompletedDelegate == null)) {
+                this.onPrepareTestDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnPrepareTestDataCompleted);
+            }
+            base.InvokeAsync(this.onBeginPrepareTestDataDelegate, new object[] {
+                        size}, this.onEndPrepareTestDataDelegate, this.onPrepareTestDataCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectionService.BeginGetTestData(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTestData(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        TravelJournal.PCL.Test.ServiceReference.ConnectionTestData TravelJournal.PCL.Test.ServiceReference.IConnectionService.EndGetTestData(System.IAsyncResult result) {
+            return base.Channel.EndGetTestData(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetTestData(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).BeginGetTestData(callback, asyncState);
+        }
+        
+        private object[] OnEndGetTestData(System.IAsyncResult result) {
+            TravelJournal.PCL.Test.ServiceReference.ConnectionTestData retVal = ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).EndGetTestData(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetTestDataCompleted(object state) {
+            if ((this.GetTestDataCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetTestDataCompleted(this, new GetTestDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetTestDataAsync() {
+            this.GetTestDataAsync(null);
+        }
+        
+        public void GetTestDataAsync(object userState) {
+            if ((this.onBeginGetTestDataDelegate == null)) {
+                this.onBeginGetTestDataDelegate = new BeginOperationDelegate(this.OnBeginGetTestData);
+            }
+            if ((this.onEndGetTestDataDelegate == null)) {
+                this.onEndGetTestDataDelegate = new EndOperationDelegate(this.OnEndGetTestData);
+            }
+            if ((this.onGetTestDataCompletedDelegate == null)) {
+                this.onGetTestDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTestDataCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetTestDataDelegate, null, this.onEndGetTestDataDelegate, this.onGetTestDataCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectionService.BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginReportLatency(latency, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TravelJournal.PCL.Test.ServiceReference.IConnectionService.EndReportLatency(System.IAsyncResult result) {
+            base.Channel.EndReportLatency(result);
+        }
+        
+        private System.IAsyncResult OnBeginReportLatency(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            decimal latency = ((decimal)(inValues[0]));
+            return ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).BeginReportLatency(latency, callback, asyncState);
+        }
+        
+        private object[] OnEndReportLatency(System.IAsyncResult result) {
+            ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).EndReportLatency(result);
+            return null;
+        }
+        
+        private void OnReportLatencyCompleted(object state) {
+            if ((this.ReportLatencyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ReportLatencyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ReportLatencyAsync(decimal latency) {
+            this.ReportLatencyAsync(latency, null);
+        }
+        
+        public void ReportLatencyAsync(decimal latency, object userState) {
+            if ((this.onBeginReportLatencyDelegate == null)) {
+                this.onBeginReportLatencyDelegate = new BeginOperationDelegate(this.OnBeginReportLatency);
+            }
+            if ((this.onEndReportLatencyDelegate == null)) {
+                this.onEndReportLatencyDelegate = new EndOperationDelegate(this.OnEndReportLatency);
+            }
+            if ((this.onReportLatencyCompletedDelegate == null)) {
+                this.onReportLatencyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnReportLatencyCompleted);
+            }
+            base.InvokeAsync(this.onBeginReportLatencyDelegate, new object[] {
+                        latency}, this.onEndReportLatencyDelegate, this.onReportLatencyCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -224,12 +449,12 @@ namespace TravelJournal.PCL.Test.ServiceReference {
             base.InvokeAsync(this.onBeginCloseDelegate, null, this.onEndCloseDelegate, this.onCloseCompletedDelegate, userState);
         }
         
-        protected override TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService CreateChannel() {
-            return new ConnectivityTestServiceClientChannel(this);
+        protected override TravelJournal.PCL.Test.ServiceReference.IConnectionService CreateChannel() {
+            return new ConnectionServiceClientChannel(this);
         }
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration) {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IConnectivityTestService)) {
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IConnectionService)) {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
                 result.MaxReceivedMessageSize = int.MaxValue;
@@ -239,43 +464,80 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         }
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IConnectivityTestService)) {
-                return new System.ServiceModel.EndpointAddress("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WCF/ConnectivityTest" +
-                        "Service/");
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IConnectionService)) {
+                return new System.ServiceModel.EndpointAddress("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Co" +
+                        "nnectionService/");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding() {
-            return ConnectivityTestServiceClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IConnectivityTestService);
+            return ConnectionServiceClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IConnectionService);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress() {
-            return ConnectivityTestServiceClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IConnectivityTestService);
+            return ConnectionServiceClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IConnectionService);
         }
         
-        private class ConnectivityTestServiceClientChannel : ChannelBase<TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService>, TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService {
+        private class ConnectionServiceClientChannel : ChannelBase<TravelJournal.PCL.Test.ServiceReference.IConnectionService>, TravelJournal.PCL.Test.ServiceReference.IConnectionService {
             
-            public ConnectivityTestServiceClientChannel(System.ServiceModel.ClientBase<TravelJournal.PCL.Test.ServiceReference.IConnectivityTestService> client) : 
+            public ConnectionServiceClientChannel(System.ServiceModel.ClientBase<TravelJournal.PCL.Test.ServiceReference.IConnectionService> client) : 
                     base(client) {
             }
             
-            public System.IAsyncResult BeginStartTest(System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[0];
-                System.IAsyncResult _result = base.BeginInvoke("StartTest", _args, callback, asyncState);
+            public System.IAsyncResult BeginConnect(string deviceName, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = deviceName;
+                System.IAsyncResult _result = base.BeginInvoke("Connect", _args, callback, asyncState);
                 return _result;
             }
             
-            public bool EndStartTest(System.IAsyncResult result) {
+            public bool EndConnect(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                bool _result = ((bool)(base.EndInvoke("StartTest", _args, result)));
+                bool _result = ((bool)(base.EndInvoke("Connect", _args, result)));
                 return _result;
+            }
+            
+            public System.IAsyncResult BeginPrepareTestData(long size, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = size;
+                System.IAsyncResult _result = base.BeginInvoke("PrepareTestData", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndPrepareTestData(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("PrepareTestData", _args, result);
+            }
+            
+            public System.IAsyncResult BeginGetTestData(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("GetTestData", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public TravelJournal.PCL.Test.ServiceReference.ConnectionTestData EndGetTestData(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                TravelJournal.PCL.Test.ServiceReference.ConnectionTestData _result = ((TravelJournal.PCL.Test.ServiceReference.ConnectionTestData)(base.EndInvoke("GetTestData", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = latency;
+                System.IAsyncResult _result = base.BeginInvoke("ReportLatency", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndReportLatency(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("ReportLatency", _args, result);
             }
         }
         
         public enum EndpointConfiguration {
             
-            BasicHttpBinding_IConnectivityTestService,
+            BasicHttpBinding_IConnectionService,
         }
     }
 }
