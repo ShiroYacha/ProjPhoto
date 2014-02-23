@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TravelJournal.PCL.Test.ServiceReference {
+namespace TravelJournal.PCL.ServiceReference {
     using System.Runtime.Serialization;
     
     
@@ -42,6 +42,20 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LogType", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls")]
+    public enum LogType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Info = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Error = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Warning = 2,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IConnectionService")]
     public interface IConnectionService {
@@ -52,23 +66,28 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         bool EndConnect(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/PrepareTestData", ReplyAction="http://tempuri.org/IConnectionService/PrepareTestDataResponse")]
-        System.IAsyncResult BeginPrepareTestData(long size, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginPrepareTestData(int size, System.AsyncCallback callback, object asyncState);
         
         void EndPrepareTestData(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/GetTestData", ReplyAction="http://tempuri.org/IConnectionService/GetTestDataResponse")]
         System.IAsyncResult BeginGetTestData(System.AsyncCallback callback, object asyncState);
         
-        TravelJournal.PCL.Test.ServiceReference.ConnectionTestData EndGetTestData(System.IAsyncResult result);
+        TravelJournal.PCL.ServiceReference.ConnectionTestData EndGetTestData(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/ReportLatency", ReplyAction="http://tempuri.org/IConnectionService/ReportLatencyResponse")]
         System.IAsyncResult BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState);
         
         void EndReportLatency(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/Log", ReplyAction="http://tempuri.org/IConnectionService/LogResponse")]
+        System.IAsyncResult BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState);
+        
+        void EndLog(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IConnectionServiceChannel : TravelJournal.PCL.Test.ServiceReference.IConnectionService, System.ServiceModel.IClientChannel {
+    public interface IConnectionServiceChannel : TravelJournal.PCL.ServiceReference.IConnectionService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -101,17 +120,17 @@ namespace TravelJournal.PCL.Test.ServiceReference {
             this.results = results;
         }
         
-        public TravelJournal.PCL.Test.ServiceReference.ConnectionTestData Result {
+        public TravelJournal.PCL.ServiceReference.ConnectionTestData Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((TravelJournal.PCL.Test.ServiceReference.ConnectionTestData)(this.results[0]));
+                return ((TravelJournal.PCL.ServiceReference.ConnectionTestData)(this.results[0]));
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ConnectionServiceClient : System.ServiceModel.ClientBase<TravelJournal.PCL.Test.ServiceReference.IConnectionService>, TravelJournal.PCL.Test.ServiceReference.IConnectionService {
+    public partial class ConnectionServiceClient : System.ServiceModel.ClientBase<TravelJournal.PCL.ServiceReference.IConnectionService>, TravelJournal.PCL.ServiceReference.IConnectionService {
         
         private BeginOperationDelegate onBeginConnectDelegate;
         
@@ -136,6 +155,12 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         private EndOperationDelegate onEndReportLatencyDelegate;
         
         private System.Threading.SendOrPostCallback onReportLatencyCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginLogDelegate;
+        
+        private EndOperationDelegate onEndLogDelegate;
+        
+        private System.Threading.SendOrPostCallback onLogCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -199,27 +224,29 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ReportLatencyCompleted;
         
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> LogCompleted;
+        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectionService.BeginConnect(string deviceName, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginConnect(string deviceName, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginConnect(deviceName, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        bool TravelJournal.PCL.Test.ServiceReference.IConnectionService.EndConnect(System.IAsyncResult result) {
+        bool TravelJournal.PCL.ServiceReference.IConnectionService.EndConnect(System.IAsyncResult result) {
             return base.Channel.EndConnect(result);
         }
         
         private System.IAsyncResult OnBeginConnect(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string deviceName = ((string)(inValues[0]));
-            return ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).BeginConnect(deviceName, callback, asyncState);
+            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginConnect(deviceName, callback, asyncState);
         }
         
         private object[] OnEndConnect(System.IAsyncResult result) {
-            bool retVal = ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).EndConnect(result);
+            bool retVal = ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndConnect(result);
             return new object[] {
                     retVal};
         }
@@ -250,22 +277,22 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectionService.BeginPrepareTestData(long size, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginPrepareTestData(int size, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginPrepareTestData(size, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void TravelJournal.PCL.Test.ServiceReference.IConnectionService.EndPrepareTestData(System.IAsyncResult result) {
+        void TravelJournal.PCL.ServiceReference.IConnectionService.EndPrepareTestData(System.IAsyncResult result) {
             base.Channel.EndPrepareTestData(result);
         }
         
         private System.IAsyncResult OnBeginPrepareTestData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            long size = ((long)(inValues[0]));
-            return ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).BeginPrepareTestData(size, callback, asyncState);
+            int size = ((int)(inValues[0]));
+            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginPrepareTestData(size, callback, asyncState);
         }
         
         private object[] OnEndPrepareTestData(System.IAsyncResult result) {
-            ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).EndPrepareTestData(result);
+            ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndPrepareTestData(result);
             return null;
         }
         
@@ -276,11 +303,11 @@ namespace TravelJournal.PCL.Test.ServiceReference {
             }
         }
         
-        public void PrepareTestDataAsync(long size) {
+        public void PrepareTestDataAsync(int size) {
             this.PrepareTestDataAsync(size, null);
         }
         
-        public void PrepareTestDataAsync(long size, object userState) {
+        public void PrepareTestDataAsync(int size, object userState) {
             if ((this.onBeginPrepareTestDataDelegate == null)) {
                 this.onBeginPrepareTestDataDelegate = new BeginOperationDelegate(this.OnBeginPrepareTestData);
             }
@@ -295,21 +322,21 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectionService.BeginGetTestData(System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginGetTestData(System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginGetTestData(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        TravelJournal.PCL.Test.ServiceReference.ConnectionTestData TravelJournal.PCL.Test.ServiceReference.IConnectionService.EndGetTestData(System.IAsyncResult result) {
+        TravelJournal.PCL.ServiceReference.ConnectionTestData TravelJournal.PCL.ServiceReference.IConnectionService.EndGetTestData(System.IAsyncResult result) {
             return base.Channel.EndGetTestData(result);
         }
         
         private System.IAsyncResult OnBeginGetTestData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).BeginGetTestData(callback, asyncState);
+            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginGetTestData(callback, asyncState);
         }
         
         private object[] OnEndGetTestData(System.IAsyncResult result) {
-            TravelJournal.PCL.Test.ServiceReference.ConnectionTestData retVal = ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).EndGetTestData(result);
+            TravelJournal.PCL.ServiceReference.ConnectionTestData retVal = ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndGetTestData(result);
             return new object[] {
                     retVal};
         }
@@ -339,22 +366,22 @@ namespace TravelJournal.PCL.Test.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.Test.ServiceReference.IConnectionService.BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginReportLatency(latency, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void TravelJournal.PCL.Test.ServiceReference.IConnectionService.EndReportLatency(System.IAsyncResult result) {
+        void TravelJournal.PCL.ServiceReference.IConnectionService.EndReportLatency(System.IAsyncResult result) {
             base.Channel.EndReportLatency(result);
         }
         
         private System.IAsyncResult OnBeginReportLatency(object[] inValues, System.AsyncCallback callback, object asyncState) {
             decimal latency = ((decimal)(inValues[0]));
-            return ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).BeginReportLatency(latency, callback, asyncState);
+            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginReportLatency(latency, callback, asyncState);
         }
         
         private object[] OnEndReportLatency(System.IAsyncResult result) {
-            ((TravelJournal.PCL.Test.ServiceReference.IConnectionService)(this)).EndReportLatency(result);
+            ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndReportLatency(result);
             return null;
         }
         
@@ -381,6 +408,59 @@ namespace TravelJournal.PCL.Test.ServiceReference {
             }
             base.InvokeAsync(this.onBeginReportLatencyDelegate, new object[] {
                         latency}, this.onEndReportLatencyDelegate, this.onReportLatencyCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginLog(type, log, callerName, callerFilePath, callerLine, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TravelJournal.PCL.ServiceReference.IConnectionService.EndLog(System.IAsyncResult result) {
+            base.Channel.EndLog(result);
+        }
+        
+        private System.IAsyncResult OnBeginLog(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            TravelJournal.PCL.ServiceReference.LogType type = ((TravelJournal.PCL.ServiceReference.LogType)(inValues[0]));
+            string log = ((string)(inValues[1]));
+            string callerName = ((string)(inValues[2]));
+            string callerFilePath = ((string)(inValues[3]));
+            int callerLine = ((int)(inValues[4]));
+            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginLog(type, log, callerName, callerFilePath, callerLine, callback, asyncState);
+        }
+        
+        private object[] OnEndLog(System.IAsyncResult result) {
+            ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndLog(result);
+            return null;
+        }
+        
+        private void OnLogCompleted(object state) {
+            if ((this.LogCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.LogCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void LogAsync(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine) {
+            this.LogAsync(type, log, callerName, callerFilePath, callerLine, null);
+        }
+        
+        public void LogAsync(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, object userState) {
+            if ((this.onBeginLogDelegate == null)) {
+                this.onBeginLogDelegate = new BeginOperationDelegate(this.OnBeginLog);
+            }
+            if ((this.onEndLogDelegate == null)) {
+                this.onEndLogDelegate = new EndOperationDelegate(this.OnEndLog);
+            }
+            if ((this.onLogCompletedDelegate == null)) {
+                this.onLogCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLogCompleted);
+            }
+            base.InvokeAsync(this.onBeginLogDelegate, new object[] {
+                        type,
+                        log,
+                        callerName,
+                        callerFilePath,
+                        callerLine}, this.onEndLogDelegate, this.onLogCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -449,7 +529,7 @@ namespace TravelJournal.PCL.Test.ServiceReference {
             base.InvokeAsync(this.onBeginCloseDelegate, null, this.onEndCloseDelegate, this.onCloseCompletedDelegate, userState);
         }
         
-        protected override TravelJournal.PCL.Test.ServiceReference.IConnectionService CreateChannel() {
+        protected override TravelJournal.PCL.ServiceReference.IConnectionService CreateChannel() {
             return new ConnectionServiceClientChannel(this);
         }
         
@@ -479,9 +559,9 @@ namespace TravelJournal.PCL.Test.ServiceReference {
             return ConnectionServiceClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IConnectionService);
         }
         
-        private class ConnectionServiceClientChannel : ChannelBase<TravelJournal.PCL.Test.ServiceReference.IConnectionService>, TravelJournal.PCL.Test.ServiceReference.IConnectionService {
+        private class ConnectionServiceClientChannel : ChannelBase<TravelJournal.PCL.ServiceReference.IConnectionService>, TravelJournal.PCL.ServiceReference.IConnectionService {
             
-            public ConnectionServiceClientChannel(System.ServiceModel.ClientBase<TravelJournal.PCL.Test.ServiceReference.IConnectionService> client) : 
+            public ConnectionServiceClientChannel(System.ServiceModel.ClientBase<TravelJournal.PCL.ServiceReference.IConnectionService> client) : 
                     base(client) {
             }
             
@@ -498,7 +578,7 @@ namespace TravelJournal.PCL.Test.ServiceReference {
                 return _result;
             }
             
-            public System.IAsyncResult BeginPrepareTestData(long size, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginPrepareTestData(int size, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = size;
                 System.IAsyncResult _result = base.BeginInvoke("PrepareTestData", _args, callback, asyncState);
@@ -516,9 +596,9 @@ namespace TravelJournal.PCL.Test.ServiceReference {
                 return _result;
             }
             
-            public TravelJournal.PCL.Test.ServiceReference.ConnectionTestData EndGetTestData(System.IAsyncResult result) {
+            public TravelJournal.PCL.ServiceReference.ConnectionTestData EndGetTestData(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                TravelJournal.PCL.Test.ServiceReference.ConnectionTestData _result = ((TravelJournal.PCL.Test.ServiceReference.ConnectionTestData)(base.EndInvoke("GetTestData", _args, result)));
+                TravelJournal.PCL.ServiceReference.ConnectionTestData _result = ((TravelJournal.PCL.ServiceReference.ConnectionTestData)(base.EndInvoke("GetTestData", _args, result)));
                 return _result;
             }
             
@@ -532,6 +612,22 @@ namespace TravelJournal.PCL.Test.ServiceReference {
             public void EndReportLatency(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 base.EndInvoke("ReportLatency", _args, result);
+            }
+            
+            public System.IAsyncResult BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[5];
+                _args[0] = type;
+                _args[1] = log;
+                _args[2] = callerName;
+                _args[3] = callerFilePath;
+                _args[4] = callerLine;
+                System.IAsyncResult _result = base.BeginInvoke("Log", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndLog(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("Log", _args, result);
             }
         }
         

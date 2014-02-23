@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
@@ -19,7 +20,7 @@ namespace TravelJournal.WinForm.Simulator
             this.simulator = simulator;
         }
 
-        private ConnectionTestData CreateTestData(long size)
+        private ConnectionTestData CreateTestData(int size)
         {
             ConnectionTestData testData = new ConnectionTestData();
             testData.Data = new List<int>();
@@ -40,7 +41,7 @@ namespace TravelJournal.WinForm.Simulator
         }
 
         #region Connection test members
-        public void PrepareTestData(long size)
+        public void PrepareTestData(int size)
         {
             testData = CreateTestData(size);
         }
@@ -55,8 +56,13 @@ namespace TravelJournal.WinForm.Simulator
         {
             TravelJournalSimulation.UpdateConnectionViewer(latency);
             TravelJournalSimulation.Log(LogType.Info, string.Format("Test package of size {0} elements is downloaded.",testData.Data.Count));
-        } 
+        }
         #endregion
+
+        public void Log(LogType type, string log, [CallerMemberName] string callerName = null, [CallerFilePath] string callerFilePath = null, [CallerLineNumber] int callerLine = -1)
+        {
+            TravelJournalSimulation.Log(type, log, callerName, callerFilePath, callerLine);
+        }
     }
 
 

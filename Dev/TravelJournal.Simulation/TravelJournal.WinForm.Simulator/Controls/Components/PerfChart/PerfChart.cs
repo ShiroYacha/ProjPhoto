@@ -351,11 +351,17 @@ namespace TravelJournal.WinForm.Simulator.Controls
                 previousPoint = currentPoint;
             }
 
+            // Get non zero average values
+            decimal nonZeroAverageValue=0;
+            int nonZeroCount=0;
+            drawValues.ForEach((value) => { if (value != 0) { nonZeroAverageValue += value; nonZeroCount++; } });
+            nonZeroAverageValue = nonZeroAverageValue / (nonZeroCount!= 0 ? nonZeroCount : 1);
             // Draw values
             if (drawValues.Count>0)
             {
+
                 SolidBrush sb = new SolidBrush(perfChartStyle.ChartLinePen.Color);
-                g.DrawString(currentMaxValue.ToString("#.##") + " / " + averageValue.ToString("#.##"), this.Font, sb, 4.0f, 2.0f);
+                g.DrawString(currentMaxValue.ToString("#.##") + " / " + nonZeroAverageValue.ToString("#.##"), this.Font, sb, 4.0f, 2.0f);
             }
 
 

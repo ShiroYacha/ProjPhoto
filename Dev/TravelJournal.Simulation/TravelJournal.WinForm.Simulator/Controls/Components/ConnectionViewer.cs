@@ -20,7 +20,7 @@ namespace TravelJournal.WinForm.Simulator.Controls.Components
         {
             InitializeComponent();
             // Rendering
-            perfChart.TimerInterval = 1000;
+            perfChart.TimerInterval = 2000;
             perfChart.ScaleMode = ScaleMode.Relative;
             perfChart.PerfChartStyle.AvgLinePen.Color = Color.Silver;
             perfChart.PerfChartStyle.ChartLinePen.Color = Color.DodgerBlue;

@@ -59,9 +59,6 @@
     <Reference Include="System.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.1.1.6\lib\portable-net40+sl5+win8+wp8\System.Threading.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="TravelJournal.PCL">
-      <HintPath>bin\Debug\TravelJournal.PCL.dll</HintPath>
-    </Reference>
     <Reference Include="TravelJournal.PCL.ViewModel">
       <HintPath>..\..\TravelJournal\TravelJournal.PCL.ViewModel\bin\Debug\TravelJournal.PCL.ViewModel.dll</HintPath>
     </Reference>
@@ -71,9 +68,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TravelJournal.PCL.Test\TravelJournal.PCL.Test.csproj">
-      <Project>{c2f01352-3cd9-498f-9f18-164670c089b9}</Project>
-      <Name>TravelJournal.PCL.Test</Name>
+    <ProjectReference Include="..\..\TravelJournal\TravelJournal.PCL\TravelJournal.PCL.csproj">
+      <Project>{e4983917-e55a-483d-a755-55613ee66478}</Project>
+      <Name>TravelJournal.PCL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

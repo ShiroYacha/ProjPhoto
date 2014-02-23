@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using TravelJournal.WinForm.Simulator.Controls;
 
 namespace TravelJournal.WinForm.Simulator
 {
@@ -15,12 +17,15 @@ namespace TravelJournal.WinForm.Simulator
         bool Connect(string deviceName);
 
         [OperationContract]
-        void PrepareTestData(long size);
+        void PrepareTestData(int size);
 
         [OperationContract]
         ConnectionTestData GetTestData();
 
         [OperationContract]
         void ReportLatency(decimal latency);
+
+        [OperationContract]
+        void Log(LogType type, string log, [CallerMemberName] string callerName = null, [CallerFilePath] string callerFilePath = null, [CallerLineNumber] int callerLine = -1);
     }
 }

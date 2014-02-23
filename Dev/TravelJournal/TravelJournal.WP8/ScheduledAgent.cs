@@ -1,11 +1,16 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using Microsoft.Phone.Scheduler;
+using TravelJournal.WP8.Test;
+using TravelJournal.PCL.Test;
+using System;
 
 namespace TravelJournal.WP8
 {
     public class ScheduledAgent : ScheduledTaskAgent
     {
+        public const string NAME_CONNECTIVITY_TEST_AGENT = "NAME_CONNECTIVITY_TEST_AGENT";
+
         /// <remarks>
         /// ScheduledAgent constructor, initializes the UnhandledException handler
         /// </remarks>
@@ -39,9 +44,29 @@ namespace TravelJournal.WP8
         /// </remarks>
         protected override void OnInvoke(ScheduledTask task)
         {
+            bool waitAsync = false;
             //TODO: Add code to perform your task in background
+            switch (task.Name)
+            {
+                case ScheduledAgent.NAME_CONNECTIVITY_TEST_AGENT:
+                    ServerConnectivityTester tester = new ServerConnectivityTester();
+                    Random random=new Random();
+                    tester.RequestDownloadTest(random.Next(0, 100000), () =>
+                    {
+                        ScheduledActionService.LaunchForTest(task.Name, TimeSpan.FromSeconds(30));
+                        NotifyComplete();
+                    });
+                    waitAsync = true;
 
-            NotifyComplete();
+                    break;
+ 
+               default:
+               // do nothing
+               break;
+            }
+
+            if (!waitAsync) NotifyComplete();
         }
+
     }
 }

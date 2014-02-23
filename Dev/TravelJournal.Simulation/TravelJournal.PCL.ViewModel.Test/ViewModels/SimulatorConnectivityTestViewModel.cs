@@ -27,8 +27,8 @@ namespace TravelJournal.PCL.ViewModel.Test
             }
         }
 
-        private long testPackageSize=0;
-        public long TestPackageSize
+        private int testPackageSize=0;
+        public int TestPackageSize
         {
             get { return testPackageSize; }
             set
@@ -45,24 +45,24 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             get
             {
-                return new RelayCommand(ConnectServerAsync);
+                return new RelayCommand(() => { tester.ConnectServer((result) => { ConnectionStatus = result; }); });
             }
-        }
-        public void ConnectServerAsync()
-        {
-            tester.ConnectServer((result) => { ConnectionStatus = result; });
         }
 
         public ICommand SendTestPackageRequest
         {
             get
             {
-                return new RelayCommand(SendTestPackage);
+                return new RelayCommand(() => { tester.RequestDownloadTest(testPackageSize); });
             }
         }
-        public void SendTestPackage()
+
+        public ICommand RunScheduledAgent
         {
-            tester.RequestDownloadTest(testPackageSize);
+            get
+            {
+                return new RelayCommand(() => { tester.StartTestPeriodicAgent(); });
+            }
         }
     }
 }

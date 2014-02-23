@@ -31,14 +31,15 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+        <StackPanel Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding LineOne}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
             <TextBlock Text="{Binding LineThree}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
-        <StackPanel Grid.Row="1">
-            <StackPanel Height="43" Orientation="Horizontal">
-                <TextBlock TextWrapping="Wrap" Text="Status : " Width="98" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,8" Padding="10,0,0,0"/>
-                <TextBlock TextWrapping="Wrap" Text="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Name="ContentPanel" Grid.Row="1">
+            <StackPanel Name="ConnectionPanel">
+                <StackPanel Height="43" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="Status : " Width="98" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,8" Padding="15,0,0,0"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <i:Interaction.Triggers>
                       <ei:DataTrigger Value="Connected"
                                       Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
@@ -56,42 +57,73 @@
                                                    Value="Red" />
                        </ei:DataTrigger>                        
                     </i:Interaction.Triggers>
-                </TextBlock>
-            </StackPanel>
-            <Button Command="{Binding Path=ConnectServer,Mode=OneWay}">
-                <Button.Content>
-                    <TextBlock x:Name="btnText" Text="Connect"  />
-                </Button.Content>
-                <i:Interaction.Triggers>
-                    <ei:DataTrigger Value="Connected"
+                    </TextBlock>
+                </StackPanel>
+                <Button Name="ConnectButton" Command="{Binding Path=ConnectServer,Mode=OneWay}">
+                    <Button.Content>
+                        <TextBlock Name="ConnectButtonText" Text="Connect"  />
+                    </Button.Content>
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Value="Connected"
                                       Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
-                        <ei:ChangePropertyAction PropertyName="Text"
+                            <ei:ChangePropertyAction PropertyName="Text"
                                                    Value="Disconnect"
-                                                 TargetName="btnText"/>
-                    </ei:DataTrigger>
-                    <ei:DataTrigger Value="Disconnected"
+                                                 TargetName="ConnectButtonText"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Value="Disconnected"
                                       Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
-                        <ei:ChangePropertyAction PropertyName="Text"
+                            <ei:ChangePropertyAction PropertyName="Text"
                                                    Value="Connect" 
-                                                  TargetName="btnText"/>
-                    </ei:DataTrigger>
-                    <ei:DataTrigger Value="ServerOffline"
+                                                  TargetName="ConnectButtonText"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Value="ServerOffline"
                                       Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
-                        <ei:ChangePropertyAction PropertyName="Text"
+                            <ei:ChangePropertyAction PropertyName="Text"
                                                    Value="Connect" 
-                                                  TargetName="btnText"/>
-                    </ei:DataTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            <StackPanel Orientation="Horizontal" Height="43" Margin="0,20,0,0">
-                <TextBlock TextWrapping="Wrap" Text="Package size: " VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,-18,0,8" Padding="10,0,0,0"/>
-                <TextBlock TextWrapping="Wrap" Text="{Binding ElementName=testPackageSilder, Path=Value, Converter={StaticResource SliderToTextConverter}, Mode=OneWay}" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                  TargetName="ConnectButtonText"/>
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
             </StackPanel>
-            <Slider Name="testPackageSilder" Height="90" Maximum="1000000" VerticalAlignment="Bottom" SmallChange="100" LargeChange="10000" HorizontalAlignment="Right" Width="480" Value="{Binding TestPackageSize, Mode=TwoWay}" IsEnabled="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToBoolConverter}}"/>
-            <Button Content="Send" Command="{Binding Path=SendTestPackageRequest,Mode=OneWay}" IsEnabled="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToBoolConverter}}"/>
+            <StackPanel Name="DownloadPanel">
+                <StackPanel Orientation="Horizontal" Height="43" Margin="0,20,0,0">
+                    <TextBlock TextWrapping="Wrap" Text="Download" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="12,0,30,0"/>
+                    <TextBlock TextWrapping="Wrap" Text="Package size: " HorizontalAlignment="Center"   VerticalAlignment="Bottom"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Value, Converter={StaticResource SliderToTextConverter}, ElementName=testPackageSilder, Mode=OneWay}" TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Height="103" Orientation="Horizontal">
+                    <Slider x:Name="testPackageSilder" Maximum="1000000" SmallChange="100" LargeChange="10000" 
+            			HorizontalAlignment="Center" 
+            			Value="{Binding TestPackageSize, Mode=TwoWay}" 
+            			IsEnabled="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToBoolConverter}}" Width="376"/>
+                    <Button Content="Send" Command="{Binding SendTestPackageRequest, Mode=OneWay}" IsEnabled="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToBoolConverter}}" Margin="0,0,0,28"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Name="ScheduleTaskAgentPanel">
+                <TextBlock TextWrapping="Wrap" Text="ScheduleAgent" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="12,0,30,0"/>
+                <Button Command="{Binding RunScheduledAgent}" Name="ScheduleAgentButton"  IsEnabled="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToBoolConverter}}">
+                    <Button.Content>
+                        <TextBlock Name="ScheduleAgentButtonText" Text="Start"  />
+                    </Button.Content>
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Value="True"
+                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                            <ei:ChangePropertyAction PropertyName="Text"
+                                                   Value="Stop"
+                                                 TargetName="ScheduleAgentButtonText"/>
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Value="False"
+                                      Binding="{Binding ConnectionStatus, Converter={StaticResource ConnectionStatusEnumToStringConverter}}">
+                            <ei:ChangePropertyAction PropertyName="Text"
+                                                   Value="Start" 
+                                                  TargetName="ScheduleAgentButtonText"/>
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
         </StackPanel>
         <!--  Value="{Binding TestPackageSize, Converter={StaticResource TestPackageSizeToDoubleConverter}}"-->
         <!--ContentPanel - place additional content here-->
-    </Grid> 
+    </Grid>
 
 </base:PageBase>

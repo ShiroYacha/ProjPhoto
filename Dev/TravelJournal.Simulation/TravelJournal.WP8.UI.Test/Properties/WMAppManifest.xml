@@ -13,6 +13,9 @@
     </Capabilities>
     <Tasks>
       <DefaultTask  Name ="_default" NavigationPage="MainPage.xaml"/>
+      <!--<ExtendedTask Name="BackgroundTask">
+          <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="NAME_CONNECTIVITY_TEST_AGENT" Source="TravelJournal.WP8" Type="TravelJournal.WP8.ScheduledAgent" />
+      </ExtendedTask>-->
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="TravelJournal.WP8.UI.TestToken" TaskName="_default">

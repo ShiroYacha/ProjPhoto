@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator" />
       <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IConnectionService_Connect_InputMessage">
@@ -32,6 +33,12 @@
   <wsdl:message name="IConnectionService_ReportLatency_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReportLatencyResponse" />
   </wsdl:message>
+  <wsdl:message name="IConnectionService_Log_InputMessage">
+    <wsdl:part name="parameters" element="tns:Log" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_Log_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogResponse" />
+  </wsdl:message>
   <wsdl:portType name="IConnectionService">
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectionService/Connect" message="tns:IConnectionService_Connect_InputMessage" />
@@ -48,6 +55,10 @@
     <wsdl:operation name="ReportLatency">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectionService/ReportLatency" message="tns:IConnectionService_ReportLatency_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConnectionService/ReportLatencyResponse" message="tns:IConnectionService_ReportLatency_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectionService/Log" message="tns:IConnectionService_Log_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectionService/LogResponse" message="tns:IConnectionService_Log_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IConnectionService" type="tns:IConnectionService">
@@ -81,6 +92,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReportLatency">
       <soap:operation soapAction="http://tempuri.org/IConnectionService/ReportLatency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <soap:operation soapAction="http://tempuri.org/IConnectionService/Log" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

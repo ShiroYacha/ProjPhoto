@@ -55,6 +55,8 @@ namespace TravelJournal.WP8.UI.Test
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            // Register IoC containers
+            StartupSettings.RegisterIocContainers();
         }
 
         // Code to execute when the application is launching (eg, from Start)
