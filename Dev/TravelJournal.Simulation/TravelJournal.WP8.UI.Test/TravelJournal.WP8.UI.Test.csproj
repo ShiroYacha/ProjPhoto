@@ -94,13 +94,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\BooleanToStringConverter.cs" />
-    <Compile Include="Converters\ConnectionStatusEnumConverters.cs" />
     <Compile Include="Converters\LongToTextConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Startup.cs" />
     <Compile Include="Views\JournalGenerationTestPage.xaml.cs">
       <DependentUpon>JournalGenerationTestPage.xaml</DependentUpon>
     </Compile>
@@ -113,6 +111,9 @@
     </Compile>
     <Compile Include="Views\SimulatorConnectivityTestPage.xaml.cs">
       <DependentUpon>SimulatorConnectivityTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TravelInfoTestPage.xaml.cs">
+      <DependentUpon>TravelInfoTestPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +193,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SimulatorConnectivityTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TravelInfoTestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

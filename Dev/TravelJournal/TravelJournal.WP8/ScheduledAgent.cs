@@ -49,7 +49,7 @@ namespace TravelJournal.WP8
             switch (task.Name)
             {
                 case ScheduledAgent.NAME_CONNECTIVITY_TEST_AGENT:
-                    ServerConnectivityTester tester = new ServerConnectivityTester();
+                    SimulatorConnectivityTester tester = new SimulatorConnectivityTester();
                     Random random=new Random();
                     tester.RequestDownloadTest(random.Next(0, 100000), () =>
                     {

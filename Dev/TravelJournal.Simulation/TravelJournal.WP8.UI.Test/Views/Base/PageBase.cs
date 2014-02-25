@@ -14,7 +14,7 @@ namespace TravelJournal.WP8.UI.Test
         public PageBase()
             : base()
         {
-          
+            RegisterIocContainers();
         }
 
         protected virtual String FormatViewPath(String pageName)
@@ -41,6 +41,10 @@ namespace TravelJournal.WP8.UI.Test
         {
             base.OnNavigatedFrom(e);
             Messenger.Default.Unregister(this);
+        }
+
+        protected virtual void RegisterIocContainers()
+        {
         }
     }
 }

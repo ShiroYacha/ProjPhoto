@@ -81,8 +81,11 @@
     <Compile Include="Controls\Components\PerfChart\PerfChartStyle.cs" />
     <Compile Include="Data\ConnectionTestData.cs" />
     <Compile Include="Data\SimulatorModelPoint.cs" />
-    <Compile Include="Utilities\ConnectionService.cs" />
-    <Compile Include="Utilities\IConnectionService.cs" />
+    <Compile Include="Services\ConnectionService.cs" />
+    <Compile Include="Services\Data\GpsPoint.cs" />
+    <Compile Include="Services\IConnectionService.cs" />
+    <Compile Include="Services\IUserPositionService.cs" />
+    <Compile Include="Services\UserPositionService.cs" />
     <Compile Include="Utilities\TravelSimulator.cs" />
     <Compile Include="Forms\Config\Components\TrackBarConfigDialog.cs">
       <SubType>Form</SubType>

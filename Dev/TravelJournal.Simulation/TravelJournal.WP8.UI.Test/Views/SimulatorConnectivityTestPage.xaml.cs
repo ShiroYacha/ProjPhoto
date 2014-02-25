@@ -9,7 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using GalaSoft.MvvmLight.Ioc;
 using TravelJournal.PCL.Test;
-
+using TravelJournal.WP8.Test;
 
 namespace TravelJournal.WP8.UI.Test.Views
 {
@@ -18,6 +18,11 @@ namespace TravelJournal.WP8.UI.Test.Views
         public SimulatorConnectivityTestPage()
         {
             InitializeComponent();
+        }
+
+        protected override void RegisterIocContainers()
+        {
+            SimpleIoc.Default.Register<IPeriodicAgentLauncher, ConnectivityTestAgentLauncher>();
         }
     }
 }

@@ -9,38 +9,8 @@ using TravelJournal.PCL.Test;
 namespace TravelJournal.PCL.ViewModel.Test
 {
 
-    public class SimulatorConnectivityTestViewModel : TestItemViewModelBase
+    public class SimulatorConnectivityTestViewModel : ServerTestItemViewModelBase
     {
-        private ServerConnectivityTester tester = new ServerConnectivityTester();
-
-        private ConnectionStatus connectionStatus=ConnectionStatus.Disconnected;
-        public ConnectionStatus ConnectionStatus
-        {
-            get { return connectionStatus; }
-            set 
-            {
-                if (connectionStatus != value)
-                {
-                    connectionStatus = value;
-                    RaisePropertyChanged("ConnectionStatus");
-                }
-            }
-        }
-
-        private bool scheduledTaskNotStarted=true;
-        public bool ScheduledTaskNotStarted
-        {
-            get { return scheduledTaskNotStarted; }
-            set
-            {
-                if (scheduledTaskNotStarted != value)
-                {
-                    scheduledTaskNotStarted = value;
-                    RaisePropertyChanged("ScheduledTaskNotStarted");
-                }
-            }
-        }
-
         private int testPackageSize=0;
         public int TestPackageSize
         {
@@ -55,42 +25,17 @@ namespace TravelJournal.PCL.ViewModel.Test
             }
         }
 
-        public ICommand ConnectServer
-        {
-            get
-            {
-                return new RelayCommand(() => { tester.ConnectServer((result) => { ConnectionStatus = result; }); });
-            }
-        }
-
         public ICommand SendTestPackageRequest
         {
             get
             {
-                return new RelayCommand(() => { tester.RequestDownloadTest(testPackageSize); });
+                return new RelayCommand(() => { (serverBase as SimulatorConnectivityTester).RequestDownloadTest(testPackageSize); });
             }
         }
 
-        public ICommand RunScheduledAgent
+        protected override ServerBase CreateServerTester()
         {
-            get
-            {
-                return new RelayCommand(() => { StartOrStopScheduledAgent(); });
-            }
-        }
-
-        private void StartOrStopScheduledAgent()
-        {
-            if (ScheduledTaskNotStarted)
-            { 
-                ScheduledTaskNotStarted = false; 
-                tester.StartTestPeriodicAgent(); 
-            }
-            else
-            {
-                ScheduledTaskNotStarted = true; 
-                tester.StopTestPeriodicAgent();
-            }
+            return new SimulatorConnectivityTester();
         }
     }
 }

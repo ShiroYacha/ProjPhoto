@@ -7,10 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using TravelJournal.PCL.Test;
 
 namespace TravelJournal.PCL.ViewModel.Test
 {
-    public class JournalGenerationTestViewModel : TestItemViewModelBase
+    public class JournalGenerationTestViewModel : ServerTestItemViewModelBase
     {
+        protected override PCL.Test.ServerBase CreateServerTester()
+        {
+            return new SimulatorConnectivityTester();
+        }
     }
 }

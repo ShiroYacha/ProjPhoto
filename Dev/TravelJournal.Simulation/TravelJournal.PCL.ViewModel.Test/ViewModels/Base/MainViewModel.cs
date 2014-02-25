@@ -48,9 +48,17 @@ namespace TravelJournal.PCL.ViewModel.Test
                 connectivityTest.LineThree = "Upload/download speed, accessibility and robustness test.";
                 this.Items.Add(connectivityTest);
 
+                // Travel info test
+                TestItemViewModelBase travelInfoTest = ServiceLocator.Current.GetInstance<TravelInfoTestViewModel>();
+                travelInfoTest.ID = "1";
+                travelInfoTest.LineOne = "Travel info";
+                travelInfoTest.LineTwo = "Travel info service test.";
+                travelInfoTest.LineThree = "Real-time travel information service test.  ";
+                this.Items.Add(travelInfoTest);
+
                 // Travel journal generation test
                 TestItemViewModelBase journalGenerationTest = ServiceLocator.Current.GetInstance<JournalGenerationTestViewModel>();
-                journalGenerationTest.ID = "1";
+                journalGenerationTest.ID = "2";
                 journalGenerationTest.LineOne = "Journal generation";
                 journalGenerationTest.LineTwo = "Travel journal generation test.";
                 journalGenerationTest.LineThree = "Real-time journal generation test. ";

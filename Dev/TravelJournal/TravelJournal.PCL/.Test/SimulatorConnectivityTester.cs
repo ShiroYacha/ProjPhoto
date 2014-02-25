@@ -11,34 +11,10 @@ namespace TravelJournal.PCL.Test
 {
     public enum ConnectionStatus { Connected, Disconnected, ServerOffline }
 
-    public class ServerConnectivityTester
+    public class SimulatorConnectivityTester : ServerBase
     {
-        private ServiceReference.ConnectionServiceClient serviceClient = new ServiceReference.ConnectionServiceClient();
-        private Action<ConnectionStatus> resultHandler;
         private DateTime currentTime;
         private Action downloadFinishedHandler;
-
-        public void ConnectServer(Action<ConnectionStatus> resultHandler)
-        {
-            this.resultHandler = resultHandler;
-            serviceClient.ConnectCompleted += serviceClient_DoWorkCompleted;
-            serviceClient.ConnectAsync("Emulator WVGA 512MB");
-        }
-        private void serviceClient_DoWorkCompleted(object sender, ServiceReference.ConnectCompletedEventArgs e)
-        {
-            try
-            {
-                resultHandler(e.Result ? ConnectionStatus.Connected : ConnectionStatus.Disconnected);
-            }
-            catch (Exception)
-            {
-                resultHandler(ConnectionStatus.ServerOffline);
-            }
-            finally
-            {
-                serviceClient.ConnectCompleted -= serviceClient_DoWorkCompleted;
-            }
-        }
 
         public void RequestDownloadTest(int packageSize)
         {
@@ -78,16 +54,5 @@ namespace TravelJournal.PCL.Test
             }
         }
 
-        public void StartTestPeriodicAgent()
-        {
-            IPeriodicAgentLauncher agent = SimpleIoc.Default.GetInstance<IPeriodicAgentLauncher>();
-            agent.Start();
-        }
-
-        public void StopTestPeriodicAgent()
-        {
-            IPeriodicAgentLauncher agent = SimpleIoc.Default.GetInstance<IPeriodicAgentLauncher>();
-            agent.Stop();
-        }
     }
 }
