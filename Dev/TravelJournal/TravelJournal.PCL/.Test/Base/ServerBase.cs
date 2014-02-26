@@ -33,15 +33,5 @@ namespace TravelJournal.PCL.Test
                 serviceClient.ConnectCompleted -= serviceClient_DoWorkCompleted;
             }
         }
-
-        public void StartTestPeriodicAgent()
-        {
-            SimpleIoc.Default.GetInstance<IPeriodicAgentLauncher>().Start();
-        }
-
-        public void StopTestPeriodicAgent()
-        {
-            SimpleIoc.Default.GetInstance<IPeriodicAgentLauncher>().Stop();
-        }
     }
 }

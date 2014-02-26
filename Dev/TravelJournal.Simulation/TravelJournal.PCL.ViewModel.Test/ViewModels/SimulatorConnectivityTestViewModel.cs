@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,13 +30,13 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             get
             {
-                return new RelayCommand(() => { (serverBase as SimulatorConnectivityTester).RequestDownloadTest(testPackageSize); });
+                return new RelayCommand(() => { (serverAgentBase as ConnectivityTesterAgentBase).RequestDownloadTest(testPackageSize); });
             }
         }
 
-        protected override ServerBase CreateServerTester()
+        protected override ServerAgentBase CreateServerAgentTester()
         {
-            return new SimulatorConnectivityTester();
+            return SimpleIoc.Default.GetInstance<ConnectivityTesterAgentBase>();
         }
     }
 }

@@ -10,36 +10,48 @@ using TravelJournal.PCL.ServiceReference;
 
 namespace TravelJournal.WP8.Test
 {
-    public class ConnectivityTestAgentLauncher:IPeriodicAgentLauncher
+    public class ConnectivityTesterAgent : ConnectivityTesterAgentBase
     {
-        public void Start()
+
+        public override string Name { get { return "NAME_CONNECTIVITY_TEST_AGENT"; } }
+        public override void Start()
         {
             PeriodicTask task = null;
-            task = ScheduledActionService.Find(ScheduledAgent.NAME_CONNECTIVITY_TEST_AGENT) as PeriodicTask;
+            task = ScheduledActionService.Find(Name) as PeriodicTask;
             if (task != null)
                 ScheduledActionService.Remove(task.Name);
             else
             {
-                task = new PeriodicTask(ScheduledAgent.NAME_CONNECTIVITY_TEST_AGENT);
+                task = new PeriodicTask(Name);
                 task.Description = "Periodic test on connectivity with the simulator server.";
             }
             ScheduledActionService.Add(task);
-            ScheduledActionService.LaunchForTest(ScheduledAgent.NAME_CONNECTIVITY_TEST_AGENT, TimeSpan.FromSeconds(5));
+            ScheduledActionService.LaunchForTest(Name, TimeSpan.FromSeconds(5));
             // Log
             ConnectionServiceClient serviceClient = new ConnectionServiceClient();
             serviceClient.LogAsync(LogType.Info, "Connectivity scheduled task started...", "Start", @"D:\ComputerProgramming\C#\ProjPhoto\Dev\TravelJournal\TravelJournal.PCL\.Test\ServerConnectivityTester", 30);
         }
 
-        public void Stop()
+        public override void Stop()
         {
             PeriodicTask task = null;
-            task = ScheduledActionService.Find(ScheduledAgent.NAME_CONNECTIVITY_TEST_AGENT) as PeriodicTask;
+            task = ScheduledActionService.Find(Name) as PeriodicTask;
             if (task != null)
                 ScheduledActionService.Remove(task.Name);
             // Log
             ConnectionServiceClient serviceClient = new ConnectionServiceClient();
             serviceClient.LogAsync(LogType.Info, "Connectivity scheduled task stopped...", "Start", @"D:\ComputerProgramming\C#\ProjPhoto\Dev\TravelJournal\TravelJournal.PCL\.Test\ServerConnectivityTester", 30);
+        }
 
+        public override bool OnInvoke(Action onCompleteHandler=null)
+        {
+            Random random = new Random();
+            RequestDownloadTest(random.Next(0, 100000), () =>
+            {
+                ScheduledActionService.LaunchForTest(Name, TimeSpan.FromSeconds(30));
+                if (onCompleteHandler!=null) onCompleteHandler();
+            });
+            return true;
         }
     }
 }

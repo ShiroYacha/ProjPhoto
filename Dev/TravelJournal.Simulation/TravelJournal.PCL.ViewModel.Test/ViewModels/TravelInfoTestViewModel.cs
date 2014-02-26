@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Ioc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace TravelJournal.PCL.ViewModel.Test
 {
     public class TravelInfoTestViewModel : ServerTestItemViewModelBase
     {
-        protected override PCL.Test.ServerBase CreateServerTester()
+        protected override PCL.Test.ServerAgentBase CreateServerAgentTester()
         {
-            return new TravelInfoTester();
+            return SimpleIoc.Default.GetInstance<TravelInfoTesterAgentBase>();
         }
     }
 }

@@ -54,6 +54,9 @@ namespace TravelJournal.WP8.UI.Test
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+
+            // Start up configurations
+            StartupConfiguration.Startup();
         }
 
         // Code to execute when the application is launching (eg, from Start)

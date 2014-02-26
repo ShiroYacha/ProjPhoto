@@ -5,8 +5,7 @@ using System.Text;
 
 namespace TravelJournal.PCL.Test
 {
-    public class TravelInfoTester : ServerBase
+    public abstract class JournalGenerationTesterAgentBase:ServerAgentBase
     {
-
     }
 }

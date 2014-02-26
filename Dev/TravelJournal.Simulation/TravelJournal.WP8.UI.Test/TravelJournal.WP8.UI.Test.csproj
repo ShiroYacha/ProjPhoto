@@ -99,6 +99,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StartupConfiguration.cs" />
     <Compile Include="Views\JournalGenerationTestPage.xaml.cs">
       <DependentUpon>JournalGenerationTestPage.xaml</DependentUpon>
     </Compile>

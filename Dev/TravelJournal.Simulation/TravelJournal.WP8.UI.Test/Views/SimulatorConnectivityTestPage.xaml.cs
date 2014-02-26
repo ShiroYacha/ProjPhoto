@@ -19,10 +19,5 @@ namespace TravelJournal.WP8.UI.Test.Views
         {
             InitializeComponent();
         }
-
-        protected override void RegisterIocContainers()
-        {
-            SimpleIoc.Default.Register<IPeriodicAgentLauncher, ConnectivityTestAgentLauncher>();
-        }
     }
 }

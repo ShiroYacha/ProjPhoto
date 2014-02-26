@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
 using System;
@@ -13,9 +14,9 @@ namespace TravelJournal.PCL.ViewModel.Test
 {
     public class JournalGenerationTestViewModel : ServerTestItemViewModelBase
     {
-        protected override PCL.Test.ServerBase CreateServerTester()
+        protected override PCL.Test.ServerAgentBase CreateServerAgentTester()
         {
-            return new SimulatorConnectivityTester();
+            return SimpleIoc.Default.GetInstance<JournalGenerationTesterAgentBase>();
         }
     }
 }

@@ -5,9 +5,8 @@ using System.Text;
 
 namespace TravelJournal.PCL.Test
 {
-    public interface IPeriodicAgentLauncher
+    public abstract class TravelInfoTesterAgentBase : ServerAgentBase
     {
-        void Start();
-        void Stop();
+
     }
 }

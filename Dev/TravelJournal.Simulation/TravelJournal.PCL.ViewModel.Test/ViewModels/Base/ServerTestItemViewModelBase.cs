@@ -10,15 +10,14 @@ namespace TravelJournal.PCL.ViewModel.Test
 {
     public abstract class ServerTestItemViewModelBase : TestItemViewModelBase
     {
-        protected ServerBase serverBase;
+        protected ServerAgentBase serverAgentBase;
 
         public ServerTestItemViewModelBase()
         {
-            serverBase = CreateServerTester();
+            serverAgentBase = CreateServerAgentTester();
         }
 
-        protected abstract ServerBase CreateServerTester();
-
+        protected abstract ServerAgentBase CreateServerAgentTester();
 
         private ConnectionStatus connectionStatus = ConnectionStatus.Disconnected;
         public ConnectionStatus ConnectionStatus
@@ -48,7 +47,7 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             get
             {
-                return new RelayCommand(() => { serverBase.ConnectServer((result) => { ConnectionStatus = result; }); });
+                return new RelayCommand(() => { serverAgentBase.ConnectServer((result) => { ConnectionStatus = result; }); });
             }
         }
 
@@ -78,12 +77,12 @@ namespace TravelJournal.PCL.ViewModel.Test
             if (ScheduledTaskNotStarted)
             {
                 ScheduledTaskNotStarted = false;
-                serverBase.StartTestPeriodicAgent();
+                serverAgentBase.Start();
             }
             else
             {
                 ScheduledTaskNotStarted = true;
-                serverBase.StopTestPeriodicAgent();
+                serverAgentBase.Stop();
             }
         }
     }

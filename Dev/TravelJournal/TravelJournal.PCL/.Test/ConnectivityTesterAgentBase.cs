@@ -11,7 +11,7 @@ namespace TravelJournal.PCL.Test
 {
     public enum ConnectionStatus { Connected, Disconnected, ServerOffline }
 
-    public class SimulatorConnectivityTester : ServerBase
+    public abstract class ConnectivityTesterAgentBase : ServerAgentBase
     {
         private DateTime currentTime;
         private Action downloadFinishedHandler;
@@ -53,6 +53,5 @@ namespace TravelJournal.PCL.Test
                 downloadFinishedHandler();
             }
         }
-
     }
 }

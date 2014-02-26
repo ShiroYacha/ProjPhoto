@@ -4,12 +4,14 @@ using Microsoft.Phone.Scheduler;
 using TravelJournal.WP8.Test;
 using TravelJournal.PCL.Test;
 using System;
+using GalaSoft.MvvmLight.Ioc;
+using System.Collections.Generic;
 
 namespace TravelJournal.WP8
 {
     public class ScheduledAgent : ScheduledTaskAgent
     {
-        public const string NAME_CONNECTIVITY_TEST_AGENT = "NAME_CONNECTIVITY_TEST_AGENT";
+        private static List<ServerAgentBase> agents;
 
         /// <remarks>
         /// ScheduledAgent constructor, initializes the UnhandledException handler
@@ -21,6 +23,21 @@ namespace TravelJournal.WP8
             {
                 Application.Current.UnhandledException += UnhandledException;
             });
+            // Configs
+            RegisterIocContainers();
+        }
+
+        private static void RegisterIocContainers()
+        {
+            SimpleIoc.Default.Register<ConnectivityTesterAgentBase, ConnectivityTesterAgent>();
+            SimpleIoc.Default.Register<TravelInfoTesterAgentBase, TravelInfoTesterAgent>();
+            SimpleIoc.Default.Register<JournalGenerationTesterAgentBase, JournalGenerationTesterAgent>();
+
+            SimpleIoc.Default.Register<ServerAgentBase>(() => SimpleIoc.Default.GetInstance<ConnectivityTesterAgentBase>(), "ConnectivityTesterAgentBase");
+            SimpleIoc.Default.Register<ServerAgentBase>(() => SimpleIoc.Default.GetInstance<TravelInfoTesterAgentBase>(), "TravelInfoTesterAgentBase");
+            SimpleIoc.Default.Register<ServerAgentBase>(() => SimpleIoc.Default.GetInstance<JournalGenerationTesterAgentBase>(), "JournalGenerationTesterAgentBase");
+
+            agents = new List<ServerAgentBase>(SimpleIoc.Default.GetAllInstances<ServerAgentBase>());
         }
 
         /// Code to execute on Unhandled Exceptions
@@ -46,25 +63,8 @@ namespace TravelJournal.WP8
         {
             bool waitAsync = false;
             //TODO: Add code to perform your task in background
-            switch (task.Name)
-            {
-                case ScheduledAgent.NAME_CONNECTIVITY_TEST_AGENT:
-                    SimulatorConnectivityTester tester = new SimulatorConnectivityTester();
-                    Random random=new Random();
-                    tester.RequestDownloadTest(random.Next(0, 100000), () =>
-                    {
-                        ScheduledActionService.LaunchForTest(task.Name, TimeSpan.FromSeconds(30));
-                        NotifyComplete();
-                    });
-                    waitAsync = true;
-
-                    break;
- 
-               default:
-               // do nothing
-               break;
-            }
-
+            ServerAgentBase agent = agents.Find((ag) => { return ag.Name == task.Name; });
+            if(agent!=null)  waitAsync =agent.OnInvoke(NotifyComplete);
             if (!waitAsync) NotifyComplete();
         }
 
