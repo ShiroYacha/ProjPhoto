@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4316236-078A-4817-AF83-2E9BF3E91C75}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TravelJournal.WinForm.Simulator</RootNamespace>
+    <AssemblyName>TravelJournal.WinForm.Simulator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Tune-Up Utilities.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GenericUndoRedo">
+      <HintPath>..\..\..\..\Downloads\Others\DesignPatterns\Memento\GenericUndoRedoDemo\GenericUndoRedo\bin\Debug\GenericUndoRedo.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\GMapNET\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\GMapNET\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Bases\DoubleBufferListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\ConnectionViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\ConnectionViewer.Designer.cs">
+      <DependentUpon>ConnectionViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Components\PerfChart\PerfChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\PerfChart\PerfChart.Designer.cs" />
+    <Compile Include="Controls\Components\PerfChart\PerfChartStyle.cs" />
+    <Compile Include="Data\ConnectionTestData.cs" />
+    <Compile Include="Data\FakedGpsPoint.cs" />
+    <Compile Include="Data\SimulatorModelPoint.cs" />
+    <Compile Include="Services\SimulationServices.cs" />
+    <Compile Include="Services\ISimulationServices.cs" />
+    <Compile Include="Utilities\TravelSimulator.cs" />
+    <Compile Include="Forms\Config\Components\TrackBarConfigDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\Components\TrackBarConfigDialog.Designer.cs">
+      <DependentUpon>TrackBarConfigDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ConfigDataBase.cs" />
+    <Compile Include="Controls\Components\InfoInspector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\InfoInspector.Designer.cs">
+      <DependentUpon>InfoInspector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Bases\ITestControl.cs" />
+    <Compile Include="Controls\Components\Logger.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\Logger.Designer.cs">
+      <DependentUpon>Logger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Components\TravelMapPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\TravelMapPlayer.Designer.cs">
+      <DependentUpon>TravelMapPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\GaussianRandom.cs" />
+    <Compile Include="Utilities\TravelSimulationDataCompiler.cs" />
+    <Compile Include="Utilities\XmlSerialization.cs" />
+    <Compile Include="Forms\Config\Components\ConfigDataPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\Components\ConfigDataPreviewForm.Designer.cs">
+      <DependentUpon>ConfigDataPreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SimulatorGeneralSettings.cs" />
+    <Compile Include="Data\TravelItineraryData.cs" />
+    <Compile Include="Forms\Config\PropertyConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\PropertyConfigForm.Designer.cs">
+      <DependentUpon>PropertyConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Config\TravelItineraryPlanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\TravelItineraryPlanner.Designer.cs">
+      <DependentUpon>TravelItineraryPlanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rendering\DarkThemeColor.cs" />
+    <Compile Include="Rendering\DarkThemeRenderer.cs" />
+    <Compile Include="Forms\Config\Components\ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\Components\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\Components\StateMachineViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\StateMachineViewer.Designer.cs">
+      <DependentUpon>StateMachineViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Bases\ITestProjectControl.cs" />
+    <Compile Include="Controls\TravelJournalGenerationSimulation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TravelJournalGenerationSimulation.Designer.cs">
+      <DependentUpon>TravelJournalGenerationSimulation.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Controls\Components\ConnectionViewer.resx">
+      <DependentUpon>ConnectionViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Components\InfoInspector.resx">
+      <DependentUpon>InfoInspector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Components\Logger.resx">
+      <DependentUpon>Logger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Components\PerfChart\PerfChart.resx" />
+    <EmbeddedResource Include="Controls\Components\TravelMapPlayer.resx">
+      <DependentUpon>TravelMapPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\Components\TrackBarConfigDialog.resx">
+      <DependentUpon>TrackBarConfigDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\Components\ConfigDataPreviewForm.resx">
+      <DependentUpon>ConfigDataPreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\Components\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\PropertyConfigForm.resx">
+      <DependentUpon>PropertyConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\TravelItineraryPlanner.resx">
+      <DependentUpon>TravelItineraryPlanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Controls\Components\StateMachineViewer.resx">
+      <DependentUpon>StateMachineViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TravelJournalGenerationSimulation.resx">
+      <DependentUpon>TravelJournalGenerationSimulation.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Rendering\Empty.bmp" />
+    <Content Include="Tune-Up Utilities.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TravelJournal\TravelJournal.PCL\TravelJournal.PCL.csproj">
+      <Project>{e4983917-e55a-483d-a755-55613ee66478}</Project>
+      <Name>TravelJournal.PCL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TravelJournal\TravelJournal.WP8\TravelJournal.WP8.csproj">
+      <Project>{b192cfbb-d314-4009-9921-70d3d71523af}</Project>
+      <Name>TravelJournal.WP8</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///D:/APPLICATION/COMPUTERPROGRAMMING/IDE/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="High" Text="Code generation or text transformation started." />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="Diagnostic" Text="Name = InterfaceTemplate" />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="Diagnostic" Text="Overwrite = True" />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="Diagnostic" Text="ProjectPath = ..\TravelJournal.ModelingLib\TravelJournal.ModelingLib.csproj" />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="Diagnostic" Text="TargetDirectory = GeneratedCode\{PackageStructure}" />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="Diagnostic" Text="TargetName = {Name}" />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="Diagnostic" Text="TemplateFilePath = D:\APPLICATION\COMPUTERPROGRAMMING\IDE\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="Diagnostic" Text="ResolvedTemplateFilePath = D:\APPLICATION\COMPUTERPROGRAMMING\IDE\MICROSOFT VISUAL STUDIO 12.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4" />
+  <Message Timestamp="2014-02-13T17:31:34" Importance="Medium" Text="TravelJournal.Modeling's Text Template Binding: 'InterfaceTemplate' will apply InterfaceTemplate.t4 to: 'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic::IBackgroudProcessor' -  (Interface), 'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic::IExifExtractor' -  (Interface), 'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic::IPhtoOrganizer' -  (Interface), 'TravelJournal.Modeling::TravelJournal.PCL.DataService::IDataManager' -  (Interface), 'TravelJournal.Modeling::TravelJournal.PCL.DataService::IAlbum' -  (Interface), 'TravelJournal.Modeling::TravelJournal.PCL.DataService::IUser' -  (Interface), 'TravelJournal.Modeling::TravelJournal.PCL.DataService::IWebService' -  (Interface), 'TravelJournal.Modeling::TravelJournal.PCL.DataService::IPhotoManager' -  (Interface) " />
+  <Message Timestamp="2014-02-13T17:31:48" Importance="Medium" Text="Project Added: D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\TravelJournal.ModelingLib.csproj" />
+  <Message Timestamp="2014-02-13T17:31:48" Importance="Medium" Text="'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic::IBackgroudProcessor' -  (Interface) : success (file created) - D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\GeneratedCode\TravelJournal.PCL.BusinessLogic\IBackgroudProcessor.cs" />
+  <Message Timestamp="2014-02-13T17:31:49" Importance="Medium" Text="'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic::IExifExtractor' -  (Interface) : success (file created) - D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\GeneratedCode\TravelJournal.PCL.BusinessLogic\IExifExtractor.cs" />
+  <Message Timestamp="2014-02-13T17:31:49" Importance="Medium" Text="'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic::IPhtoOrganizer' -  (Interface) : success (file created) - D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\GeneratedCode\TravelJournal.PCL.BusinessLogic\IPhtoOrganizer.cs" />
+  <Message Timestamp="2014-02-13T17:31:49" Importance="Medium" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::IDataManager' -  (Interface) : success (file created) - D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\GeneratedCode\TravelJournal.PCL.DataService\IDataManager.cs" />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Medium" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::IAlbum' -  (Interface) : success (file created) - D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\GeneratedCode\TravelJournal.PCL.DataService\IAlbum.cs" />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Medium" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::IUser' -  (Interface) : success (file created) - D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\GeneratedCode\TravelJournal.PCL.DataService\IUser.cs" />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Medium" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::IWebService' -  (Interface) : success (file created) - D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\GeneratedCode\TravelJournal.PCL.DataService\IWebService.cs" />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Medium" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::IPhotoManager' -  (Interface) : success (file created) - D:\Data\ComputerProgramming\GitHub\ProjPhoto\Dev\TravelJournal\TravelJournal.ModelingLib\GeneratedCode\TravelJournal.PCL.DataService\IPhotoManager.cs" />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="The selection included 9 elements which were not bound to a template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::' -  (Association): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic' -  (Package): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic::' -  (Association): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.BusinessLogic::' -  (Association): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::' -  (Association): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::' -  (Association): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService' -  (Package): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::' -  (Association): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="Diagnostic" Text="'TravelJournal.Modeling::TravelJournal.PCL.DataService::' -  (Association): no bound template." />
+  <Message Timestamp="2014-02-13T17:31:50" Importance="High" Text="Code generation complete. Errors: 0. Warnings: 0." />
+</Log>
