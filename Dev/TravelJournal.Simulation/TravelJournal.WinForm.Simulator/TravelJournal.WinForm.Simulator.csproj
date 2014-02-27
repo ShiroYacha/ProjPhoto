@@ -236,6 +236,10 @@
       <Project>{e4983917-e55a-483d-a755-55613ee66478}</Project>
       <Name>TravelJournal.PCL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\TravelJournal\TravelJournal.WP8\TravelJournal.WP8.csproj">
+      <Project>{b192cfbb-d314-4009-9921-70d3d71523af}</Project>
+      <Name>TravelJournal.WP8</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
