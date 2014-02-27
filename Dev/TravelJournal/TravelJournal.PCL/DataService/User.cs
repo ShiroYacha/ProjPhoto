@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TravelJournal.PCL.DataService
 {
-    class User
+    class UserInfo
     {
 
         private string userName;
@@ -35,8 +35,8 @@ namespace TravelJournal.PCL.DataService
             }
         }
 
-        public User() { }
-        public User(string userName, GpsPoint userPosition)
+        public UserInfo() { }
+        public UserInfo(string userName, GpsPoint userPosition)
         {
             this.userName = userName;
             this.userPosition = userPosition;

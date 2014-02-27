@@ -47,7 +47,7 @@ namespace TravelJournal.PCL.DataService
             this.photoList = photoList;
         }
 
-        public DateTime getTimeTag()
+        public DateTime GetTimeTag()
         {
             
             foreach (Photo p in PhotoList)

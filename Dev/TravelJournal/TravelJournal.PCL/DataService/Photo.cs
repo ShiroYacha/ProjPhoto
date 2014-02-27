@@ -9,7 +9,6 @@ namespace TravelJournal.PCL.DataService
     {
         public string PhotoName{get;set;}
         public GpsPoint Point{get;set;}
-
         public GpsPosition Position { get; set; }
 
     }

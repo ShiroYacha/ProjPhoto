@@ -14,40 +14,35 @@ namespace TravelJournal.PCL.BusinessLogic
         private DateTime nowTime;
         private IWebService webService;
         private DataManagerBase dataManager;
-        private PhotoOrganizer photoOrganizer;
-        private Photo photo;
+        private IPhotoOrganizer photoOrganizer;
         private Album album;
-        Action<Photo> photoHandlerTarget;
-        private PhotoManager photoManager;
-        private ExifExtractor exifExtractor;
+        private IPhotoManager photoManager;
+        private IExifExtractor exifExtractor;
         
-
-
         public BackgroundProcessor()
         {
-            nowTime = DateTime.Now;
-            webService=SimpleIoc.Default.GetInstance<IWebService>();
-            GpsPoint p = webService.GetUserPosition();
             dataManager = SimpleIoc.Default.GetInstance<DataManagerBase>();
-            album=dataManager.GetAlbum();
             photoOrganizer = SimpleIoc.Default.GetInstance<PhotoOrganizer>();
-            
+            dataManager = SimpleIoc.Default.GetInstance<DataManagerBase>();
+            photoManager = SimpleIoc.Default.GetInstance<IPhotoManager>();
+            exifExtractor = SimpleIoc.Default.GetInstance<IExifExtractor>();
+        }
 
-            
-            photoManager = SimpleIoc.Default.GetInstance<PhotoManager>();
-            exifExtractor = SimpleIoc.Default.GetInstance<ExifExtractor>();
-            photoHandlerTarget = PhotoHandler;
-            photoManager.FoundRawPhoto(album.getTimeTag(), photoHandlerTarget);   
+        public void Execute()
+        {
+            nowTime = DateTime.Now;
+            webService = SimpleIoc.Default.GetInstance<IWebService>();
+            GpsPoint p = webService.GetUserPosition();
+            album = dataManager.GetAlbum();
+            photoManager.FoundRawPhoto(album.GetTimeTag(), PhotoHandler);   
         }
 
         public void PhotoHandler(Photo aPhoto)
         {
-          GpsPoint p =  exifExtractor.ExtractGeoCoordinate(aPhoto);
-          aPhoto.Position= webService.GetGeopositionAsync(p);
-          photoOrganizer.OrganizePhoto(aPhoto, album);
-          dataManager.Save();
-           
-
+            GpsPoint p = exifExtractor.ExtractGeoCoordinate(aPhoto);
+            aPhoto.Position = webService.GetGeoposition(p);
+            photoOrganizer.OrganizePhoto(aPhoto, album);
+            dataManager.Save();
         }       
     }
 }

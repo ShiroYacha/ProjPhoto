@@ -5,47 +5,33 @@ using System.Text;
 
 namespace TravelJournal.PCL.DataService
 {
-    abstract class DataManagerBase
+    public abstract class DataManagerBase
     {
-        private Album album;
-        private User user;
+        private List<Album> albums;
+        private UserInfo userInfo;
 
         public DataManagerBase()
         {
-            album = new Album();
-            user = new User();
-        }
-        public DataManagerBase(Album album, User user)
-        {
-            this.album = album;
-            this.user = user;
-        }
-        public DataManagerBase Load()
-        {
-            return this;
+            albums = new List<Album>();
         }
 
-        public void Save()
-        {
+        public abstract void Load();
 
-        }
-        public Album AddPhoto(Photo aPhoto)
+        public abstract void Save();
+                
+        public void AddPhoto(string albumName, params Photo[] photos)
         {
-            album.PhotoList.Add(aPhoto);
-            return album;
+            albums.First((album)=>{ return album.AlbumName==albumName;}).PhotoList.AddRange(photos);
         }
-        public Album AddPhoto(IEnumerable<Photo> aPhotoList)
+
+        public Album GetAlbum(string albumName)
         {
-            album.PhotoList.AddRange(aPhotoList);
-            return album;
+            return albums.First((album) => { return album.AlbumName == albumName; });
         }
-        public Album GetAlbum()
+
+        public UserInfo GetUserInfo()
         {
-            return this.album;
-        }
-        public User GetUserInfo()
-        {
-            return this.user;
+            return userInfo;
         }
     }
 }

@@ -45,13 +45,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="BusinessLogic\BackgroundProcessor.cs" />
-    <Compile Include="BusinessLogic\ExifExtractor.cs" />
     <Compile Include="BusinessLogic\PhotoOrganizer.cs" />
     <Compile Include="DataService\Album.cs" />
     <Compile Include="DataService\DataManagerBase.cs" />
     <Compile Include="DataService\GpsPosition.cs" />
     <Compile Include="DataService\Photo.cs" />
-    <Compile Include="DataService\PhotoManager.cs" />
     <Compile Include="DataService\GpsPoint.cs" />
     <Compile Include="DataService\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

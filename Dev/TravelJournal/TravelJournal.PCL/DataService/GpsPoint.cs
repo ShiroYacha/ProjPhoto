@@ -16,7 +16,7 @@ namespace TravelJournal.PCL.DataService
         public GpsPoint() { }
         public GpsPoint(double longitude,double latitude, DateTime time){
 
-             Longitude = longitude;
+            Longitude = longitude;
             Latitude = latitude;
             TimeStamp = time;
         }
