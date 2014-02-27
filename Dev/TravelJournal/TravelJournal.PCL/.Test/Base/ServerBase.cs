@@ -19,10 +19,10 @@ namespace TravelJournal.PCL.Test
         public void ConnectServer(Action<ConnectionStatus> resultHandler)
         {
             this.resultHandler = resultHandler;
-            serviceClient.ConnectCompleted += serviceClient_DoWorkCompleted;
+            serviceClient.ConnectCompleted += serviceClient_ConnectCompleted;
             serviceClient.ConnectAsync("Emulator WVGA 512MB");
         }
-        private void serviceClient_DoWorkCompleted(object sender, ServiceReference.ConnectCompletedEventArgs e)
+        private void serviceClient_ConnectCompleted(object sender, ServiceReference.ConnectCompletedEventArgs e)
         {
             try
             {
@@ -34,7 +34,29 @@ namespace TravelJournal.PCL.Test
             }
             finally
             {
-                serviceClient.ConnectCompleted -= serviceClient_DoWorkCompleted;
+                serviceClient.ConnectCompleted -= serviceClient_ConnectCompleted;
+            }
+        }
+
+        public void DisconnectServer(Action<ConnectionStatus> resultHandler)
+        {
+            this.resultHandler = resultHandler;
+            serviceClient.DisconnectCompleted += serviceClient_DisconnectCompleted;
+            serviceClient.DisconnectAsync("Emulator WVGA 512MB");
+        }
+        private void serviceClient_DisconnectCompleted(object sender, ServiceReference.DisconnectCompletedEventArgs e)
+        {
+            try
+            {
+                if (resultHandler != null) resultHandler(e.Result ? ConnectionStatus.Connected : ConnectionStatus.Disconnected);
+            }
+            catch (Exception ex)
+            {
+                if (resultHandler != null) resultHandler(ConnectionStatus.ServerOffline);
+            }
+            finally
+            {
+                serviceClient.DisconnectCompleted -= serviceClient_DisconnectCompleted;
             }
         }
 

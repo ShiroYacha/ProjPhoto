@@ -125,6 +125,11 @@ namespace TravelJournal.PCL.ServiceReference {
         
         bool EndConnect(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/Disconnect", ReplyAction="http://tempuri.org/ISimulationServices/DisconnectResponse")]
+        System.IAsyncResult BeginDisconnect(string deviceName, System.AsyncCallback callback, object asyncState);
+        
+        bool EndDisconnect(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/PrepareTestData", ReplyAction="http://tempuri.org/ISimulationServices/PrepareTestDataResponse")]
         System.IAsyncResult BeginPrepareTestData(int size, System.AsyncCallback callback, object asyncState);
         
@@ -167,6 +172,25 @@ namespace TravelJournal.PCL.ServiceReference {
         private object[] results;
         
         public ConnectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class DisconnectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public DisconnectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -226,6 +250,12 @@ namespace TravelJournal.PCL.ServiceReference {
         private EndOperationDelegate onEndConnectDelegate;
         
         private System.Threading.SendOrPostCallback onConnectCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginDisconnectDelegate;
+        
+        private EndOperationDelegate onEndDisconnectDelegate;
+        
+        private System.Threading.SendOrPostCallback onDisconnectCompletedDelegate;
         
         private BeginOperationDelegate onBeginPrepareTestDataDelegate;
         
@@ -319,6 +349,8 @@ namespace TravelJournal.PCL.ServiceReference {
         
         public event System.EventHandler<ConnectCompletedEventArgs> ConnectCompleted;
         
+        public event System.EventHandler<DisconnectCompletedEventArgs> DisconnectCompleted;
+        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> PrepareTestDataCompleted;
         
         public event System.EventHandler<GetTestDataCompletedEventArgs> GetTestDataCompleted;
@@ -379,6 +411,52 @@ namespace TravelJournal.PCL.ServiceReference {
             }
             base.InvokeAsync(this.onBeginConnectDelegate, new object[] {
                         deviceName}, this.onEndConnectDelegate, this.onConnectCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginDisconnect(string deviceName, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDisconnect(deviceName, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool TravelJournal.PCL.ServiceReference.ISimulationServices.EndDisconnect(System.IAsyncResult result) {
+            return base.Channel.EndDisconnect(result);
+        }
+        
+        private System.IAsyncResult OnBeginDisconnect(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string deviceName = ((string)(inValues[0]));
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginDisconnect(deviceName, callback, asyncState);
+        }
+        
+        private object[] OnEndDisconnect(System.IAsyncResult result) {
+            bool retVal = ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndDisconnect(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnDisconnectCompleted(object state) {
+            if ((this.DisconnectCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DisconnectCompleted(this, new DisconnectCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DisconnectAsync(string deviceName) {
+            this.DisconnectAsync(deviceName, null);
+        }
+        
+        public void DisconnectAsync(string deviceName, object userState) {
+            if ((this.onBeginDisconnectDelegate == null)) {
+                this.onBeginDisconnectDelegate = new BeginOperationDelegate(this.OnBeginDisconnect);
+            }
+            if ((this.onEndDisconnectDelegate == null)) {
+                this.onEndDisconnectDelegate = new EndOperationDelegate(this.OnEndDisconnect);
+            }
+            if ((this.onDisconnectCompletedDelegate == null)) {
+                this.onDisconnectCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDisconnectCompleted);
+            }
+            base.InvokeAsync(this.onBeginDisconnectDelegate, new object[] {
+                        deviceName}, this.onEndDisconnectDelegate, this.onDisconnectCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -739,8 +817,8 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_ISimulationServices)) {
-                return new System.ServiceModel.EndpointAddress("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Si" +
-                        "mulationServices");
+                return new System.ServiceModel.EndpointAddress("http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Sim" +
+                        "ulationServices");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
@@ -769,6 +847,19 @@ namespace TravelJournal.PCL.ServiceReference {
             public bool EndConnect(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 bool _result = ((bool)(base.EndInvoke("Connect", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginDisconnect(string deviceName, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = deviceName;
+                System.IAsyncResult _result = base.BeginInvoke("Disconnect", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndDisconnect(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("Disconnect", _args, result)));
                 return _result;
             }
             

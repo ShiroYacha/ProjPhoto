@@ -14,6 +14,9 @@ namespace TravelJournal.WinForm.Simulator
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class SimulationServices : ISimulationServices
     {
+        private const decimal THRESHOLD_LATENCY_WARNING = 2;
+        private const decimal THRESHOLD_LATENCY_FAILURE = 5;
+
         private TravelSimulator simulator;
         private ConnectionTestData testData;
 
@@ -24,12 +27,25 @@ namespace TravelJournal.WinForm.Simulator
 
         public bool Connect(string deviceName)
         {
-            if (simulator.IsConnected == true)
-                simulator.IsConnected = false;
-            else
+            if (simulator.IsConnected == false)
+            {
                 simulator.IsConnected = true;
-            // Log 
-            TravelJournalSimulation.Log(LogType.Info, string.Format("Device {0} is {1}...", deviceName, simulator.IsConnected ? "connected" : "disconnected"));
+                TravelJournalSimulation.Log(LogType.Info, string.Format("Device {0} is  connected...", deviceName));
+            }
+            else
+                TravelJournalSimulation.Log(LogType.Warning, string.Format("Device {0} is either already connected... ", deviceName));
+            return simulator.IsConnected;
+        }
+
+        public bool Disconnect(string deviceName)
+        {
+            if (simulator.IsConnected == true)
+            {
+                simulator.IsConnected = false;
+                TravelJournalSimulation.Log(LogType.Info, string.Format("Device {0} is disconnected...", deviceName));
+            }
+            else
+                TravelJournalSimulation.Log(LogType.Warning, string.Format("Device {0} is either disconnected... or offline", deviceName));
             return simulator.IsConnected;
         }
 
@@ -59,7 +75,10 @@ namespace TravelJournal.WinForm.Simulator
         public void ReportLatency(decimal latency)
         {
             TravelJournalSimulation.UpdateConnectionViewer(latency);
-            TravelJournalSimulation.Log(LogType.Info, "Client query ended...");
+            if (latency > THRESHOLD_LATENCY_FAILURE)
+                TravelJournalSimulation.Log(LogType.Error, string.Format("Client query latency {0}s surpassed {1}s...", latency.ToString("#.##"), THRESHOLD_LATENCY_FAILURE.ToString("#.##")));
+            else if (latency > THRESHOLD_LATENCY_WARNING)
+                TravelJournalSimulation.Log(LogType.Warning, string.Format("Client query latency {0}s surpassed {1}s...",latency.ToString("#.##"),THRESHOLD_LATENCY_WARNING.ToString("#.##")));
         }
         public void Log(LogType type, string log, [CallerMemberName] string callerName = null, [CallerFilePath] string callerFilePath = null, [CallerLineNumber] int callerLine = -1)
         {

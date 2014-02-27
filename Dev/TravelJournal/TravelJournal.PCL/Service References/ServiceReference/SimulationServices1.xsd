@@ -1,96 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator" />
-  <xs:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls" />
-  <xs:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:element name="Connect">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="deviceName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ConnectResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ConnectResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="PrepareTestData">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="size" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="PrepareTestDataResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTestData">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTestDataResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator" minOccurs="0" name="GetTestDataResult" nillable="true" type="q1:ConnectionTestData" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReportLatency">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="latency" type="xs:decimal" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReportLatencyResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetCurrentGps">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetCurrentGpsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator" minOccurs="0" name="GetCurrentGpsResult" nillable="true" type="q2:GpsPoint" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Log">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls" minOccurs="0" name="type" type="q3:LogType" />
-        <xs:element minOccurs="0" name="log" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="callerName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="callerFilePath" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="callerLine" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LogResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateInfoInspector">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="infos" nillable="true" type="q4:ArrayOfKeyValueOfstringanyType" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateInfoInspectorResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ConnectionTestData">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Data" nillable="true" type="q1:ArrayOfint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConnectionTestData" nillable="true" type="tns:ConnectionTestData" />
+  <xs:complexType name="GpsPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GpsPoint" nillable="true" type="tns:GpsPoint" />
 </xs:schema>

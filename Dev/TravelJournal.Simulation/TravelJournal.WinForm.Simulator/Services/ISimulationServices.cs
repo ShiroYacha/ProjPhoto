@@ -19,6 +19,9 @@ namespace TravelJournal.WinForm.Simulator
         bool Connect(string deviceName);
 
         [OperationContract]
+        bool Disconnect(string deviceName);
+
+        [OperationContract]
         void PrepareTestData(int size);
 
         [OperationContract]

@@ -24,6 +24,9 @@ namespace TravelJournal.WinForm.Simulator
         // Static instance
         private static TravelJournalSimulation currentInstance;
 
+        // Const fields
+        private const string HOST_ADDRESS="http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices";
+
         // System fields
         private SimulationServices connectionService;
         private TravelSimulator simulator;
@@ -245,7 +248,7 @@ namespace TravelJournal.WinForm.Simulator
         }
         private void SetupServerHost()
         {
-            host=new ServiceHost(connectionService, new Uri("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices"));
+            host=new ServiceHost(connectionService, new Uri(HOST_ADDRESS));
             host.Open();
             // Log
             Log(LogType.Info, "Server host opened...");

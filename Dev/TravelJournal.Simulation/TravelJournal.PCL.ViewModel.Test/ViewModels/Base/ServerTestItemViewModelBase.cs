@@ -45,10 +45,19 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             get
             {
-                return new RelayCommand(() => { serverAgent.ConnectServer((result) => { ConnectionStatus = result; }); });
+                return new RelayCommand(() => 
+                {
+                    ConnectOrDisconnectServer();
+                });
             }
         }
-
+        private void ConnectOrDisconnectServer()
+        {
+            if (!IsConnected)
+                serverAgent.ConnectServer((result) => { ConnectionStatus = result; });
+            else
+                serverAgent.DisconnectServer((result) => { ConnectionStatus = result; });
+        }
 
         private bool scheduledTaskNotStarted = true;
         public bool ScheduledTaskNotStarted
@@ -72,7 +81,7 @@ namespace TravelJournal.PCL.ViewModel.Test
         }
         private void StartOrStopScheduledAgent()
         {
-            if (ScheduledTaskNotStarted)
+            if (scheduledTaskNotStarted)
             {
                 ScheduledTaskNotStarted = false;
                 serverAgent.Start();
@@ -84,20 +93,18 @@ namespace TravelJournal.PCL.ViewModel.Test
             }
         }
 
-        public ICommand ConnectServerAndRunAgent
+        public override void NavigateFrom()
         {
-            get
+            base.NavigateFrom();
+            // Remove the agent if started
+            if(!scheduledTaskNotStarted)
             {
-                return new RelayCommand(() => 
-                {
-                    serverAgent.ConnectServer((result) =>
-                    {
-                        ConnectionStatus = result;
-                        if (IsConnected)
-                            StartOrStopScheduledAgent();
-                    });
-                });
+                ScheduledTaskNotStarted = true;
+                serverAgent.Stop();
             }
+            // Disconnect from the server if connected
+            if(connectionStatus==ConnectionStatus.Connected)
+                serverAgent.DisconnectServer((result) => { ConnectionStatus = result; });
         }
     }
 }

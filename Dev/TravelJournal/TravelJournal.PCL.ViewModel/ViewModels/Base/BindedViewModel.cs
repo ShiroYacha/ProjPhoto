@@ -36,5 +36,10 @@ namespace TravelJournal.PCL.ViewModel
             if(navigateToItem!=null)
                 Messenger.Default.Send(new NavigationMessage((navigateToItem as BindedViewModel).BindedViewXamlName));
         }
+
+        public virtual void NavigateFrom()
+        {
+
+        }
     }
 }

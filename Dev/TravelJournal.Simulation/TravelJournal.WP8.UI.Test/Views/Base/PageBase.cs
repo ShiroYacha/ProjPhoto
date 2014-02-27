@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Phone.Controls;
 using GalaSoft.MvvmLight.Messaging;
 using TravelJournal.PCL.ViewModel;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace TravelJournal.WP8.UI.Test
 {
@@ -40,6 +41,8 @@ namespace TravelJournal.WP8.UI.Test
         {
             base.OnNavigatedFrom(e);
             Messenger.Default.Unregister(this);
+            // Trigger the leaving event on view model
+            (this.DataContext as BindedViewModel).NavigateFrom();
         }
 
     }
