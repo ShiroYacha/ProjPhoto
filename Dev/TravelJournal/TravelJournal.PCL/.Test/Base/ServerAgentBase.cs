@@ -11,6 +11,11 @@ namespace TravelJournal.PCL.Test
         public abstract string Description { get; }
         public abstract void Start();
         public abstract void Stop();
-        public abstract bool OnInvoke();
+        public bool BeginInvoke()
+        {
+            OnInvoke();
+            return IsAsync;
+        }
+        public abstract void OnInvoke();
     }
 }

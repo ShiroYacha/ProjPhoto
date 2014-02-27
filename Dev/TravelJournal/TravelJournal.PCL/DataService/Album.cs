@@ -12,7 +12,7 @@ namespace TravelJournal.PCL.DataService
         private string albumName;
         private List<Photo> photoList;
 
-        public string AlbumName
+        public string Name
         {
             get
             {

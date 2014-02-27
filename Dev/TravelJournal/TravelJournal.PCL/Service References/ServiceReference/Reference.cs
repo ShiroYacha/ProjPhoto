@@ -17,10 +17,10 @@ namespace TravelJournal.PCL.ServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="ConnectionTestData", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator")]
     public partial class ConnectionTestData : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private int[] DataField;
+        private System.Collections.Generic.List<int> DataField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int[] Data {
+        public System.Collections.Generic.List<int> Data {
             get {
                 return this.DataField;
             }
@@ -42,9 +42,128 @@ namespace TravelJournal.PCL.ServiceReference {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LogType", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls")]
+    public enum LogType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Info = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Error = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Warning = 2,
+    }
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GpsPoint", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Album", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService")]
+    public partial class Album : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string NameField;
+        
+        private System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> PhotoListField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> PhotoList {
+            get {
+                return this.PhotoListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhotoListField, value) != true)) {
+                    this.PhotoListField = value;
+                    this.RaisePropertyChanged("PhotoList");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Photo", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService")]
+    public partial class Photo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string NameField;
+        
+        private TravelJournal.PCL.ServiceReference.GpsPoint PointField;
+        
+        private TravelJournal.PCL.ServiceReference.GpsPosition PositionField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TravelJournal.PCL.ServiceReference.GpsPoint Point {
+            get {
+                return this.PointField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PointField, value) != true)) {
+                    this.PointField = value;
+                    this.RaisePropertyChanged("Point");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TravelJournal.PCL.ServiceReference.GpsPosition Position {
+            get {
+                return this.PositionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PositionField, value) != true)) {
+                    this.PositionField = value;
+                    this.RaisePropertyChanged("Position");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GpsPoint", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService")]
     public partial class GpsPoint : object, System.ComponentModel.INotifyPropertyChanged {
         
         private double LatitudeField;
@@ -102,18 +221,49 @@ namespace TravelJournal.PCL.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LogType", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls")]
-    public enum LogType : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="GpsPosition", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService")]
+    public partial class GpsPosition : object, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Info = 0,
+        private string CityField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Error = 1,
+        private string CountryField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Warning = 2,
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -145,11 +295,6 @@ namespace TravelJournal.PCL.ServiceReference {
         
         void EndReportLatency(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/GetCurrentGps", ReplyAction="http://tempuri.org/ISimulationServices/GetCurrentGpsResponse")]
-        System.IAsyncResult BeginGetCurrentGps(System.AsyncCallback callback, object asyncState);
-        
-        TravelJournal.PCL.ServiceReference.GpsPoint EndGetCurrentGps(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/Log", ReplyAction="http://tempuri.org/ISimulationServices/LogResponse")]
         System.IAsyncResult BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState);
         
@@ -159,6 +304,21 @@ namespace TravelJournal.PCL.ServiceReference {
         System.IAsyncResult BeginUpdateInfoInspector(System.Collections.Generic.Dictionary<string, object> infos, System.AsyncCallback callback, object asyncState);
         
         void EndUpdateInfoInspector(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/UpdatePhotoTreeView", ReplyAction="http://tempuri.org/ISimulationServices/UpdatePhotoTreeViewResponse")]
+        System.IAsyncResult BeginUpdatePhotoTreeView(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album> albums, System.AsyncCallback callback, object asyncState);
+        
+        void EndUpdatePhotoTreeView(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/GetCurrentGps", ReplyAction="http://tempuri.org/ISimulationServices/GetCurrentGpsResponse")]
+        System.IAsyncResult BeginGetCurrentGps(System.AsyncCallback callback, object asyncState);
+        
+        TravelJournal.PCL.ServiceReference.GpsPoint EndGetCurrentGps(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/GetPhotos", ReplyAction="http://tempuri.org/ISimulationServices/GetPhotosResponse")]
+        System.IAsyncResult BeginGetPhotos(System.DateTime filter, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> EndGetPhotos(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -243,6 +403,25 @@ namespace TravelJournal.PCL.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetPhotosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetPhotosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class SimulationServicesClient : System.ServiceModel.ClientBase<TravelJournal.PCL.ServiceReference.ISimulationServices>, TravelJournal.PCL.ServiceReference.ISimulationServices {
         
         private BeginOperationDelegate onBeginConnectDelegate;
@@ -275,12 +454,6 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private System.Threading.SendOrPostCallback onReportLatencyCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetCurrentGpsDelegate;
-        
-        private EndOperationDelegate onEndGetCurrentGpsDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetCurrentGpsCompletedDelegate;
-        
         private BeginOperationDelegate onBeginLogDelegate;
         
         private EndOperationDelegate onEndLogDelegate;
@@ -292,6 +465,24 @@ namespace TravelJournal.PCL.ServiceReference {
         private EndOperationDelegate onEndUpdateInfoInspectorDelegate;
         
         private System.Threading.SendOrPostCallback onUpdateInfoInspectorCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdatePhotoTreeViewDelegate;
+        
+        private EndOperationDelegate onEndUpdatePhotoTreeViewDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdatePhotoTreeViewCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetCurrentGpsDelegate;
+        
+        private EndOperationDelegate onEndGetCurrentGpsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetCurrentGpsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetPhotosDelegate;
+        
+        private EndOperationDelegate onEndGetPhotosDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetPhotosCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -357,11 +548,15 @@ namespace TravelJournal.PCL.ServiceReference {
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ReportLatencyCompleted;
         
-        public event System.EventHandler<GetCurrentGpsCompletedEventArgs> GetCurrentGpsCompleted;
-        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> LogCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateInfoInspectorCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdatePhotoTreeViewCompleted;
+        
+        public event System.EventHandler<GetCurrentGpsCompletedEventArgs> GetCurrentGpsCompleted;
+        
+        public event System.EventHandler<GetPhotosCompletedEventArgs> GetPhotosCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -594,50 +789,6 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginGetCurrentGps(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetCurrentGps(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        TravelJournal.PCL.ServiceReference.GpsPoint TravelJournal.PCL.ServiceReference.ISimulationServices.EndGetCurrentGps(System.IAsyncResult result) {
-            return base.Channel.EndGetCurrentGps(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetCurrentGps(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginGetCurrentGps(callback, asyncState);
-        }
-        
-        private object[] OnEndGetCurrentGps(System.IAsyncResult result) {
-            TravelJournal.PCL.ServiceReference.GpsPoint retVal = ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndGetCurrentGps(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetCurrentGpsCompleted(object state) {
-            if ((this.GetCurrentGpsCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetCurrentGpsCompleted(this, new GetCurrentGpsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetCurrentGpsAsync() {
-            this.GetCurrentGpsAsync(null);
-        }
-        
-        public void GetCurrentGpsAsync(object userState) {
-            if ((this.onBeginGetCurrentGpsDelegate == null)) {
-                this.onBeginGetCurrentGpsDelegate = new BeginOperationDelegate(this.OnBeginGetCurrentGps);
-            }
-            if ((this.onEndGetCurrentGpsDelegate == null)) {
-                this.onEndGetCurrentGpsDelegate = new EndOperationDelegate(this.OnEndGetCurrentGps);
-            }
-            if ((this.onGetCurrentGpsCompletedDelegate == null)) {
-                this.onGetCurrentGpsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetCurrentGpsCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetCurrentGpsDelegate, null, this.onEndGetCurrentGpsDelegate, this.onGetCurrentGpsCompletedDelegate, userState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginLog(type, log, callerName, callerFilePath, callerLine, callback, asyncState);
         }
@@ -733,6 +884,141 @@ namespace TravelJournal.PCL.ServiceReference {
             }
             base.InvokeAsync(this.onBeginUpdateInfoInspectorDelegate, new object[] {
                         infos}, this.onEndUpdateInfoInspectorDelegate, this.onUpdateInfoInspectorCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginUpdatePhotoTreeView(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album> albums, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdatePhotoTreeView(albums, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndUpdatePhotoTreeView(System.IAsyncResult result) {
+            base.Channel.EndUpdatePhotoTreeView(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdatePhotoTreeView(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album> albums = ((System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album>)(inValues[0]));
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginUpdatePhotoTreeView(albums, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdatePhotoTreeView(System.IAsyncResult result) {
+            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndUpdatePhotoTreeView(result);
+            return null;
+        }
+        
+        private void OnUpdatePhotoTreeViewCompleted(object state) {
+            if ((this.UpdatePhotoTreeViewCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdatePhotoTreeViewCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdatePhotoTreeViewAsync(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album> albums) {
+            this.UpdatePhotoTreeViewAsync(albums, null);
+        }
+        
+        public void UpdatePhotoTreeViewAsync(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album> albums, object userState) {
+            if ((this.onBeginUpdatePhotoTreeViewDelegate == null)) {
+                this.onBeginUpdatePhotoTreeViewDelegate = new BeginOperationDelegate(this.OnBeginUpdatePhotoTreeView);
+            }
+            if ((this.onEndUpdatePhotoTreeViewDelegate == null)) {
+                this.onEndUpdatePhotoTreeViewDelegate = new EndOperationDelegate(this.OnEndUpdatePhotoTreeView);
+            }
+            if ((this.onUpdatePhotoTreeViewCompletedDelegate == null)) {
+                this.onUpdatePhotoTreeViewCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdatePhotoTreeViewCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdatePhotoTreeViewDelegate, new object[] {
+                        albums}, this.onEndUpdatePhotoTreeViewDelegate, this.onUpdatePhotoTreeViewCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginGetCurrentGps(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetCurrentGps(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        TravelJournal.PCL.ServiceReference.GpsPoint TravelJournal.PCL.ServiceReference.ISimulationServices.EndGetCurrentGps(System.IAsyncResult result) {
+            return base.Channel.EndGetCurrentGps(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetCurrentGps(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginGetCurrentGps(callback, asyncState);
+        }
+        
+        private object[] OnEndGetCurrentGps(System.IAsyncResult result) {
+            TravelJournal.PCL.ServiceReference.GpsPoint retVal = ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndGetCurrentGps(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetCurrentGpsCompleted(object state) {
+            if ((this.GetCurrentGpsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetCurrentGpsCompleted(this, new GetCurrentGpsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetCurrentGpsAsync() {
+            this.GetCurrentGpsAsync(null);
+        }
+        
+        public void GetCurrentGpsAsync(object userState) {
+            if ((this.onBeginGetCurrentGpsDelegate == null)) {
+                this.onBeginGetCurrentGpsDelegate = new BeginOperationDelegate(this.OnBeginGetCurrentGps);
+            }
+            if ((this.onEndGetCurrentGpsDelegate == null)) {
+                this.onEndGetCurrentGpsDelegate = new EndOperationDelegate(this.OnEndGetCurrentGps);
+            }
+            if ((this.onGetCurrentGpsCompletedDelegate == null)) {
+                this.onGetCurrentGpsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetCurrentGpsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetCurrentGpsDelegate, null, this.onEndGetCurrentGpsDelegate, this.onGetCurrentGpsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginGetPhotos(System.DateTime filter, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetPhotos(filter, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> TravelJournal.PCL.ServiceReference.ISimulationServices.EndGetPhotos(System.IAsyncResult result) {
+            return base.Channel.EndGetPhotos(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetPhotos(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.DateTime filter = ((System.DateTime)(inValues[0]));
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginGetPhotos(filter, callback, asyncState);
+        }
+        
+        private object[] OnEndGetPhotos(System.IAsyncResult result) {
+            System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> retVal = ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndGetPhotos(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetPhotosCompleted(object state) {
+            if ((this.GetPhotosCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetPhotosCompleted(this, new GetPhotosCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetPhotosAsync(System.DateTime filter) {
+            this.GetPhotosAsync(filter, null);
+        }
+        
+        public void GetPhotosAsync(System.DateTime filter, object userState) {
+            if ((this.onBeginGetPhotosDelegate == null)) {
+                this.onBeginGetPhotosDelegate = new BeginOperationDelegate(this.OnBeginGetPhotos);
+            }
+            if ((this.onEndGetPhotosDelegate == null)) {
+                this.onEndGetPhotosDelegate = new EndOperationDelegate(this.OnEndGetPhotos);
+            }
+            if ((this.onGetPhotosCompletedDelegate == null)) {
+                this.onGetPhotosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPhotosCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetPhotosDelegate, new object[] {
+                        filter}, this.onEndGetPhotosDelegate, this.onGetPhotosCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -899,18 +1185,6 @@ namespace TravelJournal.PCL.ServiceReference {
                 base.EndInvoke("ReportLatency", _args, result);
             }
             
-            public System.IAsyncResult BeginGetCurrentGps(System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[0];
-                System.IAsyncResult _result = base.BeginInvoke("GetCurrentGps", _args, callback, asyncState);
-                return _result;
-            }
-            
-            public TravelJournal.PCL.ServiceReference.GpsPoint EndGetCurrentGps(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                TravelJournal.PCL.ServiceReference.GpsPoint _result = ((TravelJournal.PCL.ServiceReference.GpsPoint)(base.EndInvoke("GetCurrentGps", _args, result)));
-                return _result;
-            }
-            
             public System.IAsyncResult BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[5];
                 _args[0] = type;
@@ -937,6 +1211,43 @@ namespace TravelJournal.PCL.ServiceReference {
             public void EndUpdateInfoInspector(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 base.EndInvoke("UpdateInfoInspector", _args, result);
+            }
+            
+            public System.IAsyncResult BeginUpdatePhotoTreeView(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album> albums, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = albums;
+                System.IAsyncResult _result = base.BeginInvoke("UpdatePhotoTreeView", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndUpdatePhotoTreeView(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("UpdatePhotoTreeView", _args, result);
+            }
+            
+            public System.IAsyncResult BeginGetCurrentGps(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("GetCurrentGps", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public TravelJournal.PCL.ServiceReference.GpsPoint EndGetCurrentGps(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                TravelJournal.PCL.ServiceReference.GpsPoint _result = ((TravelJournal.PCL.ServiceReference.GpsPoint)(base.EndInvoke("GetCurrentGps", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetPhotos(System.DateTime filter, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = filter;
+                System.IAsyncResult _result = base.BeginInvoke("GetPhotos", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> EndGetPhotos(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> _result = ((System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo>)(base.EndInvoke("GetPhotos", _args, result)));
+                return _result;
             }
         }
         

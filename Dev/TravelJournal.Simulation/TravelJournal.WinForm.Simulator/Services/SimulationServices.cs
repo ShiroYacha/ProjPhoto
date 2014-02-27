@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using TravelJournal.PCL;
+using TravelJournal.PCL.DataService;
 using TravelJournal.WinForm.Simulator.Controls;
 
 namespace TravelJournal.WinForm.Simulator
@@ -25,6 +26,8 @@ namespace TravelJournal.WinForm.Simulator
             this.simulator = simulator;
         }
 
+        #region Connection services
+
         public bool Connect(string deviceName)
         {
             if (simulator.IsConnected == false)
@@ -36,7 +39,6 @@ namespace TravelJournal.WinForm.Simulator
                 TravelJournalSimulation.Log(LogType.Warning, string.Format("Device {0} is either already connected... ", deviceName));
             return simulator.IsConnected;
         }
-
         public bool Disconnect(string deviceName)
         {
             if (simulator.IsConnected == true)
@@ -47,9 +49,11 @@ namespace TravelJournal.WinForm.Simulator
             else
                 TravelJournalSimulation.Log(LogType.Warning, string.Format("Device {0} is either disconnected... or offline", deviceName));
             return simulator.IsConnected;
-        }
+        } 
 
-        #region Connection test members
+        #endregion
+        
+        #region Connectivity test services
 
         public void PrepareTestData(int size)
         {
@@ -71,8 +75,9 @@ namespace TravelJournal.WinForm.Simulator
         }
 
         #endregion
-
+        
         #region Diagnostic members
+
         public void ReportLatency(decimal latency)
         {
             TravelJournalSimulation.UpdateConnectionViewer(latency);
@@ -89,16 +94,35 @@ namespace TravelJournal.WinForm.Simulator
         {
             TravelJournalSimulation.UpdateInfoInspector(infos);
         }
+        public void UpdatePhotoTreeView(List<Album> albums)
+        {
+            TravelJournalSimulation.UpdatePhotoTreeViewer(albums);
+        }
+
         #endregion
+
+        #region Core services
 
         public GpsPoint GetCurrentGps()
         {
             // Log 
             TravelJournalSimulation.Log(LogType.Info, "Querying current position...");
+            // Get current gps
             return simulator.GetCurrentGps();
         }
+        public IEnumerable<Photo> GetPhotos(DateTime filter)
+        {
+            // Log
+            TravelJournalSimulation.Log(LogType.Info, "Querying photos...");
+            // Get photos
+            List<Photo> photos = simulator.GetCreatedPhotos();
+            if (filter != DateTime.MinValue)
+                return photos.Where((photo) => { return photo.Point.TimeStamp > filter; });
+            else
+                return photos;
+        }
 
-
+        #endregion
     }
 
 

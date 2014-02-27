@@ -40,14 +40,5 @@ namespace TravelJournal.WP8.Test
             SimulationServicesClient serviceClient = new SimulationServicesClient();
             serviceClient.LogAsync(LogType.Info, "Travel information scheduled task stopping...", "Stop", @"D:\ComputerProgramming\C#\ProjPhoto\Dev\TravelJournal\TravelJournal.PCL\.Test\TravelInfoTesterAgent", 40);
         }
-
-        public override bool OnInvoke()
-        {
-            UpdateCurrentGps();
-            return IsAsync;
-        }
-
-
-
     }
 }

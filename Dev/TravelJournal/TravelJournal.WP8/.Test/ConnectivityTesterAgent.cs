@@ -32,12 +32,5 @@ namespace TravelJournal.WP8.Test
             SimulationServicesClient serviceClient = new SimulationServicesClient();
             serviceClient.LogAsync(LogType.Info, "Connectivity scheduled task stopping...", "Start", @"D:\ComputerProgramming\C#\ProjPhoto\Dev\TravelJournal\TravelJournal.PCL\.Test\ConnectivityTesterAgent", 34);
         }
-
-        public override bool OnInvoke()
-        {
-            Random random = new Random();
-            RequestDownloadTest(random.Next(0, 100000));
-            return IsAsync;
-        }
     }
 }

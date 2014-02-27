@@ -74,13 +74,21 @@
     <Compile Include="Controls\Components\ConnectionViewer.Designer.cs">
       <DependentUpon>ConnectionViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Components\PerfChart\PerfChart.cs">
+    <Compile Include="Controls\Components\Base\DarkThemeTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\Base\PerfChart\PerfChart.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Components\PerfChart\PerfChart.Designer.cs" />
-    <Compile Include="Controls\Components\PerfChart\PerfChartStyle.cs" />
+    <Compile Include="Controls\Components\Base\PerfChart\PerfChart.Designer.cs" />
+    <Compile Include="Controls\Components\Base\PerfChart\PerfChartStyle.cs" />
+    <Compile Include="Controls\Components\PhotoTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Components\PhotoTreeView.Designer.cs">
+      <DependentUpon>PhotoTreeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\ConnectionTestData.cs" />
-    <Compile Include="Data\FakedGpsPoint.cs" />
     <Compile Include="Data\SimulatorModelPoint.cs" />
     <Compile Include="Services\SimulationServices.cs" />
     <Compile Include="Services\ISimulationServices.cs" />
@@ -163,6 +171,9 @@
     <Compile Include="Controls\TravelJournalGenerationSimulation.Designer.cs">
       <DependentUpon>TravelJournalGenerationSimulation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\Components\Base\DarkThemeTreeView.resx">
+      <DependentUpon>DarkThemeTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Components\ConnectionViewer.resx">
       <DependentUpon>ConnectionViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,7 +183,10 @@
     <EmbeddedResource Include="Controls\Components\Logger.resx">
       <DependentUpon>Logger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Components\PerfChart\PerfChart.resx" />
+    <EmbeddedResource Include="Controls\Components\Base\PerfChart\PerfChart.resx" />
+    <EmbeddedResource Include="Controls\Components\PhotoTreeView.resx">
+      <DependentUpon>PhotoTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Components\TravelMapPlayer.resx">
       <DependentUpon>TravelMapPlayer.cs</DependentUpon>
     </EmbeddedResource>

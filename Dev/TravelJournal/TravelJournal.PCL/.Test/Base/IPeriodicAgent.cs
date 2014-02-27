@@ -9,6 +9,7 @@ namespace TravelJournal.PCL.Test
     {
         void Start();
         void Stop();
-        bool OnInvoke();
+        bool BeginInvoke();
+        void OnInvoke();
     }
 }

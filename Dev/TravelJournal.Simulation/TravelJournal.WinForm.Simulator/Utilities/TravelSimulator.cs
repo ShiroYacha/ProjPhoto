@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TravelJournal.PCL;
+using TravelJournal.PCL.DataService;
 using TravelJournal.WinForm.Simulator.Controls;
 
 namespace TravelJournal.WinForm.Simulator
@@ -18,8 +19,8 @@ namespace TravelJournal.WinForm.Simulator
         private TravelMapPlayer player;
 
         private TravelItineraryData data;
-        private SimulationModelPoint currentPosition;
-        private List<SimulationModelPoint> photos=new List<SimulationModelPoint>();
+        private GpsPoint currentPosition;
+        private List<Photo> photos;
 
         private int currentIndex;
         private int currentSegmentCount;
@@ -67,7 +68,7 @@ namespace TravelJournal.WinForm.Simulator
                 player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
                 // Update current position
-                currentPosition = point;
+                currentPosition = point.ConvertToGpsPoint() ;
             }
             else if (currentSegmentIndex == 0) // Draw first point
             {
@@ -75,7 +76,7 @@ namespace TravelJournal.WinForm.Simulator
                 player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
                 // Update current position
-                currentPosition = point;
+                currentPosition = point.ConvertToGpsPoint();
             }
             else // Draw next segment using the linear model
             {
@@ -96,7 +97,7 @@ namespace TravelJournal.WinForm.Simulator
                 }
                 points.Add(interPoint);
                 // Update current position
-                currentPosition = interPoint;
+                currentPosition = interPoint.ConvertToGpsPoint();
                 // Draw anchors
                 player.SetAnchors(points, TravelJournalSimulation.InAutoZoomMode, AnchorMode.ShowOnlyPhotoAnchors);
                 // Draw routes
@@ -104,7 +105,17 @@ namespace TravelJournal.WinForm.Simulator
                 currentSegmentIndex++;
                 // Update photos
                 photos.Clear();
-                photos.AddRange(points.Where((point) => { return point.PhotoGenNumber > 0; }));
+                int photoIndex=0;
+                photos.AddRange(points.Where((point) => { return point.PhotoGenNumber > 0; }).ToList()
+                    .ConvertAll<Photo>((sp) =>
+                    {
+                        return new Photo()
+                        {
+                            Name = string.Format("Photo #{0}", photos.Count + ++photoIndex),
+                            Point = sp.ConvertToGpsPoint(),
+                            Position = new GpsPosition()
+                        };
+                    }));
                 // Inspect information
 #if DEBUG
                 TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
@@ -165,6 +176,8 @@ namespace TravelJournal.WinForm.Simulator
                 TravelJournalSimulation.Log(LogType.Info, "Simulator started.");
                 // Preparation
                 currentIndex = 0;
+                currentPosition = null;
+                photos = new List<Photo>();
                 CalculateSegmentLength();
                 // Launch 
                 timer = new Timer((o) => { OnStep(); }, null, 0,TravelJournalSimulation.generalSettings.SimualtionStep);
@@ -205,9 +218,12 @@ namespace TravelJournal.WinForm.Simulator
 
         public GpsPoint GetCurrentGps()
         {
-            if (currentPosition != null)
-                return new GpsPoint() { Latitude = currentPosition.Gps.Lat, Longitude = currentPosition.Gps.Lng, TimeStamp = DateTime.Now };
-            else return null;
+            return currentPosition;
+        }
+
+        public List<Photo> GetCreatedPhotos()
+        {
+            return photos;
         }
         #endregion
     }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using TravelJournal.PCL.DataService;
 
 namespace TravelJournal.WinForm.Simulator
 {
@@ -18,5 +19,10 @@ namespace TravelJournal.WinForm.Simulator
         public int PhotoGenNumber { get; set; }
         [DataMember()]
         public long CustomTimeInterval { get; set; }
+
+        public GpsPoint ConvertToGpsPoint()
+        {
+            return new GpsPoint() { Latitude = Gps.Lat, Longitude = Gps.Lng, TimeStamp = DateTime.Now };
+        }
     }
 }

@@ -48,6 +48,7 @@
             this.connectionViewer = new TravelJournal.WinForm.Simulator.Controls.Components.ConnectionViewer();
             this.logger = new TravelJournal.WinForm.Simulator.Controls.Logger();
             this.travelMapPlayer = new TravelJournal.WinForm.Simulator.Controls.TravelMapPlayer();
+            this.photoTreeView = new TravelJournal.WinForm.Simulator.Controls.Components.PhotoTreeView();
             this.toolStrip.SuspendLayout();
             this.mainTableLayoutPanel.SuspendLayout();
             this.leftTableLayoutPanel.SuspendLayout();
@@ -197,8 +198,10 @@
             this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222F));
             this.mainTableLayoutPanel.Controls.Add(this.leftTableLayoutPanel, 0, 0);
             this.mainTableLayoutPanel.Controls.Add(this.rightTableLayoutPanel, 1, 0);
+            this.mainTableLayoutPanel.Controls.Add(this.photoTreeView, 2, 0);
             this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 35);
+            this.mainTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 1;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -214,13 +217,13 @@
             this.leftTableLayoutPanel.Controls.Add(this.connectionViewer, 0, 1);
             this.leftTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.leftTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.leftTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.leftTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.leftTableLayoutPanel.Name = "leftTableLayoutPanel";
             this.leftTableLayoutPanel.RowCount = 3;
             this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.leftTableLayoutPanel.Size = new System.Drawing.Size(240, 570);
+            this.leftTableLayoutPanel.Size = new System.Drawing.Size(243, 570);
             this.leftTableLayoutPanel.TabIndex = 0;
             // 
             // rightTableLayoutPanel
@@ -241,12 +244,12 @@
             // 
             // stateMachineViewer
             // 
-            this.stateMachineViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.stateMachineViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.stateMachineViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stateMachineViewer.Location = new System.Drawing.Point(0, 0);
             this.stateMachineViewer.Margin = new System.Windows.Forms.Padding(0);
             this.stateMachineViewer.Name = "stateMachineViewer";
-            this.stateMachineViewer.Size = new System.Drawing.Size(240, 228);
+            this.stateMachineViewer.Size = new System.Drawing.Size(243, 228);
             this.stateMachineViewer.TabIndex = 1;
             this.stateMachineViewer.ViewerSize = new System.Drawing.Size(10, 10);
             // 
@@ -258,37 +261,49 @@
             this.infoInspector.Location = new System.Drawing.Point(0, 345);
             this.infoInspector.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.infoInspector.Name = "infoInspector";
-            this.infoInspector.Size = new System.Drawing.Size(240, 225);
+            this.infoInspector.Size = new System.Drawing.Size(243, 225);
             this.infoInspector.TabIndex = 2;
             // 
             // connectionViewer
             // 
-            this.connectionViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.connectionViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.connectionViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.connectionViewer.Location = new System.Drawing.Point(0, 228);
             this.connectionViewer.Margin = new System.Windows.Forms.Padding(0);
             this.connectionViewer.Name = "connectionViewer";
-            this.connectionViewer.Size = new System.Drawing.Size(240, 114);
+            this.connectionViewer.Size = new System.Drawing.Size(243, 114);
             this.connectionViewer.TabIndex = 3;
             // 
             // logger
             // 
+            this.logger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.logger.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logger.Location = new System.Drawing.Point(0, 372);
-            this.logger.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.logger.Location = new System.Drawing.Point(0, 369);
+            this.logger.Margin = new System.Windows.Forms.Padding(0);
             this.logger.Name = "logger";
-            this.logger.Size = new System.Drawing.Size(682, 198);
+            this.logger.Size = new System.Drawing.Size(682, 201);
             this.logger.TabIndex = 0;
             // 
             // travelMapPlayer
             // 
-            this.travelMapPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.travelMapPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.travelMapPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.travelMapPlayer.Location = new System.Drawing.Point(0, 0);
             this.travelMapPlayer.Margin = new System.Windows.Forms.Padding(0);
             this.travelMapPlayer.Name = "travelMapPlayer";
             this.travelMapPlayer.Size = new System.Drawing.Size(682, 369);
             this.travelMapPlayer.TabIndex = 1;
+            // 
+            // photoTreeView
+            // 
+            this.photoTreeView.Albums = null;
+            this.photoTreeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.photoTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.photoTreeView.Location = new System.Drawing.Point(925, 0);
+            this.photoTreeView.Margin = new System.Windows.Forms.Padding(0);
+            this.photoTreeView.Name = "photoTreeView";
+            this.photoTreeView.Size = new System.Drawing.Size(222, 570);
+            this.photoTreeView.TabIndex = 2;
             // 
             // TravelJournalSimulation
             // 
@@ -298,6 +313,7 @@
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "TravelJournalSimulation";
             this.Size = new System.Drawing.Size(1147, 605);
             this.Load += new System.EventHandler(this.TravelJournalGenerationSimulation_Load);
@@ -332,6 +348,7 @@
         private System.Windows.Forms.ToolStripButton autoZoomButton;
         private Controls.Components.ConnectionViewer connectionViewer;
         private System.Windows.Forms.ToolStripButton clearButton;
+        private Controls.Components.PhotoTreeView photoTreeView;
 
     }
 }

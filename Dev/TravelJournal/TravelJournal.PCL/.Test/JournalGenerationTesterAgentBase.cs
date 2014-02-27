@@ -7,5 +7,9 @@ namespace TravelJournal.PCL.Test
 {
     public abstract class JournalGenerationTesterAgentBase:ServerAgentBase
     {
+        public override void OnInvoke()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

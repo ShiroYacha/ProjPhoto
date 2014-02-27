@@ -36,7 +36,7 @@ namespace TravelJournal.WinForm.Simulator.Forms
             // Use the vs2013-like dark theme
             mainMenuStrip.Renderer = new DarkThemeToolStripRenderer();
             // Render menu strip color
-            mainMenuStrip.BackColor = Color.FromArgb(48, 48, 48);
+            mainMenuStrip.BackColor = Color.FromArgb(18, 18, 18);
             // Define fore color
             foreach (ToolStripMenuItem menuItem in mainMenuStrip.Items)
             {

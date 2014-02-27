@@ -67,7 +67,7 @@ namespace TravelJournal.WP8
             if (agent != null)
             {
                 agent.OnCompletedHandler += NotifyComplete;
-                waitAsync=agent.OnInvoke();
+                waitAsync=agent.BeginInvoke();
                 ScheduledActionService.LaunchForTest(task.Name, TimeSpan.FromSeconds(30));
             }
             if (!waitAsync) NotifyComplete();

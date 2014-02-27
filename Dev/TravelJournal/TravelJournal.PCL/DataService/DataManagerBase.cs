@@ -21,12 +21,12 @@ namespace TravelJournal.PCL.DataService
                 
         public void AddPhoto(string albumName, params Photo[] photos)
         {
-            albums.First((album)=>{ return album.AlbumName==albumName;}).PhotoList.AddRange(photos);
+            albums.First((album)=>{ return album.Name==albumName;}).PhotoList.AddRange(photos);
         }
 
         public Album GetAlbum(string albumName)
         {
-            return albums.First((album) => { return album.AlbumName == albumName; });
+            return albums.First((album) => { return album.Name == albumName; });
         }
 
         public UserInfo GetUserInfo()

@@ -39,11 +39,6 @@
     <Compile Include=".Test\ConnectivityTesterAgentBase.cs" />
     <Compile Include=".Test\JournalGenerationTesterAgentBase.cs" />
     <Compile Include=".Test\TravelInfoTesterAgentBase.cs" />
-    <Compile Include="Service References\ServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="BusinessLogic\BackgroundProcessor.cs" />
     <Compile Include="BusinessLogic\PhotoOrganizer.cs" />
     <Compile Include="DataService\Album.cs" />
@@ -57,6 +52,11 @@
     <Compile Include="BusinessLogic\IPhotoOrganizer.cs" />
     <Compile Include="DataService\IPhotoManager.cs" />
     <Compile Include="DataService\IWebService.cs" />
+    <Compile Include="Service References\ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">
@@ -82,20 +82,23 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\ServiceReference\SimulationServices1.wsdl" />
+    <None Include="Service References\ServiceReference\SimulationServices.wsdl" />
+    <None Include="Service References\ServiceReference\SimulationServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\SimulationServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\SimulationServices2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\SimulationServices3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\SimulationServices4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference\SimulationServices5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\SimulationServices51.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\SimulationServices52.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\SimulationServices53.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\SimulationServices54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.ConnectionTestData.datasource">
@@ -104,12 +107,18 @@
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.GpsPoint.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.Photo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference\SimulationServices.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReference\configuration91.svcinfo" />
@@ -122,9 +131,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ServiceReference\SimulationServices1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />

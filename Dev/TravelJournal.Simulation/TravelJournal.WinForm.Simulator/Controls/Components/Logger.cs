@@ -33,9 +33,9 @@ namespace TravelJournal.WinForm.Simulator.Controls
             listView.DrawColumnHeader += (o, e) =>
             {
                 Rectangle textBound = e.Bounds;
-                textBound.Offset(4, 2);
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(38, 38, 38)), e.Bounds);
-                e.Graphics.DrawString(e.Header.Text, new Font("Segoe UI Light", 10), new SolidBrush(Color.FromArgb(245, 245, 245)), textBound);
+                textBound.Offset(4, 4);
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(18, 18, 18)), e.Bounds);
+                e.Graphics.DrawString(e.Header.Text, new Font("Segoe UI", 9), new SolidBrush(Color.DodgerBlue), textBound);
             };
             // Render sub item handler
             listView.DrawSubItem += (o, e) =>

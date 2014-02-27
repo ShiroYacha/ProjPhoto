@@ -7,12 +7,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ConnectionTestData" nillable="true" type="tns:ConnectionTestData" />
-  <xs:complexType name="GpsPoint">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
-      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
-      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GpsPoint" nillable="true" type="tns:GpsPoint" />
 </xs:schema>

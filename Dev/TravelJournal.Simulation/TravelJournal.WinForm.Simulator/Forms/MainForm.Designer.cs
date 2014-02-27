@@ -87,6 +87,7 @@
             this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTableLayoutPanel.ForeColor = System.Drawing.Color.Black;
             this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 24);
+            this.mainTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 2;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
@@ -96,14 +97,14 @@
             // 
             // descriptionFlowLayoutPanel
             // 
-            this.descriptionFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.descriptionFlowLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.descriptionFlowLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.descriptionFlowLayoutPanel.Controls.Add(this.projectNameLabel);
             this.descriptionFlowLayoutPanel.Controls.Add(this.projectDescriptionLabel);
-            this.descriptionFlowLayoutPanel.Location = new System.Drawing.Point(0, 6);
+            this.descriptionFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.descriptionFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.descriptionFlowLayoutPanel.Name = "descriptionFlowLayoutPanel";
-            this.descriptionFlowLayoutPanel.Size = new System.Drawing.Size(951, 47);
+            this.descriptionFlowLayoutPanel.Size = new System.Drawing.Size(1131, 53);
             this.descriptionFlowLayoutPanel.TabIndex = 2;
             // 
             // projectNameLabel

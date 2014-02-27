@@ -27,12 +27,5 @@ namespace TravelJournal.WP8.Test
         {
             throw new NotImplementedException();
         }
-
-        public override bool OnInvoke()
-        {
-            throw new NotImplementedException();
-        }
-
-
     }
 }

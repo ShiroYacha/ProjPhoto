@@ -40,16 +40,17 @@
             // 
             // tableLayoutPanel
             // 
+            this.tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.tableLayoutPanel.ColumnCount = 1;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.Controls.Add(this.perfChart, 0, 1);
             this.tableLayoutPanel.Controls.Add(this.titleLabel, 0, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 2;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(495, 328);
             this.tableLayoutPanel.TabIndex = 0;
@@ -57,20 +58,25 @@
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.titleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.White;
-            this.titleLabel.Location = new System.Drawing.Point(3, 0);
+            this.titleLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.titleLabel.Location = new System.Drawing.Point(1, 1);
+            this.titleLabel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(221, 15);
+            this.titleLabel.Size = new System.Drawing.Size(493, 19);
             this.titleLabel.TabIndex = 2;
             this.titleLabel.Text = "Latency monitor (max/mean in seconds)";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // perfChart
             // 
             this.perfChart.BorderStyle = System.Windows.Forms.Border3DStyle.Adjust;
             this.perfChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.perfChart.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-            this.perfChart.Location = new System.Drawing.Point(3, 18);
+            this.perfChart.Location = new System.Drawing.Point(1, 21);
+            this.perfChart.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.perfChart.Name = "perfChart";
             this.perfChart.PerfChartStyle.AntiAliasing = true;
             chartPen1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
@@ -95,7 +101,7 @@
             chartPen4.Width = 1F;
             this.perfChart.PerfChartStyle.VerticalGridPen = chartPen4;
             this.perfChart.ScaleMode = TravelJournal.WinForm.Simulator.Controls.ScaleMode.Absolute;
-            this.perfChart.Size = new System.Drawing.Size(489, 307);
+            this.perfChart.Size = new System.Drawing.Size(493, 307);
             this.perfChart.TabIndex = 1;
             this.perfChart.TimerInterval = 100;
             this.perfChart.TimerMode = TravelJournal.WinForm.Simulator.Controls.TimerMode.Disabled;

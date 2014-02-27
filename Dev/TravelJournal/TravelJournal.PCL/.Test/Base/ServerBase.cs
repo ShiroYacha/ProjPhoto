@@ -60,26 +60,26 @@ namespace TravelJournal.PCL.Test
             }
         }
 
-        protected void OperationStart()
+        protected virtual void OperationStart()
         {
             startTime = DateTime.Now;
         }
 
-        protected void OperationEnd()
+        protected virtual void OperationEnd()
         {
             TimeSpan latency = DateTime.Now - startTime;
             serviceClient.ReportLatencyCompleted += serviceClient_ReportLatencyCompleted;
             serviceClient.ReportLatencyAsync((decimal)latency.TotalSeconds);
         }
 
-        protected void OperationEndDirectly()
+        protected virtual void OperationEndDirectly()
         {
             if (OnCompletedHandler != null) OnCompletedHandler();
         }
 
         void serviceClient_ReportLatencyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
-            if (OnCompletedHandler != null) OnCompletedHandler();
+            OperationEndDirectly();
         }
     }
 }

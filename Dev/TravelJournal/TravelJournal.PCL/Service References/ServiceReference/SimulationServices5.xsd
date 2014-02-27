@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:simpleType name="LogType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Info" />
-      <xs:enumeration value="Error" />
-      <xs:enumeration value="Warning" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="LogType" nillable="true" type="tns:LogType" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfAlbum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Album" nillable="true" type="tns:Album" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAlbum" nillable="true" type="tns:ArrayOfAlbum" />
+  <xs:complexType name="Album">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhotoList" nillable="true" type="tns:ArrayOfPhoto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Album" nillable="true" type="tns:Album" />
+  <xs:complexType name="ArrayOfPhoto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Photo" nillable="true" type="tns:Photo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPhoto" nillable="true" type="tns:ArrayOfPhoto" />
+  <xs:complexType name="Photo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Point" nillable="true" type="tns:GpsPoint" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="tns:GpsPosition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Photo" nillable="true" type="tns:Photo" />
+  <xs:complexType name="GpsPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GpsPoint" nillable="true" type="tns:GpsPoint" />
+  <xs:complexType name="GpsPosition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GpsPosition" nillable="true" type="tns:GpsPosition" />
 </xs:schema>

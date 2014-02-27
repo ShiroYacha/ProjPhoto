@@ -16,6 +16,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using TravelJournal.WinForm.Simulator;
 using System.ServiceModel.Description;
+using TravelJournal.PCL.DataService;
 
 namespace TravelJournal.WinForm.Simulator
 {
@@ -67,10 +68,19 @@ namespace TravelJournal.WinForm.Simulator
             TestLogger();
             TestStateMachineViewer();
             TestConnectionViewer();
+            TestPhotoTreeViewer();
             // Log 
             Log(LogType.Info, "Test started.");
         }
 
+        private void TestPhotoTreeViewer()
+        {
+            TestWithTimer(() =>
+            {
+                UpdatePhotoTreeViewer(photoTreeView.CreateTestPhotoTree());
+            }, 3000);
+            UpdateInfoInspector(new Dictionary<string, object>() { { "Photo tree view interval", "3 sec" } });
+        }
         private void TestConnectionViewer()
         {
             connectionViewer.RunTest();
@@ -145,7 +155,7 @@ namespace TravelJournal.WinForm.Simulator
         #endregion
 
         #region Public static members
-        public static TravelSimulator Simulator { get { return currentInstance.simulator; } }
+
         public static bool InAutoZoomMode
         {
             get { return currentInstance.autoZoomButton.Checked; }
@@ -169,6 +179,14 @@ namespace TravelJournal.WinForm.Simulator
         {
             currentInstance.connectionViewer.AddValue(value);
         }
+        public static void UpdatePhotoTreeViewer(List<Album> albums)
+        {
+            currentInstance.InvokeMethod(() =>
+            {
+                currentInstance.photoTreeView.Albums = albums;
+                Application.DoEvents();
+            });
+        }
         #endregion
 
         #region Private members
@@ -178,7 +196,7 @@ namespace TravelJournal.WinForm.Simulator
             // Use the vs2013-like dark theme
             toolStrip.Renderer = new DarkThemeToolStripRenderer();
             // Render menu strip color
-            toolStrip.BackColor = Color.FromArgb(28, 28, 28);
+            toolStrip.BackColor = Color.FromArgb(18, 18, 18);
             // Define fore color
             foreach (ToolStripItem item in toolStrip.Items)
             {
@@ -214,6 +232,7 @@ namespace TravelJournal.WinForm.Simulator
                 control.Initialize();
             foreach (ITestControl control in rightTableLayoutPanel.Controls)
                 control.Initialize();
+            photoTreeView.Initialize();
             // Display the general settings
             UpdateViews();
         }

@@ -13,6 +13,12 @@ namespace TravelJournal.PCL.Test
 
     public abstract class ConnectivityTesterAgentBase : ServerAgentBase
     {
+        public override void OnInvoke()
+        {
+            Random random = new Random();
+            RequestDownloadTest(random.Next(100000));
+        }
+
         public void RequestDownloadTest(int packageSize)
         {
             serviceClient.PrepareTestDataCompleted += serviceClient_PrepareTestDataCompleted;
