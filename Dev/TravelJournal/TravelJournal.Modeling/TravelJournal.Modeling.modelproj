@@ -49,8 +49,21 @@
     <Content Include="ModelDefinition\Package_0006.uml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="ModelDefinition\Package_1535.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\Package_1542.uml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ModelDefinition\Package_2343.uml">
       <SubType>Content</SubType>
+    </Content>
+    <Content Include="Stage1_TestEnv\TestClassModel.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Stage1_TestEnv\TestClassModel.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Stage1_TestEnv\TestClassModel.classdiagram</DependentUpon>
     </Content>
     <Content Include="Stage1_TestEnv\TestSequenceModel.sequencediagram">
       <SubType>Content</SubType>
