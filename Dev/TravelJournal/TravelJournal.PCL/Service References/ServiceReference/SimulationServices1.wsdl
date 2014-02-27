@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SimulationServices" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator" />
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISimulationServices_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_Disconnect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_Disconnect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_PrepareTestData_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrepareTestData" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_PrepareTestData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrepareTestDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_GetTestData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTestData" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_GetTestData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTestDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_ReportLatency_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportLatency" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_ReportLatency_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportLatencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_GetCurrentGps_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentGps" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_GetCurrentGps_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentGpsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_Log_InputMessage">
+    <wsdl:part name="parameters" element="tns:Log" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_Log_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_UpdateInfoInspector_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateInfoInspector" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_UpdateInfoInspector_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateInfoInspectorResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISimulationServices">
+    <wsdl:operation name="Connect">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/Connect" message="tns:ISimulationServices_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/ConnectResponse" message="tns:ISimulationServices_Connect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/Disconnect" message="tns:ISimulationServices_Disconnect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/DisconnectResponse" message="tns:ISimulationServices_Disconnect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrepareTestData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/PrepareTestData" message="tns:ISimulationServices_PrepareTestData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/PrepareTestDataResponse" message="tns:ISimulationServices_PrepareTestData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTestData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/GetTestData" message="tns:ISimulationServices_GetTestData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/GetTestDataResponse" message="tns:ISimulationServices_GetTestData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportLatency">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/ReportLatency" message="tns:ISimulationServices_ReportLatency_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/ReportLatencyResponse" message="tns:ISimulationServices_ReportLatency_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentGps">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/GetCurrentGps" message="tns:ISimulationServices_GetCurrentGps_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/GetCurrentGpsResponse" message="tns:ISimulationServices_GetCurrentGps_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/Log" message="tns:ISimulationServices_Log_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/LogResponse" message="tns:ISimulationServices_Log_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInfoInspector">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/UpdateInfoInspector" message="tns:ISimulationServices_UpdateInfoInspector_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/UpdateInfoInspectorResponse" message="tns:ISimulationServices_UpdateInfoInspector_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISimulationServices" type="tns:ISimulationServices">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Connect">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/Connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/Disconnect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrepareTestData">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/PrepareTestData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTestData">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/GetTestData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportLatency">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/ReportLatency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentGps">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/GetCurrentGps" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Log">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/Log" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInfoInspector">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/UpdateInfoInspector" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SimulationServices">
+    <wsdl:port name="BasicHttpBinding_ISimulationServices" binding="tns:BasicHttpBinding_ISimulationServices">
+      <soap:address location="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
