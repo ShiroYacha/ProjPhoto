@@ -33,7 +33,7 @@ namespace TravelJournal.PCL.BusinessLogic
             nowTime = DateTime.Now;
             webService = SimpleIoc.Default.GetInstance<IWebService>();
             GpsPoint p = webService.GetUserPosition();
-            album = dataManager.GetAlbum();
+            album = dataManager.GetAlbum("test");
             photoManager.FoundRawPhoto(album.GetTimeTag(), PhotoHandler);   
         }
 

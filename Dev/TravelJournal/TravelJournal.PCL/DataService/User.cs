@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TravelJournal.PCL.DataService
 {
-    class UserInfo
+    public class UserInfo
     {
 
         private string userName;
