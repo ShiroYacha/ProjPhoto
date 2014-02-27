@@ -25,7 +25,7 @@ namespace TravelJournal.WinForm.Simulator
         private static TravelJournalSimulation currentInstance;
 
         // System fields
-        private ConnectionService connectionService;
+        private SimulationServices connectionService;
         private TravelSimulator simulator;
         private ServiceHost host;
 
@@ -44,7 +44,7 @@ namespace TravelJournal.WinForm.Simulator
             // Setup systems
             simulator = new TravelSimulator(travelMapPlayer);
             simulator.OnSimulatorStatusChanged += UpdateViews;
-            connectionService = new ConnectionService(simulator);
+            connectionService = new SimulationServices(simulator);
             // Rendering
             RenderToolStrip();
         }
@@ -134,7 +134,6 @@ namespace TravelJournal.WinForm.Simulator
         #endregion
 
         #region Public members
-        public TravelSimulator Simulator { get { return simulator; } }
         public void CloseDown()
         {
             StopAllTimers();
@@ -143,6 +142,7 @@ namespace TravelJournal.WinForm.Simulator
         #endregion
 
         #region Public static members
+        public static TravelSimulator Simulator { get { return currentInstance.simulator; } }
         public static bool InAutoZoomMode
         {
             get { return currentInstance.autoZoomButton.Checked; }
@@ -245,7 +245,7 @@ namespace TravelJournal.WinForm.Simulator
         }
         private void SetupServerHost()
         {
-            host = new ServiceHost(connectionService,new Uri("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/ConnectionService/"));
+            host=new ServiceHost(connectionService, new Uri("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices"));
             host.Open();
             // Log
             Log(LogType.Info, "Server host opened...");

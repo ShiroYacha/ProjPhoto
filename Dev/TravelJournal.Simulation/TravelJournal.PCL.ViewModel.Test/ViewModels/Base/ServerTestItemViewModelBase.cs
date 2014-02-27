@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +9,14 @@ using TravelJournal.PCL.Test;
 
 namespace TravelJournal.PCL.ViewModel.Test
 {
-    public abstract class ServerTestItemViewModelBase : TestItemViewModelBase
+    public abstract class ServerTestItemViewModelBase<T> : TestItemViewModelBase where T:ServerAgentBase
     {
-        protected ServerAgentBase serverAgentBase;
+        protected T serverAgent;
 
         public ServerTestItemViewModelBase()
         {
-            serverAgentBase = CreateServerAgentTester();
+            serverAgent = SimpleIoc.Default.GetInstance<T>();
         }
-
-        protected abstract ServerAgentBase CreateServerAgentTester();
 
         private ConnectionStatus connectionStatus = ConnectionStatus.Disconnected;
         public ConnectionStatus ConnectionStatus
@@ -42,12 +41,11 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             get { return connectionStatus == ConnectionStatus.Connected; }
         }
-
         public ICommand ConnectServer
         {
             get
             {
-                return new RelayCommand(() => { serverAgentBase.ConnectServer((result) => { ConnectionStatus = result; }); });
+                return new RelayCommand(() => { serverAgent.ConnectServer((result) => { ConnectionStatus = result; }); });
             }
         }
 
@@ -77,12 +75,28 @@ namespace TravelJournal.PCL.ViewModel.Test
             if (ScheduledTaskNotStarted)
             {
                 ScheduledTaskNotStarted = false;
-                serverAgentBase.Start();
+                serverAgent.Start();
             }
             else
             {
                 ScheduledTaskNotStarted = true;
-                serverAgentBase.Stop();
+                serverAgent.Stop();
+            }
+        }
+
+        public ICommand ConnectServerAndRunAgent
+        {
+            get
+            {
+                return new RelayCommand(() => 
+                {
+                    serverAgent.ConnectServer((result) =>
+                    {
+                        ConnectionStatus = result;
+                        if (IsConnected)
+                            StartOrStopScheduledAgent();
+                    });
+                });
             }
         }
     }

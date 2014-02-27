@@ -8,8 +8,13 @@ namespace TravelJournal.PCL.Test
 {
     public abstract class ServerBase
     {
-        protected ServiceReference.ConnectionServiceClient serviceClient = new ServiceReference.ConnectionServiceClient();
+        protected ServiceReference.SimulationServicesClient serviceClient = new ServiceReference.SimulationServicesClient();
+
+        protected DateTime startTime;
         private Action<ConnectionStatus> resultHandler;
+
+        public event Action OnCompletedHandler;
+        protected bool IsAsync { get { return OnCompletedHandler != null; } }
 
         public void ConnectServer(Action<ConnectionStatus> resultHandler)
         {
@@ -17,14 +22,13 @@ namespace TravelJournal.PCL.Test
             serviceClient.ConnectCompleted += serviceClient_DoWorkCompleted;
             serviceClient.ConnectAsync("Emulator WVGA 512MB");
         }
-
         private void serviceClient_DoWorkCompleted(object sender, ServiceReference.ConnectCompletedEventArgs e)
         {
             try
             {
                 if(resultHandler!=null)  resultHandler(e.Result ? ConnectionStatus.Connected : ConnectionStatus.Disconnected);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 if (resultHandler != null) resultHandler(ConnectionStatus.ServerOffline);
             }
@@ -32,6 +36,28 @@ namespace TravelJournal.PCL.Test
             {
                 serviceClient.ConnectCompleted -= serviceClient_DoWorkCompleted;
             }
+        }
+
+        protected void OperationStart()
+        {
+            startTime = DateTime.Now;
+        }
+
+        protected void OperationEnd()
+        {
+            TimeSpan latency = DateTime.Now - startTime;
+            serviceClient.ReportLatencyCompleted += serviceClient_ReportLatencyCompleted;
+            serviceClient.ReportLatencyAsync((decimal)latency.TotalSeconds);
+        }
+
+        protected void OperationEndDirectly()
+        {
+            if (OnCompletedHandler != null) OnCompletedHandler();
+        }
+
+        void serviceClient_ReportLatencyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            if (OnCompletedHandler != null) OnCompletedHandler();
         }
     }
 }

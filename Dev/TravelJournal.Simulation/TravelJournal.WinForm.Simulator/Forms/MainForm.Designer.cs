@@ -50,8 +50,7 @@
             this.settingsToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.mainMenuStrip.Size = new System.Drawing.Size(1268, 28);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1131, 24);
             this.mainMenuStrip.TabIndex = 0;
             // 
             // projectToolStripMenuItem
@@ -60,14 +59,14 @@
             this.travelJournalClassificationToolStripMenuItem});
             this.projectToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.projectToolStripMenuItem.Text = "PROJECT";
             this.projectToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.projectToolStripMenuItem_DropDownItemClicked);
             // 
             // travelJournalClassificationToolStripMenuItem
             // 
             this.travelJournalClassificationToolStripMenuItem.Name = "travelJournalClassificationToolStripMenuItem";
-            this.travelJournalClassificationToolStripMenuItem.Size = new System.Drawing.Size(244, 24);
+            this.travelJournalClassificationToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.travelJournalClassificationToolStripMenuItem.Tag = "TravelJournalGenerationSimulation";
             this.travelJournalClassificationToolStripMenuItem.Text = "Travel journal generation";
             // 
@@ -75,25 +74,24 @@
             // 
             this.settingsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.settingsToolStripMenuItem.Text = "SETTINGS";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsSToolStripMenuItem_Click);
             // 
             // mainTableLayoutPanel
             // 
-            this.mainTableLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.mainTableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.mainTableLayoutPanel.ColumnCount = 1;
             this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.Controls.Add(this.descriptionFlowLayoutPanel, 0, 0);
+            this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTableLayoutPanel.ForeColor = System.Drawing.Color.Black;
-            this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 30);
-            this.mainTableLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 24);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 2;
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(1268, 802);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(1131, 652);
             this.mainTableLayoutPanel.TabIndex = 1;
             // 
             // descriptionFlowLayoutPanel
@@ -102,10 +100,10 @@
             this.descriptionFlowLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.descriptionFlowLayoutPanel.Controls.Add(this.projectNameLabel);
             this.descriptionFlowLayoutPanel.Controls.Add(this.projectDescriptionLabel);
-            this.descriptionFlowLayoutPanel.Location = new System.Drawing.Point(0, 7);
+            this.descriptionFlowLayoutPanel.Location = new System.Drawing.Point(0, 6);
             this.descriptionFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.descriptionFlowLayoutPanel.Name = "descriptionFlowLayoutPanel";
-            this.descriptionFlowLayoutPanel.Size = new System.Drawing.Size(1268, 58);
+            this.descriptionFlowLayoutPanel.Size = new System.Drawing.Size(951, 47);
             this.descriptionFlowLayoutPanel.TabIndex = 2;
             // 
             // projectNameLabel
@@ -113,10 +111,10 @@
             this.projectNameLabel.AutoSize = true;
             this.projectNameLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectNameLabel.ForeColor = System.Drawing.Color.White;
-            this.projectNameLabel.Location = new System.Drawing.Point(11, 0);
-            this.projectNameLabel.Margin = new System.Windows.Forms.Padding(11, 0, 4, 0);
+            this.projectNameLabel.Location = new System.Drawing.Point(8, 0);
+            this.projectNameLabel.Margin = new System.Windows.Forms.Padding(8, 0, 3, 0);
             this.projectNameLabel.Name = "projectNameLabel";
-            this.projectNameLabel.Size = new System.Drawing.Size(187, 46);
+            this.projectNameLabel.Size = new System.Drawing.Size(147, 37);
             this.projectNameLabel.TabIndex = 0;
             this.projectNameLabel.Text = "TestProject";
             this.projectNameLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -127,27 +125,26 @@
             this.projectDescriptionLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.projectDescriptionLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectDescriptionLabel.ForeColor = System.Drawing.SystemColors.Menu;
-            this.projectDescriptionLabel.Location = new System.Drawing.Point(206, 15);
-            this.projectDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 12);
+            this.projectDescriptionLabel.Location = new System.Drawing.Point(161, 14);
+            this.projectDescriptionLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             this.projectDescriptionLabel.Name = "projectDescriptionLabel";
-            this.projectDescriptionLabel.Size = new System.Drawing.Size(168, 19);
+            this.projectDescriptionLabel.Size = new System.Drawing.Size(142, 13);
             this.projectDescriptionLabel.TabIndex = 1;
             this.projectDescriptionLabel.Text = "This test project is about...";
             this.projectDescriptionLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.ClientSize = new System.Drawing.Size(1268, 832);
+            this.ClientSize = new System.Drawing.Size(1131, 676);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Controls.Add(this.mainMenuStrip);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.ShowIcon = false;

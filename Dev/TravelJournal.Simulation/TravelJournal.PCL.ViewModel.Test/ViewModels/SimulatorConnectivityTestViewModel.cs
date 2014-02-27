@@ -10,7 +10,7 @@ using TravelJournal.PCL.Test;
 namespace TravelJournal.PCL.ViewModel.Test
 {
 
-    public class SimulatorConnectivityTestViewModel : ServerTestItemViewModelBase
+    public class SimulatorConnectivityTestViewModel : ServerTestItemViewModelBase<ConnectivityTesterAgentBase>
     {
         private int testPackageSize=0;
         public int TestPackageSize
@@ -30,13 +30,9 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             get
             {
-                return new RelayCommand(() => { (serverAgentBase as ConnectivityTesterAgentBase).RequestDownloadTest(testPackageSize); });
+                return new RelayCommand(() => { serverAgent.RequestDownloadTest(testPackageSize); });
             }
         }
 
-        protected override ServerAgentBase CreateServerAgentTester()
-        {
-            return SimpleIoc.Default.GetInstance<ConnectivityTesterAgentBase>();
-        }
     }
 }

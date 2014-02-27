@@ -80,12 +80,10 @@
     <Compile Include="Controls\Components\PerfChart\PerfChart.Designer.cs" />
     <Compile Include="Controls\Components\PerfChart\PerfChartStyle.cs" />
     <Compile Include="Data\ConnectionTestData.cs" />
+    <Compile Include="Data\FakedGpsPoint.cs" />
     <Compile Include="Data\SimulatorModelPoint.cs" />
-    <Compile Include="Services\ConnectionService.cs" />
-    <Compile Include="Services\Data\GpsPoint.cs" />
-    <Compile Include="Services\IConnectionService.cs" />
-    <Compile Include="Services\IUserPositionService.cs" />
-    <Compile Include="Services\UserPositionService.cs" />
+    <Compile Include="Services\SimulationServices.cs" />
+    <Compile Include="Services\ISimulationServices.cs" />
     <Compile Include="Utilities\TravelSimulator.cs" />
     <Compile Include="Forms\Config\Components\TrackBarConfigDialog.cs">
       <SubType>Form</SubType>
@@ -232,6 +230,12 @@
   <ItemGroup>
     <Content Include="Rendering\Empty.bmp" />
     <Content Include="Tune-Up Utilities.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TravelJournal\TravelJournal.PCL\TravelJournal.PCL.csproj">
+      <Project>{e4983917-e55a-483d-a755-55613ee66478}</Project>
+      <Name>TravelJournal.PCL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

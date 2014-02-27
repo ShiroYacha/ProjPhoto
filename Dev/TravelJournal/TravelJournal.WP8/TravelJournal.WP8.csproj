@@ -87,7 +87,7 @@
     <Compile Include=".Test\ConnectivityTesterAgent.cs" />
     <Compile Include=".Test\JournalGenerationTesterAgent.cs" />
     <Compile Include=".Test\TravelInfoTesterAgent.cs" />
-    <Compile Include="ScheduledAgent.cs" />
+    <Compile Include="ScheduleAgent\ScheduledAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +120,9 @@
       <Project>{E4983917-E55A-483D-A755-55613EE66478}</Project>
       <Name>TravelJournal.PCL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

@@ -5,13 +5,15 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
+using TravelJournal.PCL;
 using TravelJournal.WinForm.Simulator.Controls;
 
 namespace TravelJournal.WinForm.Simulator
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IConnectionService" in both code and config file together.
     [ServiceContract]
-    public interface IConnectionService
+    public interface ISimulationServices
     {
         [OperationContract]
         bool Connect(string deviceName);
@@ -26,6 +28,12 @@ namespace TravelJournal.WinForm.Simulator
         void ReportLatency(decimal latency);
 
         [OperationContract]
+        GpsPoint GetCurrentGps();
+
+        [OperationContract]
         void Log(LogType type, string log, [CallerMemberName] string callerName = null, [CallerFilePath] string callerFilePath = null, [CallerLineNumber] int callerLine = -1);
-    }
+
+        [OperationContract]
+        void UpdateInfoInspector(Dictionary<string, object> infos);
+  }
 }

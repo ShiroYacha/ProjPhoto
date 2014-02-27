@@ -68,26 +68,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\ServiceReference\ConnectionService.wsdl" />
-    <None Include="Service References\ServiceReference\item.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices.wsdl" />
+    <None Include="Service References\ServiceReference\SimulationServices.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\item1.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\item2.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\item3.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\item4.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.ConnectionTestData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.GpsPoint.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
@@ -98,7 +100,7 @@
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference\item.disco" />
+    <None Include="Service References\ServiceReference\SimulationServices.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceReference\configuration91.svcinfo" />

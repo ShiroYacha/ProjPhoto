@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
+using TravelJournal.PCL;
 using TravelJournal.WinForm.Simulator.Controls;
 
 namespace TravelJournal.WinForm.Simulator
@@ -37,7 +39,7 @@ namespace TravelJournal.WinForm.Simulator
         {
             if (currentIndex >= data.Anchors.Count)
             {
-                ResetSimulation();
+                PauseSimulation();
             }
             else
             // Get start and end point
@@ -93,13 +95,13 @@ namespace TravelJournal.WinForm.Simulator
                     interPoint.Gps = new PointLatLng(lastPoint.Gps.Lat + currentSegmentLatStep * currentSegmentIndex, lastPoint.Gps.Lng + currentSegmentLngStep * currentSegmentIndex);
                 }
                 points.Add(interPoint);
+                // Update current position
+                currentPosition = interPoint;
                 // Draw anchors
                 player.SetAnchors(points, TravelJournalSimulation.InAutoZoomMode, AnchorMode.ShowOnlyPhotoAnchors);
                 // Draw routes
                 player.ConnectAnchors();
                 currentSegmentIndex++;
-                // Update current position
-                currentPosition = interPoint;
                 // Update photos
                 photos.Clear();
                 photos.AddRange(points.Where((point) => { return point.PhotoGenNumber > 0; }));
@@ -165,7 +167,7 @@ namespace TravelJournal.WinForm.Simulator
                 currentIndex = 0;
                 CalculateSegmentLength();
                 // Launch 
-                timer = new Timer((o) => { OnStep(); }, null, 0, TravelJournalSimulation.generalSettings.SimualtionStep);
+                timer = new Timer((o) => { OnStep(); }, null, 0,TravelJournalSimulation.generalSettings.SimualtionStep);
             }
             else
             {
@@ -199,6 +201,13 @@ namespace TravelJournal.WinForm.Simulator
         {
             ResetSimulation();
             timer = null;
+        }
+
+        public GpsPoint GetCurrentGps()
+        {
+            if (currentPosition != null)
+                return new GpsPoint() { Latitude = currentPosition.Gps.Lat, Longitude = currentPosition.Gps.Lng, TimeStamp = DateTime.Now };
+            else return null;
         }
         #endregion
     }

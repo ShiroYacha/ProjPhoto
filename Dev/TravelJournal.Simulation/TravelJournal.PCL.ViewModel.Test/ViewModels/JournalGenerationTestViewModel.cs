@@ -12,11 +12,8 @@ using TravelJournal.PCL.Test;
 
 namespace TravelJournal.PCL.ViewModel.Test
 {
-    public class JournalGenerationTestViewModel : ServerTestItemViewModelBase
+    public class JournalGenerationTestViewModel : ServerTestItemViewModelBase<JournalGenerationTesterAgentBase>
     {
-        protected override PCL.Test.ServerAgentBase CreateServerAgentTester()
-        {
-            return SimpleIoc.Default.GetInstance<JournalGenerationTesterAgentBase>();
-        }
+
     }
 }

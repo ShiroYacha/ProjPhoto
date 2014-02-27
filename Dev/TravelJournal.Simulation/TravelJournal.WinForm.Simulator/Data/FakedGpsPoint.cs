@@ -11,12 +11,12 @@ namespace TravelJournal.WinForm.Simulator
     public class GpsPoint
     {
         [DataMember]
-        double Lat { get; set; }
+        public double Latitude { get; set; }
 
         [DataMember]
-        double Lng { get; set; }
+        public double Longitude { get; set; }
 
         [DataMember]
-        DateTime TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }

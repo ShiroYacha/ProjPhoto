@@ -13,17 +13,8 @@ namespace TravelJournal.PCL.Test
 
     public abstract class ConnectivityTesterAgentBase : ServerAgentBase
     {
-        private DateTime currentTime;
-        private Action downloadFinishedHandler;
-
         public void RequestDownloadTest(int packageSize)
         {
-            serviceClient.PrepareTestDataCompleted += serviceClient_PrepareTestDataCompleted;
-            serviceClient.PrepareTestDataAsync(packageSize);
-        }
-        public void RequestDownloadTest(int packageSize, Action downloadFinishedHandler)
-        {
-            this.downloadFinishedHandler = downloadFinishedHandler;
             serviceClient.PrepareTestDataCompleted += serviceClient_PrepareTestDataCompleted;
             serviceClient.PrepareTestDataAsync(packageSize);
         }
@@ -34,24 +25,14 @@ namespace TravelJournal.PCL.Test
         }
         private void DownloadTestPackage()
         {
+            OperationStart();
             serviceClient.GetTestDataCompleted += serviceClient_GetTestDataCompleted;
-            currentTime = DateTime.Now;
             serviceClient.GetTestDataAsync();
         }
         private void serviceClient_GetTestDataCompleted(object sender, ServiceReference.GetTestDataCompletedEventArgs e)
         {
-            TimeSpan latency=DateTime.Now-currentTime;
-            serviceClient.ReportLatencyCompleted += serviceClient_ReportLatencyCompleted;
-            serviceClient.ReportLatencyAsync((decimal)latency.TotalSeconds);
             serviceClient.GetTestDataCompleted -= serviceClient_GetTestDataCompleted;
-        }
-
-        void serviceClient_ReportLatencyCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-            if (downloadFinishedHandler != null)
-            {
-                downloadFinishedHandler();
-            }
+            OperationEnd();
         }
     }
 }

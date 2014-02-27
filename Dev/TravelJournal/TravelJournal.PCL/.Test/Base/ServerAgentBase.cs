@@ -8,8 +8,9 @@ namespace TravelJournal.PCL.Test
     public abstract class ServerAgentBase:ServerBase, IPeriodicAgent
     {
         public abstract string Name { get; }
+        public abstract string Description { get; }
         public abstract void Start();
         public abstract void Stop();
-        public abstract bool OnInvoke(Action onCompleteHandler=null);
+        public abstract bool OnInvoke();
     }
 }

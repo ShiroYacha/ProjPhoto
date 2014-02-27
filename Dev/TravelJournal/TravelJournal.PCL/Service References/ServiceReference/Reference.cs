@@ -42,6 +42,66 @@ namespace TravelJournal.PCL.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GpsPoint", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator")]
+    public partial class GpsPoint : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private double LatitudeField;
+        
+        private double LongitudeField;
+        
+        private System.DateTime TimeStampField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((this.LatitudeField.Equals(value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((this.LongitudeField.Equals(value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime TimeStamp {
+            get {
+                return this.TimeStampField;
+            }
+            set {
+                if ((this.TimeStampField.Equals(value) != true)) {
+                    this.TimeStampField = value;
+                    this.RaisePropertyChanged("TimeStamp");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="LogType", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls")]
     public enum LogType : int {
@@ -57,37 +117,47 @@ namespace TravelJournal.PCL.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IConnectionService")]
-    public interface IConnectionService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.ISimulationServices")]
+    public interface ISimulationServices {
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/Connect", ReplyAction="http://tempuri.org/IConnectionService/ConnectResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/Connect", ReplyAction="http://tempuri.org/ISimulationServices/ConnectResponse")]
         System.IAsyncResult BeginConnect(string deviceName, System.AsyncCallback callback, object asyncState);
         
         bool EndConnect(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/PrepareTestData", ReplyAction="http://tempuri.org/IConnectionService/PrepareTestDataResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/PrepareTestData", ReplyAction="http://tempuri.org/ISimulationServices/PrepareTestDataResponse")]
         System.IAsyncResult BeginPrepareTestData(int size, System.AsyncCallback callback, object asyncState);
         
         void EndPrepareTestData(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/GetTestData", ReplyAction="http://tempuri.org/IConnectionService/GetTestDataResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/GetTestData", ReplyAction="http://tempuri.org/ISimulationServices/GetTestDataResponse")]
         System.IAsyncResult BeginGetTestData(System.AsyncCallback callback, object asyncState);
         
         TravelJournal.PCL.ServiceReference.ConnectionTestData EndGetTestData(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/ReportLatency", ReplyAction="http://tempuri.org/IConnectionService/ReportLatencyResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/ReportLatency", ReplyAction="http://tempuri.org/ISimulationServices/ReportLatencyResponse")]
         System.IAsyncResult BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState);
         
         void EndReportLatency(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IConnectionService/Log", ReplyAction="http://tempuri.org/IConnectionService/LogResponse")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/GetCurrentGps", ReplyAction="http://tempuri.org/ISimulationServices/GetCurrentGpsResponse")]
+        System.IAsyncResult BeginGetCurrentGps(System.AsyncCallback callback, object asyncState);
+        
+        TravelJournal.PCL.ServiceReference.GpsPoint EndGetCurrentGps(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/Log", ReplyAction="http://tempuri.org/ISimulationServices/LogResponse")]
         System.IAsyncResult BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState);
         
         void EndLog(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/UpdateInfoInspector", ReplyAction="http://tempuri.org/ISimulationServices/UpdateInfoInspectorResponse")]
+        System.IAsyncResult BeginUpdateInfoInspector(System.Collections.Generic.Dictionary<string, object> infos, System.AsyncCallback callback, object asyncState);
+        
+        void EndUpdateInfoInspector(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IConnectionServiceChannel : TravelJournal.PCL.ServiceReference.IConnectionService, System.ServiceModel.IClientChannel {
+    public interface ISimulationServicesChannel : TravelJournal.PCL.ServiceReference.ISimulationServices, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -130,7 +200,26 @@ namespace TravelJournal.PCL.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ConnectionServiceClient : System.ServiceModel.ClientBase<TravelJournal.PCL.ServiceReference.IConnectionService>, TravelJournal.PCL.ServiceReference.IConnectionService {
+    public partial class GetCurrentGpsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetCurrentGpsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public TravelJournal.PCL.ServiceReference.GpsPoint Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((TravelJournal.PCL.ServiceReference.GpsPoint)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SimulationServicesClient : System.ServiceModel.ClientBase<TravelJournal.PCL.ServiceReference.ISimulationServices>, TravelJournal.PCL.ServiceReference.ISimulationServices {
         
         private BeginOperationDelegate onBeginConnectDelegate;
         
@@ -156,11 +245,23 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private System.Threading.SendOrPostCallback onReportLatencyCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetCurrentGpsDelegate;
+        
+        private EndOperationDelegate onEndGetCurrentGpsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetCurrentGpsCompletedDelegate;
+        
         private BeginOperationDelegate onBeginLogDelegate;
         
         private EndOperationDelegate onEndLogDelegate;
         
         private System.Threading.SendOrPostCallback onLogCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateInfoInspectorDelegate;
+        
+        private EndOperationDelegate onEndUpdateInfoInspectorDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateInfoInspectorCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -174,23 +275,23 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private System.Threading.SendOrPostCallback onCloseCompletedDelegate;
         
-        public ConnectionServiceClient() : 
-                base(ConnectionServiceClient.GetDefaultBinding(), ConnectionServiceClient.GetDefaultEndpointAddress()) {
+        public SimulationServicesClient() : 
+                base(SimulationServicesClient.GetDefaultBinding(), SimulationServicesClient.GetDefaultEndpointAddress()) {
         }
         
-        public ConnectionServiceClient(EndpointConfiguration endpointConfiguration) : 
-                base(ConnectionServiceClient.GetBindingForEndpoint(endpointConfiguration), ConnectionServiceClient.GetEndpointAddress(endpointConfiguration)) {
+        public SimulationServicesClient(EndpointConfiguration endpointConfiguration) : 
+                base(SimulationServicesClient.GetBindingForEndpoint(endpointConfiguration), SimulationServicesClient.GetEndpointAddress(endpointConfiguration)) {
         }
         
-        public ConnectionServiceClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(ConnectionServiceClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress)) {
+        public SimulationServicesClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(SimulationServicesClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress)) {
         }
         
-        public ConnectionServiceClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(ConnectionServiceClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress) {
+        public SimulationServicesClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(SimulationServicesClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress) {
         }
         
-        public ConnectionServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SimulationServicesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -224,29 +325,33 @@ namespace TravelJournal.PCL.ServiceReference {
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ReportLatencyCompleted;
         
+        public event System.EventHandler<GetCurrentGpsCompletedEventArgs> GetCurrentGpsCompleted;
+        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> LogCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateInfoInspectorCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginConnect(string deviceName, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginConnect(string deviceName, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginConnect(deviceName, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        bool TravelJournal.PCL.ServiceReference.IConnectionService.EndConnect(System.IAsyncResult result) {
+        bool TravelJournal.PCL.ServiceReference.ISimulationServices.EndConnect(System.IAsyncResult result) {
             return base.Channel.EndConnect(result);
         }
         
         private System.IAsyncResult OnBeginConnect(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string deviceName = ((string)(inValues[0]));
-            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginConnect(deviceName, callback, asyncState);
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginConnect(deviceName, callback, asyncState);
         }
         
         private object[] OnEndConnect(System.IAsyncResult result) {
-            bool retVal = ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndConnect(result);
+            bool retVal = ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndConnect(result);
             return new object[] {
                     retVal};
         }
@@ -277,22 +382,22 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginPrepareTestData(int size, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginPrepareTestData(int size, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginPrepareTestData(size, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void TravelJournal.PCL.ServiceReference.IConnectionService.EndPrepareTestData(System.IAsyncResult result) {
+        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndPrepareTestData(System.IAsyncResult result) {
             base.Channel.EndPrepareTestData(result);
         }
         
         private System.IAsyncResult OnBeginPrepareTestData(object[] inValues, System.AsyncCallback callback, object asyncState) {
             int size = ((int)(inValues[0]));
-            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginPrepareTestData(size, callback, asyncState);
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginPrepareTestData(size, callback, asyncState);
         }
         
         private object[] OnEndPrepareTestData(System.IAsyncResult result) {
-            ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndPrepareTestData(result);
+            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndPrepareTestData(result);
             return null;
         }
         
@@ -322,21 +427,21 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginGetTestData(System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginGetTestData(System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginGetTestData(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        TravelJournal.PCL.ServiceReference.ConnectionTestData TravelJournal.PCL.ServiceReference.IConnectionService.EndGetTestData(System.IAsyncResult result) {
+        TravelJournal.PCL.ServiceReference.ConnectionTestData TravelJournal.PCL.ServiceReference.ISimulationServices.EndGetTestData(System.IAsyncResult result) {
             return base.Channel.EndGetTestData(result);
         }
         
         private System.IAsyncResult OnBeginGetTestData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginGetTestData(callback, asyncState);
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginGetTestData(callback, asyncState);
         }
         
         private object[] OnEndGetTestData(System.IAsyncResult result) {
-            TravelJournal.PCL.ServiceReference.ConnectionTestData retVal = ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndGetTestData(result);
+            TravelJournal.PCL.ServiceReference.ConnectionTestData retVal = ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndGetTestData(result);
             return new object[] {
                     retVal};
         }
@@ -366,22 +471,22 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginReportLatency(latency, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void TravelJournal.PCL.ServiceReference.IConnectionService.EndReportLatency(System.IAsyncResult result) {
+        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndReportLatency(System.IAsyncResult result) {
             base.Channel.EndReportLatency(result);
         }
         
         private System.IAsyncResult OnBeginReportLatency(object[] inValues, System.AsyncCallback callback, object asyncState) {
             decimal latency = ((decimal)(inValues[0]));
-            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginReportLatency(latency, callback, asyncState);
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginReportLatency(latency, callback, asyncState);
         }
         
         private object[] OnEndReportLatency(System.IAsyncResult result) {
-            ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndReportLatency(result);
+            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndReportLatency(result);
             return null;
         }
         
@@ -411,12 +516,56 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.ServiceReference.IConnectionService.BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginGetCurrentGps(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetCurrentGps(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        TravelJournal.PCL.ServiceReference.GpsPoint TravelJournal.PCL.ServiceReference.ISimulationServices.EndGetCurrentGps(System.IAsyncResult result) {
+            return base.Channel.EndGetCurrentGps(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetCurrentGps(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginGetCurrentGps(callback, asyncState);
+        }
+        
+        private object[] OnEndGetCurrentGps(System.IAsyncResult result) {
+            TravelJournal.PCL.ServiceReference.GpsPoint retVal = ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndGetCurrentGps(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetCurrentGpsCompleted(object state) {
+            if ((this.GetCurrentGpsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetCurrentGpsCompleted(this, new GetCurrentGpsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetCurrentGpsAsync() {
+            this.GetCurrentGpsAsync(null);
+        }
+        
+        public void GetCurrentGpsAsync(object userState) {
+            if ((this.onBeginGetCurrentGpsDelegate == null)) {
+                this.onBeginGetCurrentGpsDelegate = new BeginOperationDelegate(this.OnBeginGetCurrentGps);
+            }
+            if ((this.onEndGetCurrentGpsDelegate == null)) {
+                this.onEndGetCurrentGpsDelegate = new EndOperationDelegate(this.OnEndGetCurrentGps);
+            }
+            if ((this.onGetCurrentGpsCompletedDelegate == null)) {
+                this.onGetCurrentGpsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetCurrentGpsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetCurrentGpsDelegate, null, this.onEndGetCurrentGpsDelegate, this.onGetCurrentGpsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginLog(type, log, callerName, callerFilePath, callerLine, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void TravelJournal.PCL.ServiceReference.IConnectionService.EndLog(System.IAsyncResult result) {
+        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndLog(System.IAsyncResult result) {
             base.Channel.EndLog(result);
         }
         
@@ -426,11 +575,11 @@ namespace TravelJournal.PCL.ServiceReference {
             string callerName = ((string)(inValues[2]));
             string callerFilePath = ((string)(inValues[3]));
             int callerLine = ((int)(inValues[4]));
-            return ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).BeginLog(type, log, callerName, callerFilePath, callerLine, callback, asyncState);
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginLog(type, log, callerName, callerFilePath, callerLine, callback, asyncState);
         }
         
         private object[] OnEndLog(System.IAsyncResult result) {
-            ((TravelJournal.PCL.ServiceReference.IConnectionService)(this)).EndLog(result);
+            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndLog(result);
             return null;
         }
         
@@ -461,6 +610,51 @@ namespace TravelJournal.PCL.ServiceReference {
                         callerName,
                         callerFilePath,
                         callerLine}, this.onEndLogDelegate, this.onLogCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginUpdateInfoInspector(System.Collections.Generic.Dictionary<string, object> infos, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateInfoInspector(infos, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndUpdateInfoInspector(System.IAsyncResult result) {
+            base.Channel.EndUpdateInfoInspector(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateInfoInspector(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Collections.Generic.Dictionary<string, object> infos = ((System.Collections.Generic.Dictionary<string, object>)(inValues[0]));
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginUpdateInfoInspector(infos, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateInfoInspector(System.IAsyncResult result) {
+            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndUpdateInfoInspector(result);
+            return null;
+        }
+        
+        private void OnUpdateInfoInspectorCompleted(object state) {
+            if ((this.UpdateInfoInspectorCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateInfoInspectorCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateInfoInspectorAsync(System.Collections.Generic.Dictionary<string, object> infos) {
+            this.UpdateInfoInspectorAsync(infos, null);
+        }
+        
+        public void UpdateInfoInspectorAsync(System.Collections.Generic.Dictionary<string, object> infos, object userState) {
+            if ((this.onBeginUpdateInfoInspectorDelegate == null)) {
+                this.onBeginUpdateInfoInspectorDelegate = new BeginOperationDelegate(this.OnBeginUpdateInfoInspector);
+            }
+            if ((this.onEndUpdateInfoInspectorDelegate == null)) {
+                this.onEndUpdateInfoInspectorDelegate = new EndOperationDelegate(this.OnEndUpdateInfoInspector);
+            }
+            if ((this.onUpdateInfoInspectorCompletedDelegate == null)) {
+                this.onUpdateInfoInspectorCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateInfoInspectorCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateInfoInspectorDelegate, new object[] {
+                        infos}, this.onEndUpdateInfoInspectorDelegate, this.onUpdateInfoInspectorCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -529,12 +723,12 @@ namespace TravelJournal.PCL.ServiceReference {
             base.InvokeAsync(this.onBeginCloseDelegate, null, this.onEndCloseDelegate, this.onCloseCompletedDelegate, userState);
         }
         
-        protected override TravelJournal.PCL.ServiceReference.IConnectionService CreateChannel() {
-            return new ConnectionServiceClientChannel(this);
+        protected override TravelJournal.PCL.ServiceReference.ISimulationServices CreateChannel() {
+            return new SimulationServicesClientChannel(this);
         }
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration) {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IConnectionService)) {
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_ISimulationServices)) {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
                 result.MaxReceivedMessageSize = int.MaxValue;
@@ -544,24 +738,24 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IConnectionService)) {
-                return new System.ServiceModel.EndpointAddress("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Co" +
-                        "nnectionService/");
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_ISimulationServices)) {
+                return new System.ServiceModel.EndpointAddress("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Si" +
+                        "mulationServices");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding() {
-            return ConnectionServiceClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IConnectionService);
+            return SimulationServicesClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_ISimulationServices);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress() {
-            return ConnectionServiceClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IConnectionService);
+            return SimulationServicesClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_ISimulationServices);
         }
         
-        private class ConnectionServiceClientChannel : ChannelBase<TravelJournal.PCL.ServiceReference.IConnectionService>, TravelJournal.PCL.ServiceReference.IConnectionService {
+        private class SimulationServicesClientChannel : ChannelBase<TravelJournal.PCL.ServiceReference.ISimulationServices>, TravelJournal.PCL.ServiceReference.ISimulationServices {
             
-            public ConnectionServiceClientChannel(System.ServiceModel.ClientBase<TravelJournal.PCL.ServiceReference.IConnectionService> client) : 
+            public SimulationServicesClientChannel(System.ServiceModel.ClientBase<TravelJournal.PCL.ServiceReference.ISimulationServices> client) : 
                     base(client) {
             }
             
@@ -614,6 +808,18 @@ namespace TravelJournal.PCL.ServiceReference {
                 base.EndInvoke("ReportLatency", _args, result);
             }
             
+            public System.IAsyncResult BeginGetCurrentGps(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("GetCurrentGps", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public TravelJournal.PCL.ServiceReference.GpsPoint EndGetCurrentGps(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                TravelJournal.PCL.ServiceReference.GpsPoint _result = ((TravelJournal.PCL.ServiceReference.GpsPoint)(base.EndInvoke("GetCurrentGps", _args, result)));
+                return _result;
+            }
+            
             public System.IAsyncResult BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[5];
                 _args[0] = type;
@@ -629,11 +835,23 @@ namespace TravelJournal.PCL.ServiceReference {
                 object[] _args = new object[0];
                 base.EndInvoke("Log", _args, result);
             }
+            
+            public System.IAsyncResult BeginUpdateInfoInspector(System.Collections.Generic.Dictionary<string, object> infos, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = infos;
+                System.IAsyncResult _result = base.BeginInvoke("UpdateInfoInspector", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndUpdateInfoInspector(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("UpdateInfoInspector", _args, result);
+            }
         }
         
         public enum EndpointConfiguration {
             
-            BasicHttpBinding_IConnectionService,
+            BasicHttpBinding_ISimulationServices,
         }
     }
 }

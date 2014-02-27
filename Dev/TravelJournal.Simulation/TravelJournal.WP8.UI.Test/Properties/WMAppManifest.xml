@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
-  <DefaultLanguage xmlns="" code="en-US"/>
-  <App xmlns="" ProductID="{61374d5a-2c3b-46a3-979d-494f0e7bf609}" Title="TravelJournal.WP8.UI.Test" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="TravelJournal.WP8.UI.Test author" Description="Sample description" Publisher="TravelJournal.WP8.UI.Test" PublisherID="{33c0ddb4-3880-4e79-bc1a-90b6676b2a69}">
+  <DefaultLanguage xmlns="" code="en-US" />
+  <App xmlns="" ProductID="{61374d5a-2c3b-46a3-979d-494f0e7bf609}" Title="TravelJournal.WP8.UI.Test" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="TravelJournal.WP8.UI.Test author" Description="Sample description" Publisher="TravelJournal.WP8.UI.Test" PublisherID="{33c0ddb4-3880-4e79-bc1a-90b6676b2a69}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_NETWORKING"/>
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO"/>
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK"/>
-      <Capability Name="ID_CAP_SENSORS"/>
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT"/>
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
+      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
+      <Capability Name="ID_CAP_SENSORS" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_MAP" />
+      <Capability Name="ID_CAP_LOCATION" />
     </Capabilities>
     <Tasks>
-      <DefaultTask  Name ="_default" NavigationPage="MainPage.xaml"/>
+      <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
       <!--<ExtendedTask Name="BackgroundTask">
           <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="NAME_CONNECTIVITY_TEST_AGENT" Source="TravelJournal.WP8" Type="TravelJournal.WP8.ScheduledAgent" />
       </ExtendedTask>-->
@@ -24,18 +25,23 @@
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
           <Title>TravelJournal.WP8.UI.Test</Title>
-          <BackContent></BackContent>
-          <BackBackgroundImageURI></BackBackgroundImageURI>
-          <BackTitle></BackTitle>
-          <DeviceLockImageURI></DeviceLockImageURI>
-          <HasLarge></HasLarge>
+          <BackContent>
+          </BackContent>
+          <BackBackgroundImageURI>
+          </BackBackgroundImageURI>
+          <BackTitle>
+          </BackTitle>
+          <DeviceLockImageURI>
+          </DeviceLockImageURI>
+          <HasLarge>
+          </HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>
     <ScreenResolutions>
-      <ScreenResolution Name="ID_RESOLUTION_WVGA"/>
-      <ScreenResolution Name="ID_RESOLUTION_WXGA"/>
-      <ScreenResolution Name="ID_RESOLUTION_HD720P"/>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
     </ScreenResolutions>
   </App>
 </Deployment>

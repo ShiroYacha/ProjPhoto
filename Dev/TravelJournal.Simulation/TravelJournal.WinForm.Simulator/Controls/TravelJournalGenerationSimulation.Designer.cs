@@ -33,6 +33,7 @@
             this.serverButton = new System.Windows.Forms.ToolStripButton();
             this.settingButton = new System.Windows.Forms.ToolStripButton();
             this.uiTestButton = new System.Windows.Forms.ToolStripButton();
+            this.clearButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.designButton = new System.Windows.Forms.ToolStripButton();
             this.playButton = new System.Windows.Forms.ToolStripButton();
@@ -42,7 +43,6 @@
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.leftTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.rightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.clearButton = new System.Windows.Forms.ToolStripButton();
             this.stateMachineViewer = new TravelJournal.WinForm.Simulator.Controls.StateMachineViewer();
             this.infoInspector = new TravelJournal.WinForm.Simulator.Controls.InfoInspector();
             this.connectionViewer = new TravelJournal.WinForm.Simulator.Controls.Components.ConnectionViewer();
@@ -72,7 +72,7 @@
             this.autoZoomButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(950, 35);
+            this.toolStrip.Size = new System.Drawing.Size(1147, 35);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -110,6 +110,17 @@
             this.uiTestButton.Size = new System.Drawing.Size(23, 25);
             this.uiTestButton.Text = "toolStripButton1";
             this.uiTestButton.Click += new System.EventHandler(this.uiTestButton_Click);
+            // 
+            // clearButton
+            // 
+            this.clearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.clearButton.Image = ((System.Drawing.Image)(resources.GetObject("clearButton.Image")));
+            this.clearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.clearButton.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(23, 25);
+            this.clearButton.Text = "toolStripButton1";
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -180,9 +191,10 @@
             // 
             // mainTableLayoutPanel
             // 
-            this.mainTableLayoutPanel.ColumnCount = 2;
-            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 261F));
+            this.mainTableLayoutPanel.ColumnCount = 3;
+            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243F));
             this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222F));
             this.mainTableLayoutPanel.Controls.Add(this.leftTableLayoutPanel, 0, 0);
             this.mainTableLayoutPanel.Controls.Add(this.rightTableLayoutPanel, 1, 0);
             this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -190,7 +202,7 @@
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 1;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(950, 570);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(1147, 570);
             this.mainTableLayoutPanel.TabIndex = 1;
             // 
             // leftTableLayoutPanel
@@ -208,7 +220,7 @@
             this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.leftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.leftTableLayoutPanel.Size = new System.Drawing.Size(258, 570);
+            this.leftTableLayoutPanel.Size = new System.Drawing.Size(240, 570);
             this.leftTableLayoutPanel.TabIndex = 0;
             // 
             // rightTableLayoutPanel
@@ -218,25 +230,14 @@
             this.rightTableLayoutPanel.Controls.Add(this.logger, 0, 1);
             this.rightTableLayoutPanel.Controls.Add(this.travelMapPlayer, 0, 0);
             this.rightTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rightTableLayoutPanel.Location = new System.Drawing.Point(261, 0);
+            this.rightTableLayoutPanel.Location = new System.Drawing.Point(243, 0);
             this.rightTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.rightTableLayoutPanel.Name = "rightTableLayoutPanel";
             this.rightTableLayoutPanel.RowCount = 2;
             this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.rightTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 201F));
-            this.rightTableLayoutPanel.Size = new System.Drawing.Size(689, 570);
+            this.rightTableLayoutPanel.Size = new System.Drawing.Size(682, 570);
             this.rightTableLayoutPanel.TabIndex = 1;
-            // 
-            // clearButton
-            // 
-            this.clearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.clearButton.Image = ((System.Drawing.Image)(resources.GetObject("clearButton.Image")));
-            this.clearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.clearButton.Margin = new System.Windows.Forms.Padding(15, 5, 0, 5);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(23, 25);
-            this.clearButton.Text = "toolStripButton1";
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // stateMachineViewer
             // 
@@ -245,7 +246,7 @@
             this.stateMachineViewer.Location = new System.Drawing.Point(0, 0);
             this.stateMachineViewer.Margin = new System.Windows.Forms.Padding(0);
             this.stateMachineViewer.Name = "stateMachineViewer";
-            this.stateMachineViewer.Size = new System.Drawing.Size(258, 228);
+            this.stateMachineViewer.Size = new System.Drawing.Size(240, 228);
             this.stateMachineViewer.TabIndex = 1;
             this.stateMachineViewer.ViewerSize = new System.Drawing.Size(10, 10);
             // 
@@ -257,7 +258,7 @@
             this.infoInspector.Location = new System.Drawing.Point(0, 345);
             this.infoInspector.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.infoInspector.Name = "infoInspector";
-            this.infoInspector.Size = new System.Drawing.Size(258, 225);
+            this.infoInspector.Size = new System.Drawing.Size(240, 225);
             this.infoInspector.TabIndex = 2;
             // 
             // connectionViewer
@@ -267,7 +268,7 @@
             this.connectionViewer.Location = new System.Drawing.Point(0, 228);
             this.connectionViewer.Margin = new System.Windows.Forms.Padding(0);
             this.connectionViewer.Name = "connectionViewer";
-            this.connectionViewer.Size = new System.Drawing.Size(258, 114);
+            this.connectionViewer.Size = new System.Drawing.Size(240, 114);
             this.connectionViewer.TabIndex = 3;
             // 
             // logger
@@ -276,7 +277,7 @@
             this.logger.Location = new System.Drawing.Point(0, 372);
             this.logger.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.logger.Name = "logger";
-            this.logger.Size = new System.Drawing.Size(689, 198);
+            this.logger.Size = new System.Drawing.Size(682, 198);
             this.logger.TabIndex = 0;
             // 
             // travelMapPlayer
@@ -286,7 +287,7 @@
             this.travelMapPlayer.Location = new System.Drawing.Point(0, 0);
             this.travelMapPlayer.Margin = new System.Windows.Forms.Padding(0);
             this.travelMapPlayer.Name = "travelMapPlayer";
-            this.travelMapPlayer.Size = new System.Drawing.Size(689, 369);
+            this.travelMapPlayer.Size = new System.Drawing.Size(682, 369);
             this.travelMapPlayer.TabIndex = 1;
             // 
             // TravelJournalSimulation
@@ -298,7 +299,7 @@
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
             this.Name = "TravelJournalSimulation";
-            this.Size = new System.Drawing.Size(950, 605);
+            this.Size = new System.Drawing.Size(1147, 605);
             this.Load += new System.EventHandler(this.TravelJournalGenerationSimulation_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();

@@ -9,6 +9,6 @@ namespace TravelJournal.PCL.Test
     {
         void Start();
         void Stop();
-        bool OnInvoke(Action onCompleteHandler = null);
+        bool OnInvoke();
     }
 }

@@ -13,6 +13,10 @@ namespace TravelJournal.WP8.Test
         {
             get { throw new NotImplementedException(); }
         }
+        public override string Description
+        {
+            get { throw new NotImplementedException(); }
+        }
 
         public override void Start()
         {
@@ -24,9 +28,11 @@ namespace TravelJournal.WP8.Test
             throw new NotImplementedException();
         }
 
-        public override bool OnInvoke(Action onCompleteHandler = null)
+        public override bool OnInvoke()
         {
             throw new NotImplementedException();
         }
+
+
     }
 }
