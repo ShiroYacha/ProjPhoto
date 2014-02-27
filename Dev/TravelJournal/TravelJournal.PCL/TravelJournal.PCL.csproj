@@ -70,20 +70,20 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\ServiceReference\SimulationServices.wsdl" />
-    <None Include="Service References\ServiceReference\SimulationServices.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices1.wsdl" />
+    <None Include="Service References\ServiceReference\SimulationServices5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\SimulationServices1.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\SimulationServices2.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\SimulationServices3.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\SimulationServices4.xsd">
+    <None Include="Service References\ServiceReference\SimulationServices54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.ConnectionTestData.datasource">
@@ -100,9 +100,6 @@
     <WCFMetadataStorage Include="Service References\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference\SimulationServices.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\ServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +110,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceReference\SimulationServices1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />

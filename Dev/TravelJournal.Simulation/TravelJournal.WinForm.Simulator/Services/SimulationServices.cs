@@ -58,6 +58,7 @@ namespace TravelJournal.WinForm.Simulator
         public ConnectionTestData GetTestData()
         {
             // Pure download operation
+            TravelJournalSimulation.Log(LogType.Info, "Querying test data...");
             return testData;
         }
         private ConnectionTestData CreateTestData(int size)

@@ -817,8 +817,8 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_ISimulationServices)) {
-                return new System.ServiceModel.EndpointAddress("http://192.168.1.4:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Sim" +
-                        "ulationServices");
+                return new System.ServiceModel.EndpointAddress("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Si" +
+                        "mulationServices");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
