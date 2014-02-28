@@ -34,11 +34,17 @@
   <wsdl:message name="ISimulationServices_GetTestData_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTestDataResponse" />
   </wsdl:message>
-  <wsdl:message name="ISimulationServices_ReportLatency_InputMessage">
-    <wsdl:part name="parameters" element="tns:ReportLatency" />
+  <wsdl:message name="ISimulationServices_NotifyOperationStart_InputMessage">
+    <wsdl:part name="parameters" element="tns:NotifyOperationStart" />
   </wsdl:message>
-  <wsdl:message name="ISimulationServices_ReportLatency_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ReportLatencyResponse" />
+  <wsdl:message name="ISimulationServices_NotifyOperationStart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NotifyOperationStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_ReportExecutionTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportExecutionTime" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_ReportExecutionTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportExecutionTimeResponse" />
   </wsdl:message>
   <wsdl:message name="ISimulationServices_Log_InputMessage">
     <wsdl:part name="parameters" element="tns:Log" />
@@ -87,9 +93,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/GetTestData" message="tns:ISimulationServices_GetTestData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/GetTestDataResponse" message="tns:ISimulationServices_GetTestData_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ReportLatency">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/ReportLatency" message="tns:ISimulationServices_ReportLatency_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/ReportLatencyResponse" message="tns:ISimulationServices_ReportLatency_OutputMessage" />
+    <wsdl:operation name="NotifyOperationStart">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/NotifyOperationStart" message="tns:ISimulationServices_NotifyOperationStart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/NotifyOperationStartResponse" message="tns:ISimulationServices_NotifyOperationStart_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportExecutionTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/ReportExecutionTime" message="tns:ISimulationServices_ReportExecutionTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/ReportExecutionTimeResponse" message="tns:ISimulationServices_ReportExecutionTime_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Log">
       <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/Log" message="tns:ISimulationServices_Log_InputMessage" />
@@ -150,8 +160,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ReportLatency">
-      <soap:operation soapAction="http://tempuri.org/ISimulationServices/ReportLatency" style="document" />
+    <wsdl:operation name="NotifyOperationStart">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/NotifyOperationStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportExecutionTime">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/ReportExecutionTime" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

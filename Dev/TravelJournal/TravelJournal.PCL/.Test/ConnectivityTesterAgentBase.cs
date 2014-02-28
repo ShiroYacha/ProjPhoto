@@ -15,6 +15,7 @@ namespace TravelJournal.PCL.Test
     {
         public override void OnInvoke()
         {
+            OperationStart();
             Random random = new Random();
             RequestDownloadTest(random.Next(100000));
         }
@@ -31,7 +32,6 @@ namespace TravelJournal.PCL.Test
         }
         private void DownloadTestPackage()
         {
-            OperationStart();
             serviceClient.GetTestDataCompleted += serviceClient_GetTestDataCompleted;
             serviceClient.GetTestDataAsync();
         }
@@ -39,6 +39,12 @@ namespace TravelJournal.PCL.Test
         {
             serviceClient.GetTestDataCompleted -= serviceClient_GetTestDataCompleted;
             OperationEnd();
+        }
+
+        public void RequestSingleDownloadTest(int testPackageSize)
+        {
+            OperationStart(false);
+            RequestDownloadTest(testPackageSize);
         }
     }
 }

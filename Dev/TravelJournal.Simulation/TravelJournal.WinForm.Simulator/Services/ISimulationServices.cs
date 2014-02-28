@@ -39,7 +39,10 @@ namespace TravelJournal.WinForm.Simulator
         #region Diagnostics services
 
         [OperationContract]
-        void ReportLatency(decimal latency);
+        void NotifyOperationStart();
+
+        [OperationContract]
+        void ReportExecutionTime(decimal latency);
 
         [OperationContract]
         void Log(LogType type, string log, [CallerMemberName] string callerName = null, [CallerFilePath] string callerFilePath = null, [CallerLineNumber] int callerLine = -1);

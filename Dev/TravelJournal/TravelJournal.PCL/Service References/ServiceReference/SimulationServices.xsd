@@ -3,8 +3,9 @@
   <xs:simpleType name="LogType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Info" />
-      <xs:enumeration value="Error" />
+      <xs:enumeration value="HighlightInfo" />
       <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="LogType" nillable="true" type="tns:LogType" />

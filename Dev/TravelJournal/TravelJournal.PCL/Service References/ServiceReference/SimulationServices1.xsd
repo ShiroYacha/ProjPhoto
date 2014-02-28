@@ -56,14 +56,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ReportLatency">
+  <xs:element name="NotifyOperationStart">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyOperationStartResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportExecutionTime">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="latency" type="xs:decimal" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ReportLatencyResponse">
+  <xs:element name="ReportExecutionTimeResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 
 namespace TravelJournal.WinForm.Simulator.Controls
 {
-    public enum LogType{Info=0,Error=1,Warning=2};
+    public enum LogType{Info=0,HighlightInfo=1,Warning=2,Error=3};
     public partial class Logger : UserControl,ITestControl
     {
         public Logger()
@@ -26,8 +26,8 @@ namespace TravelJournal.WinForm.Simulator.Controls
             // Render column
             int columnWidth = listView.Width;
             listView.Columns[0].Width = (int)(columnWidth * 0.1);
-            listView.Columns[1].Width = (int)(columnWidth *0.4);
-            listView.Columns[2].Width = (int)(columnWidth *0.2);
+            listView.Columns[1].Width = (int)(columnWidth *0.3);
+            listView.Columns[2].Width = (int)(columnWidth *0.3);
             listView.Columns[3].Width = (int)(columnWidth);
             // Render header
             listView.DrawColumnHeader += (o, e) =>
@@ -58,6 +58,9 @@ namespace TravelJournal.WinForm.Simulator.Controls
             ListViewItem item = new ListViewItem(DateTime.Now.ToLongTimeString());
             switch(type)
             {
+                case LogType.HighlightInfo:
+                    item.Tag = Color.DodgerBlue;
+                    break;
                 case LogType.Warning:
                     item.Tag = Color.Yellow;
                     break;

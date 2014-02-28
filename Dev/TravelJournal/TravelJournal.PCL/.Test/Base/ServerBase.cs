@@ -11,6 +11,7 @@ namespace TravelJournal.PCL.Test
         protected ServiceReference.SimulationServicesClient serviceClient = new ServiceReference.SimulationServicesClient();
 
         protected DateTime startTime;
+        private bool operationLocked;
         private Action<ConnectionStatus> resultHandler;
 
         public event Action OnCompletedHandler;
@@ -60,16 +61,30 @@ namespace TravelJournal.PCL.Test
             }
         }
 
-        protected virtual void OperationStart()
+        protected virtual void OperationStart(bool isAgent=true)
         {
             startTime = DateTime.Now;
+            if (isAgent)
+            {
+                // Report operation start
+                serviceClient.NotifyOperationStartCompleted += serviceClient_NotifyOperationStartCompleted;
+                serviceClient.NotifyOperationStartAsync();
+                // Wait until notification returns
+                operationLocked = true;
+                while (operationLocked) ;
+            }
+        }
+
+        void serviceClient_NotifyOperationStartCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            operationLocked = false;
         }
 
         protected virtual void OperationEnd()
         {
             TimeSpan latency = DateTime.Now - startTime;
-            serviceClient.ReportLatencyCompleted += serviceClient_ReportLatencyCompleted;
-            serviceClient.ReportLatencyAsync((decimal)latency.TotalSeconds);
+            serviceClient.ReportExecutionTimeCompleted += serviceClient_ReportLatencyCompleted;
+            serviceClient.ReportExecutionTimeAsync((decimal)latency.TotalSeconds);
         }
 
         protected virtual void OperationEndDirectly()

@@ -117,13 +117,13 @@ namespace TravelJournal.WinForm.Simulator
                         };
                     }));
                 // Inspect information
-#if DEBUG
-                TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
-            {"Current index", currentIndex}, 
-            {"Current segment index",currentSegmentIndex},
-            {"Current segment count", currentSegmentCount}
-            });
-#endif
+//#if DEBUG
+//                TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
+//            {"Current index", currentIndex}, 
+//            {"Current segment index",currentSegmentIndex},
+//            {"Current segment count", currentSegmentCount}
+//            });
+//#endif
                 TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { 
             {"Photo count", photos.Count}, 
             });

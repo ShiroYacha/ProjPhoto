@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TravelJournal.PCL;
 using TravelJournal.PCL.DataService;
@@ -15,16 +16,29 @@ namespace TravelJournal.WinForm.Simulator
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class SimulationServices : ISimulationServices
     {
-        private const decimal THRESHOLD_LATENCY_WARNING = 2;
-        private const decimal THRESHOLD_LATENCY_FAILURE = 5;
+        private const long THRESHOLD_EXECUTION_WARNING = 10;
+        private const long THRESHOLD_EXECUTION_DANGER = 20;
+        private const long THRESHOLD_EXECUTION_FAILURE = 25;
 
         private TravelSimulator simulator;
         private ConnectionTestData testData;
+
+        private System.Threading.Timer operationMonitorTimer;
 
         public SimulationServices(TravelSimulator simulator)
         {
             this.simulator = simulator;
         }
+
+        #region Private members
+        private void AgentInvokeTimeout()
+        {
+            TravelJournalSimulation.Log(LogType.Error, "Agent started but not returning...");
+            TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { { "Waiting for agent", false } });
+        } 
+        #endregion
+
+        // Services implementations
 
         #region Connection services
 
@@ -33,6 +47,12 @@ namespace TravelJournal.WinForm.Simulator
             if (simulator.IsConnected == false)
             {
                 simulator.IsConnected = true;
+                // Monitor
+                operationMonitorTimer = new System.Threading.Timer((e) =>
+                {
+                    AgentInvokeTimeout();
+                }, null, Timeout.Infinite, Timeout.Infinite);
+                // Log
                 TravelJournalSimulation.Log(LogType.Info, string.Format("Device {0} is  connected...", deviceName));
             }
             else
@@ -44,6 +64,11 @@ namespace TravelJournal.WinForm.Simulator
             if (simulator.IsConnected == true)
             {
                 simulator.IsConnected = false;
+                // Monitor
+                operationMonitorTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { { "Waiting for agent", false } });
+                operationMonitorTimer = null;
+                // Log
                 TravelJournalSimulation.Log(LogType.Info, string.Format("Device {0} is disconnected...", deviceName));
             }
             else
@@ -78,13 +103,22 @@ namespace TravelJournal.WinForm.Simulator
         
         #region Diagnostic members
 
-        public void ReportLatency(decimal latency)
+        public void NotifyOperationStart()
+        {
+            operationMonitorTimer.Change(THRESHOLD_EXECUTION_FAILURE * 1000, Timeout.Infinite);
+            TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { {"Waiting for agent",true}});
+            TravelJournalSimulation.Log(LogType.Info, "Periodic agent is invoking...");
+        }
+        public void ReportExecutionTime(decimal latency)
         {
             TravelJournalSimulation.UpdateConnectionViewer(latency);
-            if (latency > THRESHOLD_LATENCY_FAILURE)
-                TravelJournalSimulation.Log(LogType.Error, string.Format("Client query latency {0}s surpassed {1}s...", latency.ToString("#.##"), THRESHOLD_LATENCY_FAILURE.ToString("#.##")));
-            else if (latency > THRESHOLD_LATENCY_WARNING)
-                TravelJournalSimulation.Log(LogType.Warning, string.Format("Client query latency {0}s surpassed {1}s...",latency.ToString("#.##"),THRESHOLD_LATENCY_WARNING.ToString("#.##")));
+            if (latency > THRESHOLD_EXECUTION_DANGER)
+                TravelJournalSimulation.Log(LogType.Error, string.Format("Client query latency {0}s surpassed {1}s...", latency.ToString("#.##"), THRESHOLD_EXECUTION_DANGER.ToString("#.##")));
+            else if (latency > THRESHOLD_EXECUTION_WARNING)
+                TravelJournalSimulation.Log(LogType.Warning, string.Format("Client query latency {0}s surpassed {1}s...",latency.ToString("#.##"),THRESHOLD_EXECUTION_WARNING.ToString("#.##")));
+            // Reset execution time monitor
+            operationMonitorTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            TravelJournalSimulation.UpdateInfoInspector(new Dictionary<string, object>() { { "Waiting for agent", false } });
         }
         public void Log(LogType type, string log, [CallerMemberName] string callerName = null, [CallerFilePath] string callerFilePath = null, [CallerLineNumber] int callerLine = -1)
         {
@@ -106,14 +140,14 @@ namespace TravelJournal.WinForm.Simulator
         public GpsPoint GetCurrentGps()
         {
             // Log 
-            TravelJournalSimulation.Log(LogType.Info, "Querying current position...");
+            TravelJournalSimulation.Log(LogType.HighlightInfo, "Querying current position...");
             // Get current gps
             return simulator.GetCurrentGps();
         }
         public IEnumerable<Photo> GetPhotos(DateTime filter)
         {
             // Log
-            TravelJournalSimulation.Log(LogType.Info, "Querying photos...");
+            TravelJournalSimulation.Log(LogType.HighlightInfo, "Querying photos...");
             // Get photos
             List<Photo> photos = simulator.GetCreatedPhotos();
             if (filter != DateTime.MinValue)

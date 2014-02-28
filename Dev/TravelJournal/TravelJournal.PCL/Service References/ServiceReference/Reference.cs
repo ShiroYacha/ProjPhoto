@@ -50,10 +50,13 @@ namespace TravelJournal.PCL.ServiceReference {
         Info = 0,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Error = 1,
+        HighlightInfo = 1,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Warning = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Error = 3,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -290,10 +293,15 @@ namespace TravelJournal.PCL.ServiceReference {
         
         TravelJournal.PCL.ServiceReference.ConnectionTestData EndGetTestData(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/ReportLatency", ReplyAction="http://tempuri.org/ISimulationServices/ReportLatencyResponse")]
-        System.IAsyncResult BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/NotifyOperationStart", ReplyAction="http://tempuri.org/ISimulationServices/NotifyOperationStartResponse")]
+        System.IAsyncResult BeginNotifyOperationStart(System.AsyncCallback callback, object asyncState);
         
-        void EndReportLatency(System.IAsyncResult result);
+        void EndNotifyOperationStart(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/ReportExecutionTime", ReplyAction="http://tempuri.org/ISimulationServices/ReportExecutionTimeResponse")]
+        System.IAsyncResult BeginReportExecutionTime(decimal latency, System.AsyncCallback callback, object asyncState);
+        
+        void EndReportExecutionTime(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/Log", ReplyAction="http://tempuri.org/ISimulationServices/LogResponse")]
         System.IAsyncResult BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState);
@@ -448,11 +456,17 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private System.Threading.SendOrPostCallback onGetTestDataCompletedDelegate;
         
-        private BeginOperationDelegate onBeginReportLatencyDelegate;
+        private BeginOperationDelegate onBeginNotifyOperationStartDelegate;
         
-        private EndOperationDelegate onEndReportLatencyDelegate;
+        private EndOperationDelegate onEndNotifyOperationStartDelegate;
         
-        private System.Threading.SendOrPostCallback onReportLatencyCompletedDelegate;
+        private System.Threading.SendOrPostCallback onNotifyOperationStartCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginReportExecutionTimeDelegate;
+        
+        private EndOperationDelegate onEndReportExecutionTimeDelegate;
+        
+        private System.Threading.SendOrPostCallback onReportExecutionTimeCompletedDelegate;
         
         private BeginOperationDelegate onBeginLogDelegate;
         
@@ -546,7 +560,9 @@ namespace TravelJournal.PCL.ServiceReference {
         
         public event System.EventHandler<GetTestDataCompletedEventArgs> GetTestDataCompleted;
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ReportLatencyCompleted;
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> NotifyOperationStartCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> ReportExecutionTimeCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> LogCompleted;
         
@@ -744,48 +760,91 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginReportLatency(latency, callback, asyncState);
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginNotifyOperationStart(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginNotifyOperationStart(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndReportLatency(System.IAsyncResult result) {
-            base.Channel.EndReportLatency(result);
+        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndNotifyOperationStart(System.IAsyncResult result) {
+            base.Channel.EndNotifyOperationStart(result);
         }
         
-        private System.IAsyncResult OnBeginReportLatency(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            decimal latency = ((decimal)(inValues[0]));
-            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginReportLatency(latency, callback, asyncState);
+        private System.IAsyncResult OnBeginNotifyOperationStart(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginNotifyOperationStart(callback, asyncState);
         }
         
-        private object[] OnEndReportLatency(System.IAsyncResult result) {
-            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndReportLatency(result);
+        private object[] OnEndNotifyOperationStart(System.IAsyncResult result) {
+            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndNotifyOperationStart(result);
             return null;
         }
         
-        private void OnReportLatencyCompleted(object state) {
-            if ((this.ReportLatencyCompleted != null)) {
+        private void OnNotifyOperationStartCompleted(object state) {
+            if ((this.NotifyOperationStartCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.ReportLatencyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+                this.NotifyOperationStartCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void ReportLatencyAsync(decimal latency) {
-            this.ReportLatencyAsync(latency, null);
+        public void NotifyOperationStartAsync() {
+            this.NotifyOperationStartAsync(null);
         }
         
-        public void ReportLatencyAsync(decimal latency, object userState) {
-            if ((this.onBeginReportLatencyDelegate == null)) {
-                this.onBeginReportLatencyDelegate = new BeginOperationDelegate(this.OnBeginReportLatency);
+        public void NotifyOperationStartAsync(object userState) {
+            if ((this.onBeginNotifyOperationStartDelegate == null)) {
+                this.onBeginNotifyOperationStartDelegate = new BeginOperationDelegate(this.OnBeginNotifyOperationStart);
             }
-            if ((this.onEndReportLatencyDelegate == null)) {
-                this.onEndReportLatencyDelegate = new EndOperationDelegate(this.OnEndReportLatency);
+            if ((this.onEndNotifyOperationStartDelegate == null)) {
+                this.onEndNotifyOperationStartDelegate = new EndOperationDelegate(this.OnEndNotifyOperationStart);
             }
-            if ((this.onReportLatencyCompletedDelegate == null)) {
-                this.onReportLatencyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnReportLatencyCompleted);
+            if ((this.onNotifyOperationStartCompletedDelegate == null)) {
+                this.onNotifyOperationStartCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnNotifyOperationStartCompleted);
             }
-            base.InvokeAsync(this.onBeginReportLatencyDelegate, new object[] {
-                        latency}, this.onEndReportLatencyDelegate, this.onReportLatencyCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginNotifyOperationStartDelegate, null, this.onEndNotifyOperationStartDelegate, this.onNotifyOperationStartCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginReportExecutionTime(decimal latency, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginReportExecutionTime(latency, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndReportExecutionTime(System.IAsyncResult result) {
+            base.Channel.EndReportExecutionTime(result);
+        }
+        
+        private System.IAsyncResult OnBeginReportExecutionTime(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            decimal latency = ((decimal)(inValues[0]));
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginReportExecutionTime(latency, callback, asyncState);
+        }
+        
+        private object[] OnEndReportExecutionTime(System.IAsyncResult result) {
+            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndReportExecutionTime(result);
+            return null;
+        }
+        
+        private void OnReportExecutionTimeCompleted(object state) {
+            if ((this.ReportExecutionTimeCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ReportExecutionTimeCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ReportExecutionTimeAsync(decimal latency) {
+            this.ReportExecutionTimeAsync(latency, null);
+        }
+        
+        public void ReportExecutionTimeAsync(decimal latency, object userState) {
+            if ((this.onBeginReportExecutionTimeDelegate == null)) {
+                this.onBeginReportExecutionTimeDelegate = new BeginOperationDelegate(this.OnBeginReportExecutionTime);
+            }
+            if ((this.onEndReportExecutionTimeDelegate == null)) {
+                this.onEndReportExecutionTimeDelegate = new EndOperationDelegate(this.OnEndReportExecutionTime);
+            }
+            if ((this.onReportExecutionTimeCompletedDelegate == null)) {
+                this.onReportExecutionTimeCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnReportExecutionTimeCompleted);
+            }
+            base.InvokeAsync(this.onBeginReportExecutionTimeDelegate, new object[] {
+                        latency}, this.onEndReportExecutionTimeDelegate, this.onReportExecutionTimeCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1173,16 +1232,27 @@ namespace TravelJournal.PCL.ServiceReference {
                 return _result;
             }
             
-            public System.IAsyncResult BeginReportLatency(decimal latency, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = latency;
-                System.IAsyncResult _result = base.BeginInvoke("ReportLatency", _args, callback, asyncState);
+            public System.IAsyncResult BeginNotifyOperationStart(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("NotifyOperationStart", _args, callback, asyncState);
                 return _result;
             }
             
-            public void EndReportLatency(System.IAsyncResult result) {
+            public void EndNotifyOperationStart(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                base.EndInvoke("ReportLatency", _args, result);
+                base.EndInvoke("NotifyOperationStart", _args, result);
+            }
+            
+            public System.IAsyncResult BeginReportExecutionTime(decimal latency, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = latency;
+                System.IAsyncResult _result = base.BeginInvoke("ReportExecutionTime", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndReportExecutionTime(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("ReportExecutionTime", _args, result);
             }
             
             public System.IAsyncResult BeginLog(TravelJournal.PCL.ServiceReference.LogType type, string log, string callerName, string callerFilePath, int callerLine, System.AsyncCallback callback, object asyncState) {

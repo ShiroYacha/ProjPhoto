@@ -30,7 +30,7 @@ namespace TravelJournal.PCL.ViewModel.Test
         {
             get
             {
-                return new RelayCommand(() => { serverAgent.RequestDownloadTest(testPackageSize); });
+                return new RelayCommand(() => { serverAgent.RequestSingleDownloadTest(testPackageSize); });
             }
         }
 
