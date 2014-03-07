@@ -12,7 +12,7 @@ namespace TravelJournal.PCL.DataService
         private string albumName;
         private List<Photo> photoList;
 
-        public string Name
+        public string AlbumName
         {
             get
             {
@@ -47,17 +47,24 @@ namespace TravelJournal.PCL.DataService
             this.photoList = photoList;
         }
 
-        public DateTime GetTimeTag()
+        public DateTime TimeTag
         {
             
-            foreach (Photo p in PhotoList)
+            //foreach (Photo p in PhotoList)
+            //{
+            //    if (p.Point.Timestamp > timeTag)
+            //    {
+            //        timeTag = p.Point.Timestamp;
+            //    }
+            //}
+            get
             {
-                if (p.Point.Timestamp > timeTag)
-                {
-                    timeTag = p.Point.Timestamp;
-                }
+                return timeTag;
             }
-            return timeTag;
+            set
+            {
+                timeTag = value;
+            }
         }
 
 

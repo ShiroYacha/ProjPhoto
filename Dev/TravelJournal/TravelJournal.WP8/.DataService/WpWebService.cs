@@ -19,12 +19,12 @@ namespace TravelJournal.WP8.DataService
             return ConvertGeopositionToGpsPosition(position);
         }
 
-        public async Task<GpsPosition> GetGeoposition(GpsPoint coordinate,DateTime timestamp)
+        public async Task<GpsPosition> GetGeoposition(GpsPoint coordinate)
         {
             ReverseGeocodeQuery query = new ReverseGeocodeQuery();
             query.GeoCoordinate = new GeoCoordinate(coordinate.Latitude, coordinate.Longitude);
             var tcs = new TaskCompletionSource<GpsPosition>();
-            query.QueryCompleted += (s, e) => { tcs.SetResult(ConvertMapLocationsToGpsPosition(coordinate, timestamp, e.Result)); };
+            query.QueryCompleted += (s, e) => { tcs.SetResult(ConvertMapLocationsToGpsPosition(coordinate, coordinate.Timestamp, e.Result)); };
             query.QueryAsync();
             return await tcs.Task;
         }

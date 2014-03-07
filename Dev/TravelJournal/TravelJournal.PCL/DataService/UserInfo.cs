@@ -9,8 +9,9 @@ namespace TravelJournal.PCL.DataService
     {
 
         private string userName;
-        private GpsPoint userPosition;
-        private GpsPoint originalPosition = new GpsPoint(135.00, 75.00, Convert.ToDateTime("07/09/2013"));
+        private GpsPosition userPosition;
+        private GpsPosition originalPosition;
+            
         public string UserName
         {
             get
@@ -23,7 +24,7 @@ namespace TravelJournal.PCL.DataService
             }
         }
 
-        public GpsPoint UserPosition
+        public GpsPosition UserPosition
         {
             get
             {
@@ -35,15 +36,19 @@ namespace TravelJournal.PCL.DataService
             }
         }
 
+
+        public GpsPosition OriginalPosition
+        {
+            get { return originalPosition; }
+            set { originalPosition = value; }
+        }
+
         public UserInfo() { }
-        public UserInfo(string userName, GpsPoint userPosition)
+        public UserInfo(string userName, GpsPosition userPosition)
         {
             this.userName = userName;
             this.userPosition = userPosition;
         }
-
-
-
       
     }
 }
