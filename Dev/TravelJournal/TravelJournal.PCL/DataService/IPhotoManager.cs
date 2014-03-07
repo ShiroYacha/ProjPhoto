@@ -14,7 +14,7 @@ namespace TravelJournal.PCL.DataService
 
 	public interface IPhotoManager 
 	{
-        void FoundRawPhoto(DateTime tag, Action<Photo> onPhotoFoundHandler);
+        bool FoundRawPhoto(DateTime tag, Action<Photo> onPhotoFoundHandler);
 	}
 }
 

@@ -11,14 +11,14 @@ namespace TravelJournal.PCL.DataService
 
        public  double Latitude { get; set; }
 
-       public  DateTime TimeStamp { get; set; }
+       public  DateTime Timestamp { get; set; }
 
         public GpsPoint() { }
         public GpsPoint(double longitude,double latitude, DateTime time){
 
             Longitude = longitude;
             Latitude = latitude;
-            TimeStamp = time;
+            Timestamp = time;
         }
     }
 }
