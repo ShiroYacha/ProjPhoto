@@ -7,6 +7,7 @@ namespace TravelJournal.PCL.DataService
 {
     public class GpsPosition
     {
+        public GpsPoint GpsPoint { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public GpsPosition() { }

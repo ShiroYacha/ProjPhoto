@@ -6,18 +6,19 @@
 //------------------------------------------------------------------------------
 namespace TravelJournal.PCL.DataService
 {
-	using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TravelJournal.PCL.BusinessLogic;
-   
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using TravelJournal.PCL.BusinessLogic;
 
-	public interface IWebService 
-	{
-		GpsPoint GetUserPosition();
-        GpsPosition GetGeoposition(GpsPoint coordinate);
-	}
+
+    public interface IWebService
+    {
+        Task<GpsPosition> GetUserPosition();
+        Task<GpsPosition> GetGeoposition(GpsPoint coordinate,DateTime timestamp);
+    }
+
 }
 

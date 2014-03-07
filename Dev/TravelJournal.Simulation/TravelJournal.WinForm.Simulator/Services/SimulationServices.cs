@@ -151,7 +151,7 @@ namespace TravelJournal.WinForm.Simulator
             // Get photos
             List<Photo> photos = simulator.GetCreatedPhotos();
             if (filter != DateTime.MinValue)
-                return photos.Where((photo) => { return photo.Point.TimeStamp > filter; });
+                return photos.Where((photo) => { return photo.Point.Timestamp > filter; });
             else
                 return photos;
         }

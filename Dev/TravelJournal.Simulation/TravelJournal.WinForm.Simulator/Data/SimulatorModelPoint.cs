@@ -22,7 +22,7 @@ namespace TravelJournal.WinForm.Simulator
 
         public GpsPoint ConvertToGpsPoint()
         {
-            return new GpsPoint() { Latitude = Gps.Lat, Longitude = Gps.Lng, TimeStamp = DateTime.Now };
+            return new GpsPoint() { Latitude = Gps.Lat, Longitude = Gps.Lng, Timestamp = DateTime.Now };
         }
     }
 }

@@ -28,19 +28,19 @@ namespace TravelJournal.PCL.BusinessLogic
             exifExtractor = SimpleIoc.Default.GetInstance<IExifExtractor>();
         }
 
-        public void Execute()
+        public async void Execute()
         {
             nowTime = DateTime.Now;
             webService = SimpleIoc.Default.GetInstance<IWebService>();
-            GpsPoint p = webService.GetUserPosition();
+            //GpsPoint p = await webService.GetUserPosition();
             album = dataManager.GetAlbum("test");
             photoManager.FoundRawPhoto(album.GetTimeTag(), PhotoHandler);   
         }
 
-        public void PhotoHandler(Photo aPhoto)
+        public async void PhotoHandler(Photo aPhoto)
         {
             GpsPoint p = exifExtractor.ExtractGeoCoordinate(aPhoto);
-            aPhoto.Position = webService.GetGeoposition(p);
+            aPhoto.Position = await webService.GetGeoposition(p,p.Timestamp);
             photoOrganizer.OrganizePhoto(aPhoto, album);
             dataManager.Save();
         }       

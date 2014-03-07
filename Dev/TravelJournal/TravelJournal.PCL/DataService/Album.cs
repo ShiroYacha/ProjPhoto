@@ -52,9 +52,9 @@ namespace TravelJournal.PCL.DataService
             
             foreach (Photo p in PhotoList)
             {
-                if (p.Point.TimeStamp > timeTag)
+                if (p.Point.Timestamp > timeTag)
                 {
-                    timeTag = p.Point.TimeStamp;
+                    timeTag = p.Point.Timestamp;
                 }
             }
             return timeTag;
