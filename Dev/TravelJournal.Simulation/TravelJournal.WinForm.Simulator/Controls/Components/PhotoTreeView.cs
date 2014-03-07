@@ -52,7 +52,7 @@ namespace TravelJournal.WinForm.Simulator.Controls.Components
             List<Album> testAlbums = new List<Album>();
             testAlbums.Add(new Album()
             {
-                Name = "Album 1",
+                AlbumName = "Album 1",
                 PhotoList = CreateTestPhotoList()
             });
             return testAlbums;
@@ -72,8 +72,8 @@ namespace TravelJournal.WinForm.Simulator.Controls.Components
             List<TreeNode> albumNodes = new List<TreeNode>();
             foreach (Album album in albums)
             {
-                TreeNode albumNode = new TreeNode(album.Name);
-                albumNode.Name = album.Name;
+                TreeNode albumNode = new TreeNode(album.AlbumName);
+                albumNode.Name = album.AlbumName;
                 // Populate sub albums
                 CreateSubTreeNodes(albumNode, album);
                 albumNodes.Add(albumNode);
@@ -87,8 +87,8 @@ namespace TravelJournal.WinForm.Simulator.Controls.Components
             List<TreeNode> cityNodes = new List<TreeNode>();
             foreach (Photo photo in album.PhotoList)
             {
-                TreeNode photoNode = new TreeNode(photo.Name);
-                photoNode.Name = photo.Name;
+                TreeNode photoNode = new TreeNode(photo.PhotoName);
+                photoNode.Name = photo.PhotoName;
                 // Create or add to city node
                 TreeNode cityNode = CreateOrAddToSubNode(cityNodes, photo.Position.City, photoNode);
                 // Create or add to country node
@@ -112,17 +112,17 @@ namespace TravelJournal.WinForm.Simulator.Controls.Components
         private List<Photo> CreateTestPhotoList()
         {
             List<Photo> allPhotos=new List<Photo>() {
-                    new Photo(){Name="Photo 1",Position=new GpsPosition(){City="Metz",Country="France"}},
-                    new Photo(){Name="Photo 2",Position=new GpsPosition(){City="Metz",Country="France"}},
-                    new Photo(){Name="Photo 3",Position=new GpsPosition(){City="Metz",Country="France"}},
-                    new Photo(){Name="Photo 4",Position=new GpsPosition(){City="Paris",Country="France"}},
-                    new Photo(){Name="Photo 5",Position=new GpsPosition(){City="München",Country="Germany"}},
-                    new Photo(){Name="Photo 6",Position=new GpsPosition(){City="Köln",Country="Germany"}},
-                    new Photo(){Name="Photo 7",Position=new GpsPosition(){City="Lyon",Country="France"}},
-                    new Photo(){Name="Photo 8",Position=new GpsPosition(){City="Lyon",Country="France"}},
-                    new Photo(){Name="Photo 9",Position=new GpsPosition(){City="Lyon",Country="France"}},
-                    new Photo(){Name="Photo 10",Position=new GpsPosition(){City="Lyon",Country="France"}},
-                    new Photo(){Name="Photo 11",Position=new GpsPosition(){City="Brest",Country="France"}},
+                    new Photo(){PhotoName="Photo 1",Position=new GpsPosition(){City="Metz",Country="France"}},
+                    new Photo(){PhotoName="Photo 2",Position=new GpsPosition(){City="Metz",Country="France"}},
+                    new Photo(){PhotoName="Photo 3",Position=new GpsPosition(){City="Metz",Country="France"}},
+                    new Photo(){PhotoName="Photo 4",Position=new GpsPosition(){City="Paris",Country="France"}},
+                    new Photo(){PhotoName="Photo 5",Position=new GpsPosition(){City="München",Country="Germany"}},
+                    new Photo(){PhotoName="Photo 6",Position=new GpsPosition(){City="Köln",Country="Germany"}},
+                    new Photo(){PhotoName="Photo 7",Position=new GpsPosition(){City="Lyon",Country="France"}},
+                    new Photo(){PhotoName="Photo 8",Position=new GpsPosition(){City="Lyon",Country="France"}},
+                    new Photo(){PhotoName="Photo 9",Position=new GpsPosition(){City="Lyon",Country="France"}},
+                    new Photo(){PhotoName="Photo 10",Position=new GpsPosition(){City="Lyon",Country="France"}},
+                    new Photo(){PhotoName="Photo 11",Position=new GpsPosition(){City="Brest",Country="France"}},
                     };
             Random random = new Random();
             return allPhotos.Take(random.Next(allPhotos.Count)).ToList();

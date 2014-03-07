@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace TravelJournal.PCL.BusinessLogic
 {
-    class Processor
+    public class Processor
     {
         private DateTime nowTime;
         private Album album;

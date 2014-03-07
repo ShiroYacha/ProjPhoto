@@ -111,9 +111,8 @@ namespace TravelJournal.WinForm.Simulator
                     {
                         return new Photo()
                         {
-                            Name = string.Format("Photo #{0}", photos.Count + ++photoIndex),
-                            Point = sp.ConvertToGpsPoint(),
-                            Position = new GpsPosition()
+                            PhotoName = string.Format("Photo #{0}", photos.Count + ++photoIndex),
+                            Position = new GpsPosition() { GpsPoint = sp.ConvertToGpsPoint() }
                         };
                     }));
                 // Inspect information
