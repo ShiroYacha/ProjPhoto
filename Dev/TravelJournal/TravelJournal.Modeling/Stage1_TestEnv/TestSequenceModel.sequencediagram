@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="7847cca8-b657-41da-83e2-f0195466af9c" name="TestSequenceModel" linkedPackageId="91fb0c59-f72e-4781-8b06-bdc158413498" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="7847cca8-b657-41da-83e2-f0195466af9c" name="TestSequenceModel" linkedPackageId="91fb0c59-f72e-4781-8b06-bdc158413498" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
   <appliedStereotypesInternal>
     <stereotypeInstance Id="f625b284-4d5f-4f75-a166-8301545d4a92" name="namespace" profile="CSharpProfile">
       <elementDefinition Id="3506566b-9597-4a05-9af9-c370ca19e32c" />
@@ -72,14 +72,6 @@
       </propertyInstances>
     </stereotypeInstance>
   </appliedStereotypesInternal>
-  <profileInstances>
-    <packageHasProfileInstances Id="e2e5161f-f7c8-4a5f-82b8-3ba9de71368e">
-      <profileInstance Id="859532e3-9b12-4029-8812-1dca9da47ccb" name="TextTemplateBindings">
-        <elementDefinition Id="c5fc85dc-615a-4e06-b9f9-adba95858d3c" />
-      </profileInstance>
-      <elementDefinition Id="7af8b66d-0115-4679-8a7a-8eed5b7276dc" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <packageHasNamedElement>
       <interaction Id="708bdc56-e1a5-4f0f-9b8d-6e0c27a54334" name="TestSequenceModel" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
@@ -247,16 +239,16 @@
               <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="55339d42-2669-4c7e-8b43-781fd8826e5f" name="MessageOccurrenceSpecification55">
-            <elementDefinition Id="104ea74e-322c-497e-a7a3-2c3a8eae36b3" />
-            <covered>
-              <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="7ea8d399-150e-474e-a058-d9202e955e8f" name="MessageOccurrenceSpecification54">
             <elementDefinition Id="10246c5f-da3c-42f3-ae98-75c52122cfe1" />
             <covered>
               <lifelineMoniker Id="2c7f9325-c0ab-476d-b42c-6f8515e2b5e7" LastKnownName="IDataManager" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="55339d42-2669-4c7e-8b43-781fd8826e5f" name="MessageOccurrenceSpecification55">
+            <elementDefinition Id="104ea74e-322c-497e-a7a3-2c3a8eae36b3" />
+            <covered>
+              <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="f733fa83-6615-4d1c-9d2d-bb42d941496b" name="ExecutionOccurrenceSpecification36">
@@ -364,16 +356,16 @@
               </interactionOperand>
             </operands>
           </combinedFragment>
-          <operandOccurrenceSpecification Id="8998487c-bd5e-4f8c-b5eb-20073716a075" name="OperandOccurrenceSpecification25">
-            <elementDefinition Id="6e28884c-5492-4d91-b745-f93a00f3284a" />
-            <covered>
-              <lifelineMoniker Id="6aaa71cc-407c-471b-91d1-fee375f9240b" LastKnownName="IWebService" />
-            </covered>
-          </operandOccurrenceSpecification>
           <operandOccurrenceSpecification Id="bfca57de-a46c-48c7-b6a6-e5dfb90e69b0" name="OperandOccurrenceSpecification29">
             <elementDefinition Id="65bf749a-b8c2-4e14-b22d-a75177784b5c" />
             <covered>
               <lifelineMoniker Id="2c7f9325-c0ab-476d-b42c-6f8515e2b5e7" LastKnownName="IDataManager" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="8998487c-bd5e-4f8c-b5eb-20073716a075" name="OperandOccurrenceSpecification25">
+            <elementDefinition Id="6e28884c-5492-4d91-b745-f93a00f3284a" />
+            <covered>
+              <lifelineMoniker Id="6aaa71cc-407c-471b-91d1-fee375f9240b" LastKnownName="IWebService" />
             </covered>
           </operandOccurrenceSpecification>
           <operandOccurrenceSpecification Id="ff4961d9-20e5-4e76-82bf-0d7ccb3f2d74" name="OperandOccurrenceSpecification23">
@@ -433,16 +425,16 @@
               <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="c01ec08e-7b97-4512-91af-6b9cb41eb223" name="MessageOccurrenceSpecification37">
-            <elementDefinition Id="c3a742d1-b306-4b19-9f88-8510c745fbaa" />
-            <covered>
-              <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="caa47dbe-bba5-487a-9203-dfabbb9eec77" name="MessageOccurrenceSpecification36">
             <elementDefinition Id="87c445dc-2dac-42a7-af97-0e440c2f6741" />
             <covered>
               <lifelineMoniker Id="a3e0cf2b-25d7-404a-ab8c-8a29b4fb434c" LastKnownName="IPhotoManager" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c01ec08e-7b97-4512-91af-6b9cb41eb223" name="MessageOccurrenceSpecification37">
+            <elementDefinition Id="c3a742d1-b306-4b19-9f88-8510c745fbaa" />
+            <covered>
+              <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
             </covered>
           </messageOccurrenceSpecification>
           <behaviorExecutionSpecification Id="346ee0ee-ac41-424e-9069-b69b228a657a" name="BehaviorExecutionSpecification15">
@@ -533,16 +525,16 @@
               <lifelineMoniker Id="6aaa71cc-407c-471b-91d1-fee375f9240b" LastKnownName="IWebService" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="bd215813-1b42-4a9c-8805-ba6c688bad23" name="MessageOccurrenceSpecification26">
-            <elementDefinition Id="1156ac42-548f-4a5c-a51f-1fd310a65f29" />
-            <covered>
-              <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="e5deeeda-ef9e-4fb2-960b-a10744346119" name="MessageOccurrenceSpecification27">
             <elementDefinition Id="20291c80-f4ad-4c77-8795-3bf262012406" />
             <covered>
               <lifelineMoniker Id="6aaa71cc-407c-471b-91d1-fee375f9240b" LastKnownName="IWebService" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="bd215813-1b42-4a9c-8805-ba6c688bad23" name="MessageOccurrenceSpecification26">
+            <elementDefinition Id="1156ac42-548f-4a5c-a51f-1fd310a65f29" />
+            <covered>
+              <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="a7225dae-9c79-4cbf-a9ba-39b9ddb67390" name="ExecutionOccurrenceSpecification18">
@@ -595,16 +587,16 @@
               <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="464b1b06-7247-49c8-bfb0-38dad0124d68" name="MessageOccurrenceSpecification66">
-            <elementDefinition Id="2d1c4ce1-ac58-4bd1-b2df-0211a87847d7" />
-            <covered>
-              <lifelineMoniker Id="c5e48df4-d6f3-4b12-9187-3a9a0f45134d" LastKnownName="IPhotoOrganizer" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="cf9d0531-2dd3-463e-a9d1-392e86322233" name="MessageOccurrenceSpecification67">
             <elementDefinition Id="8e6f9248-b949-42d5-a431-501c9b23bd0d" />
             <covered>
               <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="464b1b06-7247-49c8-bfb0-38dad0124d68" name="MessageOccurrenceSpecification66">
+            <elementDefinition Id="2d1c4ce1-ac58-4bd1-b2df-0211a87847d7" />
+            <covered>
+              <lifelineMoniker Id="c5e48df4-d6f3-4b12-9187-3a9a0f45134d" LastKnownName="IPhotoOrganizer" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="7ab60b42-230c-4dcb-8493-f19d4a730f33" name="ExecutionOccurrenceSpecification42">
@@ -691,28 +683,10 @@
               <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
             </covered>
           </executionOccurrenceSpecification>
-          <operandOccurrenceSpecification Id="c13d96a2-5071-42ac-afb6-4a189a2cb8ee" name="OperandOccurrenceSpecification32">
-            <elementDefinition Id="b8b4619a-bd89-4236-bcd4-7bb7d61c1992" />
+          <operandOccurrenceSpecification Id="27f79cc7-a623-408f-84e1-9c2c65b35f8c" name="OperandOccurrenceSpecification22">
+            <elementDefinition Id="d9cd4afe-c2d5-4bf9-a07b-bb11b43f68ea" />
             <covered>
-              <lifelineMoniker Id="c5e48df4-d6f3-4b12-9187-3a9a0f45134d" LastKnownName="IPhotoOrganizer" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification Id="16ade1ed-3843-4728-88ab-791676c2b09e" name="OperandOccurrenceSpecification20">
-            <elementDefinition Id="a29940b2-88cc-4835-a95b-f6bf5a13f8ec" />
-            <covered>
-              <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification Id="31d2b412-683f-4b40-9b50-c28db747a463" name="OperandOccurrenceSpecification30">
-            <elementDefinition Id="def5a741-ddc2-49a5-ac40-09f00f75a87c" />
-            <covered>
-              <lifelineMoniker Id="2c7f9325-c0ab-476d-b42c-6f8515e2b5e7" LastKnownName="IDataManager" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification Id="a321fd5c-c7fb-47e9-a3cd-f34fa34839c5" name="OperandOccurrenceSpecification24">
-            <elementDefinition Id="057d8c5d-ec95-4b08-993c-5d9b1f8d8565" />
-            <covered>
-              <lifelineMoniker Id="f6f28473-871e-456b-80b6-fa2a2a580258" LastKnownName="IExifExtractor" />
+              <lifelineMoniker Id="a3e0cf2b-25d7-404a-ab8c-8a29b4fb434c" LastKnownName="IPhotoManager" />
             </covered>
           </operandOccurrenceSpecification>
           <operandOccurrenceSpecification Id="de32885e-14f6-41c3-8f4b-3f8441d9f41b" name="OperandOccurrenceSpecification26">
@@ -721,10 +695,28 @@
               <lifelineMoniker Id="6aaa71cc-407c-471b-91d1-fee375f9240b" LastKnownName="IWebService" />
             </covered>
           </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification Id="27f79cc7-a623-408f-84e1-9c2c65b35f8c" name="OperandOccurrenceSpecification22">
-            <elementDefinition Id="d9cd4afe-c2d5-4bf9-a07b-bb11b43f68ea" />
+          <operandOccurrenceSpecification Id="a321fd5c-c7fb-47e9-a3cd-f34fa34839c5" name="OperandOccurrenceSpecification24">
+            <elementDefinition Id="057d8c5d-ec95-4b08-993c-5d9b1f8d8565" />
             <covered>
-              <lifelineMoniker Id="a3e0cf2b-25d7-404a-ab8c-8a29b4fb434c" LastKnownName="IPhotoManager" />
+              <lifelineMoniker Id="f6f28473-871e-456b-80b6-fa2a2a580258" LastKnownName="IExifExtractor" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="16ade1ed-3843-4728-88ab-791676c2b09e" name="OperandOccurrenceSpecification20">
+            <elementDefinition Id="a29940b2-88cc-4835-a95b-f6bf5a13f8ec" />
+            <covered>
+              <lifelineMoniker Id="7decb25f-d678-4ec3-afc3-159805fb2a69" LastKnownName="BackgroundProcessor" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="c13d96a2-5071-42ac-afb6-4a189a2cb8ee" name="OperandOccurrenceSpecification32">
+            <elementDefinition Id="b8b4619a-bd89-4236-bcd4-7bb7d61c1992" />
+            <covered>
+              <lifelineMoniker Id="c5e48df4-d6f3-4b12-9187-3a9a0f45134d" LastKnownName="IPhotoOrganizer" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification Id="31d2b412-683f-4b40-9b50-c28db747a463" name="OperandOccurrenceSpecification30">
+            <elementDefinition Id="def5a741-ddc2-49a5-ac40-09f00f75a87c" />
+            <covered>
+              <lifelineMoniker Id="2c7f9325-c0ab-476d-b42c-6f8515e2b5e7" LastKnownName="IDataManager" />
             </covered>
           </operandOccurrenceSpecification>
           <messageOccurrenceSpecification Id="9d7af423-b674-46b2-8330-a1148c0331be" name="MessageOccurrenceSpecification4">
@@ -1119,6 +1111,12 @@
           <elementDefinition Id="51a2f357-37f9-46e4-8703-c62541a17599" />
         </profileInstance>
         <elementDefinition Id="a09e7638-18b3-490f-993c-d1edc5d78e61" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="e2e5161f-f7c8-4a5f-82b8-3ba9de71368e">
+        <profileInstance Id="859532e3-9b12-4029-8812-1dca9da47ccb" name="TextTemplateBindings">
+          <elementDefinition Id="c5fc85dc-615a-4e06-b9f9-adba95858d3c" />
+        </profileInstance>
+        <elementDefinition Id="7af8b66d-0115-4679-8a7a-8eed5b7276dc" />
       </packageHasProfileInstances>
     </profileInstances>
   </package>

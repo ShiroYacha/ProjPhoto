@@ -47,17 +47,24 @@ namespace TravelJournal.PCL.DataService
             this.photoList = photoList;
         }
 
-        public DateTime getTimeTag()
+        public DateTime TimeTag
         {
             
-            foreach (Photo p in PhotoList)
+            //foreach (Photo p in PhotoList)
+            //{
+            //    if (p.Point.Timestamp > timeTag)
+            //    {
+            //        timeTag = p.Point.Timestamp;
+            //    }
+            //}
+            get
             {
-                if (p.Point.TimeStamp > timeTag)
-                {
-                    timeTag = p.Point.TimeStamp;
-                }
+                return timeTag;
             }
-            return timeTag;
+            set
+            {
+                timeTag = value;
+            }
         }
 
 

@@ -2,50 +2,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TravelJournal.PCL.BusinessLogic;
 
 namespace TravelJournal.PCL.DataService
 {
-    abstract class DataManagerBase
+    public abstract class DataManagerBase
     {
-        private Album album;
-        private User user;
+        private List<Album> albumsCollection;
+        private UserInfo userInfo;
+        
 
-        public DataManagerBase()
+    
+
+        public List<Album> GetAlbumsCollection()
         {
-            album = new Album();
-            user = new User();
+            return this.albumsCollection;
         }
-        public DataManagerBase(Album album, User user)
+        public void SetAlbums(List<Album> albumsCollection)
         {
-            this.album = album;
-            this.user = user;
+            this.albumsCollection = albumsCollection;
         }
-        public DataManagerBase Load()
+        public UserInfo GetUserInfo()
         {
-            return this;
+            return this.userInfo;
+        }
+        public void SetUserInfo(UserInfo userInfo)
+        {
+            this.userInfo = userInfo;
+        }
+      
+
+        public abstract void Load();
+
+        public abstract void Save();
+                
+        public void AddPhoto(string albumName, params Photo[] photos)
+        {
+            albumsCollection.First((album)=>{ return album.AlbumName==albumName;}).PhotoList.AddRange(photos);
         }
 
-        public void Save()
+        public Album GetAlbum(string albumName)
         {
+            return albumsCollection.First((album) => { return album.AlbumName == albumName; });
+        }
 
-        }
-        public Album AddPhoto(Photo aPhoto)
-        {
-            album.PhotoList.Add(aPhoto);
-            return album;
-        }
-        public Album AddPhoto(IEnumerable<Photo> aPhotoList)
-        {
-            album.PhotoList.AddRange(aPhotoList);
-            return album;
-        }
-        public Album GetAlbum()
-        {
-            return this.album;
-        }
-        public User GetUserInfo()
-        {
-            return this.user;
-        }
+      
     }
 }
