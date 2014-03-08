@@ -9,83 +9,39 @@ namespace TravelJournal.PCL.BusinessLogic
     public abstract class State
     {
         public abstract void Execute(Processor processor);
+     
+        public virtual void ChangeState(Processor p, State s)
+        {
+            p.State = s;
+        }
     }
 
     public class OriginalState : State
     {
-        public override async void Execute(Processor processor)
+        public override void Execute(Processor processor)
         {
-            GpsPosition userPosition = await processor.WebService.GetUserPosition();
-
-            if (userPosition.City == processor.DataManager.GetUserInfo().OriginalPosition.City)
-            {
-                processor.SetState(new OriginalState());
-                //processor.Execute();
-            }
-            else
-            {
-                processor.TourRoutePoints.Add(userPosition.GpsPoint);
-                processor.SetState(new PilotState());
-            }
+  
 
         }
     }
     public class PilotState : State
     {
-        public override async void Execute(Processor processor)
+        public override void Execute(Processor processor)
         {
-            GpsPosition userPosition = await processor.WebService.GetUserPosition();
-            if ((processor.PhotoManager.FoundRawPhoto(processor.Album.TimeTag, processor.PhotoHandler)))
-            {
-                processor.SetState(new PhotoHandlerState());
-            }
-            else
-            {
-                if (userPosition.City == processor.DataManager.GetUserInfo().OriginalPosition.City)
-                {
-                    processor.SetState(new OriginalState());
-                    //processor.Execute();
-                }
-                else
-                {
-                    processor.TourRoutePoints.Add(userPosition.GpsPoint);
-                    processor.SetState(new PilotState());
-                }
-            }
+
+            processor.TourRoutePoints.Add(processor.UserPosition.GpsPoint);      
         }
 
     }
     public class PhotoHandlerState : State
     {
-        public override async void Execute(Processor processor)
+        public override void Execute(Processor processor)
         {
-            GpsPosition userPosition = await processor.WebService.GetUserPosition();
-            if (userPosition.City == processor.DataManager.GetUserInfo().OriginalPosition.City)
-            {
-                if ((processor.PhotoManager.FoundRawPhoto(processor.Album.TimeTag, processor.PhotoHandler)) == true)
-                {
-                    processor.Album = processor.DataManager.GetAlbum("test");
-                    processor.PhotoManager.FoundRawPhoto(processor.Album.TimeTag, processor.PhotoHandler);
-                }
-                else
-                {
-                    processor.SetState(new AlbumGeneratorState());
-                }
-            }
-            else
-            {
-                processor.TourRoutePoints.Add(userPosition.GpsPoint);
-                if ((processor.PhotoManager.FoundRawPhoto(processor.Album.TimeTag, processor.PhotoHandler)) == true)
-                {
-                    processor.Album = processor.DataManager.GetAlbum("test");
-                    processor.PhotoManager.FoundRawPhoto(processor.Album.TimeTag, processor.PhotoHandler);
-                    processor.SetState(new PhotoHandlerState());
-                }
-                else
-                {
-                    processor.SetState(new PhotoHandlerState());
-                }
-            }
+
+            processor.TourRoutePoints.Add(processor.UserPosition.GpsPoint);
+            processor.Album = processor.DataManager.GetAlbum("test");
+            processor.PhotoManager.FoundRawPhoto(processor.Album.TimeTag, processor.PhotoHandler);
+
         }
     }
     public class AlbumGeneratorState : State

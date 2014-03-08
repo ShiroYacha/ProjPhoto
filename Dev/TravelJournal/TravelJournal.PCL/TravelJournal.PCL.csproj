@@ -42,6 +42,7 @@
     <Compile Include="BusinessLogic\PhotoOrganizer.cs" />
     <Compile Include="BusinessLogic\Processor.cs" />
     <Compile Include="BusinessLogic\State.cs" />
+    <Compile Include="BusinessLogic\Transition.cs" />
     <Compile Include="DataService\Album.cs" />
     <Compile Include="DataService\DataManagerBase.cs" />
     <Compile Include="DataService\GpsPosition.cs" />
