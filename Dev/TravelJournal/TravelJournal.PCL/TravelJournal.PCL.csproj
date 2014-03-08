@@ -39,21 +39,21 @@
     <Compile Include=".Test\ConnectivityTesterAgentBase.cs" />
     <Compile Include=".Test\JournalGenerationTesterAgentBase.cs" />
     <Compile Include=".Test\TravelInfoTesterAgentBase.cs" />
-    <Compile Include="BusinessLogic\PhotoOrganizer.cs" />
-    <Compile Include="BusinessLogic\Processor.cs" />
-    <Compile Include="BusinessLogic\State.cs" />
-    <Compile Include="BusinessLogic\Transition.cs" />
-    <Compile Include="DataService\Album.cs" />
-    <Compile Include="DataService\DataManagerBase.cs" />
-    <Compile Include="DataService\GpsPosition.cs" />
-    <Compile Include="DataService\Photo.cs" />
-    <Compile Include="DataService\GpsPoint.cs" />
-    <Compile Include="DataService\UserInfo.cs" />
+    <Compile Include=".BusinessLogic\PhotoOrganizer.cs" />
+    <Compile Include=".BusinessLogic\Processor.cs" />
+    <Compile Include=".BusinessLogic\State.cs" />
+    <Compile Include=".BusinessLogic\Transition.cs" />
+    <Compile Include=".DataService\Album.cs" />
+    <Compile Include=".DataService\DataManagerBase.cs" />
+    <Compile Include=".DataService\GpsPosition.cs" />
+    <Compile Include=".DataService\Photo.cs" />
+    <Compile Include=".DataService\GpsPoint.cs" />
+    <Compile Include=".DataService\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BusinessLogic\IExifExtractor.cs" />
-    <Compile Include="BusinessLogic\IPhotoOrganizer.cs" />
-    <Compile Include="DataService\IPhotoManager.cs" />
-    <Compile Include="DataService\IWebService.cs" />
+    <Compile Include=".BusinessLogic\IExifExtractor.cs" />
+    <Compile Include=".BusinessLogic\IPhotoOrganizer.cs" />
+    <Compile Include=".DataService\IPhotoManager.cs" />
+    <Compile Include=".DataService\IWebService.cs" />
     <Compile Include="Service References\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

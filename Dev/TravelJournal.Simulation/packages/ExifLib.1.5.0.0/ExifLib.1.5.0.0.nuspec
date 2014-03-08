@@ -11,6 +11,7 @@
     <description>Reads JPEG Exif data without the heavyweight and unnecessary instantiation of GDI+ objects</description>
     <releaseNotes>Out-of-range tags are no longer indexed; fixed an exception when reading images containing tags without datatypes</releaseNotes>
     <copyright>Licensed under the CPOL</copyright>
+    <language />
     <tags>jpeg exif jpg</tags>
   </metadata>
 </package>

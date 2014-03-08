@@ -8,6 +8,8 @@ namespace TravelJournal.PCL.DataService
 {
     public abstract class DataManagerBase
     {
+        private const string NAME_CURRENT_ALBUM = "DEFAULT_CURRENT_ALBUM";
+
         private List<Album> albumsCollection;
         private UserInfo userInfo;
         private State state;
@@ -45,6 +47,21 @@ namespace TravelJournal.PCL.DataService
             return albumsCollection.First((album) => { return album.AlbumName == albumName; });
         }
 
-      
+        public Album GetCurrentAlbum()
+        {
+            return GetAlbum(NAME_CURRENT_ALBUM) ?? CreateCurrentAlbum();
+        }
+
+        public void RenameCurrentAlbum(string newName)
+        {
+            GetAlbum(NAME_CURRENT_ALBUM).AlbumName = newName;
+        }
+
+        private Album CreateCurrentAlbum()
+        {
+            Album currentAlbum = new Album() { AlbumName = NAME_CURRENT_ALBUM,TimeTag=DateTime.Now };
+            albumsCollection.Add(currentAlbum);
+            return currentAlbum;
+        }
     }
 }
