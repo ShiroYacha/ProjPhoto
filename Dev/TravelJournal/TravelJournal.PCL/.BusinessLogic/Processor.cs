@@ -20,6 +20,7 @@ namespace TravelJournal.PCL.BusinessLogic
         private GpsPosition userPosition;
 
         public IWebService WebService { get { return SimpleIoc.Default.GetInstance<IWebService>(); } }
+
         public DataManagerBase DataManager { get { return SimpleIoc.Default.GetInstance<DataManagerBase>(); } }
 
         public IPhotoOrganizer PhotoOrganizer { get { return SimpleIoc.Default.GetInstance<IPhotoOrganizer>(); } }
@@ -44,10 +45,6 @@ namespace TravelJournal.PCL.BusinessLogic
         {
             get { return this.state; }
             set { this.state = value; }
-        }
-        public void Execute()
-        {
-            this.state.Execute(this);
         }
 
         public List<GpsPoint> TourRoutePoints
@@ -94,13 +91,13 @@ namespace TravelJournal.PCL.BusinessLogic
             album.TimeTag = DateTime.Now;          
         }
 
-        public void MainExecute()
+        public static void Execute()
         {
             Processor processor = new Processor();
-            DataManager.Load();
+            processor.DataManager.Load();
             processor.CheckState();
-            processor.State.Execute(this);
-            DataManager.Save();
+            processor.State.Execute(processor);
+            processor.DataManager.Save();
         }
     }
 }
