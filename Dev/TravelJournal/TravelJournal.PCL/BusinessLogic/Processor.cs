@@ -13,9 +13,11 @@ namespace TravelJournal.PCL.BusinessLogic
         private DateTime nowTime;
         private Album album;
         private State state;
-        private bool isInTravel;
+        private static Transition transition;
         private List<GpsPoint> tourRoutePoints = new List<GpsPoint>();
         private List<string> touristCity = new List<string>();
+        private bool albumCompleted;
+        private GpsPosition userPosition;
 
         public IWebService WebService { get { return SimpleIoc.Default.GetInstance<IWebService>(); } }
         public DataManagerBase DataManager { get { return SimpleIoc.Default.GetInstance<DataManagerBase>(); } }
@@ -36,25 +38,12 @@ namespace TravelJournal.PCL.BusinessLogic
             get { return album; }
             set { album = value; }
         }
-        public Processor(State state)
+        public Processor() { }
+       
+        public State State
         {
-            this.state = state;     
-        }
-        public State GetState()
-        {
-            return this.state;
-        }
-        public void SetState(State state)
-        {
-            this.state = state;
-        }
-        public bool GetIsInTravel()
-        {
-            return this.isInTravel;
-        }
-        public void SetIsInTravel(bool isInTravel)
-        {
-            this.isInTravel = isInTravel;
+            get { return this.state; }
+            set { this.state = value; }
         }
         public void Execute()
         {
@@ -72,6 +61,30 @@ namespace TravelJournal.PCL.BusinessLogic
             set { touristCity = value; }
         }
 
+        public bool AlbumCompleted
+        {
+            get { return albumCompleted; }
+            set { albumCompleted = value; }
+        }
+
+        public GpsPosition UserPosition
+        {
+            get { return userPosition; }
+            set{userPosition = value;}
+        }
+        public void CheckState()
+        {
+            Transition t = GetTransitionInstance();
+            t.Transform(this);
+        }
+        public static Transition GetTransitionInstance()
+        {
+            if (transition == null)
+            {
+                transition = new Transition();
+            }
+            return transition;
+        }
 
         public async void PhotoHandler(Photo aPhoto)
         {
@@ -83,9 +96,10 @@ namespace TravelJournal.PCL.BusinessLogic
 
         public void MainExecute()
         {
+            Processor processor = new Processor();
             DataManager.Load();
-            Processor processor = new Processor(DataManager.GetState());
-            processor.Execute();
+            processor.CheckState();
+            processor.State.Execute(this);
             DataManager.Save();
         }
     }

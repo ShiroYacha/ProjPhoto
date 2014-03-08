@@ -12,25 +12,22 @@ namespace TravelJournal.PCL.DataService
         private UserInfo userInfo;
         private State state;
 
-        public List<Album> GetAlbumsCollection()
+        public List<Album> AlbumsCollection
         {
-            return this.albumsCollection;
+            get { return albumsCollection; }
+            set { albumsCollection = value; }
         }
-        public void SetAlbums(List<Album> albumsCollection)
+     
+        public UserInfo UserInfo
         {
-            this.albumsCollection = albumsCollection;
+            get { return this.userInfo;}
+            set {userInfo = value;}
         }
-        public UserInfo GetUserInfo()
+        
+        public State State
         {
-            return this.userInfo;
-        }
-        public void SetUserInfo(UserInfo userInfo)
-        {
-            this.userInfo = userInfo;
-        }
-        public State GetState()
-        {
-            return this.state;
+            get { return this.state; }
+            set { state = value; }
         }
       
 
