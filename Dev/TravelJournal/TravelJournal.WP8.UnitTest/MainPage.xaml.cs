@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.TestPlatform.Core;
 using vstest_executionengine_platformbridge;
 using Microsoft.VisualStudio.TestPlatform.TestExecutor;
 using System.Reflection;
+using Microsoft.Phone.Testing;
 
 namespace TravelJournal.WP8.UnitTest
 {
@@ -24,7 +25,8 @@ namespace TravelJournal.WP8.UnitTest
             InitializeComponent();
 
             var wrapper = new TestExecutorServiceWrapper();
-            new Thread(new ServiceMain((param0, param1) => wrapper.SendMessage((ContractName)param0, param1)).Run).Start();   
+            new Thread(new ServiceMain((param0, param1) => wrapper.SendMessage((ContractName)param0, param1)).Run).Start();
+
         }
     }
 }

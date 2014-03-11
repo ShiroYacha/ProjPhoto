@@ -12,7 +12,7 @@ namespace TravelJournal.WP8.BusinessLogic
     {
         public GpsPoint ExtractGeoCoordinate(Photo p)
         {
-            using (ExifReader reader = new ExifReader(p.PhotoName))
+            using (ExifReader reader = new ExifReader(p.Stream))
             {
                 // Extract geo coordinates
                 double[] latitudeDMS;
@@ -25,9 +25,9 @@ namespace TravelJournal.WP8.BusinessLogic
                 reader.GetTagValue(ExifTags.GPSLongitudeRef, out longitudeRef);
                 // Reconstuct latitude and longitude (lat/lng are stored as D°M'S" arrays)
                 double latitudeDecimalDegrees = (latitudeRef == "N" ? 1 : -1) *
-                   (latitudeDMS[0] + latitudeDMS[1] / 60 + latitudeDMS[2] / 3600);
+                   (latitudeDMS[0] + latitudeDMS[1] / 60 + latitudeDMS[2] / (3600*1000));
                 double longitudeDecimalDegrees = (longitudeRef == "E" ? 1 : -1) *
-                                (longitudeDMS[0] + longitudeDMS[1] / 60 + longitudeDMS[2] / 3600);
+                                (longitudeDMS[0] + longitudeDMS[1] / 60 + longitudeDMS[2] / (3600 * 1000));
                 return new GpsPoint(longitudeDecimalDegrees, latitudeDecimalDegrees, p.Position.GpsPoint.Timestamp);
             }
         }
