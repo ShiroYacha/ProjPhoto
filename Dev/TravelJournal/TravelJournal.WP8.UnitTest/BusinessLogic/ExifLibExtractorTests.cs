@@ -18,7 +18,7 @@ namespace TravelJournal.WP8.BusinessLogic.Tests
         [TestMethod()]
         public void ExtractGeoCoordinateTest()
         {
-            // Initialize
+            // Arrange
             ExifLibExtractor extractor = new ExifLibExtractor();
             MediaSource mediaSource = MediaSource.GetAvailableMediaSources().First((source => source.MediaSourceType == MediaSourceType.LocalDevice));
             Picture examplePicture;
@@ -34,7 +34,7 @@ namespace TravelJournal.WP8.BusinessLogic.Tests
                 Stream = pictureStream,
                 Position = new GpsPosition() { GpsPoint = new GpsPoint() { Timestamp=DateTime.Now} }
             };
-            // Operate
+            // Act
             GpsPoint point = extractor.ExtractGeoCoordinate(photo);
             // Assert
             Assert.AreNotEqual(default(double),point.Latitude);
