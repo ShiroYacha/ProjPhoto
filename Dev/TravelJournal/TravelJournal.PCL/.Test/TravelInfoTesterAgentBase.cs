@@ -59,7 +59,7 @@ namespace TravelJournal.PCL.Test
         private void serviceClient_GetPhotosCompleted(object sender, GetPhotosCompletedEventArgs e)
         {
             serviceClient.GetPhotosCompleted -= serviceClient_GetPhotosCompleted;
-            SendAlbums(new List<Album>() { new Album(){Name="Default album",PhotoList=e.Result}});
+            SendAlbums(new List<Album>() { new Album(){AlbumName="Default album",PhotoList=e.Result}});
         }
         public void SendAlbums(List<Album> albums)
         {

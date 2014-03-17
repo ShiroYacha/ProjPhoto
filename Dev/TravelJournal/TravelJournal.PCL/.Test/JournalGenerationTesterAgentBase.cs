@@ -9,7 +9,7 @@ namespace TravelJournal.PCL.Test
     {
         public override void OnInvoke()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
