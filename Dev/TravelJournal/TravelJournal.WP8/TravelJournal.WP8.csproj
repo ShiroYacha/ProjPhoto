@@ -85,6 +85,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include=".DataService\BingMapsJson.cs" />
+    <Compile Include=".DataService\DataSaver.cs" />
+    <Compile Include=".DataService\WpDataManager.cs" />
+    <Compile Include=".DataService\WpPhotoManager.cs" />
     <Compile Include=".DataService\WpWebService.cs" />
     <Compile Include=".Test\ConnectivityTesterAgent.cs" />
     <Compile Include=".Test\JournalGenerationTesterAgent.cs" />

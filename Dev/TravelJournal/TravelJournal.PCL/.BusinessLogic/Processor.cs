@@ -14,8 +14,8 @@ namespace TravelJournal.PCL.BusinessLogic
         private Album album;
         private State state;
         private static Transition transition;
-        private List<GpsPoint> tourRoutePoints = new List<GpsPoint>();
-        private List<string> touristCity = new List<string>();
+        private List<GpsPoint> tourRoutePoints ;
+        private List<string> touristCity;
         private bool albumCompleted;
         private GpsPosition userPosition;
 
