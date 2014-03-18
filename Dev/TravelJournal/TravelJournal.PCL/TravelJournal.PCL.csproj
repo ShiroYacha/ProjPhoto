@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include=".DataService\Data.cs" />
     <Compile Include=".Test\Base\ServerAgentBase.cs" />
     <Compile Include=".Test\Base\ServerBase.cs" />
     <Compile Include=".Test\Base\IPeriodicAgent.cs" />

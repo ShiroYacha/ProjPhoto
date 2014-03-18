@@ -17,7 +17,7 @@ namespace TravelJournal.PCL.BusinessLogic
             string stateType = processor.GetType().Name;
             processor.UserPosition = await processor.WebService.GetUserPosition();
             bool haveNewPhoto = processor.PhotoManager.CheckRawPhoto(processor.Album.TimeTag);
-            if (processor.UserPosition.City == processor.DataManager.UserInfo.OriginalPosition.City)
+            if (processor.UserPosition.City == processor.DataManager.DataCollection.UserInfo.OriginalPosition.City)
             {
                 if (stateType.ToUpper() == "PILOTSTATE")
                 {
