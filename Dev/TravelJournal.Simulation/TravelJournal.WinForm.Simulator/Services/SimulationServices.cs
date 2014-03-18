@@ -155,9 +155,19 @@ namespace TravelJournal.WinForm.Simulator
             else
                 return photos;
         }
+        public GpsPosition GetGpsPosition(GpsPoint coordinate)
+        {
+            // Log 
+            TravelJournalSimulation.Log(LogType.HighlightInfo, "Reverse geocode querying ...");
+            // Reverse geocode
+            return simulator.GetGpsPosition(coordinate);
+        }
 
         #endregion
-    }
+    
+
+
+}
 
 
 }

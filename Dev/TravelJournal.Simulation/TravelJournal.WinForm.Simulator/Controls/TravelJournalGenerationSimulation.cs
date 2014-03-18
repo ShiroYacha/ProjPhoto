@@ -26,7 +26,7 @@ namespace TravelJournal.WinForm.Simulator
         private static TravelJournalSimulation currentInstance;
 
         // Const fields
-        private const string HOST_ADDRESS="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices";
+        private const string HOST_ADDRESS="http://192.168.1.7:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices";
 
         // System fields
         private SimulationServices connectionService;

@@ -19,7 +19,7 @@ namespace TravelJournal.WinForm.Simulator
         private TravelMapPlayer player;
 
         private TravelItineraryData data;
-        private GpsPoint currentPosition;
+        private SimulationModelPoint currentPosition;
         private List<Photo> photos;
 
         private int currentIndex;
@@ -68,7 +68,7 @@ namespace TravelJournal.WinForm.Simulator
                 player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
                 // Update current position
-                currentPosition = point.ConvertToGpsPoint() ;
+                currentPosition = point;
             }
             else if (currentSegmentIndex == 0) // Draw first point
             {
@@ -76,7 +76,7 @@ namespace TravelJournal.WinForm.Simulator
                 player.SetAnchors(new List<SimulationModelPoint>() { point });
                 currentSegmentIndex++;
                 // Update current position
-                currentPosition = point.ConvertToGpsPoint();
+                currentPosition = point;
             }
             else // Draw next segment using the linear model
             {
@@ -97,7 +97,7 @@ namespace TravelJournal.WinForm.Simulator
                 }
                 points.Add(interPoint);
                 // Update current position
-                currentPosition = interPoint.ConvertToGpsPoint();
+                currentPosition = interPoint;
                 // Draw anchors
                 player.SetAnchors(points, TravelJournalSimulation.InAutoZoomMode, AnchorMode.ShowOnlyPhotoAnchors);
                 // Draw routes
@@ -217,12 +217,21 @@ namespace TravelJournal.WinForm.Simulator
 
         public GpsPoint GetCurrentGps()
         {
-            return currentPosition;
+            return currentPosition.ConvertToGpsPoint();
         }
-
         public List<Photo> GetCreatedPhotos()
         {
             return photos;
+        }
+        public GpsPosition GetGpsPosition(GpsPoint coordinate)
+        {
+            Placemark placeMark= player.ConvertToPlacemark(new PointLatLng(coordinate.Latitude,coordinate.Longitude));
+            return new GpsPosition()
+            {
+                GpsPoint=coordinate,
+                City = placeMark.LocalityName ?? (placeMark.DistrictName ?? placeMark.AdministrativeAreaName),
+                Country = placeMark.CountryName
+            };
         }
         #endregion
     }

@@ -63,6 +63,8 @@ namespace TravelJournal.WinForm.Simulator
         [OperationContract]
         IEnumerable<Photo> GetPhotos(DateTime filter);
       
+        [OperationContract]
+        GpsPosition GetGpsPosition(GpsPoint coordinate);
         #endregion
 
   }

@@ -12,6 +12,7 @@ using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using TravelJournal.WinForm.Simulator.Forms;
+using TravelJournal.PCL.DataService;
 
 namespace TravelJournal.WinForm.Simulator.Controls
 {
@@ -43,6 +44,11 @@ namespace TravelJournal.WinForm.Simulator.Controls
             gMapControl.Overlays.Add(anchorsLayer);
             gMapControl.Overlays.Add(homePlacemarkLayer);
             gMapControl.Overlays.Add(anchorsRouteLayer);
+        }
+
+        private void TravelMapPlayer_Load(object sender, EventArgs e)
+        {
+            InitializeGMap();
         }
 
         public GMapProvider Provider
@@ -186,25 +192,23 @@ namespace TravelJournal.WinForm.Simulator.Controls
                     anchorsRouteLayer.Routes.Clear();
                 }));
         }
-
         public SimulationModelPoint ConvertToSimulationModelPoint(Point localPoint)
         {
             PointLatLng gps = gMapControl.FromLocalToLatLng(localPoint.X, localPoint.Y);
             return new SimulationModelPoint() { Gps = gps };
         }
-        public Placemark ConvertToPlacemark(Point localPoint)
+        public Placemark ConvertToPlacemark(PointLatLng gps)
         {
-            PointLatLng gps = gMapControl.FromLocalToLatLng(localPoint.X, localPoint.Y);
             // Get geo coordinate
             List<Placemark> plc = null;
             var st = GMapProviders.GoogleMap.GetPlacemarks(gps, out plc);
             return plc[0];
         }
-
-        private void TravelMapPlayer_Load(object sender, EventArgs e)
+        public Placemark ConvertToPlacemark(Point localPoint)
         {
-            InitializeGMap();
+            return ConvertToPlacemark(gMapControl.FromLocalToLatLng(localPoint.X, localPoint.Y));
         }
+
 
     }
 }

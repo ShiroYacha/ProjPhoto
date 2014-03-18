@@ -15,6 +15,7 @@ namespace TravelJournal.PCL.Test
     {
         public override void OnInvoke()
         {
+            // Start operation
             OperationStart();
             Random random = new Random();
             RequestDownloadTest(random.Next(100000));

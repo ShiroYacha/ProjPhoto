@@ -13,7 +13,9 @@ namespace TravelJournal.PCL.Test
 
         public override void OnInvoke()
         {
+            // Start operation
             finishedTaskCount = 0;
+            OperationStart();
             UpdateCurrentGps();
             QueryPhotos(DateTime.MinValue);
         }
@@ -23,17 +25,22 @@ namespace TravelJournal.PCL.Test
             finishedTaskCount = 0;
         }
 
-        private void UpdateCurrentGps()
+        private Action<GpsPoint> updateCurrentGpsCallback;
+        public void UpdateCurrentGps(Action<GpsPoint> callback=null)
         {
-            OperationStart();
             serviceClient.GetCurrentGpsCompleted += serviceClient_GetCurrentGpsCompleted;
+            this.updateCurrentGpsCallback = callback;
             serviceClient.GetCurrentGpsAsync();
         }
         private void serviceClient_GetCurrentGpsCompleted(object sender, ServiceReference.GetCurrentGpsCompletedEventArgs e)
         {
             serviceClient.GetCurrentGpsCompleted -= serviceClient_GetCurrentGpsCompleted;
             if (e.Result != null)
+            {
                 SendCurrentGps(e.Result);
+                if (updateCurrentGpsCallback != null)
+                    updateCurrentGpsCallback(e.Result);
+            }
             else
                 OperationEndDirectly();
         }
@@ -51,7 +58,7 @@ namespace TravelJournal.PCL.Test
                 OperationEnd();
         }
 
-        private void QueryPhotos(DateTime filter)
+        public void QueryPhotos(DateTime filter)
         {
             serviceClient.GetPhotosCompleted += serviceClient_GetPhotosCompleted;
             serviceClient.GetPhotosAsync(filter);

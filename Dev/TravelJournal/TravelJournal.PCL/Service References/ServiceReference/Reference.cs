@@ -303,10 +303,10 @@ namespace TravelJournal.PCL.ServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MarshalByRefObject", Namespace="http://schemas.datacontract.org/2004/07/System")]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(byte[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.LogType))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.ConnectionTestData))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<int>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<string, object>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.LogType))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album>))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.Album))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo>))]
@@ -398,6 +398,11 @@ namespace TravelJournal.PCL.ServiceReference {
         System.IAsyncResult BeginGetPhotos(System.DateTime filter, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> EndGetPhotos(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/GetGpsPosition", ReplyAction="http://tempuri.org/ISimulationServices/GetGpsPositionResponse")]
+        System.IAsyncResult BeginGetGpsPosition(TravelJournal.PCL.ServiceReference.GpsPoint coordinate, System.AsyncCallback callback, object asyncState);
+        
+        TravelJournal.PCL.ServiceReference.GpsPosition EndGetGpsPosition(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -501,6 +506,25 @@ namespace TravelJournal.PCL.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetGpsPositionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetGpsPositionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public TravelJournal.PCL.ServiceReference.GpsPosition Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((TravelJournal.PCL.ServiceReference.GpsPosition)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class SimulationServicesClient : System.ServiceModel.ClientBase<TravelJournal.PCL.ServiceReference.ISimulationServices>, TravelJournal.PCL.ServiceReference.ISimulationServices {
         
         private BeginOperationDelegate onBeginConnectDelegate;
@@ -568,6 +592,12 @@ namespace TravelJournal.PCL.ServiceReference {
         private EndOperationDelegate onEndGetPhotosDelegate;
         
         private System.Threading.SendOrPostCallback onGetPhotosCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetGpsPositionDelegate;
+        
+        private EndOperationDelegate onEndGetGpsPositionDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetGpsPositionCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -644,6 +674,8 @@ namespace TravelJournal.PCL.ServiceReference {
         public event System.EventHandler<GetCurrentGpsCompletedEventArgs> GetCurrentGpsCompleted;
         
         public event System.EventHandler<GetPhotosCompletedEventArgs> GetPhotosCompleted;
+        
+        public event System.EventHandler<GetGpsPositionCompletedEventArgs> GetGpsPositionCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -1151,6 +1183,52 @@ namespace TravelJournal.PCL.ServiceReference {
                         filter}, this.onEndGetPhotosDelegate, this.onGetPhotosCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginGetGpsPosition(TravelJournal.PCL.ServiceReference.GpsPoint coordinate, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetGpsPosition(coordinate, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        TravelJournal.PCL.ServiceReference.GpsPosition TravelJournal.PCL.ServiceReference.ISimulationServices.EndGetGpsPosition(System.IAsyncResult result) {
+            return base.Channel.EndGetGpsPosition(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetGpsPosition(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            TravelJournal.PCL.ServiceReference.GpsPoint coordinate = ((TravelJournal.PCL.ServiceReference.GpsPoint)(inValues[0]));
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginGetGpsPosition(coordinate, callback, asyncState);
+        }
+        
+        private object[] OnEndGetGpsPosition(System.IAsyncResult result) {
+            TravelJournal.PCL.ServiceReference.GpsPosition retVal = ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndGetGpsPosition(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetGpsPositionCompleted(object state) {
+            if ((this.GetGpsPositionCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetGpsPositionCompleted(this, new GetGpsPositionCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetGpsPositionAsync(TravelJournal.PCL.ServiceReference.GpsPoint coordinate) {
+            this.GetGpsPositionAsync(coordinate, null);
+        }
+        
+        public void GetGpsPositionAsync(TravelJournal.PCL.ServiceReference.GpsPoint coordinate, object userState) {
+            if ((this.onBeginGetGpsPositionDelegate == null)) {
+                this.onBeginGetGpsPositionDelegate = new BeginOperationDelegate(this.OnBeginGetGpsPosition);
+            }
+            if ((this.onEndGetGpsPositionDelegate == null)) {
+                this.onEndGetGpsPositionDelegate = new EndOperationDelegate(this.OnEndGetGpsPosition);
+            }
+            if ((this.onGetGpsPositionCompletedDelegate == null)) {
+                this.onGetGpsPositionCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetGpsPositionCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetGpsPositionDelegate, new object[] {
+                        coordinate}, this.onEndGetGpsPositionDelegate, this.onGetGpsPositionCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -1233,8 +1311,8 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_ISimulationServices)) {
-                return new System.ServiceModel.EndpointAddress("http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Si" +
-                        "mulationServices");
+                return new System.ServiceModel.EndpointAddress("http://192.168.1.7:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/Sim" +
+                        "ulationServices");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
@@ -1388,6 +1466,19 @@ namespace TravelJournal.PCL.ServiceReference {
             public System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> EndGetPhotos(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> _result = ((System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo>)(base.EndInvoke("GetPhotos", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetGpsPosition(TravelJournal.PCL.ServiceReference.GpsPoint coordinate, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = coordinate;
+                System.IAsyncResult _result = base.BeginInvoke("GetGpsPosition", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public TravelJournal.PCL.ServiceReference.GpsPosition EndGetGpsPosition(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                TravelJournal.PCL.ServiceReference.GpsPosition _result = ((TravelJournal.PCL.ServiceReference.GpsPosition)(base.EndInvoke("GetGpsPosition", _args, result)));
                 return _result;
             }
         }
