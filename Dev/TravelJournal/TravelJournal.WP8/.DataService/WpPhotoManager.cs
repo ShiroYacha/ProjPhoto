@@ -12,6 +12,10 @@ namespace TravelJournal.WP8.DataService
 {
     class WpPhotoManager:IPhotoManager
     {
+        public void ProceedRawPhoto(DateTime tag, Action<Photo> onPhotoFoundHandler)
+        {
 
+        }
+        public bool CheckRawPhoto(DateTime tag) { return false; }
     }
 }
