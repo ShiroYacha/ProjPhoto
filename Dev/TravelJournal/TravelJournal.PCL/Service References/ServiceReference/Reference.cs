@@ -64,19 +64,21 @@ namespace TravelJournal.PCL.ServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="Album", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService")]
     public partial class Album : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string NameField;
+        private string AlbumNameField;
         
         private System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo> PhotoListField;
         
+        private System.DateTime TimeTagField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
+        public string AlbumName {
             get {
-                return this.NameField;
+                return this.AlbumNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.AlbumNameField, value) != true)) {
+                    this.AlbumNameField = value;
+                    this.RaisePropertyChanged("AlbumName");
                 }
             }
         }
@@ -90,6 +92,19 @@ namespace TravelJournal.PCL.ServiceReference {
                 if ((object.ReferenceEquals(this.PhotoListField, value) != true)) {
                     this.PhotoListField = value;
                     this.RaisePropertyChanged("PhotoList");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime TimeTag {
+            get {
+                return this.TimeTagField;
+            }
+            set {
+                if ((this.TimeTagField.Equals(value) != true)) {
+                    this.TimeTagField = value;
+                    this.RaisePropertyChanged("TimeTag");
                 }
             }
         }
@@ -109,34 +124,21 @@ namespace TravelJournal.PCL.ServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="Photo", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService")]
     public partial class Photo : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string NameField;
-        
-        private TravelJournal.PCL.ServiceReference.GpsPoint PointField;
+        private string PhotoNameField;
         
         private TravelJournal.PCL.ServiceReference.GpsPosition PositionField;
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
+        private byte[] StreamField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TravelJournal.PCL.ServiceReference.GpsPoint Point {
+        public string PhotoName {
             get {
-                return this.PointField;
+                return this.PhotoNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.PointField, value) != true)) {
-                    this.PointField = value;
-                    this.RaisePropertyChanged("Point");
+                if ((object.ReferenceEquals(this.PhotoNameField, value) != true)) {
+                    this.PhotoNameField = value;
+                    this.RaisePropertyChanged("PhotoName");
                 }
             }
         }
@@ -150,6 +152,79 @@ namespace TravelJournal.PCL.ServiceReference {
                 if ((object.ReferenceEquals(this.PositionField, value) != true)) {
                     this.PositionField = value;
                     this.RaisePropertyChanged("Position");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Stream {
+            get {
+                return this.StreamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StreamField, value) != true)) {
+                    this.StreamField = value;
+                    this.RaisePropertyChanged("Stream");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GpsPosition", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService")]
+    public partial class GpsPosition : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string CityField;
+        
+        private string CountryField;
+        
+        private TravelJournal.PCL.ServiceReference.GpsPoint GpsPointField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TravelJournal.PCL.ServiceReference.GpsPoint GpsPoint {
+            get {
+                return this.GpsPointField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GpsPointField, value) != true)) {
+                    this.GpsPointField = value;
+                    this.RaisePropertyChanged("GpsPoint");
                 }
             }
         }
@@ -173,7 +248,7 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private double LongitudeField;
         
-        private System.DateTime TimeStampField;
+        private System.DateTime TimestampField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public double Latitude {
@@ -202,14 +277,14 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime TimeStamp {
+        public System.DateTime Timestamp {
             get {
-                return this.TimeStampField;
+                return this.TimestampField;
             }
             set {
-                if ((this.TimeStampField.Equals(value) != true)) {
-                    this.TimeStampField = value;
-                    this.RaisePropertyChanged("TimeStamp");
+                if ((this.TimestampField.Equals(value) != true)) {
+                    this.TimestampField = value;
+                    this.RaisePropertyChanged("Timestamp");
                 }
             }
         }
@@ -226,35 +301,31 @@ namespace TravelJournal.PCL.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GpsPosition", Namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService")]
-    public partial class GpsPosition : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.DataContractAttribute(Name="MarshalByRefObject", Namespace="http://schemas.datacontract.org/2004/07/System")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(byte[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.LogType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.ConnectionTestData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<int>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<string, object>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Album>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.Album))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<TravelJournal.PCL.ServiceReference.Photo>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.Photo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.GpsPosition))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TravelJournal.PCL.ServiceReference.GpsPoint))]
+    public partial class MarshalByRefObject : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string CityField;
+        private object @__identityField;
         
-        private string CountryField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string City {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public object @__identity {
             get {
-                return this.CityField;
+                return this.@__identityField;
             }
             set {
-                if ((object.ReferenceEquals(this.CityField, value) != true)) {
-                    this.CityField = value;
-                    this.RaisePropertyChanged("City");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Country {
-            get {
-                return this.CountryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
-                    this.CountryField = value;
-                    this.RaisePropertyChanged("Country");
+                if ((object.ReferenceEquals(this.@__identityField, value) != true)) {
+                    this.@__identityField = value;
+                    this.RaisePropertyChanged("__identity");
                 }
             }
         }

@@ -110,6 +110,12 @@
     <None Include="Service References\ServiceReference\SimulationServices5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReference\SimulationServices66.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference\SimulationServices67.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.ConnectionTestData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
