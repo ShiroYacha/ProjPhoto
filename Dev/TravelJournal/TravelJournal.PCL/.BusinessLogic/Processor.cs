@@ -12,12 +12,7 @@ namespace TravelJournal.PCL.BusinessLogic
     {
         private DateTime nowTime;
         private Album album;
-        private State state;
         private static Transition transition;
-        private List<GpsPoint> tourRoutePoints ;
-        private List<string> touristCity;
-        private bool albumCompleted;
-        private GpsPosition userPosition;
 
         public IWebService WebService { get { return SimpleIoc.Default.GetInstance<IWebService>(); } }
 
@@ -36,38 +31,38 @@ namespace TravelJournal.PCL.BusinessLogic
         }
         public Album Album
         {
-            get { return album; }
-            set { album = value; }
+            get { return this.album; }
+            set {this.album=value;}
         }
         public Processor() { }
        
         public State State
         {
-            get { return this.state; }
-            set { this.state = value; }
+            get { return DataManager.Data.State; }
+            set { DataManager.Data.State = value; }
         }
 
         public List<GpsPoint> TourRoutePoints
         {
-            get {return tourRoutePoints;}
-            set { tourRoutePoints = value; }
+            get { return DataManager.Data.TourRoutePoints; }
+            set { DataManager.Data.TourRoutePoints = value; }
         }
         public List<string> TouristCity
         {
-            get { return touristCity; }
-            set { touristCity = value; }
+            get { return DataManager.Data.TouristCity; }
+            set { DataManager.Data.TouristCity = value; }
         }
 
         public bool AlbumCompleted
         {
-            get { return albumCompleted; }
-            set { albumCompleted = value; }
+            get { return DataManager.Data.AlbumCompleted; }
+            set { DataManager.Data.AlbumCompleted = value; }
         }
 
         public GpsPosition UserPosition
         {
-            get { return userPosition; }
-            set{userPosition = value;}
+            get { return DataManager.Data.UserInfo.UserPosition; }
+            set { DataManager.Data.UserInfo.UserPosition = value; }
         }
         public void CheckState()
         {
@@ -99,5 +94,20 @@ namespace TravelJournal.PCL.BusinessLogic
             processor.State.Execute(processor);
             processor.DataManager.Save();
         }
+
+#if DEBUG
+        public static void ExecuteForTest(Action<Data> dataInspectionCallback)
+        {
+            // Execute
+            Processor processor = new Processor();
+            processor.DataManager.Load();
+            processor.CheckState();
+            processor.State.Execute(processor);
+            processor.DataManager.Save();
+            // Inspect data
+            if (dataInspectionCallback != null)
+                dataInspectionCallback(processor.DataManager.Data);
+        }
+#endif
     }
 }

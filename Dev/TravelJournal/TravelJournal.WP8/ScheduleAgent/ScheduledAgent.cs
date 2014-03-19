@@ -6,6 +6,9 @@ using TravelJournal.PCL.Test;
 using System;
 using GalaSoft.MvvmLight.Ioc;
 using System.Collections.Generic;
+using TravelJournal.PCL.BusinessLogic;
+using TravelJournal.PCL.DataService;
+using TravelJournal.WP8.DataService;
 
 namespace TravelJournal.WP8
 {
@@ -37,6 +40,14 @@ namespace TravelJournal.WP8
                 SimpleIoc.Default.Register<ServerAgentBase>(() => SimpleIoc.Default.GetInstance<ConnectivityTesterAgentBase>(), "ConnectivityTesterAgentBase");
                 SimpleIoc.Default.Register<ServerAgentBase>(() => SimpleIoc.Default.GetInstance<TravelInfoTesterAgentBase>(), "TravelInfoTesterAgentBase");
                 SimpleIoc.Default.Register<ServerAgentBase>(() => SimpleIoc.Default.GetInstance<JournalGenerationTesterAgentBase>(), "JournalGenerationTesterAgentBase");
+
+                // Register business logic composants
+                SimpleIoc.Default.Register<IExifExtractor, MockExifExtractor>();
+                SimpleIoc.Default.Register<IPhotoOrganizer, PhotoOrganizer>();
+                // Register data service composants
+                SimpleIoc.Default.Register<DataManagerBase, WpDataManager>();
+                SimpleIoc.Default.Register<IPhotoManager, MockPhotoManager>();
+                SimpleIoc.Default.Register<IWebService, MockWebService>();
             }
             agents = new List<ServerAgentBase>(SimpleIoc.Default.GetAllInstances<ServerAgentBase>());
         }

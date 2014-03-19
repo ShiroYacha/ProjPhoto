@@ -8,12 +8,10 @@ namespace TravelJournal.PCL.DataService
 {
     public abstract class DataManagerBase
     {
-        private Data dataCollection;
         private const string NAME_CURRENT_ALBUM = "DEFAULT_CURRENT_ALBUM";
+        protected Data dataCollection;
 
-
-
-        public Data DataCollection
+        public Data Data
         {
             get { return dataCollection; }
             set { dataCollection = value; }

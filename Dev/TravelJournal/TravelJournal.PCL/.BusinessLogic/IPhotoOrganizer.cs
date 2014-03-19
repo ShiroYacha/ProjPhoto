@@ -9,12 +9,7 @@ namespace TravelJournal.PCL.BusinessLogic
 
 	public interface IPhotoOrganizer 
 	{
-
         void OrganizePhoto(Photo photo, Album album);
-
-
-        
-
 	}
 }
 

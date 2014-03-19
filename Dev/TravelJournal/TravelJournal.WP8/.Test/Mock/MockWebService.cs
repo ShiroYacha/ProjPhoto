@@ -10,13 +10,7 @@ namespace TravelJournal.WP8.Test
 {
     public class MockWebService:IWebService
     {
-        JournalGenerationTesterAgent agent;
-
-        public void SetTesterAgent(JournalGenerationTesterAgent agent)
-        {
-            this.agent = agent;
-        }
-
+        JournalGenerationTesterAgent agent = new JournalGenerationTesterAgent();
         public async Task<GpsPosition> GetUserPosition()
         {
             var tcs = new TaskCompletionSource<GpsPosition>();

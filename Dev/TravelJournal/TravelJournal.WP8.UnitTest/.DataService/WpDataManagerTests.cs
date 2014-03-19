@@ -18,13 +18,13 @@ namespace TravelJournal.WP8.DataService.Tests
              // Arrange
             WpDataManager dataManager = new WpDataManager();
             Data data = new Data() { TouristCity = new List<string> {"Metz","Paris","Lille","Leyon" } };
-            dataManager.DataCollection = data;
+            dataManager.Data = data;
             //Act
             dataManager.Save();
-            dataManager.DataCollection = null;
+            dataManager.Data = null;
             dataManager.Load();
             //Assert
-            CollectionAssert.AreEqual(dataManager.DataCollection.TouristCity, data.TouristCity);
+            CollectionAssert.AreEqual(dataManager.Data.TouristCity, data.TouristCity);
         }
 
     }

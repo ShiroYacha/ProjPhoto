@@ -6,7 +6,7 @@ using TravelJournal.PCL.DataService;
 
 namespace TravelJournal.PCL.BusinessLogic
 {
-    class PhotoOrganizer:IPhotoOrganizer
+    public class PhotoOrganizer:IPhotoOrganizer
     {
         public PhotoOrganizer() { }
         public void OrganizePhoto(Photo photo, Album album)

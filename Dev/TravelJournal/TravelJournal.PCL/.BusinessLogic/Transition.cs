@@ -8,16 +8,16 @@ namespace TravelJournal.PCL.BusinessLogic
 {
     public class Transition
     {
-        public async void Transform(Processor processor)
+        public void Transform(Processor processor)
         {
             if (processor.State == null)
             {
                 throw new MissingMemberException("State not loaded");
             }
-            string stateType = processor.GetType().Name;
-            processor.UserPosition = await processor.WebService.GetUserPosition();
+            string stateType = processor.State.GetType().Name;
+            processor.UserPosition = processor.WebService.GetUserPosition().Result;
             bool haveNewPhoto = processor.PhotoManager.CheckRawPhoto(processor.Album.TimeTag);
-            if (processor.UserPosition.City == processor.DataManager.DataCollection.UserInfo.OriginalPosition.City)
+            if (processor.UserPosition.City == processor.DataManager.Data.UserInfo.OriginalPosition.City)
             {
                 if (stateType.ToUpper() == "PILOTSTATE")
                 {

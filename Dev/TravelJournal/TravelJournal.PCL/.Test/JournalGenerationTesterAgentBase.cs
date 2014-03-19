@@ -13,13 +13,14 @@ namespace TravelJournal.PCL.Test
         {
             // Start operation
             OperationStart();
-            Processor.Execute();
-            ReportExecutionStatus();
+            Processor.ExecuteForTest(ReportExecutionStatus);
         }
 
-        private void ReportExecutionStatus()
+        private void ReportExecutionStatus(Data data)
         {
-            
+            // Update state machine
+            // Send album
+            SendAlbums(new List<TravelJournal.PCL.ServiceReference.Album>() { WrapAlbum(data.AlbumsCollection[0]) });
         }
 
         private Action<GpsPosition> reverseGeocodingQueryCallback = null;
@@ -40,6 +41,44 @@ namespace TravelJournal.PCL.Test
                     City=e.Result.City,
                     Country=e.Result.Country
                 });
+        }
+
+        private ServiceReference.Album WrapAlbum(Album album)
+        {
+            return new TravelJournal.PCL.ServiceReference.Album()
+            {
+                AlbumName = album.AlbumName,
+                TimeTag = album.TimeTag,
+                PhotoList = new List<ServiceReference.Photo>(album.PhotoList.Select<Photo,ServiceReference.Photo>
+                    ((p) => { return WrapPhoto(p); }))
+            };
+        }
+        private ServiceReference.Photo WrapPhoto(Photo photo)
+        {
+            return new ServiceReference.Photo()
+            {
+                PhotoName=photo.PhotoName,
+                Position = WrapGpsPosition(photo.Position),
+
+            };
+        }
+        private ServiceReference.GpsPoint WrapGpsPoint(GpsPoint pointToWrap)
+        {
+            return new ServiceReference.GpsPoint()
+            {
+                Latitude = pointToWrap.Latitude,
+                Longitude = pointToWrap.Longitude,
+                Timestamp = pointToWrap.Timestamp
+            };
+        }
+        private ServiceReference.GpsPosition WrapGpsPosition(GpsPosition positionToWrap)
+        {
+            return new ServiceReference.GpsPosition()
+            {
+                City = positionToWrap.City,
+                Country = positionToWrap.Country,
+                GpsPoint = WrapGpsPoint(positionToWrap.GpsPoint)
+            };
         }
     }
 }

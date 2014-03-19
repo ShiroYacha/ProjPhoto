@@ -17,7 +17,6 @@ using TravelJournal.PCL.BusinessLogic;
 	public interface IWebService 
 	{
 	   Task <GpsPosition> GetUserPosition();
-
        Task <GpsPosition> GetGeoposition(GpsPoint coordinate);
 	}
 }

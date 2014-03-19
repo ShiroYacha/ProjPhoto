@@ -140,7 +140,7 @@ namespace TravelJournal.WinForm.Simulator
         public GpsPoint GetCurrentGps()
         {
             // Log 
-            TravelJournalSimulation.Log(LogType.HighlightInfo, "Querying current position...");
+            TravelJournalSimulation.Log(LogType.HighlightInfo, "Querying current position ...");
             // Get current gps
             return simulator.GetCurrentGps();
         }
