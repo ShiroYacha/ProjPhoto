@@ -21,17 +21,16 @@ namespace TravelJournal.WP8.BusinessLogic.Tests
             // Arrange
             ExifLibExtractor extractor = new ExifLibExtractor();
             MediaSource mediaSource = MediaSource.GetAvailableMediaSources().First((source => source.MediaSourceType == MediaSourceType.LocalDevice));
-            Picture examplePicture;
+            Picture samplePicture;
             using (MediaLibrary mediaLibrary = new MediaLibrary(mediaSource))
             {
                 PictureAlbum cameraRollAlbum = mediaLibrary.RootPictureAlbum.Albums.First((album) => album.Name == "Camera Roll");
-                examplePicture = cameraRollAlbum.Pictures.First();
+                samplePicture = cameraRollAlbum.Pictures.First();
             }
-            Stream pictureStream = examplePicture.GetImage();
             Photo photo = new Photo()
             {
                 PhotoName = "Metz.jpg",
-                Stream = pictureStream,
+                Stream = samplePicture.GetImage(),
                 Position = new GpsPosition() { GpsPoint = new GpsPoint() { Timestamp=DateTime.Now} }
             };
             // Act

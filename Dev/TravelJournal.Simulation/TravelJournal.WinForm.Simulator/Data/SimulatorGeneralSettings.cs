@@ -45,16 +45,18 @@ namespace TravelJournal.WinForm.Simulator
             }
         }
 
+        #region Override methods
         public override Dictionary<string, object> Display()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data.Add("SimualtionStep",simualtionStep.ToString()+"ms");
+            data.Add("SimualtionStep", simualtionStep.ToString() + "ms");
             return data;
         }
 
         public override void Initialize()
         {
             simualtionStep = DEFAULT_SIMULATION_STEP;
-        }
+        } 
+        #endregion
     }
 }
