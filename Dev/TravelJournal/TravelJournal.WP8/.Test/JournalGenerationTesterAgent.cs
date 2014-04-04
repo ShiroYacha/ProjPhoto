@@ -39,5 +39,22 @@ namespace TravelJournal.WP8.Test
             SimulationServicesClient serviceClient = new SimulationServicesClient();
             serviceClient.LogAsync(LogType.Info, "Journal generation scheduled task stopping...", "Stop", @"D:\ComputerProgramming\C#\ProjPhoto\Dev\TravelJournal\TravelJournal.PCL\.Test\JournalGenerationTesterAgent", 40);
         }
+
+        protected override Action<string> MockSetupProcessor(PCL.BusinessLogic.Processor processor)
+        {
+            // Mock update photo handler
+            (processor.PhotoManager as MockPhotoManager).UpdatePhotoHandler = (photos, tag) =>
+                {
+                    QueryPhotos(tag, (result) => { photos = WrapPhotoList(result); });
+                };
+            // Mock user information
+            processor.DataManager.Data.UserInfo = new PCL.DataService.UserInfo()
+            {
+                OriginalPosition = new PCL.DataService.GpsPosition("France", "Metz", null),
+                UserName = "Jimmy"
+            };
+            // Mock state machine monitor handler
+            return null;
+        }
     }
 }

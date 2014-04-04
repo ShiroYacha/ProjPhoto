@@ -10,7 +10,7 @@ namespace TravelJournal.PCL.DataService
     {
         DateTime timeTag;
         private string albumName;
-        private List<Photo> photoList;
+        private List<Photo> photoList=new List<Photo>();
 
         public string AlbumName
         {

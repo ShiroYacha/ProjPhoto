@@ -24,7 +24,7 @@ namespace TravelJournal.WP8
             // Subscribe to the managed exception handler
             Deployment.Current.Dispatcher.BeginInvoke(delegate
             {
-                Application.Current.UnhandledException += UnhandledException;
+                //Application.Current.UnhandledException += UnhandledException;
             });
             // Configs
             RegisterIocContainers();

@@ -48,7 +48,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
             return this;
         }
 
-        public void NavigateToState(int id)
+        public void NavigateToState(string id)
         {
             foreach (State state in states)
                 if (state.ID == id)
@@ -125,7 +125,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
     {
         public int Row { get; set; }
         public int Column { get; set; }
-        public int ID { get; set; }
+        public string ID { get; set; }
         public bool IsActive { get; set; }
         public List<State> ToStates { get; set; }
     }

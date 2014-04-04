@@ -16,6 +16,7 @@ namespace TravelJournal.PCL.BusinessLogic
             }
             string stateType = processor.State.GetType().Name;
             processor.UserPosition = processor.WebService.GetUserPosition().Result;
+            processor.Album = processor.DataManager.GetCurrentAlbum();
             bool haveNewPhoto = processor.PhotoManager.CheckRawPhoto(processor.Album.TimeTag);
             if (processor.UserPosition.City == processor.DataManager.Data.UserInfo.OriginalPosition.City)
             {

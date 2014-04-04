@@ -52,6 +52,9 @@ namespace TravelJournal.WinForm.Simulator
      
         [OperationContract]
         void UpdatePhotoTreeView(List<Album> albums);
+
+        [OperationContract]
+        void UpdateStateMachine(String stateName);
     
         #endregion
 

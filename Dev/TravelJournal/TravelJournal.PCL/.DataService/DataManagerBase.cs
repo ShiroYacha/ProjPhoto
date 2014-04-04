@@ -27,6 +27,7 @@ namespace TravelJournal.PCL.DataService
 
         public Album GetAlbum(string albumName)
         {
+            if (dataCollection.AlbumsCollection.Count == 0) return null;
             return dataCollection.AlbumsCollection.First((album) => { return album.AlbumName == albumName; });
         }
 

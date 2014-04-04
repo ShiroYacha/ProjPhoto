@@ -6,7 +6,7 @@ using TravelJournal.PCL.ServiceReference;
 
 namespace TravelJournal.PCL.Test
 {
-    public abstract class TravelInfoTesterAgentBase : ServerAgentBase
+    public abstract class  TravelInfoTesterAgentBase : ServerAgentBase
     {
         private int finishedTaskCount;
         private const int TASK_COUNT = 2;
@@ -58,8 +58,10 @@ namespace TravelJournal.PCL.Test
                 OperationEnd();
         }
 
-        public void QueryPhotos(DateTime filter)
+        public void QueryPhotos(DateTime filter, Action<List<Photo>> queryCompletedHandler = null)
         {
+            if (queryCompletedHandler != null)
+                serviceClient.GetPhotosCompleted += (s, e) => { serviceClient.GetPhotosCompleted -= serviceClient_GetPhotosCompleted; queryCompletedHandler(e.Result); };
             serviceClient.GetPhotosCompleted += serviceClient_GetPhotosCompleted;
             serviceClient.GetPhotosAsync(filter);
         }

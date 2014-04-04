@@ -31,7 +31,6 @@ namespace TravelJournal.PCL.BusinessLogic
         public override void Execute(Processor processor)
         {
             processor.TourRoutePoints.Add(processor.UserPosition.GpsPoint);
-            processor.Album = processor.DataManager.GetCurrentAlbum();
             if(processor.PhotoManager.CheckRawPhoto(processor.Album.TimeTag)) 
                 processor.PhotoManager.ProceedRawPhoto(processor.Album.TimeTag, processor.PhotoHandler);
         }

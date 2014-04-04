@@ -9,11 +9,12 @@ namespace TravelJournal.WP8.Test
 {
     public class MockPhotoManager:IPhotoManager
     {
-        private List<Photo> photos;
+        private List<Photo> photos=new List<Photo>();
 
-        public void LoadMockData(List<Photo> mockPhoto)
+        public Action<List<Photo>,DateTime> UpdatePhotoHandler
         {
-            photos = mockPhoto;
+            get;
+            set;
         }
 
         public void ProceedRawPhoto(DateTime tag, Action<Photo> onPhotoFoundHandler)
@@ -27,6 +28,7 @@ namespace TravelJournal.WP8.Test
 
         public bool CheckRawPhoto(DateTime tag)
         {
+            UpdatePhotoHandler(photos, tag);
             return photos.Any((p) => { return p.Position.GpsPoint.Timestamp > tag; });
         }
     }

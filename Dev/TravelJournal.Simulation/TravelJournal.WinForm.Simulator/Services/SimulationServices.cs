@@ -132,7 +132,10 @@ namespace TravelJournal.WinForm.Simulator
         {
             TravelJournalSimulation.UpdatePhotoTreeViewer(albums);
         }
-
+        public void UpdateStateMachine(string stateName)
+        {
+            
+        }
         #endregion
 
         #region Core services
@@ -164,10 +167,9 @@ namespace TravelJournal.WinForm.Simulator
         }
 
         #endregion
-    
 
 
-}
+    }
 
 
 }

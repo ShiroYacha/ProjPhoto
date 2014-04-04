@@ -10,7 +10,6 @@ namespace TravelJournal.PCL.BusinessLogic
 {
     public class Processor
     {
-        private DateTime nowTime;
         private Album album;
         private static Transition transition;
 
@@ -24,11 +23,6 @@ namespace TravelJournal.PCL.BusinessLogic
 
         public IExifExtractor ExifExtractor { get { return SimpleIoc.Default.GetInstance<IExifExtractor>(); } }
 
-        public DateTime NowTime
-        {
-            get { return nowTime; }
-            set { nowTime = value; }
-        }
         public Album Album
         {
             get { return this.album; }
@@ -96,17 +90,18 @@ namespace TravelJournal.PCL.BusinessLogic
         }
 
 #if DEBUG
-        public static void ExecuteForTest(Action<Data> dataInspectionCallback)
+        public static void ExecuteForTest(Action<Data> DataInspectionCallback, Func<Processor,Action<String>> SetupProcessor)
         {
             // Execute
             Processor processor = new Processor();
             processor.DataManager.Load();
+            SetupProcessor(processor);
             processor.CheckState();
             processor.State.Execute(processor);
             processor.DataManager.Save();
             // Inspect data
-            if (dataInspectionCallback != null)
-                dataInspectionCallback(processor.DataManager.Data);
+            if (DataInspectionCallback != null)
+                DataInspectionCallback(processor.DataManager.Data);
         }
 #endif
     }

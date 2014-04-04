@@ -13,8 +13,10 @@ namespace TravelJournal.PCL.Test
         {
             // Start operation
             OperationStart();
-            Processor.ExecuteForTest(ReportExecutionStatus);
+            Processor.ExecuteForTest(ReportExecutionStatus, MockSetupProcessor);
         }
+
+        protected abstract Action<string> MockSetupProcessor(Processor processor);
 
         private void ReportExecutionStatus(Data data)
         {
@@ -25,6 +27,7 @@ namespace TravelJournal.PCL.Test
 
         private Action<GpsPosition> reverseGeocodingQueryCallback = null;
         private GpsPoint gpsPoint; 
+
         public void ReverseGeocodingQuery(GpsPoint gpsPoint,Action<GpsPosition> callback = null)
         {
             this.reverseGeocodingQueryCallback = callback;
@@ -43,26 +46,41 @@ namespace TravelJournal.PCL.Test
                 });
         }
 
-        private ServiceReference.Album WrapAlbum(Album album)
+        #region Wrappers 
+        protected ServiceReference.Album WrapAlbum(Album album)
         {
             return new TravelJournal.PCL.ServiceReference.Album()
             {
                 AlbumName = album.AlbumName,
                 TimeTag = album.TimeTag,
-                PhotoList = new List<ServiceReference.Photo>(album.PhotoList.Select<Photo,ServiceReference.Photo>
+                PhotoList = new List<ServiceReference.Photo>(album.PhotoList.Select<Photo, ServiceReference.Photo>
                     ((p) => { return WrapPhoto(p); }))
             };
         }
-        private ServiceReference.Photo WrapPhoto(Photo photo)
+        protected ServiceReference.Photo WrapPhoto(Photo photo)
         {
             return new ServiceReference.Photo()
             {
-                PhotoName=photo.PhotoName,
+                PhotoName = photo.PhotoName,
                 Position = WrapGpsPosition(photo.Position),
 
             };
         }
-        private ServiceReference.GpsPoint WrapGpsPoint(GpsPoint pointToWrap)
+        protected Photo WrapPhoto(ServiceReference.Photo photo)
+        {
+            return new Photo()
+            {
+                PhotoName = photo.PhotoName,
+                Position = WrapGpsPosition(photo.Position),
+
+            };
+        }
+        protected List<Photo> WrapPhotoList(List<ServiceReference.Photo> photos)
+        {
+            return new List<Photo>(photos.Select<ServiceReference.Photo, Photo>
+                    ((p) => { return WrapPhoto(p); }));
+        }
+        protected ServiceReference.GpsPoint WrapGpsPoint(GpsPoint pointToWrap)
         {
             return new ServiceReference.GpsPoint()
             {
@@ -71,7 +89,16 @@ namespace TravelJournal.PCL.Test
                 Timestamp = pointToWrap.Timestamp
             };
         }
-        private ServiceReference.GpsPosition WrapGpsPosition(GpsPosition positionToWrap)
+        protected GpsPoint WrapGpsPoint(ServiceReference.GpsPoint pointToWrap)
+        {
+            return new GpsPoint()
+            {
+                Latitude = pointToWrap.Latitude,
+                Longitude = pointToWrap.Longitude,
+                Timestamp = pointToWrap.Timestamp
+            };
+        }
+        protected ServiceReference.GpsPosition WrapGpsPosition(GpsPosition positionToWrap)
         {
             return new ServiceReference.GpsPosition()
             {
@@ -80,5 +107,15 @@ namespace TravelJournal.PCL.Test
                 GpsPoint = WrapGpsPoint(positionToWrap.GpsPoint)
             };
         }
+        protected GpsPosition WrapGpsPosition(ServiceReference.GpsPosition positionToWrap)
+        {
+            return new GpsPosition()
+            {
+                City = positionToWrap.City,
+                Country = positionToWrap.Country,
+                GpsPoint = WrapGpsPoint(positionToWrap.GpsPoint)
+            };
+        } 
+        #endregion
     }
 }

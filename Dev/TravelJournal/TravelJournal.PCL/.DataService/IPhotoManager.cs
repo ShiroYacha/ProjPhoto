@@ -16,7 +16,6 @@ namespace TravelJournal.PCL.DataService
 	{
         void ProceedRawPhoto(DateTime tag, Action<Photo> onPhotoFoundHandler);
         bool CheckRawPhoto(DateTime tag);
-
 	}
 }
 
