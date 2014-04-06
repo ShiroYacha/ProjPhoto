@@ -10,7 +10,6 @@ namespace TravelJournal.PCL.BusinessLogic
     {
         public abstract void Execute(Processor processor);
     }
-
     public class OriginalState : State
     {
         public override void Execute(Processor processor)
@@ -24,7 +23,6 @@ namespace TravelJournal.PCL.BusinessLogic
         {
             processor.TourRoutePoints.Add(processor.UserPosition.GpsPoint);
         }
-
     }
     public class PhotoHandlerState : State
     {
@@ -52,5 +50,4 @@ namespace TravelJournal.PCL.BusinessLogic
             }
         }
     }
-
 }

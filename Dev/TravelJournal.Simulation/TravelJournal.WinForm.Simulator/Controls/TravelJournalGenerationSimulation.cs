@@ -187,8 +187,15 @@ namespace TravelJournal.WinForm.Simulator
                 Application.DoEvents();
             });
         }
+        public static void UpdateStateMachine(string stateName)
+        {
+            currentInstance.InvokeMethod(() =>
+            {
+                currentInstance.stateMachineViewer.NavigateToState(stateName);
+                Application.DoEvents();
+            });
+        }
 
-        
         #endregion
 
         #region Private members
@@ -281,6 +288,23 @@ namespace TravelJournal.WinForm.Simulator
             // Log
             Log(LogType.Info, "Server host closed...");
         }
+        private void SetupStateMachine()
+        {
+            stateMachineViewer.Initialize();
+            // Add states
+            Size size = new Size(14, 14);
+            State S0 = new State() { Row = 2, Column = 2, ID = "OriginalState" };
+            State S1 = new State() { Row = 4, Column = 2, ID = "PilotState" };
+            State S2 = new State() { Row = 6, Column = 2, ID = "PhotoHandlerState" };
+            State S3 = new State() { Row = 4, Column = 4, ID = "AlbumGeneratorState" };
+            S0.ToStates = new List<State>() { S1, S2 };
+            S1.ToStates = new List<State>() { S2 };
+            S2.ToStates = new List<State>() { S3 };
+            S3.ToStates = new List<State>() { S0 };
+            stateMachineViewer.ViewerSize = size;
+            stateMachineViewer.AddState(S0).AddState(S1).AddState(S2).AddState(S3);
+            stateMachineViewer.Refresh();
+        }
         #endregion
 
         #region Event handlers
@@ -345,6 +369,7 @@ namespace TravelJournal.WinForm.Simulator
         private void playButton_Click(object sender, EventArgs e)
         {
             simulator.StartSimulation();
+            SetupStateMachine();
             playButton.Enabled = false;
             pauseButton.Enabled = true;
             resetButton.Enabled = true;
@@ -365,8 +390,6 @@ namespace TravelJournal.WinForm.Simulator
         } 
 
         #endregion
-
-
 
     }
 }

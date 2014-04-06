@@ -134,7 +134,7 @@ namespace TravelJournal.WinForm.Simulator
         }
         public void UpdateStateMachine(string stateName)
         {
-            
+
         }
         #endregion
 
