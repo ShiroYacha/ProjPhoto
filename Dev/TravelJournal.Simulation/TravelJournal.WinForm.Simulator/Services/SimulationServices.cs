@@ -136,6 +136,7 @@ namespace TravelJournal.WinForm.Simulator
         {
 
         }
+
         #endregion
 
         #region Core services
@@ -167,9 +168,10 @@ namespace TravelJournal.WinForm.Simulator
         }
 
         #endregion
+    
 
 
-    }
+}
 
 
 }
