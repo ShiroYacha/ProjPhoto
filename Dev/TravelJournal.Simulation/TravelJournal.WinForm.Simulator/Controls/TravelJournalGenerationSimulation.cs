@@ -26,7 +26,7 @@ namespace TravelJournal.WinForm.Simulator
         private static TravelJournalSimulation currentInstance;
 
         // Const fields
-        private const string HOST_ADDRESS="http://192.168.1.1:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices";
+        private const string HOST_ADDRESS="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices";
 
         // System fields
         private SimulationServices connectionService;
@@ -108,12 +108,12 @@ namespace TravelJournal.WinForm.Simulator
         private void TestStateMachineViewer()
         {
             Size size = new Size(14, 14);
-            State S0 = new State() { Row = 2, Column = 4, ID = 0 };
-            State S1 = new State() { Row = 4, Column = 6, ID = 1 };
-            State S2 = new State() { Row = 6, Column = 4, ID = 2 };
-            State S3 = new State() { Row = 6, Column = 8, ID = 3 };
-            State S4 = new State() { Row = 8, Column = 6, ID = 4 };
-            State S5 = new State() { Row = 10, Column = 4, ID = 5 };
+            State S0 = new State() { Row = 2, Column = 4, ID = "0" };
+            State S1 = new State() { Row = 4, Column = 6, ID = "1" };
+            State S2 = new State() { Row = 6, Column = 4, ID = "2" };
+            State S3 = new State() { Row = 6, Column = 8, ID = "3" };
+            State S4 = new State() { Row = 8, Column = 6, ID = "4" };
+            State S5 = new State() { Row = 10, Column = 4, ID = "5" };
             S0.ToStates = new List<State>() { S1 };
             S1.ToStates = new List<State>() { S2, S3 };
             S2.ToStates = new List<State>() { S4 };
@@ -126,7 +126,7 @@ namespace TravelJournal.WinForm.Simulator
             {
                 Random rnd = new Random();
                 int state = rnd.Next(6);
-                stateMachineViewer.NavigateToState(state);
+                stateMachineViewer.NavigateToState(state.ToString());
                 UpdateInfoInspector(new Dictionary<string, object>() { { "Current state", state } });
             }, 1000);
             // Inspect info
@@ -195,6 +195,7 @@ namespace TravelJournal.WinForm.Simulator
                 Application.DoEvents();
             });
         }
+
         #endregion
 
         #region Private members
