@@ -88,11 +88,12 @@ namespace TravelJournal.WinForm.Simulator
                 if (currentSegmentIndex == currentSegmentCount - 2)
                 {
                     interPoint = data.Anchors[currentIndex == data.Anchors.Count - 1 ? 0 : currentIndex + 1]; ;
+                    interPoint.TimeStamp = DateTime.Now;
                 }
                 else
                 {
                     // linear interpolation
-                    interPoint = new SimulationModelPoint() { CustomTimeInterval = lastPoint.CustomTimeInterval };
+                    interPoint = new SimulationModelPoint() { CustomTimeInterval = lastPoint.CustomTimeInterval,TimeStamp=DateTime.Now };
                     interPoint.Gps = new PointLatLng(lastPoint.Gps.Lat + currentSegmentLatStep * currentSegmentIndex, lastPoint.Gps.Lng + currentSegmentLngStep * currentSegmentIndex);
                 }
                 points.Add(interPoint);
@@ -226,6 +227,7 @@ namespace TravelJournal.WinForm.Simulator
         public GpsPosition GetGpsPosition(GpsPoint coordinate)
         {
             Placemark placeMark= player.ConvertToPlacemark(new PointLatLng(coordinate.Latitude,coordinate.Longitude));
+            if(placeMark.CountryName=="Unknown") return new GpsPosition(){ GpsPoint=coordinate};
             return new GpsPosition()
             {
                 GpsPoint=coordinate,

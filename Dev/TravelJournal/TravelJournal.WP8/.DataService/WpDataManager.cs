@@ -35,7 +35,7 @@ namespace TravelJournal.WP8.DataService
                     AlbumCompleted=false,
                     AlbumsCollection=new List<Album>(),
                     TouristCity=new List<string>(),
-                    TourRoutePoints=new List<GpsPoint>()
+                    TourRoutePoints = new List<GpsPosition>()
                 };
             }
         }

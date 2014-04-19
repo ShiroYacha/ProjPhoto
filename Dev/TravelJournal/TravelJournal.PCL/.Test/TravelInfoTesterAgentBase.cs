@@ -61,7 +61,10 @@ namespace TravelJournal.PCL.Test
         public void QueryPhotos(DateTime filter, Action<List<Photo>> queryCompletedHandler = null)
         {
             if (queryCompletedHandler != null)
-                serviceClient.GetPhotosCompleted += (s, e) => { serviceClient.GetPhotosCompleted -= serviceClient_GetPhotosCompleted; queryCompletedHandler(e.Result); };
+                serviceClient.GetPhotosCompleted += (s, e) =>
+                { 
+                    serviceClient.GetPhotosCompleted -= serviceClient_GetPhotosCompleted; queryCompletedHandler(e.Result);
+                };
             serviceClient.GetPhotosCompleted += serviceClient_GetPhotosCompleted;
             serviceClient.GetPhotosAsync(filter);
         }

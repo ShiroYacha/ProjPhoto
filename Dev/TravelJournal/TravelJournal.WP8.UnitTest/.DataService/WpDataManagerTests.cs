@@ -17,7 +17,7 @@ namespace TravelJournal.WP8.DataService.Tests
         {
              // Arrange
             WpDataManager dataManager = new WpDataManager();
-            Data data = new Data() { TouristCity = new List<string> {"Metz","Paris","Lille","Leyon" } };
+            Data data = new Data() { TouristCity = new List<string> {"Metz","Paris","Lille","Leyon" }, State=new TravelJournal.PCL.BusinessLogic.PilotState()};
             dataManager.Data = data;
             //Act
             dataManager.Save();
@@ -25,6 +25,7 @@ namespace TravelJournal.WP8.DataService.Tests
             dataManager.Load();
             //Assert
             CollectionAssert.AreEqual(dataManager.Data.TouristCity, data.TouristCity);
+            Assert.AreEqual(dataManager.Data.State.GetType().Name, "PilotState");
         }
 
     }

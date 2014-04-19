@@ -8,10 +8,10 @@ namespace TravelJournal.PCL.BusinessLogic
 {
     public class PhotoOrganizer:IPhotoOrganizer
     {
-        public PhotoOrganizer() { }
         public void OrganizePhoto(Photo photo, Album album)
         {
             album.PhotoList.Add(photo);
+            album.TimeTag = photo.Position.GpsPoint.Timestamp;
         }
         
     }

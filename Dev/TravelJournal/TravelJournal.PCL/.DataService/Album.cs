@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 
 namespace TravelJournal.PCL.DataService
 {
+    [DataContract]
     public class Album
     {
         DateTime timeTag;
         private string albumName;
         private List<Photo> photoList=new List<Photo>();
 
+        [DataMember]
         public string AlbumName
         {
             get
@@ -24,6 +27,7 @@ namespace TravelJournal.PCL.DataService
             }
         }
 
+        [DataMember]
         public List<Photo> PhotoList
         {
             get
@@ -37,26 +41,10 @@ namespace TravelJournal.PCL.DataService
         }
 
         public Album() { }
-        public Album( List<Photo> photoList){
-            this.albumName = "NoNameAlbum";
-            this.photoList = photoList;
-      }
-        public Album(string albumName, List<Photo> photoList)
-        {
-            this.albumName = albumName;
-            this.photoList = photoList;
-        }
 
+        [DataMember]
         public DateTime TimeTag
         {
-            
-            //foreach (Photo p in PhotoList)
-            //{
-            //    if (p.Point.Timestamp > timeTag)
-            //    {
-            //        timeTag = p.Point.Timestamp;
-            //    }
-            //}
             get
             {
                 return timeTag;

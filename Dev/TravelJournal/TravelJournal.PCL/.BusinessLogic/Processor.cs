@@ -10,7 +10,6 @@ namespace TravelJournal.PCL.BusinessLogic
 {
     public class Processor
     {
-        private Album album;
         private static Transition transition;
 
         public IWebService WebService { get { return SimpleIoc.Default.GetInstance<IWebService>(); } }
@@ -25,8 +24,7 @@ namespace TravelJournal.PCL.BusinessLogic
 
         public Album Album
         {
-            get { return this.album; }
-            set {this.album=value;}
+            get { return DataManager.GetCurrentAlbum(); }
         }
         public Processor() { }
        
@@ -36,7 +34,7 @@ namespace TravelJournal.PCL.BusinessLogic
             set { DataManager.Data.State = value; }
         }
 
-        public List<GpsPoint> TourRoutePoints
+        public List<GpsPosition> TourRoutePoints
         {
             get { return DataManager.Data.TourRoutePoints; }
             set { DataManager.Data.TourRoutePoints = value; }
@@ -75,9 +73,9 @@ namespace TravelJournal.PCL.BusinessLogic
         public async void PhotoHandler(Photo aPhoto)
         {
             GpsPoint p = ExifExtractor.ExtractGeoCoordinate(aPhoto);
-            aPhoto.Position = await WebService.GetGeoposition(p);
-            PhotoOrganizer.OrganizePhoto(aPhoto, album);
-            album.TimeTag = DateTime.Now;          
+            //aPhoto.Position = await WebService.GetGeoposition(p);
+            aPhoto.Position = WebService.GetGeoposition(p).Result;
+            PhotoOrganizer.OrganizePhoto(aPhoto, Album);         
         }
 
         public static void Execute()
@@ -92,11 +90,14 @@ namespace TravelJournal.PCL.BusinessLogic
 #if DEBUG
         public static void ExecuteForTest(Action<Data> DataInspectionCallback, Func<Processor,Action<String>> SetupProcessor)
         {
-            // Execute
+            // Setup
             Processor processor = new Processor();
             processor.DataManager.Load();
-            SetupProcessor(processor);
+            var stateCallbackHandler = SetupProcessor(processor);
+            // Transform state
             processor.CheckState();
+            stateCallbackHandler.Invoke(processor.State.GetType().Name);
+            // Execute
             processor.State.Execute(processor);
             processor.DataManager.Save();
             // Inspect data

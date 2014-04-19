@@ -118,6 +118,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateStateMachine">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="stateName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStateMachineResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetCurrentGps">
     <xs:complexType>
       <xs:sequence />

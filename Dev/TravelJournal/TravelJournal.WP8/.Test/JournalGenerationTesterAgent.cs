@@ -43,10 +43,7 @@ namespace TravelJournal.WP8.Test
         protected override Action<string> MockSetupProcessor(PCL.BusinessLogic.Processor processor)
         {
             // Mock update photo handler
-            (processor.PhotoManager as MockPhotoManager).UpdatePhotoHandler = (photos, tag) =>
-                {
-                    QueryPhotos(tag, (result) => { photos = WrapPhotoList(result); });
-                };
+            QueryPhotos(default(DateTime), (result) => { (processor.PhotoManager as MockPhotoManager).LoadMockPhotos(WrapPhotoList(result)); });
             // Mock user information
             processor.DataManager.Data.UserInfo = new PCL.DataService.UserInfo()
             {
@@ -54,7 +51,14 @@ namespace TravelJournal.WP8.Test
                 UserName = "Jimmy"
             };
             // Mock state machine monitor handler
-            return null;
+            return UpdateStateMachineHandler;
         }
+
+        private void UpdateStateMachineHandler(string state)
+        {
+            SimulationServicesClient serviceClient = new SimulationServicesClient();
+            serviceClient.UpdateStateMachineAsync(state);
+        }
+
     }
 }

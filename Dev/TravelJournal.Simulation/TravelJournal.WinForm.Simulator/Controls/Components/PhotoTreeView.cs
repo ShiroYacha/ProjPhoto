@@ -85,17 +85,20 @@ namespace TravelJournal.WinForm.Simulator.Controls.Components
         {
             List<TreeNode> countryNodes = new List<TreeNode>();
             List<TreeNode> cityNodes = new List<TreeNode>();
-            foreach (Photo photo in album.PhotoList)
+            if (album.PhotoList != null)
             {
-                TreeNode photoNode = new TreeNode(photo.PhotoName);
-                photoNode.Name = photo.PhotoName;
-                // Create or add to city node
-                TreeNode cityNode = CreateOrAddToSubNode(cityNodes, photo.Position.City, photoNode);
-                // Create or add to country node
-                CreateOrAddToSubNode(countryNodes, photo.Position.Country, cityNode);
+                foreach (Photo photo in album.PhotoList)
+                {
+                    TreeNode photoNode = new TreeNode(photo.PhotoName);
+                    photoNode.Name = photo.PhotoName;
+                    // Create or add to city node
+                    TreeNode cityNode = CreateOrAddToSubNode(cityNodes, photo.Position.City, photoNode);
+                    // Create or add to country node
+                    CreateOrAddToSubNode(countryNodes, photo.Position.Country, cityNode);
+                }
+                // Add to album node
+                albumNode.Nodes.AddRange(countryNodes.ToArray());
             }
-            // Add to album node
-            albumNode.Nodes.AddRange(countryNodes.ToArray());
         }
         private TreeNode CreateOrAddToSubNode(List<TreeNode> nodes, string key, TreeNode subNode)
         {

@@ -202,7 +202,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
             // Get geo coordinate
             List<Placemark> plc = null;
             var st = GMapProviders.GoogleMap.GetPlacemarks(gps, out plc);
-            return plc[0];
+            return plc != null ? plc[0] : new Placemark(){CountryName="Unknown"};
         }
         public Placemark ConvertToPlacemark(Point localPoint)
         {

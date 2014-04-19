@@ -86,7 +86,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
                 StringFormat sf = new StringFormat();
                 sf.LineAlignment = StringAlignment.Center;
                 sf.Alignment = StringAlignment.Center;
-                e.Graphics.DrawString(state.ID.ToString(), this.Font, stateBrush, rect, sf);
+                e.Graphics.DrawString(state.Display, this.Font, stateBrush, rect, sf);
             }
         }
         private Point GetCenter(State state)
@@ -100,7 +100,7 @@ namespace TravelJournal.WinForm.Simulator.Controls
             PointF realStart;
             PointF realEnd;
             float modRadius = radius + 3;
-            if (tangent > 0 || Double.IsInfinity(tangent))
+            if (end.Y - start.Y > 0 && end.X - start.X > 0 || end.Y - start.Y < 0 && end.X - start.X > 0 || Double.IsInfinity(tangent))
             {
                 realStart = new PointF((float)(start.X + modRadius * Math.Cos(theta)), (float)(start.Y + modRadius * Math.Sin(theta)));
                 realEnd = new PointF((float)(end.X - radius * Math.Cos(theta)), (float)(end.Y - radius * Math.Sin(theta)));
@@ -126,7 +126,9 @@ namespace TravelJournal.WinForm.Simulator.Controls
         public int Row { get; set; }
         public int Column { get; set; }
         public string ID { get; set; }
+        public string Display { get; set; }
         public bool IsActive { get; set; }
         public List<State> ToStates { get; set; }
+
     }
 }

@@ -66,6 +66,12 @@
   <wsdl:message name="ISimulationServices_UpdatePhotoTreeView_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePhotoTreeViewResponse" />
   </wsdl:message>
+  <wsdl:message name="ISimulationServices_UpdateStateMachine_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStateMachine" />
+  </wsdl:message>
+  <wsdl:message name="ISimulationServices_UpdateStateMachine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateStateMachineResponse" />
+  </wsdl:message>
   <wsdl:message name="ISimulationServices_GetCurrentGps_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentGps" />
   </wsdl:message>
@@ -120,6 +126,10 @@
     <wsdl:operation name="UpdatePhotoTreeView">
       <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/UpdatePhotoTreeView" message="tns:ISimulationServices_UpdatePhotoTreeView_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/UpdatePhotoTreeViewResponse" message="tns:ISimulationServices_UpdatePhotoTreeView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStateMachine">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/UpdateStateMachine" message="tns:ISimulationServices_UpdateStateMachine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISimulationServices/UpdateStateMachineResponse" message="tns:ISimulationServices_UpdateStateMachine_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCurrentGps">
       <wsdl:input wsaw:Action="http://tempuri.org/ISimulationServices/GetCurrentGps" message="tns:ISimulationServices_GetCurrentGps_InputMessage" />
@@ -210,6 +220,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePhotoTreeView">
       <soap:operation soapAction="http://tempuri.org/ISimulationServices/UpdatePhotoTreeView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStateMachine">
+      <soap:operation soapAction="http://tempuri.org/ISimulationServices/UpdateStateMachine" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

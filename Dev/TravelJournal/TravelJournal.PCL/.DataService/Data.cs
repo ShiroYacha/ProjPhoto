@@ -13,12 +13,12 @@ namespace TravelJournal.PCL.DataService
         private List<Album> albumsCollection;
         private UserInfo userInfo;
         private State state;
-        private List<GpsPoint> tourRoutePoints = new List<GpsPoint>();
+        private List<GpsPosition> tourRoutePoints = new List<GpsPosition>();
         private List<string> touristCity = new List<string>();
         private bool albumCompleted;
         
         [DataMember]
-        public List<GpsPoint> TourRoutePoints
+        public List<GpsPosition> TourRoutePoints
         {
             get { return tourRoutePoints; }
             set { tourRoutePoints = value; }

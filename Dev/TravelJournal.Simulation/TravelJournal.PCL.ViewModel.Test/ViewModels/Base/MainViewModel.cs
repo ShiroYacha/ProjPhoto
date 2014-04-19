@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-
 using GalaSoft.MvvmLight;
 using Microsoft.Practices.ServiceLocation;
 using GalaSoft.MvvmLight.Command;

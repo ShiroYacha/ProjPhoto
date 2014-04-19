@@ -389,6 +389,11 @@ namespace TravelJournal.PCL.ServiceReference {
         
         void EndUpdatePhotoTreeView(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/UpdateStateMachine", ReplyAction="http://tempuri.org/ISimulationServices/UpdateStateMachineResponse")]
+        System.IAsyncResult BeginUpdateStateMachine(string stateName, System.AsyncCallback callback, object asyncState);
+        
+        void EndUpdateStateMachine(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ISimulationServices/GetCurrentGps", ReplyAction="http://tempuri.org/ISimulationServices/GetCurrentGpsResponse")]
         System.IAsyncResult BeginGetCurrentGps(System.AsyncCallback callback, object asyncState);
         
@@ -581,6 +586,12 @@ namespace TravelJournal.PCL.ServiceReference {
         
         private System.Threading.SendOrPostCallback onUpdatePhotoTreeViewCompletedDelegate;
         
+        private BeginOperationDelegate onBeginUpdateStateMachineDelegate;
+        
+        private EndOperationDelegate onEndUpdateStateMachineDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateStateMachineCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetCurrentGpsDelegate;
         
         private EndOperationDelegate onEndGetCurrentGpsDelegate;
@@ -670,6 +681,8 @@ namespace TravelJournal.PCL.ServiceReference {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateInfoInspectorCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdatePhotoTreeViewCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateStateMachineCompleted;
         
         public event System.EventHandler<GetCurrentGpsCompletedEventArgs> GetCurrentGpsCompleted;
         
@@ -1094,6 +1107,51 @@ namespace TravelJournal.PCL.ServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginUpdateStateMachine(string stateName, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateStateMachine(stateName, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        void TravelJournal.PCL.ServiceReference.ISimulationServices.EndUpdateStateMachine(System.IAsyncResult result) {
+            base.Channel.EndUpdateStateMachine(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateStateMachine(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string stateName = ((string)(inValues[0]));
+            return ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).BeginUpdateStateMachine(stateName, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateStateMachine(System.IAsyncResult result) {
+            ((TravelJournal.PCL.ServiceReference.ISimulationServices)(this)).EndUpdateStateMachine(result);
+            return null;
+        }
+        
+        private void OnUpdateStateMachineCompleted(object state) {
+            if ((this.UpdateStateMachineCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateStateMachineCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateStateMachineAsync(string stateName) {
+            this.UpdateStateMachineAsync(stateName, null);
+        }
+        
+        public void UpdateStateMachineAsync(string stateName, object userState) {
+            if ((this.onBeginUpdateStateMachineDelegate == null)) {
+                this.onBeginUpdateStateMachineDelegate = new BeginOperationDelegate(this.OnBeginUpdateStateMachine);
+            }
+            if ((this.onEndUpdateStateMachineDelegate == null)) {
+                this.onEndUpdateStateMachineDelegate = new EndOperationDelegate(this.OnEndUpdateStateMachine);
+            }
+            if ((this.onUpdateStateMachineCompletedDelegate == null)) {
+                this.onUpdateStateMachineCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateStateMachineCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateStateMachineDelegate, new object[] {
+                        stateName}, this.onEndUpdateStateMachineDelegate, this.onUpdateStateMachineCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.IAsyncResult TravelJournal.PCL.ServiceReference.ISimulationServices.BeginGetCurrentGps(System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginGetCurrentGps(callback, asyncState);
         }
@@ -1442,6 +1500,18 @@ namespace TravelJournal.PCL.ServiceReference {
             public void EndUpdatePhotoTreeView(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 base.EndInvoke("UpdatePhotoTreeView", _args, result);
+            }
+            
+            public System.IAsyncResult BeginUpdateStateMachine(string stateName, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = stateName;
+                System.IAsyncResult _result = base.BeginInvoke("UpdateStateMachine", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public void EndUpdateStateMachine(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                base.EndInvoke("UpdateStateMachine", _args, result);
             }
             
             public System.IAsyncResult BeginGetCurrentGps(System.AsyncCallback callback, object asyncState) {

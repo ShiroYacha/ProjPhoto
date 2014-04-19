@@ -108,12 +108,12 @@ namespace TravelJournal.WinForm.Simulator
         private void TestStateMachineViewer()
         {
             Size size = new Size(14, 14);
-            State S0 = new State() { Row = 2, Column = 4, ID = "0" };
-            State S1 = new State() { Row = 4, Column = 6, ID = "1" };
-            State S2 = new State() { Row = 6, Column = 4, ID = "2" };
-            State S3 = new State() { Row = 6, Column = 8, ID = "3" };
-            State S4 = new State() { Row = 8, Column = 6, ID = "4" };
-            State S5 = new State() { Row = 10, Column = 4, ID = "5" };
+            State S0 = new State() { Row = 2, Column = 4, ID = "0" ,Display="0"};
+            State S1 = new State() { Row = 4, Column = 6, ID = "1", Display = "1" };
+            State S2 = new State() { Row = 6, Column = 4, ID = "2", Display = "2" };
+            State S3 = new State() { Row = 6, Column = 8, ID = "3", Display = "3" };
+            State S4 = new State() { Row = 8, Column = 6, ID = "4", Display = "4" };
+            State S5 = new State() { Row = 10, Column = 4, ID = "5", Display = "5" };
             S0.ToStates = new List<State>() { S1 };
             S1.ToStates = new List<State>() { S2, S3 };
             S2.ToStates = new List<State>() { S4 };
@@ -292,11 +292,11 @@ namespace TravelJournal.WinForm.Simulator
         {
             stateMachineViewer.Initialize();
             // Add states
-            Size size = new Size(14, 14);
-            State S0 = new State() { Row = 2, Column = 2, ID = "OriginalState" };
-            State S1 = new State() { Row = 4, Column = 2, ID = "PilotState" };
-            State S2 = new State() { Row = 6, Column = 2, ID = "PhotoHandlerState" };
-            State S3 = new State() { Row = 4, Column = 4, ID = "AlbumGeneratorState" };
+            Size size = new Size(10, 10);
+            State S0 = new State() { Row = 2, Column = 4, ID = "OriginalState", Display="0" };
+            State S1 = new State() { Row = 4, Column = 2, ID = "PilotState", Display = "1" };
+            State S2 = new State() { Row = 6, Column = 4, ID = "PhotoHandlerState", Display = "2" };
+            State S3 = new State() { Row = 4, Column = 6, ID = "AlbumGeneratorState", Display = "3" };
             S0.ToStates = new List<State>() { S1, S2 };
             S1.ToStates = new List<State>() { S2 };
             S2.ToStates = new List<State>() { S3 };
@@ -313,6 +313,7 @@ namespace TravelJournal.WinForm.Simulator
             InitializeAllControls();
             // Initialization
             UpdateButtonInConsole();
+            SetupStateMachine();
         }
 
         private void serverButton_Click(object sender, EventArgs e)
@@ -349,6 +350,8 @@ namespace TravelJournal.WinForm.Simulator
                 InitializeAllControls();
                 // Resume all buttons
                 UpdateButtonInConsole();
+                // Setup state machine viewer
+                SetupStateMachine();
             }
         }
         private void clearButton_Click(object sender, EventArgs e)
@@ -369,7 +372,6 @@ namespace TravelJournal.WinForm.Simulator
         private void playButton_Click(object sender, EventArgs e)
         {
             simulator.StartSimulation();
-            SetupStateMachine();
             playButton.Enabled = false;
             pauseButton.Enabled = true;
             resetButton.Enabled = true;

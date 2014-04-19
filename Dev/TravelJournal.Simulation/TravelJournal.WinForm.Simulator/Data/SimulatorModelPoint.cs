@@ -16,13 +16,15 @@ namespace TravelJournal.WinForm.Simulator
         [DataMember()]
         public PointLatLng Gps { get; set; }
         [DataMember()]
+        public DateTime TimeStamp { get; set; }
+        [DataMember()]
         public int PhotoGenNumber { get; set; }
         [DataMember()]
         public long CustomTimeInterval { get; set; }
 
         public GpsPoint ConvertToGpsPoint()
         {
-            return new GpsPoint() { Latitude = Gps.Lat, Longitude = Gps.Lng, Timestamp = DateTime.Now };
+            return new GpsPoint() { Latitude = Gps.Lat, Longitude = Gps.Lng, Timestamp = this.TimeStamp };
         }
     }
 }

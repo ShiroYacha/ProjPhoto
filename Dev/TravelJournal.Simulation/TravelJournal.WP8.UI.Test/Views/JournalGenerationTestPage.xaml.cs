@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.IO.IsolatedStorage;
+using System.IO;
 
 namespace TravelJournal.WP8.UI.Test
 {
@@ -18,6 +20,22 @@ namespace TravelJournal.WP8.UI.Test
             InitializeComponent();
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+
+            DirtyInitializeUserData();
+        }
+
+        private void DirtyInitializeUserData()
+        {
+            string fileName = @"MyFolderName\MyDataFileName.dat";
+            using (var store = IsolatedStorageFile.GetUserStoreForApplication()) 
+            {
+
+                    if (store.FileExists(fileName)) 
+                    {
+                        store.DeleteFile(fileName);
+                    } 
+                
+            } 
         }
 
         // Sample code for building a localized ApplicationBar

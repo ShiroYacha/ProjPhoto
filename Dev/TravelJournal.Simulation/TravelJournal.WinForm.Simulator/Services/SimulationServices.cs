@@ -134,7 +134,10 @@ namespace TravelJournal.WinForm.Simulator
         }
         public void UpdateStateMachine(string stateName)
         {
-
+            // Update state machine
+            TravelJournalSimulation.UpdateStateMachine(stateName);
+            // Log 
+            TravelJournalSimulation.Log(LogType.HighlightInfo, "State machine updated...");
         }
         #endregion
 
