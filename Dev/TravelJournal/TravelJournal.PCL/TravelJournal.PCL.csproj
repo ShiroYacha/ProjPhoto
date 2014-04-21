@@ -91,23 +91,23 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\ServiceReference\Arrays.xsd">
+    <None Include="Service References\ServiceReference\Arrays1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service.wsdl" />
-    <None Include="Service References\ServiceReference\service.xsd">
+    <None Include="Service References\ServiceReference\service1.wsdl" />
+    <None Include="Service References\ServiceReference\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service1.xsd">
+    <None Include="Service References\ServiceReference\service21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\System.IO.xsd">
+    <None Include="Service References\ServiceReference\System.IO1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\System.xsd">
+    <None Include="Service References\ServiceReference\System1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\TravelJournal.PCL.DataService.xsd">
+    <None Include="Service References\ServiceReference\TravelJournal.PCL.DataService1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.ConnectionTestData.datasource">
@@ -122,10 +122,10 @@
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.Photo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\TravelJournal.WinForm.Simulator.Controls.xsd">
+    <None Include="Service References\ServiceReference\TravelJournal.WinForm.Simulator.Controls1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\TravelJournal.WinForm.Simulator.xsd">
+    <None Include="Service References\ServiceReference\TravelJournal.WinForm.Simulator1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
