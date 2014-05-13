@@ -71,6 +71,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include=".DataService\WpDataManagerTests.cs" />
+    <Compile Include=".DataService\WpPhotoManagerTests.cs" />
     <Compile Include=".DataService\WpWebServiceTests.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

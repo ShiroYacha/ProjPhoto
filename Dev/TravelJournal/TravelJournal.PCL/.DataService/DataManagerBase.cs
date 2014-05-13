@@ -22,13 +22,13 @@ namespace TravelJournal.PCL.DataService
                 
         public void AddPhoto(string albumName, params Photo[] photos)
         {
-            dataCollection.AlbumsCollection.First((album)=>{ return album.AlbumName==albumName;}).PhotoList.AddRange(photos);
+            dataCollection.AlbumsCollection.First((album)=>{ return album.Name==albumName;}).PhotoList.AddRange(photos);
         }
 
         public Album GetAlbum(string albumName)
         {
             if (dataCollection.AlbumsCollection.Count == 0) return null;
-            return dataCollection.AlbumsCollection.First((album) => { return album.AlbumName == albumName; });
+            return dataCollection.AlbumsCollection.First((album) => { return album.Name == albumName; });
         }
 
         public Album GetCurrentAlbum()
@@ -38,12 +38,12 @@ namespace TravelJournal.PCL.DataService
 
         public void RenameCurrentAlbum(string newName)
         {
-            GetAlbum(NAME_CURRENT_ALBUM).AlbumName = newName;
+            GetAlbum(NAME_CURRENT_ALBUM).Name = newName;
         }
 
         private Album CreateCurrentAlbum()
         {
-            Album currentAlbum = new Album() { AlbumName = NAME_CURRENT_ALBUM,TimeTag=DateTime.Now };
+            Album currentAlbum = new Album() { Name = NAME_CURRENT_ALBUM,TimeTag=DateTime.Now };
             dataCollection.AlbumsCollection.Add(currentAlbum);
             return currentAlbum;
         }

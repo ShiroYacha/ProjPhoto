@@ -51,7 +51,7 @@ namespace TravelJournal.PCL.Test
         {
             return new TravelJournal.PCL.ServiceReference.Album()
             {
-                AlbumName = album.AlbumName,
+                AlbumName = album.Name,
                 TimeTag = album.TimeTag,
                 PhotoList = new List<ServiceReference.Photo>(album.PhotoList.Select<Photo, ServiceReference.Photo>
                     ((p) => { return WrapPhoto(p); }))
@@ -61,7 +61,7 @@ namespace TravelJournal.PCL.Test
         {
             return new ServiceReference.Photo()
             {
-                PhotoName = photo.PhotoName,
+                PhotoName = photo.Name,
                 Position = WrapGpsPosition(photo.Position),
 
             };
@@ -70,7 +70,7 @@ namespace TravelJournal.PCL.Test
         {
             return new Photo()
             {
-                PhotoName = photo.PhotoName,
+                Name = photo.PhotoName,
                 Position = WrapGpsPosition(photo.Position),
 
             };

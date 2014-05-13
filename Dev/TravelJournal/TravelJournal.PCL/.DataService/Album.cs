@@ -15,7 +15,7 @@ namespace TravelJournal.PCL.DataService
         private List<Photo> photoList=new List<Photo>();
 
         [DataMember]
-        public string AlbumName
+        public string Name
         {
             get
             {

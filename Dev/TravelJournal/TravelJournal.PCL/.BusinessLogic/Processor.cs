@@ -72,7 +72,7 @@ namespace TravelJournal.PCL.BusinessLogic
 
         public async void PhotoHandler(Photo aPhoto)
         {
-            GpsPoint p = ExifExtractor.ExtractGeoCoordinate(aPhoto);
+            GpsPoint p = ExifExtractor.ExtractGeoCoordinate(aPhoto,PhotoManager.GetPhotoStream(aPhoto.Name));
             //aPhoto.Position = await WebService.GetGeoposition(p);
             aPhoto.Position = WebService.GetGeoposition(p).Result;
             PhotoOrganizer.OrganizePhoto(aPhoto, Album);         

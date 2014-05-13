@@ -29,5 +29,11 @@ namespace TravelJournal.WP8.Test
         {
             return photos.Any((p) => { return p.Position.GpsPoint.Timestamp > tag; });
         }
+
+
+        public System.IO.Stream GetPhotoStream(string name)
+        {
+            return null;
+        }
     }
 }

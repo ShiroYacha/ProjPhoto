@@ -112,7 +112,7 @@ namespace TravelJournal.WinForm.Simulator
                     {
                         return new Photo()
                         {
-                            PhotoName = string.Format("Photo #{0}", photos.Count + ++photoIndex),
+                            Name = string.Format("Photo #{0}", photos.Count + ++photoIndex),
                             Position = new GpsPosition() { GpsPoint = sp.ConvertToGpsPoint() }
                         };
                     }));

@@ -9,7 +9,7 @@ namespace TravelJournal.PCL.BusinessLogic
 
 	public interface IExifExtractor 
 	{
-		GpsPoint ExtractGeoCoordinate(Photo p);
+        GpsPoint ExtractGeoCoordinate(Photo photo, System.IO.Stream photoStream);
 	}
 }
 

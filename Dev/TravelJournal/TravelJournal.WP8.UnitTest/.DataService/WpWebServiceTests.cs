@@ -12,7 +12,7 @@ namespace TravelJournal.WP8.DataService.Tests
     [TestClass()]
     public class WpWebServiceTests
     {
-        [TestMethod()]
+        //[TestMethod()]
         public void GetUserPositionTest()
         {
             // Arrange
@@ -24,7 +24,7 @@ namespace TravelJournal.WP8.DataService.Tests
             Assert.IsTrue(position.Country!= string.Empty);
         }
 
-        [TestMethod()]
+        //[TestMethod()]
         public void GetGeopositionTest()
         {
             // Arrange

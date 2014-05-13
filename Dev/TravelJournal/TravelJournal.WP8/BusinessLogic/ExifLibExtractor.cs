@@ -1,6 +1,7 @@
 ﻿using ExifLib;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using TravelJournal.PCL.BusinessLogic;
@@ -10,9 +11,9 @@ namespace TravelJournal.WP8.BusinessLogic
 {
     public class ExifLibExtractor : IExifExtractor
     {
-        public GpsPoint ExtractGeoCoordinate(Photo p)
+        public GpsPoint ExtractGeoCoordinate(Photo p,Stream photoStream)
         {
-            using (ExifReader reader = new ExifReader(p.Stream))
+            using (ExifReader reader = new ExifReader(photoStream))
             {
                 // Extract geo coordinates
                 double[] latitudeDMS;

@@ -7,15 +7,17 @@
 namespace TravelJournal.PCL.DataService
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-	using TravelJournal.PCL.BusinessLogic;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using TravelJournal.PCL.BusinessLogic;
 
 	public interface IPhotoManager 
 	{
         void ProceedRawPhoto(DateTime tag, Action<Photo> onPhotoFoundHandler);
         bool CheckRawPhoto(DateTime tag);
+        Stream GetPhotoStream(string name);
 	}
 }
 

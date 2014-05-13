@@ -15,6 +15,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using TravelJournal.PCL.DataService;
 
 namespace TravelJournal.PCL.ViewModel
 {
@@ -30,25 +31,30 @@ namespace TravelJournal.PCL.ViewModel
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
-            //if (ViewModelBase.IsInDesignModeStatic)
-            //{
-            //    // Create design time view services and models
-            //    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            //}
-            //else
-            //{
-            //    // Create run time view services and models
-            //    SimpleIoc.Default.Register<IDataService, DataService>();
-            //}
-
             RegisterViewModels();
-
         }
+
+        public MainViewModel MainViewModel
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<MainViewModel>();
+            }
+        }
+
+        public AlbumViewModel AlbumViewModel
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<AlbumViewModel>();
+            }
+        }
+
 
         protected virtual void RegisterViewModels()
         {
-
+            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<AlbumViewModel>();
         }
 
         public static void Cleanup()

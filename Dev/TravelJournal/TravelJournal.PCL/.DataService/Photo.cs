@@ -11,10 +11,8 @@ namespace TravelJournal.PCL.DataService
     public class Photo
     {
         [DataMember]
-        public string PhotoName{get;set;}
+        public string Name{get;set;}
         [DataMember]
         public GpsPosition Position { get; set; }
-        [DataMember]
-        public System.IO.Stream Stream { get; set; }
     }
 }

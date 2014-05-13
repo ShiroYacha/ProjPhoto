@@ -19,7 +19,7 @@ namespace TravelJournal.PCL.ViewModel
         {
             get
             {
-                return this.GetType().Name.Replace("ViewModel", "Page"); 
+                return this.GetType().Name.Replace("ViewModel", "Page");
             }
         }
 
@@ -33,7 +33,7 @@ namespace TravelJournal.PCL.ViewModel
 
         private void NavigateTo(object navigateToItem)
         {
-            if(navigateToItem!=null)
+            if (navigateToItem != null)
                 Messenger.Default.Send(new NavigationMessage((navigateToItem as BindedViewModel).BindedViewXamlName));
         }
 
