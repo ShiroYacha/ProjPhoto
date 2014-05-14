@@ -31,11 +31,18 @@ namespace TravelJournal.PCL.ViewModel
             }
         }
 
-        private void NavigateTo(object navigateToItem)
+        protected void NavigateTo(object navigateToViewModel)
         {
-            if (navigateToItem != null)
-                Messenger.Default.Send(new NavigationMessage((navigateToItem as BindedViewModel).BindedViewXamlName));
+            if (navigateToViewModel != null)
+                Messenger.Default.Send(new NavigationMessage((navigateToViewModel as BindedViewModel).BindedViewXamlName, navigateToViewModel as BindedViewModel));
         }
+
+        protected void NavigateTo(object navigateToViewModel,string navigateToViewName)
+        {
+            if (navigateToViewName != string.Empty)
+                Messenger.Default.Send(new NavigationMessage(navigateToViewName, navigateToViewModel as BindedViewModel));
+        }
+
 
         public virtual void NavigateFrom()
         {

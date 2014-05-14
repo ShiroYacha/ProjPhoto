@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Ioc;
+using System;
 using TravelJournal.PCL.DataService;
 
 namespace TravelJournal.PCL.ViewModel
@@ -43,7 +45,15 @@ namespace TravelJournal.PCL.ViewModel
         {
             get
             {
-                return null;
+                return SimpleIoc.Default.GetInstance<IPhotoManager>().GetPhotoStream(photo.Name);
+            }
+        }
+
+        public System.IO.Stream ThumbnailStream
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<IPhotoManager>().GetPhotoThumbnailStream(photo.Name);
             }
         }
 
@@ -52,7 +62,6 @@ namespace TravelJournal.PCL.ViewModel
             get;
             private set;
         }
-
 
         public void LoadData(Photo photo)
         {

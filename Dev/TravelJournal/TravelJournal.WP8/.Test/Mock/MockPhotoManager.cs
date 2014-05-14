@@ -35,5 +35,16 @@ namespace TravelJournal.WP8.Test
         {
             return null;
         }
+        public System.IO.Stream GetPhotoThumbnailStream(string name)
+        {
+            return null;
+        }
+
+        public DateTime GetPhotoTimestamp(string name)
+        {
+            return default(DateTime);
+        }
+
+
     }
 }

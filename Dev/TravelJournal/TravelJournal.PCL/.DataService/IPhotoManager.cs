@@ -18,6 +18,9 @@ using TravelJournal.PCL.BusinessLogic;
         void ProceedRawPhoto(DateTime tag, Action<Photo> onPhotoFoundHandler);
         bool CheckRawPhoto(DateTime tag);
         Stream GetPhotoStream(string name);
-	}
+        Stream GetPhotoThumbnailStream(string name);
+        DateTime GetPhotoTimestamp(string name);
+
+    }
 }
 

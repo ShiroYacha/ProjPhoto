@@ -7,21 +7,24 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     DataContext="{Binding Source={StaticResource Locator},Path=AlbumViewModel}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Landscape" Orientation="Landscape"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Landscape"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Click="AdvancedOptionsClick" Text="advanced options"/>
+                <!--<shell:ApplicationBarMenuItem Click="AdvancedOptionsClick" Text="advanced options"/>-->
             </shell:ApplicationBar.MenuItems>
-            <shell:ApplicationBarIconButton IconUri="/Assets/like.png " Text="like"/>
-            <shell:ApplicationBarIconButton IconUri="/Assets/save.png" Text="save"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/appbar.map.png" Text="map" Click="ViewOnMapButton_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/appbar.list.png " Text="list" Click="ViewOnListButton_Click"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
     
@@ -34,13 +37,24 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="VIEW PHOTOS" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
+            <ViewportControl x:Name="viewport"  
+                ManipulationStarted="OnManipulationStarted" ManipulationDelta="OnManipulationDelta"  
+                             ManipulationCompleted="OnManipulationCompleted" ViewportChanged="viewport_ViewportChanged" Margin="0,0,0,10">
+                <Canvas x:Name="canvas">
+                    <Image x:Name="TestImage" 
+                           RenderTransformOrigin="0,0" CacheMode="BitmapCache"
+                           Loaded="OnImageOpened">
+                        <Image.RenderTransform>
+                            <ScaleTransform x:Name="xform"/>
+                        </Image.RenderTransform>
+                    </Image>
+                </Canvas>
+            </ViewportControl>         
         </Grid>
     </Grid>
 

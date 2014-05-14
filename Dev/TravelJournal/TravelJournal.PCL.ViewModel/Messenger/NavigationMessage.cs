@@ -12,8 +12,13 @@ namespace TravelJournal.PCL.ViewModel
         {
             get { return base.Notification; }
         }
+        public BindedViewModel ViewModel
+        {
+            get;
+            private set;
+        }
 
-        public NavigationMessage(string pageName) : base(pageName) { }
+        public NavigationMessage(string pageName, BindedViewModel viewModel) : base(pageName) { this.ViewModel = viewModel; }
 
     }
 }

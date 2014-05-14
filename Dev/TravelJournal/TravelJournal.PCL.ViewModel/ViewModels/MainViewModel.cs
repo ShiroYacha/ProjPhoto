@@ -17,7 +17,11 @@ namespace TravelJournal.PCL.ViewModel
             this.AlbumViewModels = new ObservableCollection<AlbumViewModel>();
         }
 
-        public ObservableCollection<AlbumViewModel> AlbumViewModels { get; private set; }
+        public ObservableCollection<AlbumViewModel> AlbumViewModels
+        { 
+            get; 
+            private set; 
+        }
 
         public ICommand OnLoad
         {

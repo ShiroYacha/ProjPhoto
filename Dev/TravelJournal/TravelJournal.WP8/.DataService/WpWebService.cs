@@ -20,14 +20,17 @@ namespace TravelJournal.WP8.DataService
     {
         public async Task<GpsPosition> GetUserPosition()
         {
-            Geolocator locator = new Geolocator(); locator.DesiredAccuracy = PositionAccuracy.High;
+            Geolocator locator = new Geolocator();
+            locator.DesiredAccuracy = PositionAccuracy.High;
             Geoposition geoposition = await locator.GetGeopositionAsync();
             return await GetGeoposition(ConvertGeopositionToGpsPoint(geoposition));
         }
+
+
         public async Task<GpsPosition> GetGeoposition(GpsPoint coordinate)
         {
             var tcs = new TaskCompletionSource<GpsPosition>();
-            Uri geocodeRequest = new Uri(string.Format("http://dev.virtualearth.net/REST/v1/Locations/{0},{1}?o=json&key={2}", coordinate.Latitude, coordinate.Longitude, "AgVYbJgEyzwB25zWBg56k39viigKMvVcGKX7M6gkVbsd-zugS37c3tugNHmXc_Gs"));
+            Uri geocodeRequest = new Uri(string.Format("http://dev.virtualearth.net/REST/v1/Locations/{0},{1}?o=json&key={2}", coordinate.Latitude.ToString().Replace(',', '.'), coordinate.Longitude.ToString().Replace(',', '.'), "AsTiBxWK7FAm0uDNP3bdatPN0zDF58fb-1NQrESDbJ32m-ORA81iS0ik3bViZcSj "));
             GetResponse(geocodeRequest, (x) =>
             {
                 tcs.SetResult(ConvertQueryResponseToGpsPosition(coordinate, x.ResourceSets[0].Resources[0] as Location));
@@ -48,6 +51,7 @@ namespace TravelJournal.WP8.DataService
             };
             wc.OpenReadAsync(uri);
         }
+
         private static GpsPoint ConvertGeopositionToGpsPoint(Geoposition position)
         {
             return new GpsPoint()

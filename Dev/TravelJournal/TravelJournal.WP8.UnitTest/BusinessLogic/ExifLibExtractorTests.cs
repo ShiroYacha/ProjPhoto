@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TravelJournal.PCL.DataService;
 using TravelJournal.WP8.BusinessLogic;
+using TravelJournal.WP8.DataService;
 using TravelJournal.WP8.UnitTest;
 
 namespace TravelJournal.WP8.BusinessLogic.Tests
@@ -15,7 +16,7 @@ namespace TravelJournal.WP8.BusinessLogic.Tests
     [TestClass()]
     public class ExifLibExtractorTests
     {
-        //[TestMethod()]
+        [TestMethod()]
         public void ExtractGeoCoordinateTest()
         {
             // Arrange
@@ -29,14 +30,14 @@ namespace TravelJournal.WP8.BusinessLogic.Tests
             }
             Photo photo = new Photo()
             {
-                Name = "Metz.jpg",
-                Position = new GpsPosition() { GpsPoint = new GpsPoint() { Timestamp=DateTime.Now} }
+                Name = "WP_20131201_13_37_04_Pro.jpg"
             };
             // Act
-            GpsPoint point = extractor.ExtractGeoCoordinate(photo,samplePicture.GetImage());
+            GpsPoint point = extractor.ExtractGeoCoordinate(photo);
             // Assert
             Assert.AreNotEqual(default(double),point.Latitude);
             Assert.AreNotEqual(default(double), point.Longitude);
+            Assert.AreNotEqual(default(DateTime), point.Timestamp);
         }
     }
 }

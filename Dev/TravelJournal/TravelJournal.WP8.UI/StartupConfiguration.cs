@@ -34,6 +34,7 @@ namespace TravelJournal.WP8.UI
             //    SimpleIoc.Default.Register<DataManagerBase,WpDataManager>();
             //}
             SimpleIoc.Default.Register<DataManagerBase, DesignTimeDataManager>();
+            SimpleIoc.Default.Register<IPhotoManager, WpPhotoManager>();
             //SimpleIoc.Default.Register<DataManagerBase, WpDataManager>();
         }
     }

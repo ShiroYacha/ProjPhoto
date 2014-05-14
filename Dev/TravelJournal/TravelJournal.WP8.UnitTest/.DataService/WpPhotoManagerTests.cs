@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +18,9 @@ namespace TravelJournal.WP8.DataService.Tests
             // Arrange
             WpPhotoManager wp = new WpPhotoManager();
             // Act
-            wp.GetPhotoStream("a");
+            Stream stream=wp.GetPhotoStream("WP_20131201_13_37_04_Pro.jpg");
             // Assert
+            Assert.IsNotNull(stream);
         }
     }
 }
