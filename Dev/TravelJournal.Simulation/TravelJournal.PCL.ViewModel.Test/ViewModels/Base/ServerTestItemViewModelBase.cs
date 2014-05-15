@@ -96,15 +96,15 @@ namespace TravelJournal.PCL.ViewModel.Test
         public override void NavigateFrom()
         {
             base.NavigateFrom();
-            // Remove the agent if started
-            if(!scheduledTaskNotStarted)
-            {
-                ScheduledTaskNotStarted = true;
-                serverAgent.Stop();
-            }
-            // Disconnect from the server if connected
-            if(connectionStatus==ConnectionStatus.Connected)
-                serverAgent.DisconnectServer((result) => { ConnectionStatus = result; });
+            //// Remove the agent if started
+            //if(!scheduledTaskNotStarted)
+            //{
+            //    ScheduledTaskNotStarted = true;
+            //    serverAgent.Stop();
+            //}
+            //// Disconnect from the server if connected
+            //if(connectionStatus==ConnectionStatus.Connected)
+            //    serverAgent.DisconnectServer((result) => { ConnectionStatus = result; });
         }
     }
 }

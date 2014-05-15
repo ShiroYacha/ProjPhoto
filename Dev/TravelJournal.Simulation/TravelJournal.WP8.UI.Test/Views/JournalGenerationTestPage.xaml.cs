@@ -38,7 +38,7 @@ namespace TravelJournal.WP8.UI.Test
             } 
         }
 
-        // Sample code for building a localized ApplicationBar
+        // Sample code for building a localized ApplicationBar 
         //private void BuildLocalizedApplicationBar()
         //{
         //    // Set the page's ApplicationBar to a new instance of ApplicationBar.

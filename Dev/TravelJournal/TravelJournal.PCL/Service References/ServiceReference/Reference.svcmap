@@ -20,18 +20,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="aa06bf3a-40a8-45cd-95ee-adc559abe08e" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
-    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="a259a85a-e135-4abb-a22d-a11bd5efc65b" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
-    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="fdb53f29-c800-46de-80f6-2918266489d1" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
-    <MetadataFile FileName="TravelJournal.WinForm.Simulator1.xsd" MetadataType="Schema" ID="bba3c814-9fe3-4d80-b675-d8139e2f7c66" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
-    <MetadataFile FileName="Arrays1.xsd" MetadataType="Schema" ID="3418160d-05a2-4c3f-be57-2981f900cc98" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
-    <MetadataFile FileName="TravelJournal.WinForm.Simulator.Controls1.xsd" MetadataType="Schema" ID="d8c7432a-b91e-42a0-a7ea-c355015be090" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
-    <MetadataFile FileName="TravelJournal.PCL.DataService1.xsd" MetadataType="Schema" ID="d64626a1-0a2f-4996-8da6-0425555d577e" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
-    <MetadataFile FileName="System.IO1.xsd" MetadataType="Schema" ID="622659a9-02b4-42d0-a7aa-97a66a1f1da8" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
-    <MetadataFile FileName="System1.xsd" MetadataType="Schema" ID="9f2e9101-75f5-4a58-bacf-32bb1f064e45" SourceId="1" SourceUrl="http://192.168.1.5:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="588fbc1b-6322-492d-a8e9-f3e1ff0dd6b6" SourceId="1" SourceUrl="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="4290a6c9-24cd-48f9-8e88-fbd05aab3a12" SourceId="1" SourceUrl="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="ab456689-bf0d-4a83-be91-e96b3215b516" SourceId="1" SourceUrl="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
+    <MetadataFile FileName="TravelJournal.WinForm.Simulator.xsd" MetadataType="Schema" ID="10f28bdd-d4eb-48f9-83ce-921e177340c3" SourceId="1" SourceUrl="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="3fededbe-c025-4f1b-beff-5fc0215499b9" SourceId="1" SourceUrl="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
+    <MetadataFile FileName="TravelJournal.WinForm.Simulator.Controls.xsd" MetadataType="Schema" ID="e7947276-f4b9-448d-a169-d159befb8d03" SourceId="1" SourceUrl="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
+    <MetadataFile FileName="TravelJournal.PCL.DataService.xsd" MetadataType="Schema" ID="eeec13d8-aceb-4fe0-bd63-efbd1a6357a9" SourceId="1" SourceUrl="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -5,6 +5,7 @@ using System.Net;
 using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using TravelJournal.PCL.ViewModel;
 
 namespace TravelJournal.PCL.ViewModel.Test
 {

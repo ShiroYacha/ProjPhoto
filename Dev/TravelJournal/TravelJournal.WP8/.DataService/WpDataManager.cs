@@ -19,12 +19,12 @@ namespace TravelJournal.WP8.DataService
 {
     public class WpDataManager : DataManagerBase
     {
-        DataSaver<Data> myDataSaver =
+        DataSaver<Data> dataSaver =
               new DataSaver<Data>();
         
         public override void Load()
         {
-            Data = myDataSaver.LoadMyData("MyDataFileName"); 
+            Data = dataSaver.LoadMyData("MyDataFileName"); 
             // Assign first
             if(Data==null)
             {
@@ -41,9 +41,8 @@ namespace TravelJournal.WP8.DataService
         }
         public override void Save()
         {   
-            myDataSaver.SaveMyData(Data, "MyDataFileName");
+            dataSaver.SaveMyData(Data, "MyDataFileName");
         }
-
     }
 }
 //    public override void Load()

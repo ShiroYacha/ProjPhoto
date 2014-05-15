@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 using TravelJournal.PCL.BusinessLogic;
 using TravelJournal.PCL.DataService;
 using TravelJournal.WP8.BusinessLogic;
@@ -38,4 +39,25 @@ namespace TravelJournal.WP8.UI
             //SimpleIoc.Default.Register<DataManagerBase, WpDataManager>();
         }
     }
+
+    public class AssociationUriMapper : UriMapperBase
+    {
+        private string tempUri;
+
+        public override Uri MapUri(Uri uri)
+        {
+            tempUri = System.Net.HttpUtility.UrlDecode(uri.ToString());
+
+            // URI association launch for contoso.
+            if (tempUri.Contains("traveljournal:AlbumCompletedSimulation"))
+            {
+                // Map the show products request to ShowProducts.xaml
+                return new Uri("/Views/MainPage.xaml", UriKind.Relative);
+            }
+
+            // Otherwise perform normal launch.
+            return uri;
+        }
+    }
+
 }

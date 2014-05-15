@@ -8,8 +8,6 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/TravelJournal.WinForm.Simulator.Controls" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/TravelJournal.PCL.DataService" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.IO" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ISimulationServices_Connect_InputMessage">
@@ -266,7 +264,7 @@
   </wsdl:binding>
   <wsdl:service name="SimulationServices">
     <wsdl:port name="BasicHttpBinding_ISimulationServices" binding="tns:BasicHttpBinding_ISimulationServices">
-      <soap:address location="http://192.168.1.23:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices" />
+      <soap:address location="http://192.168.1.12:8733/Design_Time_Addresses/TravelJournal.WinForm.Simulator/SimulationServices" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

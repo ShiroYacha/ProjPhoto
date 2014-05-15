@@ -22,6 +22,8 @@ namespace TravelJournal.PCL.BusinessLogic
 
         public IExifExtractor ExifExtractor { get { return SimpleIoc.Default.GetInstance<IExifExtractor>(); } }
 
+        public Action<Processor> AlbumCompletedCallback { get; set; }
+
         public Album Album
         {
             get { return DataManager.GetCurrentAlbum(); }

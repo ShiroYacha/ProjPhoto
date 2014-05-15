@@ -91,23 +91,17 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\ServiceReference\Arrays1.xsd">
+    <None Include="Service References\ServiceReference\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service1.wsdl" />
-    <None Include="Service References\ServiceReference\service2.xsd">
+    <None Include="Service References\ServiceReference\service.wsdl" />
+    <None Include="Service References\ServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\service21.xsd">
+    <None Include="Service References\ServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\System.IO1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\System1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference\TravelJournal.PCL.DataService1.xsd">
+    <None Include="Service References\ServiceReference\TravelJournal.PCL.DataService.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.ConnectionTestData.datasource">
@@ -122,10 +116,10 @@
     <None Include="Service References\ServiceReference\TravelJournal.PCL.ServiceReference.Photo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference\TravelJournal.WinForm.Simulator.Controls1.xsd">
+    <None Include="Service References\ServiceReference\TravelJournal.WinForm.Simulator.Controls.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\TravelJournal.WinForm.Simulator1.xsd">
+    <None Include="Service References\ServiceReference\TravelJournal.WinForm.Simulator.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

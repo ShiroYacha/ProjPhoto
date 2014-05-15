@@ -13,10 +13,10 @@ namespace TravelJournal.PCL.Test
         {
             // Start operation
             OperationStart();
-            Processor.ExecuteForTest(ReportExecutionStatus, MockSetupProcessor);
+            Processor.ExecuteForTest(ReportExecutionStatus, SetupProcessor);
         }
 
-        protected abstract Action<string> MockSetupProcessor(Processor processor);
+        protected abstract Action<string> SetupProcessor(Processor processor);
 
         private void ReportExecutionStatus(Data data)
         {
@@ -51,7 +51,7 @@ namespace TravelJournal.PCL.Test
         {
             return new TravelJournal.PCL.ServiceReference.Album()
             {
-                AlbumName = album.Name,
+                Name = album.Name,
                 TimeTag = album.TimeTag,
                 PhotoList = new List<ServiceReference.Photo>(album.PhotoList.Select<Photo, ServiceReference.Photo>
                     ((p) => { return WrapPhoto(p); }))
@@ -61,7 +61,7 @@ namespace TravelJournal.PCL.Test
         {
             return new ServiceReference.Photo()
             {
-                PhotoName = photo.Name,
+                Name = photo.Name,
                 Position = WrapGpsPosition(photo.Position),
 
             };
@@ -70,7 +70,7 @@ namespace TravelJournal.PCL.Test
         {
             return new Photo()
             {
-                Name = photo.PhotoName,
+                Name = photo.Name,
                 Position = WrapGpsPosition(photo.Position),
 
             };

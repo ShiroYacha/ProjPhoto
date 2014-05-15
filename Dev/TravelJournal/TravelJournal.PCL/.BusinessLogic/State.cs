@@ -53,7 +53,9 @@ namespace TravelJournal.PCL.BusinessLogic
                 if (!processor.TouristCity.Contains(p.City))
                     processor.TourRoutePoints.Remove(p);
             }
+            // Notify album completes
             processor.AlbumCompleted = true;
+            processor.AlbumCompletedCallback.Invoke(processor);
         }
     }
 }

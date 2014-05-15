@@ -123,6 +123,9 @@ namespace TravelJournal.WP8.UI
             RootFrame = new PhoneApplicationFrame();
             RootFrame.Navigated += CompleteInitializePhoneApplication;
 
+            // Assign the URI-mapper class to the application frame.
+            RootFrame.UriMapper = new AssociationUriMapper();
+
             // Handle navigation failures
             RootFrame.NavigationFailed += RootFrame_NavigationFailed;
 
