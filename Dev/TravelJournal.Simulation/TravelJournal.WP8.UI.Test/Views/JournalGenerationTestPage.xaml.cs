@@ -29,7 +29,7 @@ namespace TravelJournal.WP8.UI.Test
 
         private void DirtyInitializeUserData()
         {
-            string fileName = @"MyFolderName\MyDataFileName.dat";
+            string fileName = "/shared/transfers/traveljournal/default.dat";
             using (var store = IsolatedStorageFile.GetUserStoreForApplication()) 
             {
 

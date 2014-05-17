@@ -91,6 +91,7 @@
     <Compile Include=".DataService\WpWebService.cs" />
     <Compile Include=".Test\ConnectivityTesterAgent.cs" />
     <Compile Include=".Test\JournalGenerationTesterAgent.cs" />
+    <Compile Include=".Test\Mock\MockDataManager.cs" />
     <Compile Include=".Test\Mock\MockExifExtractor.cs" />
     <Compile Include=".Test\Mock\MockPhotoManager.cs" />
     <Compile Include=".Test\Mock\MockWebService.cs" />

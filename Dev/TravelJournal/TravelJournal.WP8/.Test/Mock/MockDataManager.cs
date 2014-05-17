@@ -9,9 +9,9 @@ using TravelJournal.PCL.DataService;
 using TravelJournal.WP8.BusinessLogic;
 using TravelJournal.WP8.DataService;
 
-namespace TravelJournal.WP8.UI.Test
+namespace TravelJournal.WP8.Test
 {
-    public class DesignTimeDataManager:DataManagerBase
+    public class MockDataManager:DataManagerBase
     {
 
         public override void Load()

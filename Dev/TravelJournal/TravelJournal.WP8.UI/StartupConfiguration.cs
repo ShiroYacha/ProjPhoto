@@ -11,7 +11,7 @@ using TravelJournal.PCL.DataService;
 using TravelJournal.WP8.BusinessLogic;
 using TravelJournal.WP8.DataService;
 using TravelJournal.WP8.Test;
-using TravelJournal.WP8.UI.Test;
+using TravelJournal.WP8.UI;
 
 namespace TravelJournal.WP8.UI
 {
@@ -27,7 +27,7 @@ namespace TravelJournal.WP8.UI
             //if (ViewModelBase.IsInDesignModeStatic)
             //{
             //    // Create design time view services and models
-            //    SimpleIoc.Default.Register<DataManagerBase, DesignTimeDataManager>();
+            //    SimpleIoc.Default.Register<DataManagerBase, MockDataManager>();
             //}
             //else
             //{
@@ -35,7 +35,7 @@ namespace TravelJournal.WP8.UI
             //    SimpleIoc.Default.Register<DataManagerBase,WpDataManager>();
             //}
             SimpleIoc.Default.Register<DataManagerBase, WpSkydriveDataManager>();
-            SimpleIoc.Default.Register<IPhotoManager, WpPhotoManager>();
+            SimpleIoc.Default.Register<IPhotoManager, MockPhotoManager>();
             //SimpleIoc.Default.Register<DataManagerBase, WpDataManager>();
         }
     }
