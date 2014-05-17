@@ -85,9 +85,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include=".DataService\BingMapsJson.cs" />
-    <Compile Include=".DataService\DataSaver.cs" />
-    <Compile Include=".DataService\WpDataManager.cs" />
+    <Compile Include=".DataService\WpIsoDataManager.cs" />
     <Compile Include=".DataService\WpPhotoManager.cs" />
+    <Compile Include=".DataService\WpSkydriveDataManager.cs" />
     <Compile Include=".DataService\WpWebService.cs" />
     <Compile Include=".Test\ConnectivityTesterAgent.cs" />
     <Compile Include=".Test\JournalGenerationTesterAgent.cs" />
@@ -115,6 +115,8 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Unofficial.Blend.Interactivity.1.0.0\lib\wp8\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Live, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Live.Controls, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\Portable.CommonServiceLocator.1.2.2\lib\portable-net4+sl4+wp7+win8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>

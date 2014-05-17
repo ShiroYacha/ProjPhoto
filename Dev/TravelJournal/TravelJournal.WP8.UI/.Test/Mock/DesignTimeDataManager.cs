@@ -13,6 +13,7 @@ namespace TravelJournal.WP8.UI.Test
 {
     public class DesignTimeDataManager:DataManagerBase
     {
+
         public override void Load()
         {
             Data = new Data();
@@ -54,5 +55,7 @@ namespace TravelJournal.WP8.UI.Test
         {
             
         }
+
+
     }
 }

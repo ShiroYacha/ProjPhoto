@@ -16,6 +16,7 @@ namespace TravelJournal.PCL.DataService
             get { return dataCollection; }
             set { dataCollection = value; }
         }
+
         public abstract void Load();
 
         public abstract void Save();

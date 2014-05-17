@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TravelJournal.PCL.DataService;
 
@@ -41,17 +42,15 @@ namespace TravelJournal.PCL.ViewModel
             if (!IsDataLoaded)
             {
                 DataManagerBase dataBase = SimpleIoc.Default.GetInstance<DataManagerBase>();
-                dataBase.Load();
-                Data data = dataBase.Data;
-                foreach (Album album in data.AlbumsCollection)
-                {
-                    AlbumViewModel avm = new AlbumViewModel();
-                    avm.LoadData(album);
-                    AlbumViewModels.Add(avm);
-                }
-                this.IsDataLoaded = true;
+                //Data data = dataBase.Data;
+                //foreach (Album album in data.AlbumsCollection)
+                //{
+                //    AlbumViewModel avm = new AlbumViewModel();
+                //    avm.LoadData(album);
+                //    AlbumViewModels.Add(avm);
+                //}
+                //this.IsDataLoaded = true;
             }
         }
-
     }
 }

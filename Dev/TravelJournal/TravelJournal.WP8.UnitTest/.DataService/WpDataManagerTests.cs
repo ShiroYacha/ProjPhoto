@@ -16,7 +16,7 @@ namespace TravelJournal.WP8.DataService.Tests
         public void SaveLoadTest()
         {
              // Arrange
-            WpDataManager dataManager = new WpDataManager();
+            WpIsoDataManager dataManager = new WpIsoDataManager();
             Data data = new Data() { TouristCity = new List<string> {"Metz","Paris","Lille","Leyon" }, State=new TravelJournal.PCL.BusinessLogic.PilotState()};
             dataManager.Data = data;
             //Act

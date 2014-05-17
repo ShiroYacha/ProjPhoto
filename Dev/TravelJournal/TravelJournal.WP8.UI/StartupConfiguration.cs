@@ -22,7 +22,7 @@ namespace TravelJournal.WP8.UI
             RegisterIocContainers();
         }
 
-        private static void RegisterIocContainers()
+        private async static void RegisterIocContainers()
         {
             //if (ViewModelBase.IsInDesignModeStatic)
             //{
@@ -34,7 +34,7 @@ namespace TravelJournal.WP8.UI
             //    // Create run time view services and models
             //    SimpleIoc.Default.Register<DataManagerBase,WpDataManager>();
             //}
-            SimpleIoc.Default.Register<DataManagerBase, DesignTimeDataManager>();
+            SimpleIoc.Default.Register<DataManagerBase, WpSkydriveDataManager>();
             SimpleIoc.Default.Register<IPhotoManager, WpPhotoManager>();
             //SimpleIoc.Default.Register<DataManagerBase, WpDataManager>();
         }

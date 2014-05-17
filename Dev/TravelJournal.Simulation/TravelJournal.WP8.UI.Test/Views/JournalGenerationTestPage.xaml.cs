@@ -9,6 +9,9 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System.IO.IsolatedStorage;
 using System.IO;
+using GalaSoft.MvvmLight.Ioc;
+using TravelJournal.PCL.DataService;
+using TravelJournal.WP8.DataService;
 
 namespace TravelJournal.WP8.UI.Test
 {

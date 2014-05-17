@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Scheduler;
+﻿using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Shell;
 using System;
 using System.Collections.Generic;
@@ -6,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TravelJournal.PCL.BusinessLogic;
+using TravelJournal.PCL.DataService;
 using TravelJournal.PCL.ServiceReference;
 using TravelJournal.PCL.Test;
+using TravelJournal.WP8.DataService;
 
 namespace TravelJournal.WP8.Test
 {

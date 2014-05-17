@@ -32,7 +32,7 @@ namespace TravelJournal.WP8.UI.Test
             SimpleIoc.Default.Register<IExifExtractor,MockExifExtractor>();
             SimpleIoc.Default.Register<IPhotoOrganizer, PhotoOrganizer>();
             // Register data service composants
-            SimpleIoc.Default.Register<DataManagerBase, WpDataManager>();
+            SimpleIoc.Default.Register<DataManagerBase, WpSkydriveDataManager>();
             SimpleIoc.Default.Register<IPhotoManager, MockPhotoManager>();
             SimpleIoc.Default.Register<IWebService, MockWebService>();
         }
