@@ -23,5 +23,18 @@ namespace TravelJournal.PCL.DataService
             Latitude = latitude;
             Timestamp = time;
         }
+
+        public GpsPoint(GpsPoint point)
+        {
+            Longitude = point.Longitude;
+            Latitude = point.Latitude;
+            Timestamp = point.Timestamp;
+        }
+
+        public static GpsPoint operator +(GpsPoint first, GpsPoint second)
+        {
+            return new GpsPoint(first.Longitude + second.Longitude,first.Latitude + second.Latitude, default(DateTime));
+        }
+
     }
 }

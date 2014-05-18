@@ -43,37 +43,56 @@ namespace TravelJournal.WP8.DataService
             folderId = await GetDirectoryAsync(folderName, "me/skydrive");
         }
 
-        public async override void Load()
-        {
-            await Initialize();
+        //public async override void Load()
+        //{
+        //    await Initialize();
 
-            LiveOperationResult liveOperationResult = await client.GetAsync(folderId + "/files");
-            dynamic result = liveOperationResult.Result.Values.First();
-            Data = null;
-            foreach (IDictionary<string, object> content in result)
-            {
-                string fileId = (string)content["id"];
-                LiveOperationResult operationResult = await client.BackgroundDownloadAsync(fileId + "/Content?type=notebook", targetIsoUri);
-                using (var sourceStream =
-                        IsoFile.OpenFile(targetFileName, FileMode.Open))
-                {
-                    Data = (Data)serializer.ReadObject(sourceStream);
-                }
-                break;
-            }
-            if (Data == null)
-                Data = new Data()
-                {
-                    State = new OriginalState(),
-                    UserInfo = new UserInfo("test", new GpsPosition("France", "Metz", null)),
-                    AlbumCompleted = false,
-                    AlbumsCollection = new List<Album>(),
-                    TouristCity = new List<string>(),
-                    TourRoutePoints = new List<GpsPosition>()
-                };
-        }
+        //    LiveOperationResult liveOperationResult = await client.GetAsync(folderId + "/files");
+        //    dynamic result = liveOperationResult.Result.Values.First();
+        //    Data = null;
+        //    foreach (IDictionary<string, object> content in result)
+        //    {
+        //        string fileId = (string)content["id"];
+        //        LiveOperationResult operationResult = await client.BackgroundDownloadAsync(fileId + "/Content?type=notebook", targetIsoUri);
+        //        using (var sourceStream =
+        //                IsoFile.OpenFile(targetFileName, FileMode.Open))
+        //        {
+        //            Data = (Data)serializer.ReadObject(sourceStream);
+        //        }
+        //        break;
+        //    }
+        //    if (Data == null)
+        //        Data = new Data()
+        //        {
+        //            State = new OriginalState(),
+        //            UserInfo = new UserInfo("test", new GpsPosition("France", "Metz", null)),
+        //            AlbumCompleted = false,
+        //            AlbumsCollection = new List<Album>(),
+        //            TouristCity = new List<string>(),
+        //            TourRoutePoints = new List<GpsPosition>()
+        //        };
+        //}
 
-        public async override void Save()
+        //public async override void Save()
+        //{
+
+        //    if (!IsoFile.DirectoryExists("/shared/transfers/traveljournal"))
+        //        IsoFile.CreateDirectory("/shared/transfers/traveljournal");
+        //    try
+        //    {
+        //        using (var targetFile = IsoFile.CreateFile(targetFileName))
+        //        {
+        //            serializer.WriteObject(targetFile, Data);
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        IsoFile.DeleteFile(targetFileName);
+        //    }
+        //    await client.BackgroundUploadAsync(folderId, targetIsoUri, OverwriteOption.Overwrite);
+        //}
+
+        public override async Task Save()
         {
 
             if (!IsoFile.DirectoryExists("/shared/transfers/traveljournal"))
@@ -92,54 +111,7 @@ namespace TravelJournal.WP8.DataService
             await client.BackgroundUploadAsync(folderId, targetIsoUri, OverwriteOption.Overwrite);
         }
 
-        public async Task SaveAsync()
-        {
-
-            if (!IsoFile.DirectoryExists("/shared/transfers/traveljournal"))
-                IsoFile.CreateDirectory("/shared/transfers/traveljournal");
-            try
-            {
-                using (var targetFile = IsoFile.CreateFile(targetFileName))
-                {
-                    serializer.WriteObject(targetFile, Data);
-                }
-            }
-            catch (Exception e)
-            {
-                IsoFile.DeleteFile(targetFileName);
-            }
-            await client.BackgroundUploadAsync(folderId, targetIsoUri, OverwriteOption.Overwrite);
-        }
-
-        public async Task LoadBackgroundAsync()
-        {
-            LiveOperationResult liveOperationResult = await client.GetAsync(folderId + "/files");
-            dynamic result = liveOperationResult.Result.Values.First();
-            Data = null;
-            foreach (IDictionary<string, object> content in result)
-            {
-                string fileId = (string)content["id"];
-                LiveOperationResult operationResult = await client.BackgroundDownloadAsync(fileId + "/content", targetIsoUri);
-                using (var sourceStream =
-                        IsoFile.OpenFile(targetFileName, FileMode.Open))
-                {
-                    Data = (Data)serializer.ReadObject(sourceStream);
-                    break;
-                }
-            }
-            if (Data == null)
-                Data = new Data()
-                {
-                    State = new OriginalState(),
-                    UserInfo = new UserInfo("test", new GpsPosition("France", "Metz", null)),
-                    AlbumCompleted = false,
-                    AlbumsCollection = new List<Album>(),
-                    TouristCity = new List<string>(),
-                    TourRoutePoints = new List<GpsPosition>()
-                };
-        }
-
-        public async Task LoadAsync()
+        public override async Task Load()
         {
             LiveOperationResult liveOperationResult = await client.GetAsync(folderId + "/files");
             dynamic result = liveOperationResult.Result.Values.First();
@@ -161,7 +133,6 @@ namespace TravelJournal.WP8.DataService
                     TourRoutePoints = new List<GpsPosition>()
                 };
         }
-
 
         public async Task Login()
         {
@@ -215,6 +186,35 @@ namespace TravelJournal.WP8.DataService
 
             return folderId;
         }
+
+        public async Task LoadBackgroundAsync()
+        {
+            LiveOperationResult liveOperationResult = await client.GetAsync(folderId + "/files");
+            dynamic result = liveOperationResult.Result.Values.First();
+            Data = null;
+            foreach (IDictionary<string, object> content in result)
+            {
+                string fileId = (string)content["id"];
+                LiveOperationResult operationResult = await client.BackgroundDownloadAsync(fileId + "/content", targetIsoUri);
+                using (var sourceStream =
+                        IsoFile.OpenFile(targetFileName, FileMode.Open))
+                {
+                    Data = (Data)serializer.ReadObject(sourceStream);
+                    break;
+                }
+            }
+            if (Data == null)
+                Data = new Data()
+                {
+                    State = new OriginalState(),
+                    UserInfo = new UserInfo("test", new GpsPosition("France", "Metz", null)),
+                    AlbumCompleted = false,
+                    AlbumsCollection = new List<Album>(),
+                    TouristCity = new List<string>(),
+                    TourRoutePoints = new List<GpsPosition>()
+                };
+        }
+
 
     }
 }

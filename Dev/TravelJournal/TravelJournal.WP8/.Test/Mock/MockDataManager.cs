@@ -13,8 +13,7 @@ namespace TravelJournal.WP8.Test
 {
     public class MockDataManager:DataManagerBase
     {
-
-        public override void Load()
+        public override async Task Load()
         {
             Data = new Data();
             List<Album> albumList = new List<Album>();
@@ -25,6 +24,11 @@ namespace TravelJournal.WP8.Test
                     PhotoList = new List<Photo>(GetSamplePhotos(40))
                 });
             Data.AlbumsCollection = albumList;
+        }
+
+        public override async Task Save()
+        {
+
         }
 
         private List<Photo> GetSamplePhotos(int count)
@@ -50,12 +54,6 @@ namespace TravelJournal.WP8.Test
             }
             return photos;
         }
-
-        public override void Save()
-        {
-            
-        }
-
 
     }
 }

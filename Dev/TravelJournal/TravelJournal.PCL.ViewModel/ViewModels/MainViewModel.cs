@@ -24,33 +24,34 @@ namespace TravelJournal.PCL.ViewModel
             private set; 
         }
 
-        public ICommand OnLoad
-        {
-            get
-            {
-                return new RelayCommand(LoadData);
-            }
-        }
-        public bool IsDataLoaded
-        {
-            get;
-            private set;
-        }
+        //public ICommand OnLoad
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(LoadData);
+        //    }
+        //}
+        //public bool IsDataLoaded
+        //{
+        //    get;
+        //    private set;
+        //}
 
-        public void LoadData()
-        {
-            if (!IsDataLoaded)
-            {
-                DataManagerBase dataBase = SimpleIoc.Default.GetInstance<DataManagerBase>();
-                //Data data = dataBase.Data;
-                //foreach (Album album in data.AlbumsCollection)
-                //{
-                //    AlbumViewModel avm = new AlbumViewModel();
-                //    avm.LoadData(album);
-                //    AlbumViewModels.Add(avm);
-                //}
-                //this.IsDataLoaded = true;
-            }
-        }
+        //public void LoadData()
+        //{
+        //    if (!IsDataLoaded)
+        //    {
+        //        DataManagerBase dataBase = SimpleIoc.Default.GetInstance<DataManagerBase>();
+        //        await dataBase.Initialize();
+        //        await dataBase.Load();
+        //        Data data = dataBase.Data;
+        //        foreach (Album album in data.AlbumsCollection)
+        //        {
+        //            AlbumViewModel avm = new AlbumViewModel();
+        //            avm.LoadData(album);
+        //            (DataContext as MainViewModel).AlbumViewModels.Add(avm);
+        //        }
+        //    }
+        //}
     }
 }

@@ -60,7 +60,7 @@ namespace TravelJournal.WP8.UI.Test
             WpSkydriveDataManager uploader = new WpSkydriveDataManager();
             await uploader.Initialize();
             uploader.Data = data;
-            await uploader.SaveAsync();
+            await uploader.Save();
         }
     }
 }

@@ -19,18 +19,18 @@ namespace TravelJournal.WP8.UI
     {
         const double MaxScale = 10;
 
-        double _scale = 1.0;
-        double _minScale;
-        double _coercedScale;
-        double _originalScale;
-        double _initialScale;
+        double scale = 1.0;
+        double minScale;
+        double coercedScale;
+        double originalScale;
+        double initialScale;
 
-        Size _viewportSize;
-        bool _pinching;
-        Point _screenMidpoint;
-        Point _relativeMidpoint;
+        Size viewportSize;
+        bool pinching;
+        Point screenMidpoint;
+        Point relativeMidpoint;
 
-        BitmapImage _bitmap; 
+        BitmapImage bitmap; 
 
         public AlbumPage():base()
         {
@@ -58,16 +58,23 @@ namespace TravelJournal.WP8.UI
 
         void InitializeImage(PhotoViewModel photoViewModel)
         {
-            _bitmap = new BitmapImage();
-            _bitmap.SetSource(photoViewModel.Stream);
-            TestImage.Source = _bitmap;
+            bitmap = new BitmapImage();
+            bitmap.SetSource(photoViewModel.Stream);
+
+            // Test overlay image on stream
+            WriteableBitmap writeableBitmap = new WriteableBitmap(bitmap);
+            //Just to make sure the boundary is correct so I draw the green rec around the object
+            writeableBitmap.Invalidate();
+
+            // Set source to image
+            TestImage.Source = writeableBitmap;
 
             // Set scale to the minimum, and then save it. 
-            _scale = 0;
+            scale = 0;
             CoerceScale(true);
-            _scale = _coercedScale;
+            scale = coercedScale;
 
-            _initialScale = _scale;
+            initialScale = scale;
 
             ResizeImage(true);
         }
@@ -80,9 +87,9 @@ namespace TravelJournal.WP8.UI
         void viewport_ViewportChanged(object sender, System.Windows.Controls.Primitives.ViewportChangedEventArgs e)
         {
             Size newSize = new Size(viewport.Viewport.Width, viewport.Viewport.Height);
-            if (newSize != _viewportSize)
+            if (newSize != viewportSize)
             {
-                _viewportSize = newSize;
+                viewportSize = newSize;
                 CoerceScale(true);
                 ResizeImage(false);
             }
@@ -94,8 +101,8 @@ namespace TravelJournal.WP8.UI
         /// </summary> 
         void OnManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
-            _pinching = false;
-            _originalScale = _scale;
+            pinching = false;
+            originalScale = scale;
         }
 
         /// <summary> 
@@ -110,25 +117,25 @@ namespace TravelJournal.WP8.UI
             {
                 e.Handled = true;
 
-                if (!_pinching)
+                if (!pinching)
                 {
-                    _pinching = true;
+                    pinching = true;
                     Point center = e.PinchManipulation.Original.Center;
-                    _relativeMidpoint = new Point(center.X / TestImage.ActualWidth, center.Y / TestImage.ActualHeight);
+                    relativeMidpoint = new Point(center.X / TestImage.ActualWidth, center.Y / TestImage.ActualHeight);
 
                     var xform = TestImage.TransformToVisual(viewport);
-                    _screenMidpoint = xform.Transform(center);
+                    screenMidpoint = xform.Transform(center);
                 }
 
-                _scale = _originalScale * e.PinchManipulation.CumulativeScale;
+                scale = originalScale * e.PinchManipulation.CumulativeScale;
 
                 CoerceScale(false);
                 ResizeImage(false);
             }
-            else if (_pinching)
+            else if (pinching)
             {
-                _pinching = false;
-                _originalScale = _scale = _coercedScale;
+                pinching = false;
+                originalScale = scale = coercedScale;
             }
         }
 
@@ -137,10 +144,10 @@ namespace TravelJournal.WP8.UI
         /// </summary> 
         void OnManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
-            if (_scale != _initialScale)
+            if (scale != initialScale)
             {
-                _pinching = false;
-                _scale = _coercedScale;
+                pinching = false;
+                scale = coercedScale;
             }
             else if (TouchPanel.IsGestureAvailable)
             {
@@ -180,12 +187,12 @@ namespace TravelJournal.WP8.UI
         /// <param name="center"></param> 
         void ResizeImage(bool center)
         {
-            if (_coercedScale != 0 && _bitmap != null)
+            if (coercedScale != 0 && bitmap != null)
             {
-                double newWidth = canvas.Width = Math.Round(_bitmap.PixelWidth * _coercedScale);
-                double newHeight = canvas.Height = Math.Round(_bitmap.PixelHeight * _coercedScale);
+                double newWidth = canvas.Width = Math.Round(bitmap.PixelWidth * coercedScale);
+                double newHeight = canvas.Height = Math.Round(bitmap.PixelHeight * coercedScale);
 
-                xform.ScaleX = xform.ScaleY = _coercedScale;
+                xform.ScaleX = xform.ScaleY = coercedScale;
 
                 viewport.Bounds = new Rect(0, 0, newWidth, newHeight);
 
@@ -199,8 +206,8 @@ namespace TravelJournal.WP8.UI
                 }
                 else
                 {
-                    Point newImgMid = new Point(newWidth * _relativeMidpoint.X, newHeight * _relativeMidpoint.Y);
-                    Point origin = new Point(newImgMid.X - _screenMidpoint.X, newImgMid.Y - _screenMidpoint.Y);
+                    Point newImgMid = new Point(newWidth * relativeMidpoint.X, newHeight * relativeMidpoint.Y);
+                    Point origin = new Point(newImgMid.X - screenMidpoint.X, newImgMid.Y - screenMidpoint.Y);
                     viewport.SetViewportOrigin(origin);
                 }
             }
@@ -214,16 +221,16 @@ namespace TravelJournal.WP8.UI
         /// <param name="recompute">Will recompute the min max scale if true.</param> 
         void CoerceScale(bool recompute)
         {
-            if (recompute && _bitmap != null && viewport != null)
+            if (recompute && bitmap != null && viewport != null)
             {
                 // Calculate the minimum scale to fit the viewport 
-                double minX = viewport.ActualWidth / _bitmap.PixelWidth;
-                double minY = viewport.ActualHeight / _bitmap.PixelHeight;
+                double minX = viewport.ActualWidth / bitmap.PixelWidth;
+                double minY = viewport.ActualHeight / bitmap.PixelHeight;
 
-                _minScale = Math.Min(minX, minY);
+                minScale = Math.Min(minX, minY);
             }
 
-            _coercedScale = Math.Min(MaxScale, Math.Max(_scale, _minScale));
+            coercedScale = Math.Min(MaxScale, Math.Max(scale, minScale));
 
         } 
         #endregion

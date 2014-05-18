@@ -22,7 +22,7 @@ namespace TravelJournal.WP8.DataService
         DataSaver<Data> dataSaver =
               new DataSaver<Data>();
         
-        public override void Load()
+        public override async Task Load()
         {
             Data = dataSaver.LoadMyData("default.dat"); 
             // Assign first
@@ -39,7 +39,7 @@ namespace TravelJournal.WP8.DataService
                 };
             }
         }
-        public override void Save()
+        public override async Task Save()
         {
             dataSaver.SaveMyData(Data, "default.dat");
         }

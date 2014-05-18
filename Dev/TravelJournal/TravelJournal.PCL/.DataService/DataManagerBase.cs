@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using TravelJournal.PCL.BusinessLogic;
 
 namespace TravelJournal.PCL.DataService
 {
     public abstract class DataManagerBase
     {
-        private const string NAME_CURRENT_ALBUM = "DEFAULT_CURRENT_ALBUM";
+        private const string NAME_CURRENT_ALBUM = "Current";
         protected Data dataCollection;
 
         public Data Data
@@ -17,9 +18,9 @@ namespace TravelJournal.PCL.DataService
             set { dataCollection = value; }
         }
 
-        public abstract void Load();
+        public abstract Task Load();
 
-        public abstract void Save();
+        public abstract Task Save();
                 
         public void AddPhoto(string albumName, params Photo[] photos)
         {

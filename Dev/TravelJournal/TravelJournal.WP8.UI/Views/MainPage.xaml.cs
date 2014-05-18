@@ -25,7 +25,7 @@ namespace TravelJournal.WP8.UI
         {
             WpSkydriveDataManager dataBase = SimpleIoc.Default.GetInstance<DataManagerBase>() as WpSkydriveDataManager;
             await dataBase.Initialize();
-            await dataBase.LoadAsync();
+            await dataBase.Load();
             Data data = dataBase.Data;
             foreach (Album album in data.AlbumsCollection)
             {

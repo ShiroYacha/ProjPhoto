@@ -50,6 +50,16 @@ namespace TravelJournal.PCL.ViewModel
             }
         }
 
+        public GpsPoint GetAlbumGpsCentroid()
+        {
+            return album.GetAlbumGpsCentroid();
+        }
+
+        public Tuple<GpsPoint,GpsPoint> GetAlbumGpsBoundingRectangle()
+        {
+            return album.GetAlbumGpsBoundingRectangle();
+        }
+
         public List<PhotoViewModel> PhotoViewModels
         {
             get;
@@ -83,7 +93,7 @@ namespace TravelJournal.PCL.ViewModel
 
         public void ViewOnMap()
         {
-            throw new NotImplementedException();
+            NavigateTo(this, "AlbumMapPage");
         }
 
         public void ViewOnList()
@@ -95,32 +105,41 @@ namespace TravelJournal.PCL.ViewModel
         {
             get
             {
-                var photos = PhotoViewModels;
-
-                var groupedPhotos =
-                    from photo in photos
-                    orderby photo.Position.GpsPoint.Timestamp
-                    group photo by photo.Position.GpsPoint.Timestamp.ToString("y") into photosByMonth
-                    select new KeyedList<string, PhotoViewModel>(photosByMonth);
-
-                return new List<KeyedList<string, PhotoViewModel>>(groupedPhotos);
+                return GroupPhoto(photo => { return photo.Position.City;});
             }
+        }
+
+        private List<KeyedList<string, PhotoViewModel>> GroupPhoto(Func<PhotoViewModel,string> criteria)
+        {
+            var photos = PhotoViewModels;
+            var groupedPhotos =
+                from photo in photos
+                orderby photo.Position.GpsPoint.Timestamp
+                group photo by criteria(photo) into groupedPhotoList
+                select new KeyedList<string, PhotoViewModel>(groupedPhotoList);
+            return new List<KeyedList<string, PhotoViewModel>>(groupedPhotos);
         }
 
         public ICommand OnSelectPhoto
         {
             get
             {
-                return new RelayCommand<PhotoViewModel>(SelectPhoto);
+                return new RelayCommand<object>(SelectPhoto);
             }
         }
 
-        public void SelectPhoto(PhotoViewModel photoViewModel)
+        public void SelectPhoto(object photoViewModel)
         {
-            this.CurrentPhotoViewModel = photoViewModel;
-            NavigateTo(this);
+            if (photoViewModel is PhotoViewModel)
+            {
+                this.CurrentPhotoViewModel = photoViewModel as PhotoViewModel;
+                NavigateTo(this);
+            }
         }
+
+
     }
+
     public class KeyedList<TKey, TItem> : List<TItem>
     {
         public TKey Key { protected set; get; }
