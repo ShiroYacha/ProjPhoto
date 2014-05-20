@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Phone.Net.NetworkInformation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,15 @@ namespace TravelJournal.WP8.UI
             //    // Create run time view services and models
             //    SimpleIoc.Default.Register<DataManagerBase,WpDataManager>();
             //}
-            SimpleIoc.Default.Register<DataManagerBase, WpSkydriveDataManager>();
+            
+            if (NetworkInterface.GetIsNetworkAvailable())
+            {
+                SimpleIoc.Default.Register<DataManagerBase,WpSkydriveDataManager>(); 
+            }
+            else
+            {
+                SimpleIoc.Default.Register<DataManagerBase,WpIsoDataManager>(); 
+            }
             SimpleIoc.Default.Register<IPhotoManager, MockPhotoManager>();
             //SimpleIoc.Default.Register<DataManagerBase, WpDataManager>();
         }

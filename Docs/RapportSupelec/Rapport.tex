@@ -1,0 +1,174 @@
+\documentclass{article}
+\usepackage[margin=1.2in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{graphicx} 
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{caption}
+\usepackage{subcaption}
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35}
+\definecolor{javared}{rgb}{0.6,0,0}
+\definecolor{javapurple}{rgb}{0.5,0,0.35} 
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75}
+ \lstset{
+	language=Java,
+         basicstyle=\footnotesize\ttfamily, % Standardschrift
+         %numbers=left,               % Ort der Zeilennummern
+         numberstyle=\tiny,          % Stil der Zeilennummern
+         %stepnumber=2,               % Abstand zwischen den Zeilennummern
+         numbersep=5pt,              % Abstand der Nummern zum Text
+         tabsize=2,                  % Groesse von Tabs
+         commentstyle=\color{javagreen},
+         stringstyle=\color{javared},
+         extendedchars=true,         %
+         breaklines=true,            % Zeilen werden Umgebrochen
+         keywordstyle=\color{javapurple}\bfseries,
+    		frame=b,         
+ %        keywordstyle=[1]\textbf,    % Stil der Keywords
+ %        keywordstyle=[2]\textbf,    %
+ %        keywordstyle=[3]\textbf,    %
+ %        keywordstyle=[4]\textbf,   \sqrt{\sqrt{}} %
+         showspaces=false,           % Leerzeichen anzeigen ?
+         showtabs=false,             % Tabs anzeigen ?
+         xleftmargin=17pt,
+         framexleftmargin=17pt,
+         framexrightmargin=5pt,
+         framexbottommargin=4pt,
+         morecomment=[s][\color{javadocblue}]{/**}{*/},
+         escapeinside=\`\`,
+         %backgroundcolor=\color{lightgray},
+         showstringspaces=false      % Leerzeichen in Strings anzeigen ?        
+ }
+
+    %\DeclareCaptionFont{blue}{\color{blue}} 
+
+  %\captionsetup[lstlisting]{singlelinecheck=false, labelfont={blue}, textfont={blue}}
+  \usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+
+
+%----------------------------------------------------------------------------------------
+% BEGINNING
+%----------------------------------------------------------------------------------------
+\begin{document}
+\newcommand\highlight[1]{\colorbox{yellow}{#1}} 
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{>>}
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{1mm}} % Defines a new command for the horizontal lines, change thickness here
+\newcommand{\VRule}{\rule{\lineheight}{0.2mm}} % Defines a new command for the vertical lines, change thickness here
+\center % Center everything on the page
+%----------------------------------------------------------------------------------------
+% TITLE >> HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+\begin{figure}[h ]
+\centering
+\includegraphics[width=50mm]{Logo_Supelec_RVB.jpg}
+\end{figure}
+\textsc{\LARGE Supelec - campus de metz}\\[0.5cm] % Minor heading such as course title
+%----------------------------------------------------------------------------------------
+% TITLE >> TITLE SECTION
+%----------------------------------------------------------------------------------------
+\vspace{1.2cm}
+\HRule \\[0.5cm]
+{\textsc{\Huge \bfseries Cours Electif}\\[1cm]{\huge  \bfseries Data-mining}\\[0.7cm] \huge Implémentation d'un algorithme de K-moyen}\\[0.4cm] 
+\HRule \\[1.5cm]
+%----------------------------------------------------------------------------------------
+% TITLE >> AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+\vspace{2.5cm}
+\Large {
+Promo 2015\\ 
+\vspace{1cm}
+Hao\ \textsc{XIONG} \ \ \ \
+Min\ \textsc{ZHAO}
+}
+%----------------------------------------------------------------------------------------
+\vfill % Fill the rest of the page with whitespace
+\end{titlepage}
+%----------------------------------------------------------------------------------------
+% TITLE >> END
+%----------------------------------------------------------------------------------------
+\tableofcontents 
+\listoffigures 
+\lstlistoflistings
+\newpage
+
+%----------------------------------------------------------------------------------------
+% PRESECTION
+%----------------------------------------------------------------------------------------
+\vspace{2cm}
+\textbf{\LARGE \\Introduction}
+\\\\
+
+%----------------------------------------------------------------------------------------
+% SECTION 1
+%----------------------------------------------------------------------------------------
+\vspace{2cm}
+\section{\Large }
+
+%----------------------------------------------------------------------------------------
+% SECTION 3
+%----------------------------------------------------------------------------------------
+\vspace{2cm}
+\textbf{\LARGE Conclusion}
+\\\\
+
+%------------------------------
+% END
+%------------------------------
+\end{document}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=150mm]{D:/Data/Supelec/Cours/A1/Seq2/FISDA/TL/Latex/trajet_opt.jpg}
+\caption{Trajet optimal trouvé}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{test1.jpg}
+  \caption{Itération 2}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{test2.jpg}
+  \caption{Résultat de fin}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{Démonstration avec 100 points et 5 groupes}
+\label{fig:test}
+\end{figure}
+
+Pour cela, on surcharge les méthodes toString() dans les classes Sommet et Arete pour mieux structurer l'affichage.
+\\
+\begin{lstlisting}[label=La méthode toString() dans la classe Sommet et Arete,caption=La méthode toString() dans la classe Sommet et Arete]
+	// Classe Sommet
+	public String toString()
+	{
+		String str="";
+		if(indice!=0) str+="v"+indice;
+		str+=" (x= "+longitude+" km y ="+latitude+" km)";
+		return str;
+	}
+	// Classe Arete
+	public String toString()
+	{
+		String str="";
+		str+="{v"+sommet1.getIndice()+",v"+sommet2.getIndice()+"} ";
+		str+="(long. = "+longueur+" km vlim. ="+vitesseMoyMax+" km/h)";
+		return str;
+	}
+\end{lstlisting}
+

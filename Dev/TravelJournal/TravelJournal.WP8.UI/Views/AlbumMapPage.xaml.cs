@@ -18,6 +18,8 @@ namespace TravelJournal.WP8.UI.Views
 {
     public partial class AlbumMapPage : PageBase
     {
+        private const int IMAGE_SIZE = 100;
+
         public AlbumMapPage()
         {
             InitializeComponent();
@@ -43,8 +45,8 @@ namespace TravelJournal.WP8.UI.Views
                 Image image = new Image();
                 image.Tag = pvm;
                 image.Tap += image_Tap;
-                image.Width = 150;
-                image.Height = 150;
+                image.Width = IMAGE_SIZE;
+                image.Height = IMAGE_SIZE;
                 BitmapImage bm = new BitmapImage();
                 bm.SetSource(pvm.ThumbnailStream);
                 image.Source = bm;
