@@ -147,6 +147,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="PerformanceIssue.DictionaryBufferOptimization.sap" />
+    <None Include="TravelJournal.WP8.UI_2014_05_22_15_08_19.sap" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\appbar.list.png" />
